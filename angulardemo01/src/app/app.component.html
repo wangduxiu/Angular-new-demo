@@ -1,0 +1,114 @@
+<!-- 根组件调用子组件 -->
+<!-- <app-son></app-son> -->
+<!-- 调用包含子组件的父组件 -->
+<!-- <app-father></app-father> -->
+<!-- 父组件调用子组件的属性和方法 -->
+<app-news></app-news>
+<!-- <br /> -->
+<!-- 绑定数据 -->
+<!-- <div>{{app_title}}</div> -->
+<!-- <br /> -->
+<!-- 绑定对象数据 -->
+<!-- <div>{{msg}}</div> -->
+<!-- <br /> -->
+<!-- 绑定html标签属性 -->
+<!-- <div [innerHtml]="content"></div> -->
+<!-- <br /> -->
+<!-- 动态绑定标签属性 -->
+<!-- <div [title]='student' class="red">张三</div> -->
+<!-- <br /> -->
+<!-- 绑定对象 -->
+<!-- <div>姓名: {{userinfo.username}}</div> -->
+<!-- <div>年龄: {{userinfo.age}}</div> -->
+<!-- <br /> -->
+<!-- 遍历数组 -->
+<!-- <ul *ngFor="let item of list">
+    <li>{{item}}</li>
+</ul>
+<br /> -->
+<!-- 允许做简单运算 -->
+<!-- <div>1+2={{1+2}}</div>
+<br /> -->
+<!-- 遍历数组对象 -->
+<!-- <ul *ngFor="let student of studentInfo">
+    <li>{{student.username}}</li>
+    <li>{{student.age}}</li> -->
+<!-- </ul>
+<br /> -->
+<!-- 遍历数组 加上KEY -->
+<!-- <ul *ngFor="let student2 of studentInfo;let i = index">
+    <li>{{student2.username}}----{{i}}</li>
+    <li>{{student2.age}}</li> -->
+<!-- </ul>
+<br /> -->
+<!-- 遍历复杂对象 -->
+<!-- <ul *ngFor="let car1 of car">
+    <li>{{car1.name}}</li>
+    <li>
+        <ul *ngFor="let car2 of car1.type">
+            <li>{{car2.style}}</li>
+            <li>{{car2.price}}</li>
+        </ul>
+    </li>
+</ul> -->
+
+<!-- <ul>
+    <li *ngFor="let car1 of car">
+        <div>
+            {{car1.name}}
+        </div>
+        <ul *ngFor="let car2 of car1.type">
+            <li>{{car2.style}}</li>
+            <li>{{car2.price}}</li>
+        </ul>
+    </li>
+</ul> -->
+<!-- ngif 条件判断 -->
+<!-- <div *ngIf="list.length > 2" class="red">ngif</div>
+<div *ngIf="list.length > 5" class="blue">ngif</div> -->
+<!-- <br /> -->
+<!-- ngswitch -->
+<!-- <ul [ngSwitch]="score">
+    <li *ngSwitchCase="1">已支付</li>
+    <li *ngSwitchCase="2">订单已经确认</li>
+    <li *ngSwitchCase="3">已发货</li>
+    <li *ngSwitchDefault>无效</li>
+</ul>
+<br /> -->
+<!-- 点击事件 -->
+<!-- <button class="btn1" (click)="getData()">获取</button>
+<button class="btn2" (click)="setData()">改变</button>
+<br />
+<br />
+<br /> -->
+<!-- 表单事件 -->
+<!-- <input type="text" (keyup)="keyUpFn($event)" />
+<br />
+<br />
+<br /> -->
+<!-- 双向数据绑定 -->
+<!-- <input type="text" [(ngModel)]="inputValue" />
+{{inputValue}}
+<button (click)="changeData($event)">双向数据绑定</button>
+<br>
+<br>
+<br> -->
+<!-- ngclass -->
+<!-- <div [ngClass]="{'red': true, 'blue': false}">
+    这是一个div
+</div>
+<div [ngClass]="{'red': flag, 'blue': !flag}">
+    这是一个div
+</div>
+<ul>
+    <li *ngFor="let item of arr, let i = index">
+        <span [ngClass]="{'red': i==0}">{{item}}</span>
+    </li>
+</ul> -->
+<!-- ngstyle -->
+<!-- <div [ngStyle]="{'background-color':'green'}">你好ngStyle</div>
+<div [ngStyle]="{'background-color':attr}">你好ngStyle</div>
+<br> -->
+<!-- 管道 -->
+<!-- <p>{{today | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+<br> -->

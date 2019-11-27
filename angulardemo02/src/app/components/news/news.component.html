@@ -1,0 +1,22 @@
+<p>news works!</p>
+
+<br>
+
+<a [routerLink]="[ '/newsContent' ]">新闻详情</a>
+
+
+<!-- get跳转传值 -->
+<!-- <ul>
+    <li *ngFor="let item of list;let i = index">
+        <a [routerLink]="[ '/newsContent' ]" [queryParams] = "{aid: i}">{{i}}---{{item}}</a>
+    </li>
+</ul> -->
+
+<!-- 动态路由跳转 -->
+<ul>
+    <li *ngFor="let item of list; let i = index ">
+
+        <a [routerLink]="[ '/newsContent', i ]">{{i}}---{{item}}</a>
+
+    </li>
+</ul>

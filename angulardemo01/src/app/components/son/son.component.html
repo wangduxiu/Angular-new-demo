@@ -1,0 +1,11 @@
+<!-- 绑定数据 -->
+<div>{{son_title}}</div>
+<!-- 使用父组件传过来的值 -->
+<div>{{msgFather}}</div>
+
+<br>
+<!-- 子组件执行父组件中的方法 -->
+<button (click)="getFatherMsg()">子组件执行父组件中的run方法</button>
+<br>
+<!-- 子组件获取父组件传来的msg -->
+<button (click)="getFatherRun()">子组件获取父组件传来的msg</button>
