@@ -6,15 +6,27 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { RequestService } from './services/request.service';
 
+import { CreateComponent } from './create/create.component';
+import { ReadComponent } from './read/read.component';
+import { reducer } from './reducers/tutorial.reducer';
+
+import { StoreModule } from '@ngrx/store';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    CreateComponent,
+    ReadComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({
+      tutorial: reducer
+    })
   ],
   providers: [RequestService],
   bootstrap: [AppComponent]
