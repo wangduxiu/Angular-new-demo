@@ -1,0 +1,14 @@
+<div class="blank_receipt-page" @fadeInAnimation>
+  <div class="blank_receipt-page-title">
+    <span class="title" [innerHTML]="'BLANK_RECEIPT.TITLE' | translate"></span>
+  </div>
+  <div>
+    <div class="blank_receipt-page-search">
+      <app-blank-receipt-form
+        [isSaving]="isSaving"
+        [receiptTypes]="globalTypes"
+        (createBlankReceipts)="createBlankReceipts($event)"
+      ></app-blank-receipt-form>
+    </div>
+  </div>
+</div>

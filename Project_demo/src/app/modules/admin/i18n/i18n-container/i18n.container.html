@@ -1,0 +1,33 @@
+<div class="container" @fadeInAnimation>
+  <admin-i18n-selector
+    [languages]="languages"
+    [usedLanguage]="usedLanguage"
+    [loading]="loading"
+    [saving]="saving"
+    (testLanguage)="testLanguage($event)"
+    (editLanguage)="editLanguage($event)"
+    (resetLanguages)="resetLanguages()"
+    (editAllCsv)="editAllCsv()"
+  ></admin-i18n-selector>
+  <admin-i18n-csv-editor
+    [csv]="csv"
+    [valid]="errorMessage == null || errorMessage == ''"
+    [errorMessage]="errorMessage"
+    [edit]="edit"
+    [loading]="loading"
+    [saving]="saving"
+    (save)="save($event)"
+    *ngIf="csv"
+  ></admin-i18n-csv-editor>
+  <admin-i18n-json-editor
+    [json]="json"
+    [valid]="errorMessage == null || errorMessage == ''"
+    [errorMessage]="errorMessage"
+    [edit]="edit"
+    [loading]="loading"
+    [saving]="saving"
+    (validate)="validate($event)"
+    (save)="save($event)"
+    *ngIf="json"
+  ></admin-i18n-json-editor>
+</div>

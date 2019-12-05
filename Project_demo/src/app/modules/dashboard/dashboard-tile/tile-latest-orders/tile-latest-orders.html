@@ -1,0 +1,25 @@
+<div class="tile">
+
+  <div class="header">
+    <div class="title">
+      <div class="line1">{{'DASHBOARD.LATEST_ORDERS.TITLE.LINE1' | translate}}</div>
+      <div class="line2">{{'DASHBOARD.LATEST_ORDERS.TITLE.LINE2' | translate}}</div>
+    </div>
+  </div>
+  <div class="loader" *ngIf="customerSummary.loadingLatestOrders &&
+    customerSummary.latestOrders.length === 0">
+    <i class="fa fa-spinner fa-3x fa-pulse fa-fw"></i>
+  </div>
+  <div *ngIf="!customerSummary.loadingLatestOrders ||
+    customerSummary.latestOrders.length > 0">
+    <div class="list">
+        <div class="element" *ngFor="let id of latestThree()" (click)="viewOrder(id)">
+          <div>{{'DASHBOARD.LATEST_ORDERS.ELEMENT_PREFIX' | translate}} {{id}}</div>
+          <div><i class="fa fa-angle-right"></i></div>
+        </div>
+      </div>
+      <div class="view-all">
+        <i class="fa fa-angle-right"></i><div class="link" (click)="viewAll.emit()">{{'DASHBOARD.GENERAL.VIEW_ALL' | translate}}</div>
+      </div>
+  </div>
+</div>

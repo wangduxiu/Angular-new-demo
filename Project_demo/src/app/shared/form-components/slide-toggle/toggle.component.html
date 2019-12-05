@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-6 col-md-2">
+    <!-- readonly & checked -->
+    <i class="fa fa-lg fa-check" *ngIf="(readonly || view) && value"></i>
+    <!-- readonly & not checked -->
+    <i class="fa fa-lg fa-remove" *ngIf="(readonly || view) && !value"></i>
+    <!-- disabled -->
+    <md-slide-toggle [(ngModel)]="value" disabled *ngIf="disabled && !readonly && !view"></md-slide-toggle>
+    <!-- enabled -->
+    <md-slide-toggle [(ngModel)]="value" *ngIf="!disabled && !readonly && !view"></md-slide-toggle>
+  </div>
+</div>

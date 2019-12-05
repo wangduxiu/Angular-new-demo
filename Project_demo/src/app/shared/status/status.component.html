@@ -1,0 +1,4 @@
+<img src="{{imageUrl}}" width="{{width}}" height="{{height}}" *ngIf="imageUrl && width && height" mdTooltip="{{type && type.name}}" mdTooltipPosition="{{position}}">
+<img src="{{imageUrl}}" width="{{width}}" *ngIf="imageUrl && width && !height" mdTooltip="{{type && type.name}}" mdTooltipPosition="{{position}}">
+<img src="{{imageUrl}}" height="{{height}}" *ngIf="imageUrl && !width && height" mdTooltip="{{type && type.name}}" mdTooltipPosition="{{position}}">
+<img src="{{imageUrl}}" *ngIf="imageUrl && !width && !height" mdTooltip="{{type && type.name}}" mdTooltipPosition="{{position}}">

@@ -1,0 +1,19 @@
+<div class="stock-list-wrapper">
+  <div class="heading">
+    <span class="icon">
+      <i class="fa fa-refresh"></i>
+    </span>
+    <span>{{ 'REPORT.THIS_WEEK' | translate }}</span>
+    <span class="location">{{location.name}}</span>
+  </div>
+
+  <div class="stock-list">
+    <div class="item" *ngFor="let item of items" [ngClass]="{'pos': item.amount > 0 || item.amount == 0, 'neg': item.amount < 0}">
+      <div class="inner">
+        <div class="bar" [ngStyle]="{'height': 'calc(' + calculateBarWidth(item.amount) + '% - 10px)'}"></div>
+        <span class="bold number">{{item.amount}} {{ 'REPORT.TRAYS' | translate }}</span>
+        <span class="description">{{item.packingName}}</span>
+      </div>
+    </div>
+  </div>
+</div>

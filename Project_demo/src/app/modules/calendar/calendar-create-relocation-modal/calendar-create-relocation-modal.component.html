@@ -1,0 +1,75 @@
+<div class="custom_modal">
+  <div class="modal-header">
+    <div class="title">
+      {{ 'CALENDAR.ADD_RELOCATION_MODAL.TITLE' | translate }}
+    </div>
+    <div>
+      <span class="close_button" (click)="close(false)">
+        <i class="fa fa-times"></i>
+      </span>
+    </div>
+  </div>
+  <div class="modal-body row">
+    <div class="half" [ngClass]="{'col-6': data.day.isFuture, 'col-12': !data.day.isFuture}">
+      <div class="subtitle">
+        <span class="bold">{{ 'CALENDAR.ADD_RELOCATION_MODAL.LIST' | translate }}</span>
+      </div>
+      <div class="orders_list">
+        <div class="order row" *ngFor="let order of data.relocations" (click)="close(false, order.etmOrderNumber, order.salesOrderNumber)">
+          <div class="col-2">
+            <app-status
+               layout="BULLET"
+               key="{{'ORDER_' + order.status.id}}"
+               height="40"
+               [size]="1">
+            </app-status>
+          </div>
+          <div class="col-10 row">
+            <div class="col-4 column">
+              <span class="head">{{ 'ORDERS.LIST.LABELS.NUMBER' | translate }}</span>
+              <span>{{order.etmOrderNumber}}</span>
+            </div>
+            <div class="col-4 column">
+              <span class="head">{{ 'ORDERS.LIST.LABELS.FROM' | translate }}</span>
+              <span>{{order.from.name}}</span>
+            </div>
+            <div class="col-4 column">
+              <span class="head">{{ 'ORDERS.LIST.LABELS.TO' | translate }}</span>
+              <span>{{order.to.name}}</span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="data.relocations.length == 0">
+          {{ 'CALENDAR.ADD_RELOCATION_MODAL.NO_RELOCATIONS' | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="col-6 half" *ngIf="data.day.isFuture">
+      <div class="subtitle">
+        {{ 'CALENDAR.ADD_RELOCATION_MODAL.START_FROM_A' | translate }}
+        <span class="bold">{{ 'CALENDAR.ADD_RELOCATION_MODAL.NEW_RELOCATION' | translate }}</span>
+      </div>
+
+      <a md-button class="default" (click)="close(true)">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i> {{ "CALENDAR.ADD_RELOCATION_MODAL.NEW_RELOCATION" | translate }}
+      </a>
+
+      <div class="hr"></div>
+
+      <div class="subtitle">
+        {{ 'CALENDAR.ADD_RELOCATION_MODAL.START_FROM_A' | translate }}
+        <span class="bold">{{ 'CALENDAR.ADD_RELOCATION_MODAL.TEMPLATE' | translate }}</span>
+      </div>
+
+      <div class="template_list">
+        <div *ngFor="let template of data.templates" class="template" (click)="close(true, template.id)">
+          <span class="bold">{{template.name}}</span>
+          <span>{{template.id}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="btn-cancel" (click)="close(false)">{{ 'SHARED.BUTTONS.CANCEL' | translate }}</a>
+  </div>
+</div>

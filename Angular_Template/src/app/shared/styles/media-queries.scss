@@ -1,0 +1,16 @@
+// smartphone screen size (tablet)
+@media (max-width: 767px) {
+  // @include orders-header--sm();
+  // @include orders-container--sm();
+}
+
+// tablet screen size (tablet)
+@media (min-width: 768px) and (max-width: 1199px) {
+  // @include orders-container--md();
+  // @include orders-header--md();
+}
+
+// desktop screen size (smartphone)
+@media (min-width: 1200px) {
+  //  @include order-header--lg();
+}

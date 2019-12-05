@@ -1,0 +1,46 @@
+<app-tutorial-popup *ngIf="showTutorialPopup" [hideTutorial]="hideTutorial" [goToTutorials]="goToTutorials">
+</app-tutorial-popup>
+<div class="dashboard">
+  <div class="dashboard-title">
+    <app-title title="DASHBOARD.TITLE.YOUR" subtitle="DASHBOARD.TITLE.DASHBOARD"></app-title>
+  </div>
+  <div class="background">&nbsp;</div>
+  <div class="tiles" @tile>
+    <app-dashboard-tile-latest-flows class="tile"
+      (view)="viewFlow($event)"
+      (viewAll)="queryFlows($event)"
+      (viewHandshakes)="queryOpenHandshakes($event)"
+      *ngIf="this.authorization.ACCESS['FLOWS'] && (customerSummary.loadingLatestFlows || customerSummary.openHandshakes.openHandshakeTotal || customerSummary.latestFlows.length)">
+    </app-dashboard-tile-latest-flows>
+    <app-dashboard-tile-latest-orders
+      class="tile"
+      (view)="viewOrder($event)"
+      (viewAll)="queryOrders($event)"
+      *ngIf="customerSummary.latestOrders"
+    ></app-dashboard-tile-latest-orders>
+    <app-feature-tile
+      class="double tile"
+      [isNew]="true"
+      colorClass="yellow"
+      translationCode="TEMPLATE"
+      icon="fa-files-o"
+      (buttonClicked)="gotoTemplates()"
+      *ngIf="authorization.ORDER.CREATE_TEMPLATE"
+    ></app-feature-tile>
+    <app-feature-tile
+      class="tile calendar"
+      [ngClass]="{'double': countTiles() < 7}"
+      [isNew]="true"
+      translationCode="CALENDAR"
+      colorClass="blue"
+      icon="fa-calendar"
+      (buttonClicked)="gotoOrderCalendar()"
+      *ngIf="this.authorization.ACCESS['CALENDAR']"
+    ></app-feature-tile>
+    <app-dashboard-tile-depot
+      class="tile"
+      [depots]="depots"
+      *ngIf="depots.length"
+    ></app-dashboard-tile-depot>
+  </div>
+</div>

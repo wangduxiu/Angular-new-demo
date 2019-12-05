@@ -1,0 +1,612 @@
+{
+  "SHARED": {
+    "DATE_FORMATS": {
+      "WEEK": "hét hh, éééé",
+      "DAY": "nn/hh/éééé"
+    },
+    "PAGING": {
+      "PREVIOUS": "",
+      "NEXT": ""
+    },
+    "BUTTONS": {
+      "YES": "Igen",
+      "NO": "Nem ",
+      "CANCEL": "Törölve",
+      "EDIT": "Szerkeszt",
+      "SUBMIT": "Összegez",
+      "SAVE": "Ment",
+      "CREATE": "Létrehoz",
+      "GO_TO_DASHBOARD": "Vissza a főoldalra",
+      "GO_TO_DETAIL": "Részletek létrehozása",
+      "GO_TO_OVERVIEW": "Összefoglaló nézet",
+      "BACK": "Vissza",
+      "CLOSE": "Bezár"
+    },
+    "DAYS": {
+      "MONDAY": "Hétfő",
+      "TUESDAY": "Kedd",
+      "WEDNESDAY": "Szerda",
+      "THURSDAY": "Csütörtök",
+      "FRIDAY": "Péntek",
+      "SATURDAY": "Szombat",
+      "SUNDAY": "Vasárnap",
+      "UNTIL": "-ig"
+    },
+    "ORDINAL": {
+      "FIRST": "Első",
+      "SECOND": "Második",
+      "THIRD": "Harmadik",
+      "FOURTH": "Negyedik",
+      "LAST": "Utolsó"
+    },
+    "HEADER": {
+      "ORDERS": "Rendelések",
+      "FLOWS": "Mozgások",
+      "CALENDAR": "Naptár",
+      "INVOICES": "Számlák",
+      "STOCK": "Készlet",
+      "BLANK": "Üres átvételi",
+      "LOGGED_AS": "Belépve, mint",
+      "LOGIN": "Belép",
+      "LOGOUT": "Kilép",
+      "SWITCH_CUSTOMER": "Váltás más ügyfélre",
+      "LOADING_CONTRACT": "Szerződés betöltése",
+      "LOADING_CONTEXT": "Tartalom betöltése",
+      "FAQ": "FAQ",
+      "CONTACT_US": "Kapcsolat",
+      "EMAIL_ACTORS": "Ügyfél e-mail",
+      "WELCOME": "Üdvözöljük!"
+    },
+    "LABELS": {
+      "OPTIONAL": "Lehetőség",
+      "COLLAPSE_ALL": "Mindent bezár",
+      "SHOW_ALL": "Mindent mutat",
+      "SEARCH": "Keresés",
+      "NO_ADDRESS": "Nincs cím"
+    },
+    "MODAL": {
+      "HEADER_SUCCESS": "<p class='col-12'><span class='spanStyle'>Kedves {{name}},</span></p><br><p class='col-12'> Az Ön regisztrációja<span class='spanStyle'>sikeresen</span> mentésre került a rendszerben!</p>",
+      "HEADER_ERROR": "<p class='col-12'><span class='spanStyle'>Kedves {{name}},</span></p><br><p class='col-12'> Hiba <span class='spanStyle'>történt</span> mentés közben!</p>",
+      "HEADER_WARNING": "<p class='col-12'><span class='spanStyle'>FIGYELMEZTETÉS</span> MESSAGE</p>",
+      "HEADER_EMAIL": "<p class='col-12'><span class='spanStyle'>E-mailek szűrése</span> </p>",
+      "MSG_SUCCESS": "<p class='col-12'>Kérdés, észrevétel esetén a tranzakciós számra hivatkozva<span class='spanStyle'>#{{number}}</span> kérjük</p> <p class='col-12'>vegye fel a kapcsolatot a helyi irodánkkal!</p> <p class='col-12'>Köszönettel!</p>",
+      "MSG_ERROR": "<p class='col-12'>Kérdés, észrevétel esetén vegye fel a kapcsolatot a helyi irodánkkal!</p> <p class='col-12'>Köszönjük!</p>",
+      "MSG_WARNING": "<p class='col-12'><span class='spanStyle'>FIGYELMEZTETÉS</span>Kérdés, észrevétel esetén a tranzakció számra hivatkozzon <span class='spanStyle'>#{{number}}</span> amikor </p> <p class='col-12'>felveszi a kapcsolatot a helyi irodánkkal!</p> <p class='col-12'>Köszönettel!</p>",
+      "SUCCESS": "Sikeres",
+      "ERROR": "Hiba",
+      "WARNING": "Figyelmeztetés"
+    }
+  },
+  "DASHBOARD": {
+    "TITLE": {
+      "YOUR": "Öné",
+      "DASHBOARD": "Főoldal"
+    },
+    "GENERAL": {
+      "VIEW_ALL": "Áttekintés",
+      "NEW_FEATURE": {
+        "NEW": "Új",
+        "FEATURE": "tulajdonságok"
+      }
+    },
+    "TEMPLATE": {
+      "TITLE": {
+        "LINE1": "Létrehoz",
+        "LINE2": "minta"
+      },
+      "DESCRIPTION": "<p>A szezon alatt folyamatos a szüretelése, batakarítása?</p><p>És folyamatosan ugyanarra a mennyiségre van szüksége minden egyes rendelésnél?</p>",
+      "BUTTON": "Válasszon sablont!"
+    },
+    "CALENDAR": {
+      "TITLE": {
+        "LINE1": "Ellenőrzés",
+        "LINE2": "Naptár"
+      },
+      "DESCRIPTION": "Hozza létre rendelését a naptár nézetben, vagy a sablont húzza be  a naptárba!",
+      "BUTTON": "Belépés a naptárba"
+    },
+    "OPEN_HANDSHAKES": {
+      "TITLE": {
+        "LINE1": "Nyitott tételek visszaigazolása",
+        "LINE2": "Végleges tételek"
+      },
+      "ELEMENT_PREFIX": "Végleges"
+    },
+    "OPEN_HANDSHAKES_SUMMARY": {
+      "TITLE": {
+        "LINE1": "Nyitott",
+        "LINE2": "véglegesít"
+      },
+      "BUTTON": "Visszaigazolni a nyitott mozgásokat"
+    },
+    "LATEST_ORDERS": {
+      "TITLE": {
+        "LINE1": "Utolsó",
+        "LINE2": "rendelések"
+      },
+      "ELEMENT_PREFIX": "Rendelés"
+    },
+    "DEPOT": {
+      "TITLE": {
+        "LINE1": "Öné",
+        "LINE2": "raktár"
+      },
+      "ELEMENT_PREFIX": "Rendelés"
+    },
+    "LATEST_FLOWS": {
+      "TITLE": {
+        "LINE1": "Utolsó",
+        "LINE2": "mozgás"
+      },
+      "ELEMENT_PREFIX": "Mozgás"
+    }
+  },
+  "SELECT_CUSTOMER": {
+    "SALES_ORG": "Értékesítési szervezet",
+    "CUSTOMERS": "Ügyfelek",
+    "FILTER": {
+      "NO_CUSTOMER": "Nincs találat a szűrés szerint",
+      "NO_SALES_ORGANISATION": "Nincs értékesítési szervezet a szűrés szerint"
+    }
+  },
+  "ORDERS": {
+    "FILTER": {
+      "TITLE": "Szűrő",
+      "SUBTITLE": "rendelések",
+      "LABELS": {
+        "ORDER_DATE": "Rendelés dátuma",
+        "UNLOADING_DATE": "Fel/kirakodás dátuma",
+        "ORDER_TYPE": "Rendelés dátuma",
+        "TRANSPORT": "Szállítás",
+        "TRANSPORT_PICKUP": "Felvétel",
+        "TRANSPORT_EPS": "EPS által",
+        "ORDER_STATUS": "Rendelés státusza",
+        "CUSTOMER_REFERENCE_NUMBER": "Vevői rendelés szám",
+        "PALLET_ID": "Paletta ID",
+        "TRANSPORTER": "Szállító",
+        "ETM_SHIPPING_NUMBER": "ETM szállítói szám",
+        "CCR-CHECK": "CCR-ellenőrzés",
+        "FROM": "Honnan",
+        "TO": "Hova",
+        "SEAL_NUMBER": "Seal szám",
+        "CCR": "CCR",
+        "CREATE_CCR": "CCR készítése"
+      },
+      "BUTTONS": {
+        "MORE_SEARCH_OPTIONS": "További keresési lehetőség",
+        "LESS_SEARCH_OPTIONS": "Kevesebb keresési lehetőség",
+        "FILTER_TEXT": "Rendelések szűrése",
+        "ADD_TEMPLATE": "Sablon",
+        "ADD_ORDER": "Rendelés"
+      }
+    },
+    "LIST": {
+      "TITLE": "Eredmények",
+      "SUBTITLE": "Rendelések",
+      "COUNT": "{{count}} rendelések",
+      "COUNT_1": "1 rendelés",
+      "COUNT-POSTSCRIPT": "egyezik a feltételekkel",
+      "DOWNLOAD_AS": "Töltse le az eredményt",
+      "DOWNLOADING": "Letöltés",
+      "PDF": "pdf",
+      "EXCEL": "excel",
+      "OR": "vagy",
+      "LABELS": {
+        "ORDER_DATE": "Rendelés dátuma",
+        "NUMBER": "Szám",
+        "FROM": "Honnan",
+        "TO": "Hová",
+        "REQUESTED_DATE": "Igényelt dátum",
+        "CONFIRMED_DATE": "Visszaigazolt dátum",
+        "TRANSPORT": "Szállítás",
+        "GLOBAL_TYPE": "Global type"
+      },
+      "BUTTONS": {
+        "COPY": "Másolat",
+        "AS_TEMPLATE": "Sablon készítése a rendelésből"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "Rendelés",
+      "SUBTITLE": "Tételek",
+      "REGISTERED_BY": "Létrehozta:"
+    },
+    "PLANNING": {
+      "TITLE": "RENDELÉS",
+      "SUBTITLE": "TERVEZÉS",
+      "BUTTONS": {
+        "NEXT": "Következő",
+        "SAVE": "Mentés"
+      }
+    },
+    "NO_PLANNING": {
+      "TITLE": "Sablon",
+      "SUBTITLE": "Részletek"
+    },
+    "DELIVERY": {
+      "TITLE": "Általános",
+      "SUBTITLE": "",
+      "VALUES": {
+        "RECURRENCY": {
+          "WEEKLY": "Heti, minden {{days}}",
+          "MONTHLY-NROFDAY": "Heti, nap {{day}} minden {{monthPeriodicy1}} hónap(ok)",
+          "MONTHLY-DAYOFMONTH": "Havi {{which}} {{weekday}} minden  {{monthPeriodicy2}} hónap(ok)"
+        }
+      },
+      "LABELS": {
+        "CHOOSE_TYPE": "Rendelés típusa",
+        "TYPE_DELIVERY": "Szállítás",
+        "TYPE_RETURN": "Visszaszállítás",
+        "TYPE_DIRECT_SERVICES": "Közvetlen szerviz",
+        "TYPE_MOVEMENT": "Mozgás",
+        "SOLD_TO": "Értékesítve",
+        "TO": "Hová",
+        "TRANSPORT": "Szállítás",
+        "TRANSPORT_PICKUP": "Felvétel",
+        "TRANSPORT_EPS": "EPS által",
+        "PICKUP_POINT": "Felvételi pont",
+        "RECURRENCE": "Ismétlődés",
+        "CUSTOMER_REFERENCE_NUMBER": "Referencia",
+        "CLEARING": "Klíring",
+        "LICENCE_PLATE": "Rendszám",
+        "REMARKS": "Megjegyzés",
+        "RECURRENCY_PATTERN": "Ismétlődési minta",
+        "PATTERN_WEEKLY": "Heti",
+        "PATTERN_MONTHLY": "Havi",
+        "END_DATE_RECURRENCE": "Ismétlődés vége",
+        "FROM": "Honnan",
+        "RECURRENCY_TIME": "Ismétlődési idő",
+        "MONTHLY": {
+          "DAY": "Nap",
+          "OF_EVERY": "Minden egyes",
+          "MONTHS": "Hónap",
+          "THE": "A (Az)"
+        },
+        "REQUESTED_DATE": "KÉRT KIRAKODÁSI DÁTUM",
+        "CONFIRMED_DATE": "VISSZAIGAZOLT KIRAKODÁSI DÁTUM",
+        "EXCHANGE_PALLET": "CSEREPALETTA",
+        "NUMBER_OF_EXCHANGE_PALLETS": "CSEREPALETTÁK SZÁMA",
+        "COMMENTS": "MEGJEGYZÉS",
+        "TRANSPORTER": "SZÁLLÍTÓ",
+        "PLATE": "RENDSZÁM",
+        "REF": "REFERENCIA SZÁM",
+        "NO_REMARKS": "Nincs megjegyzés",
+        "NO_TRANSPORTER": "Nincs szállító",
+        "NO_LICENCE_PLATE": "Nincs rendszám"
+      },
+      "BUTTONS": {
+        "NEXT": "Lépés a rendelési tételekhez",
+        "SAVE": "Mentés"
+      }
+    },
+    "DETAIL": {
+      "LABELS": {
+        "LOADING_DATE": "Megrakodás dátuma",
+        "EXCHANGE_PALLETS": "Cserepaletta",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Paletták száma",
+        "CREATE_TEMPLATE": "Mentés sablonként",
+        "TEMPLATE_NAME": "A sablon neve"
+      },
+      "BUTTONS": {
+        "NEXT": "Lépés a rendelés tervezéséhez",
+        "SAVE": "Mentés"
+      }
+    },
+    "MATERIAL": {
+      "TITLE": "Eszköz hozzáadása",
+      "TYPE": "Típus választás",
+      "LABELS": {
+        "TYPES": {
+          "PACKING": "Csomagolás",
+          "PALLET": "Paletta",
+          "COMBO": "Kombináció"
+        },
+        "TYPE_PACKING": "Rekeszfajta",
+        "TYPE_PALLET": "Paletta típus",
+        "STATUS_PALLET": "Paletta státusza",
+        "STATUS_PACKING": "Rekesz státusza",
+        "LOGISTIC_VARIETY": "Logisztikai variáns p.",
+        "PACKING_PER_PALLET": "Rekesz per paletta",
+        "NUMBER_OF_PALLETS": "Paletták száma",
+        "QUANTITY": "Mennyiség",
+        "PO_NUMBER": "PO szám",
+        "PO_NUMBER_ITEM": "PO tétel szám",
+        "MESSAGE": "Üzenet",
+        "PFQ_EUR": "EPP száma (Eur méret)",
+        "PFQ_POOL": "EPP száma (Pool méret)",
+        "EXCHANGE_PALLETS": "Cserepaletták",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Europaletták száma cserére",
+        "CREATE_TEMPLATE": "Sablon mentése",
+        "TEMPLATE_NAME": "Sablon neve",
+        "NR_OF_PFQS": "PFQ száma",
+        "PACKING": "Csomagolás",
+        "STATUS": "Státusz",
+        "LOGISTIC_VAR": "Logisztikai variáns",
+        "QTY": "Mennyiség",
+        "EXCHANGE": "Csere",
+        "BALANCED": "Ígényelt egyenleg",
+        "REFERENCE": "Referencia",
+        "CONTENT": "Tartalom",
+        "LINE_REFERENCE": "Sor referencia"
+      },
+      "NOTIFICATIONS": {
+        "MATERIAL_ADDED": "Tétel sikeresen hozzáadva",
+        "MATERIAL_REMOVED": "Tétel sikeresen törölve",
+        "MATERIAL_ALREADY_EXISTS": "Tétel már hozzáadva. Kérjük, adjon meg mást, vagy szerkessze a  meglévő sort!"
+      },
+      "BUTTONS": {
+        "ADD_MATERIAL": "Tétel hozzáadása",
+        "SAVING": "Mentés"
+      }
+    }
+  },
+  "TEMPLATES": {
+    "DETAILS": {
+      "TITLE": "Sablon",
+      "CREATE_SUCCESS": "Sablon sikeresen létrehozva"
+    }
+  },
+  "FLOWS": {
+    "FILTER": {
+      "TITLE": "Szűrő",
+      "SUBTITLE": "Folyamatok",
+      "LABELS": {
+        "FLOW_DATE": "Folyamat dátuma",
+        "STATUS": "Státusz",
+        "STATUS_HANDSHAKE": "Megegyezésre vár",
+        "STATUS_DEFINITIVE": "Végleges",
+        "STATUS_CANCEL": "Törölt",
+        "DIFFERENCE": "Különbség",
+        "CLEARING": "Klíring",
+        "HANDSHAKE_DATE": "Megegyezés dátuma",
+        "PACKING_ID": "Rekesz ID",
+        "CHECKED": "Ellenőrzött"
+      },
+      "BUTTONS": {
+        "FILTER_TEXT": "Folyamatok szűrése",
+        "ADD_FLOW": "Folyamat"
+      }
+    },
+    "LIST": {
+      "TITLE": "Eredmény",
+      "SUBTITLE": "Folyamatok",
+      "SELECTED": "{{selected}} kiválasztott",
+      "COUNT": "{{count}} folyamatok",
+      "COUNT_1": "1 folyamat",
+      "COUNT-POSTSCRIPT": "egyezik a szűkítési feltétellel",
+      "LABELS": {
+        "FLOW_DATE": "Folyamat dátuma",
+        "NUMBER": "Dokumentum száma",
+        "STATUS_HANDSHAKE": "Végleges státusz",
+        "TYPE": "Típus",
+        "ORIGINAL": "Küldő",
+        "DEFINITIVE": "Fogadó",
+        "DIFFERENCE": "Különbség",
+        "CONTENT": "Tartalom",
+        "REFERENCE": "Hivatkozás",
+        "COLLAPSE_COUNT": "Bezár ({{count}})",
+        "SHOW_COUNT": "Mind mutat ({{count}})"
+      },
+      "BUTTONS": {
+        "CANCEL": "Töröl",
+        "ACCEPT": "Elfogad",
+        "REJECT": "Visszautasít"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "Folyamat",
+      "SUBTITLE": "Tételek",
+      "BUTTONS": {
+        "NEXT": "Lépés a tranzakció dátumára"
+      }
+    },
+    "PLANNING": {
+      "TITLE": "TRANZAKCIÓ",
+      "SUBTITLE": "DÁTUM"
+    },
+    "DELIVERY": {
+      "TITLE": "ÁLTALÁNOS",
+      "SUBTITLE": "",
+      "LABELS": {
+        "FLOW_DIRECTION": "Folyamat iránya",
+        "WHOLESALER": "Nagykereskedő"
+      },
+      "BUTTONS": {
+        "NEXT": "Lépés a tételekre"
+      }
+    },
+    "NOTIFICATIONS": {
+      "ACCEPT_INVALID": "A folyamatok a megadott dokumentumszámmal érvénytelenek: {{invalids}}"
+    }
+  },
+  "CCR": {
+    "DETAILS": {
+      "TITLE": "CCR",
+      "MATERIAL_LINES": "Tételek",
+      "CCR_LINES": "CCR tételek",
+      "CREATE_SUCCESS": "CCR sikeresen létrehozva"
+    }
+  },
+  "ADMIN": {
+    "GENERAL": {
+      "EPS_USERS": "EPS felhasználó",
+      "CLIENT_USERS": "Ügyfél "
+    },
+    "FILTER": {
+      "TITLE": "Szűrő",
+      "LABELS": {
+        "FIRST_NAME": "Keresztnév",
+        "ASSIGNED": "Kijelölt",
+        "SYNC_WITH_AD": "Szinkronizálja az aktív könyvtárral",
+        "SYNCING_WITH_AD": "Szinkronizálás az aktív könyvtárral",
+        "LAST_NAME": "Vezetéknév",
+        "EMAIL": "E-mail",
+        "ID": "Id",
+        "PHONE": "Mobil telefonszám"
+      },
+      "BUTTONS": {
+        "INVITE": "Felhasználót meghív",
+        "EDIT": "Szerkeszt"
+      }
+    },
+    "SHARED": {
+      "CLIENTUSERS": "Kliens",
+      "CLIENTUSER": "Kliens",
+      "EPSUSERS": "EPS felhasználók",
+      "EPSUSER": "EPS felhasználó",
+      "INVITE": "Meghív",
+      "UPDATE": "Frissít",
+      "EDIT": "Szerkeszt",
+      "COUNT": "{{count}} felhasználók",
+      "COUNT-POSTSCRIPT": "egyezik a keresési kritériumokkal",
+      "COUNT_1": "1 felhasználó",
+      "ADD": "Hozzáad",
+      "USER_UPDATE_SUCCESS": "A felhasználó sikeresen frissítve",
+      "USER_UPDATE_FAIL": "A felhasználó nem lett frissítve",
+      "USER_INVITE_SUCCESS": "A felhasználó sikeresen meghívva",
+      "USER_INVITE_FAIL": "A felhasználó nem lett meghívva",
+      "NAME": "Név",
+      "ID": "ID"
+    },
+    "EPS_USERS": {
+      "NAME": "Keresztnév",
+      "EMAIL": "E-mail",
+      "LAST_NAME": "Vezetéknév",
+      "SALES_ORG": "Értékesítési szervezet",
+      "NO_SALES_ORG": "Nincs értékesítési szervezet",
+      "SEARCH_SALES_ORG": "Értékesítési szervezet keresése",
+      "ADMIN": "Adminisztrátor",
+      "CUSTOMER_ROLE_LIST": "Ügyfél feltérképezése",
+      "ADD_SALES_ORGANISATION": "Értékesítési szervezethez adva",
+      "LANGUAGE": "Nyelv",
+      "LIST": {
+        "TITLE": "Eredmény",
+        "SUBTITLE": "EPS felhasználó"
+      }
+    },
+    "CLIENT_USERS": {
+      "LIST": {
+        "TITLE": "Eredmények",
+        "SUBTITLE": "Kliens",
+        "ASSIGNED": "Kijelölt"
+      },
+      "CUSTOMER": "Vevő",
+      "ROLE": "Szerep",
+      "SEARCH_CUSTOMER": "Vevő keresése",
+      "ADD_CUSTOMER": "Új vevő hozzáadása",
+      "ACTIVE": "Aktív",
+      "LANGUAGE": "Nyelv"
+    }
+  },
+  "ERRORS": {
+    "AUTHORIZATION": {
+      "NO_CUSTOMERS": "Egy ügyfél profil sincs Önhöz rendelve. Kérem, vegye fel a kapcsolatot az EPS adminisztrátorral a belépéshez.",
+      "NO_CUSTOMERS_IN_SALES_ORGANIZATION": "Ebben az értékesítési csoportban nincs egy ügyfél sem. Kérem, válasszon másik értékesítési szervezetet!",
+      "NO_SALES_ORGANIZATIONS": "Egy értékesítési szervezet sincs Önhöz rendelve. Kérem, lépcsen kapcsolatba az EPS adminisztrátorral!",
+      "CONTRACT_EMPTY": {
+        "TITLE": "Nincs aktív szerződés",
+        "MESSAGE": "A kiválasztott ügyfélnek nincs aktív szerződése. Kérjük, vegye fel a kapcsolatot az EPS adminisztrátorral!"
+      }
+    },
+    "FILTER_FAILED": {
+      "TITLE": "Szűrés végrehajtva"
+    },
+    "PDF_DOWNLOAD_FAILED": {
+      "TITLE": "PDF file letöltése",
+      "MESSAGE": "PDF letöltés megszakadt"
+    },
+    "XLS_DOWNLOAD_FAILED": {
+      "TITLE": "Excel file letöltése",
+      "MESSAGE": "Excel file letöltése megszakadt"
+    },
+    "COPY_ORDER": {
+      "NO_VALID_CONTRACT": "A szerződése megváltozott. Ugyanilyen rendelést nem tud létrehozni a jövőben."
+    },
+    "COPY_FLOW": {
+      "NO_VALID_CONTRACT": "Szerződése frissítve lett. Ugyanilyen mozgást a jövőben nem tud létrehozni. A mozgástípus  nulla, a betölti."
+    },
+    "TEMPLATE": {
+      "CREATE": "Hiba sablon",
+      "COPY_FROM_ORDER": "Nem lehet másolni a rendelésből"
+    },
+    "ORDER": {
+      "CREATE": {
+        "TRUCK_LOAD": "Kamion berakodás ellenőrzése"
+      }
+    },
+    "CUSTOMER-SUMMARY": {
+      "LOAD": "Vevő összegzés betöltése"
+    }
+  },
+  "validation-error": {
+    "numberOfExchangePallets": {
+      "text": {
+        "max": "Több cserepaletta nem engedélyezett",
+        "min": "A paletták száma nagyobb legyen, mint zero!"
+      }
+    },
+    "customerReferenceNumber": {
+      "text": {
+        "required": "Az ügyfél referenciaszám nem lehet üres!"
+      }
+    },
+    "flowDate": {
+      "date": {
+        "invalid": "Mozgás dátuma érvénytelen"
+      }
+    },
+    "text": {
+      "required": "A mező nem lehet üres!"
+    },
+    "date": {
+      "required": "A dátum kötelező",
+      "datePatternValidator": "A dátum formátuma nem megfelelő",
+      "dateRangeValidator": "Számtartományon kívüli érték",
+      "dateSameOrAfter": "A dátumnak ezt követőnek kell lennie {{otherDate}}",
+      "dateNotAvailable": "A dátum nem elérhető. Válasszon másikat!"
+    },
+    "custom": {
+      "recurrence": {
+        "atLeastOneDay": "Kérem, válasszon legalább 1 napot!"
+      }
+    }
+  },
+  "CALENDAR": {
+    "TITLE": "Ön",
+    "SUBTITLE": "Naptár",
+    "SHOW_TODAY": "Ma",
+    "CREATE_TEMPLATE": "Sablon létrehozása",
+    "TEMPLATES": "Sablonok",
+    "FILTER": {
+      "DEPOT": "Raktár",
+      "DELIVERY": "Szállítás",
+      "RETURN": "Visszaszállítás",
+      "OWN": "Saját",
+      "BY_EPS": "EPS által"
+    },
+    "ADD_ORDER_MODAL": {
+      "TITLE": "Hozzáad",
+      "START_FROM_A": "Kezdődően",
+      "TEMPLATE": "sablon",
+      "NEW_ORDER": "új rendelés"
+    },
+    "TEMPLATE": {
+      "DRAG_TEMPLATE": "Kérem <span class='bold'>húzza át</span> a sablont",
+      "SUBTEXT": "Kérem húzza és dobja a sablon a naptárba, vagy adja a rendelést egy klikkeléssel a kiválasztott napra!"
+    }
+  },
+  "STOCK": {
+    "TITLE": "<span class='bold'>KÉSZLET</span> ÁTTEKINTÉS",
+    "FILTER_TITLE": "<span class='bold'>Helyszín választása</span> készlet elérése",
+    "LOCATION": "Helyszín",
+    "CHECK_STOCK": "Készlet ellenőrzése",
+    "THIS_WEEK": "Ez a hét",
+    "TRAYS": "Rekeszek"
+  },
+  "BLANK_RECEIPT": {
+    "TITLE": "<span class='bold'>LÉTREHOZ</span> EGY ÜRES ÁTVÉTELIT",
+    "RECEIPT_TYPE": "Átvételi típusa",
+    "QUANTITY": "Mennyiség",
+    "CREATE_RECEIPT": "Átvételi létrehozása"
+  }
+}

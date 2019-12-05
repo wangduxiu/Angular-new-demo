@@ -1,0 +1,186 @@
+<div class="list-wrapper">
+    <div class="list-heading row">
+        <div class="list-heading-data row">
+            <div class="col-2">
+                {{'ADMIN.SHARED.ID' | translate}}
+            </div>
+            <div class="col-3">
+                {{'ADMIN.CLIENT_USERS.SOLDTO' | translate}}
+            </div>
+            <div class="col-4">
+                {{'ADMIN.CLIENT_USERS.SHIPTOS' | translate}}
+            </div>
+            <div class="col-3">
+                {{'ADMIN.CLIENT_USERS.ROLE' | translate}}
+            </div>
+        </div>
+        <div class="action_buttons"></div>
+    </div>
+    <div class="list-body">
+        <div class="list-item row" *ngFor="let customerRole of selectedSoldTosAndShipTos">
+            <form [formGroup]="editCustomerForm" *ngIf="editCustomerForm && customerRole.isEdit" class="list-item-form">
+                <div class="list-item-data row">
+                    <div class="col-12 list-item-heading">
+                        {{'ADMIN.SHARED.ID' | translate}}
+                    </div>
+                    <span class="col-md-2 col-sm-12">
+                        {{customerRole.soldTo?.id}}
+                    </span>
+                    <div class="col-12 list-item-heading">
+                        {{'ADMIN.CLIENT_USERS.SOLDTO' | translate}}
+                    </div>
+                    <span class="col-md-3 col-sm-12">
+                        {{customerRole.soldTo?.name}}
+                    </span>
+                    <div class="col-12 list-item-heading">
+                        {{'ADMIN.CLIENT_USERS.SHIPTOS' | translate}}
+                    </div>
+                    <span class="col-md-4 col-sm-12">
+                        <app-select #shipTo [multiple]="true" [includeAll]="true" [elements]="shipTos" formControlName="shipToIds" [allowBlank]="false" [autoHeight]="true"></app-select>
+                    </span>
+                    <div class="col-12 list-item-heading">
+                        {{'ADMIN.CLIENT_USERS.ROLE' | translate}}
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        <app-select [elements]="roles" formControlName="roleId" [allowBlank]="false" [autoHeight]="true"></app-select>
+                    </div>
+                </div>
+            </form>
+            <div class="list-item-data row"
+                *ngIf="!customerRole.isEdit">
+                <div class="col-12 list-item-heading">
+                    {{'ADMIN.SHARED.ID' | translate}}
+                </div>
+                <span class="col-md-2 col-sm-12">
+                    {{customerRole.soldTo?.id}}
+                </span>
+                <div class="col-12 list-item-heading">
+                    {{'ADMIN.CLIENT_USERS.SOLDTO' | translate}}
+                </div>
+                <span class="col-md-3 col-sm-12">
+                    {{customerRole.soldTo?.name}}
+                </span>
+                <div class="col-12 list-item-heading">
+                    {{'ADMIN.CLIENT_USERS.SHIPTOS' | translate}}
+                </div>
+                <span class="col-md-4 col-sm-12">
+                    <span *ngIf="customerRole.shipToNames">
+                        {{ customerRole.shipToNames }}
+                    </span>
+                <span *ngIf="!customerRole.shipToNames">
+                        {{ 'ADMIN.CLIENT_USERS.ALL_SHIPTOS' | translate }}
+                    </span>
+                </span>
+                <div class="col-3 list-item-heading">
+                    {{'ADMIN.CLIENT_USERS.ROLE' | translate}}
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <span>{{(customerRole.role ? 'ADMIN.ROLES.' + customerRole.role.id : '') |  translate}}</span>
+                </div>
+            </div>
+            <div class="list-item-action_buttons" *ngIf="!readonly">
+                <a md-raised-button class="no_decoration action_button" [disabled]="!editCustomerForm.valid" (click)="editCustomerForm.valid && saveCustomer()" *ngIf="customerRole.isEdit">
+                    <i class="fa fa-save"></i>
+                </a>
+                <a md-raised-button
+                    class="no_decoration action_button"
+                    (click)="cancelEditCustomer(customerRole)"
+                    *ngIf="customerRole.isEdit">
+                    <i class="fa fa-undo"></i>
+                </a>
+                <a md-raised-button class="no_decoration action_button" [disabled]="showNewLine" (click)="!showNewLine && !customerRole.isEdit && editCustomer(customerRole)" *ngIf="canEditLine">
+                    <i class="fa fa-pencil"></i>
+                </a>
+                <a md-raised-button class="no_decoration action_button" [disabled]="showNewLine" (click)="!showNewLine && !customerRole.isEdit && removeCustomer(customerRole)"
+                    *ngIf="canEditLine">
+                    <i class="fa fa-times-circle-o"></i>
+                </a>
+            </div>
+        </div>
+
+        <div *ngIf="selectedSoldTosAndShipTos.length === 0"
+            class="list-item">
+            {{ 'ADMIN.CLIENT_USERS.NO_CUSTOMER_ROLE_MAPPINGS' | translate }}
+        </div>
+
+        <div class="add-header" *ngIf="showNewLine && !readonly">
+            <form class="newCustomerForm" [formGroup]="newCustomerForm">
+                <div class="row label-header">
+                    <div class="col-11">
+                        <div class="row">
+                            <div class="col-3">
+                                <app-label translationCode="ADMIN.CLIENT_USERS.SALES_ORG"></app-label>
+                            </div>
+                            <div class="col-3">
+                                <app-label translationCode="ADMIN.CLIENT_USERS.SOLDTO"></app-label>
+                            </div>
+                            <div class="col-3">
+                                <app-label translationCode="ADMIN.CLIENT_USERS.SHIPTOS"></app-label>
+                            </div>
+                            <div class="col-3">
+                                <app-label translationCode="ADMIN.CLIENT_USERS.ROLE"></app-label>
+                            </div>
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-11 col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12 item-add-header">
+                                <app-label translationCode="ADMIN.CLIENT_USERS.SALES_ORG"></app-label>
+                            </div>
+                            <div class="col-md-3 col-sm-12 item-add-content">
+                                <app-autocomplete2 [elements]="salesOrganisations" formControlName="salesOrganisationId" [readonly]="loadingShipTos" (change)="salesOrganisationSelected()"></app-autocomplete2>
+                            </div>
+
+                            <div class="col-sm-8 item-add-header">
+                                <app-label translationCode="ADMIN.CLIENT_USERS.SOLDTO"></app-label>
+                            </div>
+                            <div class="col-md-3 col-sm-4" *ngIf="loadingSoldTos">
+                                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                            </div>
+                            <div class="col-md-3 col-sm-12 item-add-content" *ngIf="availableSoldTos.length && !loadingSoldTos">
+                                <app-autocomplete2 [elements]="availableSoldTos" formControlName="soldToId" (change)="soldToSelected()"></app-autocomplete2>
+                            </div>
+
+                            <div class="col-sm-8 item-add-header">
+                                <app-label translationCode="ADMIN.CLIENT_USERS.SHIPTOS"></app-label>
+                            </div>
+                            <div class="col-md-3 col-sm-4" *ngIf="loadingShipTos">
+                                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                            </div>
+                            <div class="col-md-3 col-sm-12 item-add-content" *ngIf="shipTos.length && !loadingShipTos">
+                                <app-select #shipTo [multiple]="true" [includeAll]="true" [elements]="shipTos" formControlName="shipToIds" [allowBlank]="false"></app-select>
+                            </div>
+
+
+                            <div class="col-sm-12 item-add-header">
+                                <app-label translationCode="ADMIN.CLIENT_USERS.ROLE"></app-label>
+                            </div>
+                            <div class="col-md-3 col-sm-12 item-add-content" *ngIf="shipTos.length && !loadingShipTos">
+                                <app-select [elements]="roles" formControlName="roleId" [allowBlank]="false"></app-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-1 col-sm-12">
+                        <a md-raised-button class="no_decoration action_button" (click)="newCustomerForm.valid && addCustomer()" [disabled]="!newCustomerForm.valid">
+                            <i class="fa fa-plus-circle"></i>
+                        </a>
+                        <a md-raised-button class="no_decoration action_button" (click)="cancelAddCustomer()">
+                            <i class="fa fa-times-circle-o"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="list-add_item_wrapper"
+            *ngIf="!readonly && canEditLine && !showNewLine && (!maxRoles || selectedSoldTosAndShipTos.length < maxRoles)">
+            <span class="list-add_item"
+                (click)="startAddCustomer()">
+                <i class="fa fa-plus"></i> {{'ADMIN.CLIENT_USERS.ADD_CUSTOMER' | translate}}
+            </span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+@import '../../../shared/styles/globalVars.less';
+
+.tutorial-menu{
+  border: 2px solid @light-blue-grey;
+  border-radius: 1px;
+  padding-left: 0px;
+  list-style-type: none;
+  display: block;
+  align-self: flex-start;
+
+  .checked-ball {
+    background-color: rgb(2, 155, 2) !important;
+    .fa.fa-check {
+      color: white;
+    }
+  }
+
+  li {
+    border-bottom: 2px solid @light-blue-grey;
+    display: block;
+    position: relative;
+
+    a{
+      display: block;
+      position: relative;
+      background-color: @background-form;
+      padding: 15px 0px 15px 50px;
+      text-transform: uppercase;
+      color: @font-color;
+      cursor: pointer;
+
+      span{
+        background: @light-blue-grey;
+        border-radius: 27px;
+        -moz-border-radius: 27px;
+        -webkit-border-radius: 27px;
+        display: inline-block;
+        line-height: 27px;
+        margin-right: 5px;
+        text-align: center;
+        width: 27px;
+        position: absolute;
+        top: 10px;
+        left: 15px;
+      }
+
+      &:hover, &.active{
+        background-color: @accent-blue;
+        color: @white-font;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 24px solid transparent;
+          border-bottom: 24px solid transparent;
+          border-left: 20px solid @accent-blue;
+          position: absolute;
+          right: -20px;
+          top: 0;
+        }
+
+        span{
+          background: @white-font;
+          color: @accent-blue;
+        }
+      }
+    }
+
+    &:last-child{
+      border-bottom: 0px;
+    }
+  }
+}

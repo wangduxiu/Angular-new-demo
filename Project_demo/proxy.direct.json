@@ -1,0 +1,19 @@
+{
+  "/api": {
+    "target": "http://172.16.3.54:9000/api/",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": "",
+      "^/swagger": ""
+    }
+  },
+  "/swagger": {
+    "target": "http://172.16.15.12:9000/swagger/",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/swagger": ""
+    }
+  }
+}

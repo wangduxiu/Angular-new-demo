@@ -1,0 +1,121 @@
+<div class="filter-container">
+  <div class="row">
+    <div class="filter-window col-12">
+      <div class="row">
+        <div class="title-header col-12">
+          <i class="fa fa-filter" aria-hidden="true"></i> <span class="title">{{ 'ORDERS.FILTER.TITLE' | translate }}</span> <span class="subtitle">{{ 'ORDERS.FILTER.SUBTITLE' | translate }}</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-container col-12 row">
+          <form [formGroup]="filterForm" class="row col-12">
+
+            <div class="col-6">
+              <div class="cell row col-12 form-group" *ngIf="customers">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.CUSTOMERS"></app-label>
+                <app-autocomplete2 class="col-12 col-md-8" [elements]="customers" formControlName="customers" [focus]="true" [multiple]="true"></app-autocomplete2>
+              </div>
+              <div class="cell col-12 form-group row">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.ORDER_TYPE"></app-label>
+                <app-autocomplete2 class="col-12 col-md-8" [elements]="filterValues.orderTypes" formControlName="orderTypes" [focus]="true" [multiple]="true"></app-autocomplete2>
+              </div>
+              <div class="cell col-12 form-group row">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.SHIPPING_CONDITION"></app-label>
+                <app-autocomplete2 class="col-12 col-md-8" [elements]="filterValues.shippingConditions" formControlName="shippingCondition" [focus]="true"></app-autocomplete2>
+              </div>
+              <div class="cell col-12 form-group row">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.FROM"></app-label>
+                <app-autocomplete2 class="col-12 col-md-8" [elements]="filterValues.froms" formControlName="froms" [multiple]="true"></app-autocomplete2>
+              </div>
+              <div class="cell col-12 form-group row">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.TO"></app-label>
+                <app-autocomplete2 class="col-12 col-md-8" [elements]="filterValues.tos" formControlName="tos" [multiple]="true"></app-autocomplete2>
+              </div>
+              <div class="cell col-12 form-group row" *ngIf="!customers">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.SHIPTO"></app-label>
+                <app-autocomplete2 class="col-12 col-md-8" [elements]="shipTos" formControlName="shipTos" [multiple]="true"></app-autocomplete2>
+              </div>
+              <div class="cell col-12 form-group row">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.INCOTERM"></app-label>
+                <app-autocomplete2 class="col-12 col-md-8" [elements]="filterValues.incoterms" formControlName="incoterms" [multiple]="true"></app-autocomplete2>
+              </div>
+              <div class="cell col-12 form-group row" *ngIf="showAdvanced">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.ORDER_STATUS"></app-label>
+                <app-autocomplete2 class="col-12 col-md-8" [elements]="definitions.order.status" formControlName="orderStatuses" [focus]="true" [multiple]="true"></app-autocomplete2>
+              </div>
+              <div class="cell col-12 form-group row" *ngIf="showAdvanced">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.PALLET_ID"></app-label>
+                <app-autocomplete2 class="col-12 col-md-8" [elements]="filterValues.pallets" formControlName="palletIds" [multiple]="true"></app-autocomplete2>
+              </div>
+              <div class="cell col-12 form-group row" *ngIf="showAdvanced">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.PACKING_ID"></app-label>
+                <app-autocomplete2 class="col-12 col-md-8" [elements]="filterValues.packings" formControlName="packingIds" [multiple]="true"></app-autocomplete2>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="cell col-12 form-group row">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.ORDER_DATE"></app-label>
+                <app-date-input class="col-12 col-md-4" formControlName='florderDateFrom' [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"></app-date-input>
+                <app-date-input class="col-12 col-md-4" formControlName='florderDateTo' [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"></app-date-input>
+              </div>
+              <div class="cell col-12 form-group row">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.UNLOADING_DATE"></app-label>
+                <app-date-input class="col-12 col-md-4" formControlName='unloadingDateFrom' [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"></app-date-input>
+                <app-date-input class="col-12 col-md-4" formControlName='unloadingDateTo' [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"></app-date-input>
+              </div>
+              <div class="cell col-12 form-group row">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.RECEIVER_REFERENCE_NUMBER"></app-label>
+                <app-text-input class="col-12 col-md-8" formControlName="customerReferenceNumber"></app-text-input>
+              </div>
+              <div class="cell col-12 form-group row">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.SENDER_REFERENCE"></app-label>
+                <app-text-input class="col-12 col-md-8" formControlName="senderReferenceNumber"></app-text-input>
+              </div>
+              <div class="cell col-12 form-group row">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.SALES_ORDER_NUMBER"></app-label>
+                <app-text-input  class="col-12 col-md-8" formControlName="salesOrderNumber"></app-text-input>
+              </div>
+              <div class="cell col-12 form-group row">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.ETM_DOCUMENT_NUMBER"></app-label>
+                <app-text-input class="col-12 col-md-8" formControlName="etmDocumentNumber"></app-text-input>
+              </div>
+              <div class="cell col-12 form-group row">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.CCR"></app-label>
+                <app-checkbox class="col-12 col-md-2" translationCode="SHARED.BUTTONS.YES" formControlName="ccrYes"></app-checkbox>
+                <app-checkbox class="col-12 col-md-2" translationCode="SHARED.BUTTONS.NO" formControlName="ccrNo"></app-checkbox>
+              </div>
+              <div class="cell col-12 form-group row" *ngIf="showAdvanced">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.SEAL_NUMBER"></app-label>
+                <div class="col-12 col-md-8">
+                  <app-text-input formControlName="sealNumber"></app-text-input>
+                </div>
+              </div>
+              <div class="cell col-12 form-group row" *ngIf="showAdvanced">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.TRANSPORTER"></app-label>
+                <div class="col-12 col-md-8">
+                  <app-text-input formControlName="transporter"></app-text-input>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div class="row col-12 filter-buttons">
+            <a md-button (click)="showAdvanced=true" *ngIf="!showAdvanced" [disabled]="isLoading">
+              {{ 'ORDERS.FILTER.BUTTONS.MORE_SEARCH_OPTIONS'| translate }}
+            </a>
+            <a md-button (click)="showAdvanced=false" *ngIf="showAdvanced" [disabled]="isLoading">
+              {{ 'ORDERS.FILTER.BUTTONS.LESS_SEARCH_OPTIONS' | translate }}
+            </a>
+            <a md-raised-button class="default" button-click-on-enter (click)="filterClicked()" [disabled]="filterForm.invalid || isLoading">
+              <i class="fa fa-filter" aria-hidden="true" *ngIf="!isLoading"></i>
+              <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="isLoading"></i>
+              {{ 'ORDERS.FILTER.BUTTONS.FILTER_TEXT' | translate }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

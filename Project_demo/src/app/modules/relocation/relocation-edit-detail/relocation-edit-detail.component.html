@@ -1,0 +1,38 @@
+<div class="order-edit-detail-container" id="materials">
+  <!-- only show if there are ordered materials -->
+  <app-relocation-material-lines
+    [materials]="florderDetail.materials"
+    [definitions]="definitions"
+    [panelStatus]="panelStatusMaterial"
+    [readonly]="!panelStatus.isEdit"
+    [title]="'MATERIAL_LINES'"
+    (editMaterialClicked)="startEditMaterialClicked.emit($event)"
+    (removeMaterialClicked)="removeMaterialClicked.emit($event)"
+  >
+  </app-relocation-material-lines>
+
+  <app-relocation-edit-material
+    *ngIf="editMaterial"
+    [saving]="panelStatus.busy"
+    [definitions]="definitions"
+    [material]="editMaterial"
+    [panelStatus]="panelStatusMaterial"
+    [materialTypes]="materialTypes"
+
+    (nextClicked)="nextClickedFn()"
+    (saveMaterialClicked)="saveMaterialClicked.emit($event)">
+  </app-relocation-edit-material>
+
+  <div class="form-container">
+    <div class="hr" *ngIf="panelStatus.isEdit"></div>
+    <div class="buttons save-button" *ngIf="panelStatus.isEdit">
+      <div class="hr-thick "></div>
+      <a class="btn-cancel" *ngIf="panelStatus.isNew" (click)="cancelClicked.emit()">{{ 'SHARED.BUTTONS.CANCEL' | translate }}</a>
+      <a md-raised-button class="primary" *ngIf="!panelStatus.saving" [disabled]="!isValid()" (click)="nextClickedFn()">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        <span *ngIf="panelStatus.isNew">{{ 'RELOCATIONS.DETAILS.BUTTONS.NEXT' | translate }}</span>
+        <span *ngIf="panelStatus.isUpdate">{{ 'ORDERS.DETAIL.BUTTONS.SAVE' | translate }}</span>
+      </a>
+    </div>
+  </div>
+</div>

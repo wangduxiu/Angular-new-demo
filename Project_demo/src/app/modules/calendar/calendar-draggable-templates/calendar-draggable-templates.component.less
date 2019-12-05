@@ -1,0 +1,140 @@
+@import '../../../shared/styles/globalVars.less';
+
+.draggable-templates-container {
+  height: 100%;
+  padding: 0 20px 0 0;
+
+  .inner {
+    height: 100%;
+    border: 2px solid @accent-blue;
+    background: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.25);
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      .top {
+        .title {
+          font-size: @big-font;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+
+        .title, .subtitle {
+          color: @blue-underline;
+          text-transform: uppercase;
+        }
+
+        .subtitle {
+          font-size: @medium-font;
+          margin-bottom: 5px;
+        }
+
+        .subtitle, .subtext {
+          font-weight: 300;
+        }
+
+        .subtext {
+          margin-bottom: 20px;
+        }
+
+        .clear_selection {
+          cursor: pointer;
+        }
+      }
+
+      .templates {
+        min-height: 153px;
+        overflow-y: auto;
+
+        .template {
+          border: 1px solid @disabled;
+          padding: 10px;
+          display: flex;
+          align-content: center;
+          justify-content: space-between;
+
+          & + .template {
+            margin-top: 10px;
+          }
+
+          .content {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+
+            .text {
+              flex: 1;
+              padding-left: 10px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              font-weight: 300;
+
+              span {
+                line-height: @base-font;
+              }
+            }
+          }
+
+          .action_buttons {
+            display: flex;
+
+            .drag_icon {
+              color: @accent-blue;
+            }
+
+            .trash_icon {
+              color: @error-modal;
+            }
+
+            .edit_icon {
+              color: @blue-underline;
+            }
+
+            .trash_icon, .edit_icon {
+              display: none;
+              margin-left: 5px;
+            }
+
+            .drag_icon, .trash_icon, .edit_icon {
+              font-size: @medium-font;
+            }
+          }
+
+          &:hover, &.selected {
+            color: @accent-blue;
+            cursor: pointer;
+            border-color: @accent-blue;
+
+            .drag_icon {
+              color: black;
+            }
+
+            .action_buttons {
+              .trash_icon, .edit_icon {
+                display: block;
+              }
+            }
+          }
+
+          &.grayed {
+            background-color: @disabled;
+          }
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+        @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+        body {
+            font-family: 'Droid Serif';
+        }
+
+        h1, h2, h3 {
+            font-family: 'Yanone Kaffeesatz';
+            font-weight: normal;
+        }
+
+        .remark-code, .remark-inline-code {
+            font-family: 'Ubuntu Mono';
+        }
+
+        .title {
+            font-size: 96pt;
+            font-family: 'Yanone Kaffeesatz';
+        }
+    </style>
+</head>
+<body>
+<textarea id="source">
+    class: center, middle
+    .title[Action reducers]
+    ## implemented in typescript
+    ### tailored for ngrx
+    ---
+    # Current situation
+    --
+
+    - Data is stored in store
+
+    - Actions trigger state change
+
+    - Reducers changes the state (using the payload in the actions)
+
+    ---
+    # Example
+    ###the state
+
+    ```javascript
+    export interface Invoice {
+      id: number;
+      date: Date;
+      amount: number;
+    }
+
+    export interface InvoiceDetail extends Invoice {
+      items: Item[];
+    }
+
+    export interface State {
+      invoice: {
+        list: Invoice[];
+        detail: InvoiceDetail;
+      }
+    }
+    ```
+    ---
+    ### the action & reducer
+
+    ```javascript
+
+    export class ListLoadAction {
+      type: 'LIST_LOAD';
+    }
+
+    export class ListLoadSuccessAction {
+      type: 'LIST_LOAD_SUCCESS';
+      constructor(payload: any) {}
+    }
+
+
+    export const reducer(state: State = INITIAL_STATE, action): State {
+      switch (action.type) {
+        case 'LIST_LOAD':
+          return {
+            ...state,
+            loading: true,
+          };
+        case 'LIST_LOAD_SUCCESS':
+          return {
+            ...state,
+            loading: false,
+            loaded: true,
+            data: action.payload
+          };
+        }
+    }
+    ```
+    ---
+
+    ## And change the interfaces
+
+    ```javascript
+    export interface Invoice {
+      id: number;
+      date: Date;
+      amount: number;
+      loading: boolean;
+      loaded: boolean;
+      failed: boolean;
+    }
+
+    export interface InvoiceDetail extends Invoice {
+      items: Item[];
+      loading: boolean;
+      loaded: boolean;
+      failed: boolean;
+    }
+    ```
+
+    ---
+
+    # What's bad
+
+    --
+
+    - A lot of code to be written
+
+    --
+
+    - A log of bugs can be introduced
+
+    --
+
+    - A lot of code that does the same thing
+
+    --
+
+    - No guarantee that load, load-fail & load-success are always reduced the same way
+
+    --
+
+    ==> A lot of tests to be written
+
+    ---
+
+    # Solution !
+
+    - Generate the code
+
+    #### ng-del
+
+    --
+
+    # Let's check
+
+
+    - ~~A lot of code to be written~~
+
+    --
+
+    - ~~A log of bugs can be introduced~~
+
+    --
+
+    - A lot of code that does the same thing
+
+    --
+
+    - No guarantee that load, load-fail & load-success are always reduced the same way
+
+    --
+
+    ==> A lot of tests to be written
+
+    ---
+    # A new approach: re-use
+    ## Let's start with the data !
+
+    --
+
+    We need:
+
+    - boolean *loading*
+    - boolean *loaded*
+    - boolean *failed*
+
+    --
+
+    BUT this is should not be part of the data, it's **metadata**
+
+    --
+
+    ```javascript
+    export interface LoadState<T> {
+      loading: boolean;
+      loaded: boolean;
+      failed: boolean;
+      data: T;
+    }
+    ```
+    ---
+    ## The store:
+
+
+    ```javascript
+    export interface state {
+      invoice: {
+        list: LoadState<Invoice[]>;
+        detail: LoadState<InvoiceDetail>;
+      }
+    }
+    ```
+    ---
+
+    ## How can we abstract the actions and the reducers ?
+
+    --
+
+    ### Create a class for that !
+
+    --
+
+    - containing functions to create actions
+
+    ```javascript
+    export class LoadActionReducer<ID, TYPE> {
+        constructor(private actionReducerId: string){}
+
+        reset() {
+          return {
+            type: this.actionReducerId + '_RESET'
+          }
+        }
+        load(payload?: ID) {
+          return {
+            type: this.actionReducerId + '_LOAD',
+            payload: {id: payload}
+          }
+        }
+        loadSuccess(payload: TYPE) {
+           ...
+        }
+        loadFail(payload: ID) {
+           ...
+        }
+        ...
+    ```
+
+    ---
+
+    - containing a reducer function to handle reduce
+    ```javascript
+        ...
+
+        reducer(state: LoadState<TYPE> = INITIAL_LOAD_STATE, action): LoadState<TYPE> {
+          let newState = state;
+          newState = this.reduceReset(newState, action);
+          newState = this.reduceLoad(newState, action);
+          newState = this.reduceLoadSuccess(newState, action);
+          newState = this.reduceLoadFail(newState, action);
+          return newState;
+        }
+
+        private reduceReset(state, action) {
+          if (action.type === this.actionReducerId + '_RESET') {
+            return {
+              ...INITIAL_LOAD_STATE, // Make a copy !!!
+            }
+          }
+          return newState;
+        }
+        private reduceLoad(state, action) {
+          if (action.type === this.actionReducerId + 'LOAD') {
+            return {
+              ...state,
+              ...INITIAL_LOAD_STATE,
+              loading: true,
+            }
+          }
+          return newState;
+        }
+        ...
+      }
+    ```
+
+    ---
+
+    ## ActionReducers in practice
+
+    ### In the sandbox
+
+    ```javascript
+    loadInvoices() {
+
+        this.store.dispatch(invoicesActionReducer.load());
+
+        this.invoiceRestService.getInvoices().subscribe(
+            (invoices: Invoice[]) => {
+                this.store.dispatch(invoicesActionReducer.loadSuccess(invoices);
+            },
+            (error) => {
+                this.store.dispatch(invoicesActionReducer.loadFail();
+            });
+    }
+    ```
+
+    ---
+
+    ### The reducer
+
+    ```javascript
+    // Interface
+    export interface InvoiceState {
+        list: LoadState<Invoice[]>;
+        detail: LoadState<InvoiceDetail>;
+    }
+
+    // Action-reducers
+    export const invoicesActionReducer
+                = new LoadActionReducer<string, Invoice[]>('INVOICES');
+    export const invoiceDetailActionReducer
+                = new LoadActionReducer<string, InvoiceDetail>('INVOICE_DETAIL');
+
+    // Reducer
+    const combinedReducer: ActionReducer<InvoiceState> = combineReducers({
+        list: invoicesActionReducer.reducer,
+        detail: invoiceDetailActionReducer.reducer,
+    });
+
+    export function reducer(state: InvoiceState, action: any): InvoiceState {
+        return combinedReducer(state, action);
+    }
+
+    ```
+
+    ---
+
+    ### And finally in the store
+
+    ```javascript
+    import * as fromInvoice from '@app/core/store/invoice/invoice.reducer';
+
+    export interface State {
+        invoice: InvoiceState;
+        ...
+    }
+
+    const stateMap = {
+        invoice: fromInvoice.reducer,
+        ...
+    }
+
+    ```
+    ---
+
+    class: center, middle
+    .title[DEMO]
+    --
+
+    ### ps: Credendo currently contains 51 action-reducers
+    ###   ... and we're only halfway
+    ---
+    # It's not all !
+
+    --
+
+    ## Can be combined with old style actions & reducers
+    - It's even possible to override the reducer of an action-reducer
+
+    ```javascript
+      list: arrayOfReducers<LoadState<Invoice[]>>([
+          invoicesActionReducer.reducer,
+          invoicesCustomReducer // For submit action
+      ]),
+    ```
+
+    --
+
+    ## Different flavors
+
+    - Object or Array
+    --
+
+    - Also add, update or create, delete
+    --
+
+    - Pessimistic vs optimistic updates
+
+    ---
+
+    ![alt types](types-of-actionreducers.png "Title")
+
+    ---
+
+    # Other extensions
+
+    ## A guard
+
+    A way to ensure that the data is loaded before rendering a page, or be redirected if data not available / not allowed
+
+    ![alt guard](guard-flow.png "Title")
+
+    ---
+    ### How to implement (subclass) a guard:
+
+    ```javascript
+    @Injectable()
+    export class InvoiceDetailGuard extends BaseGuard<InvoiceDetail> {
+      constructor(
+        private store: Store<State>,
+        private invoiceDetailSandbox: InvoiceDetailSandbox,
+        routerService: RouterService) {
+          super(routerService, 'invoices');
+      }
+
+      getState(): Observable<LoadState<InvoiceDetail>> {
+        return this.store.select(state => state.invoice.detail);
+      }
+
+      triggerLoad(params: any): void {
+        this.invoiceDetailSandbox.loadInvoiceDetail(params.id);
+      }
+
+      triggerReset(): void {
+        this.invoiceDetailSandbox.resetInvoiceDetail();
+      }
+
+      checkVersion(detail: InvoiceDetail, params: any): boolean {
+        return detail.id === params.id;
+      }
+    }
+    ```
+
+    ---
+    ### And register it on the path
+
+    In the route.module.ts:
+
+    ```javascript
+    export const routes: Routes = [
+      {
+        path: 'invoice/detail/:id',
+        pathMatch: 'full',
+        canActivate: [UserGuard, AuthorizationGuard, InvoiceDetailGuard],
+        component: InvoiceDetailContainer
+      }
+    }
+    ```
+    ---
+    # That's all folks
+
+    ## Check it out:
+
+    - Wiki: [TODO](https://wiki.delawareconsulting.com/pages/editpage.action?pageId=140227031)
+
+    - The angular template: [MW_Delaware_AngularTemplate](https://github.com/netweaverdlw/MW_Delaware_AngularTemplate)
+
+    - The credendo project: [MW_Credendo_Extranet](https://github.com/netweaverdlw/MW_Credendo_Extranet)
+
+
+</textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>
+    var slideshow = remark.create();
+</script>
+</body>
+</html>

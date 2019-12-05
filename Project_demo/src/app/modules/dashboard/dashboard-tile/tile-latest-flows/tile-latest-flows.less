@@ -1,0 +1,58 @@
+
+@import '../../../../shared/styles/globalVars.less';
+
+.open-handshakes {
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+  margin-top: 8px;
+  cursor: pointer;
+
+  .icon {
+    display: inline;
+    position: relative;
+    margin-right: 25px;
+
+    .count {
+      position: absolute;
+      left: 28px;
+      top: -5px;
+      background-color: @eps-yellow;
+      border-radius: 15px;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      justify-content: center;
+      color: white;
+      align-items: center;
+      font-size: 11pt;
+    }
+  }
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+
+    font-size: @medium-font;
+    text-transform: uppercase;
+    color: @blue-underline;
+
+    .line1 {
+      font-weight: 300;
+    }
+    .line2 {
+      font-weight: @bold;
+    }
+  }
+}
+
+#element-2 {
+  @media (max-width: 400px) {
+    display: none !important;
+  }
+}

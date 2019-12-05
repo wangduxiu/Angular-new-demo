@@ -1,0 +1,56 @@
+<!-- Lineref, Content & Quantity  -->
+<div class="material-lines-panel" *ngIf="materials.length > 0">
+  <h3>{{"CCR.DETAILS." + title | translate}}</h3>
+
+  <div class="row cell headings hide-xs">
+    <div class="col-md">
+      {{"ORDERS.MATERIAL.LABELS.PACKING" | translate}}
+    </div>
+    <div class="col-md">
+      {{"ORDERS.MATERIAL.LABELS.LINE_REFERENCE" | translate}}
+    </div>
+    <div class="col-md">
+      {{"ORDERS.MATERIAL.LABELS.CONTENT" | translate}}
+    </div>
+    <div class="col-md">
+      {{"ORDERS.MATERIAL.LABELS.QTY" | translate}}
+    </div>
+    <div class="col-md">
+      <!-- for edit fields -->
+    </div>
+  </div>
+
+  <div class="hr-accent no_margin_bottom hide-xs"></div>
+
+  <div *ngFor="let material of materials; index as i" class="striped" [ngClass]="{readonly: readonly}">
+    <div class="material_line" *ngIf="material.type === 'packing' || material.type === 'combination' || true">
+      <div class="col-md packingType">
+        <div class="connector" *ngIf="material.type === 'combination'">
+          <app-connector [height]="connectorHeight" [width]="connectorWidth"></app-connector>
+        </div>
+        <span class="bold mobile-only">{{ 'ORDERS.MATERIAL.LABELS.PACKING' | translate }}: </span>
+        <app-select [elements]="definitions.packing.type" value="{{material.packingId}}" [readonly]="true" [hideReadonlyPadding]="true"></app-select>
+      </div>
+      <div class="col-md">
+        <span class="bold mobile-only">{{ 'ORDERS.MATERIAL.LABELS.LINE_REFERENCE' | translate }}: </span>
+        {{material.lineReferenceId}}
+      </div>
+      <div class="col-md">
+        <span class="bold mobile-only">{{ 'ORDERS.MATERIAL.LABELS.CONTENT' | translate }}: </span>
+        {{getContent(material.contentId)}}
+      </div>
+      <div class="col-md">
+        <span class="bold mobile-only">{{ 'ORDERS.MATERIAL.LABELS.QTY' | translate }}: </span>
+        {{material.packingQuantity}}
+      </div>
+      <div class="col-md icon-buttons">
+        <div *ngIf="!readonly">
+          <i class="fa fa-2x fa-pencil edit hand" aria-hidden="true" (click)="editMaterialClicked.emit(material);"></i>
+          <i class="fa fa-2x fa-trash-o remove hand" aria-hidden="true" *ngIf="!handshaker || material.isNew" (click)="removeMaterialClicked.emit(material);"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hr-accent"></div>
+</div>

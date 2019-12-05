@@ -1,0 +1,103 @@
+@import '../../../shared/styles/globalVars.less';
+
+i.fa-check {
+  color:green;
+}
+
+.link {
+  text-decoration: underline;
+}
+.custom_modal {
+  .modal-header {
+    background-color: @accent-blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: @title-font;
+
+    &.created {
+      background-color: @success;
+    }
+    .title {
+      font-weight: bold;
+    }
+
+    .close_button {
+      cursor: pointer;
+    }
+  }
+
+  .modal-body {
+    padding: 20px 0;
+    flex-direction: column;
+
+    .subtitle {
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-bottom: 20px;
+      font-size: @middle-font;
+    }
+
+    .column-header {
+      font-weight: @bold;
+      font-size: @middle-font;
+      text-align:center;
+    }
+
+
+    .dates-list {
+      height: 400px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .row.date {
+
+      text-align:center;
+      padding: 5px 0;
+
+      .buttons {
+        text-align: right;
+      }
+
+      .removed {
+        text-decoration: line-through;
+        color: darkgrey;
+        font-style: italic;
+
+        &.requested {
+          color:lightcoral;
+          &.valid {
+            color:darkgrey;
+          }
+        }
+      }
+
+      .requested {
+        color:red;
+        &.valid {
+          color:black;
+        }
+      }
+    }
+
+    .buttons {
+      i.fa {
+        cursor: pointer;
+      }
+    }
+
+  }
+
+  .modal-footer {
+    border-top-color: @disabled;
+  }
+
+  .modal-buttons {
+    a + a {
+      margin-left: 20px;
+    }
+  }
+
+}

@@ -1,0 +1,360 @@
+<div class="order-edit-delivery">
+  <form class="deliveryForm" [formGroup]="deliveryForm">
+    <div *ngIf="panelStatus.isEdit" class="deliveryFormRead">
+      <div class="row align_center-md" *ngIf="!panelStatus.isNew && flowDetail.etmOrderNumber">
+        <div class="col-12 col-md-2 form-label">
+          <app-label translationCode="ORDERS.FILTER.LABELS.ETM_DOCUMENT_NUMBER"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          {{flowDetail.etmOrderNumber}}
+        </div>
+      </div>
+
+      <!-- TYPE : radiogroup -->
+      <div class="row align_center-md">
+        <div class="col-12 col-md-2 form-label">
+          <app-label translationCode="FLOWS.DELIVERY.LABELS.FLOWTYPE"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          <app-radio-group formControlName="type">
+            <app-radio *ngFor="let type of contractInfo.flowRegistrationTypes" value="{{type.id}}" label="{{type.name}}" (onSelect)="flowTypeChanged()" [readonly]="readonly.flowType"></app-radio>
+          </app-radio-group>
+        </div>
+      </div>
+
+      <!-- FROM : select -->
+      <div class="row align_center-md">
+        <div class="col-12 col-md-2 form-label">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.FROM"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          <app-autocomplete
+            *ngIf="!readonly.from"
+            [elements]="froms"
+            [valueAsObject]="true"
+            [(error)]="fromError"
+            (change)="fromChanged()"
+            formControlName="from"
+          ></app-autocomplete>
+          <span *ngIf="readonly.from">{{deliveryForm.value.from?.name}}</span>
+        </div>
+      </div>
+
+      <div @growInOut class="row align_center-md" *ngIf="fromError">
+        <div class="col-12 col-md-2">
+        </div>
+        <div class="col-12 col-md-10 error-message">
+          {{fromError}}
+        </div>
+      </div>
+
+      <!-- TO : select -->
+      <div class="row align_center-md">
+        <div class="col-12 col-md-2 form-label">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.TO"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          <app-autocomplete
+            *ngIf="!readonly.to"
+            [elements]="tos"
+            [valueAsObject]="true"
+            [(error)]="toError"
+            (change)="toChanged()"
+            formControlName="to"
+          ></app-autocomplete>
+          <span *ngIf="readonly.to">{{deliveryForm.value.to?.name}}</span>
+        </div>
+      </div>
+
+      <div @growInOut class="row align_center-md" *ngIf="toError">
+        <div class="col-12 col-md-2">
+        </div>
+        <div class="col-12 col-md-10 error-message">
+          {{toError}}
+        </div>
+      </div>
+
+      <!-- CLEARING : read only boolean -->
+      <div class="row align_center-md">
+        <div class="col-12 col-md-2 form-label">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.CLEARING"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          <app-slide-toggle formControlName="clearing" readonly="true" *ngIf="deliveryForm && (deliveryForm.value.clearing === false || deliveryForm.value.clearing === true)"></app-slide-toggle>
+        </div>
+      </div>
+
+      <!-- WHOLESALER : select -->
+      <div class="row align_center-md" *ngIf="wholesalers.length > 0">
+        <div class="col-12 col-md-2 form-label">
+          <app-label translationCode="FLOWS.DELIVERY.LABELS.WHOLESALER" [optional]="!wholesalerRequired"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          <app-select [elements]="wholesalers" formControlName="wholesaler" [valueAsObject]="true" [includeBlank]="!wholesalerRequired"
+            *ngIf="!readonly.wholesaler"></app-select>
+          <span *ngIf="readonly.wholesaler">{{deliveryForm.value.wholesaler?.name}}</span>
+        </div>
+      </div>
+
+      <!-- CUSTOMER REFERENCE NUMBER : text -->
+      <div class="row align_center-md">
+        <div class="col-12 col-md-2 form-label">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.CUSTOMER_REFERENCE_NUMBER" [optional]="!poNumberMandatory"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          <app-text-input formControlName="customerReferenceNumber" [stickyPlaceholder]="poNumberMask" [readonly]="readonly.customerReferenceNumber"></app-text-input>
+        </div>
+      </div>
+
+      <div @growInOut class="row align_center-md" *ngIf="poValidationWarning">
+        <div class="col-12 col-md-2">
+        </div>
+        <div class="col-12 col-md-10 warning-message">
+          {{poValidationWarning}}
+        </div>
+      </div>
+
+      <div @growInOut class="row align_center-md" *ngIf="poValidationError">
+        <div class="col-12 col-md-2">
+        </div>
+        <div class="col-12 col-md-10 error-message">
+          {{poValidationError}}
+        </div>
+      </div>
+
+      <!-- SENDER REFERENCE NUMBER : text -->
+      <div class="row align_center-md">
+        <div class="col-12 col-md-2 form-label">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.SENDER_REFERENCE" [optional]="true"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          <app-text-input formControlName="senderReferenceNumber" [readonly]="readonly.senderReferenceNumber"></app-text-input>
+        </div>
+      </div>
+
+      <!-- TRANSPORTER : text -->
+      <div class="row align_center-md">
+        <div class="col-12 col-md-2 form-label">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.TRANSPORTER" [optional]="true"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          <app-text-input formControlName="transporter" [readonly]="readonly.transporter"></app-text-input>
+        </div>
+      </div>
+
+      <!-- LICENCE PLATE : text -->
+      <div class="row align_center-md">
+        <div class="col-12 col-md-2 form-label">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.LICENCE_PLATE" [optional]="true"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          <app-text-input formControlName="licensePlate" [readonly]="readonly.licensePlate"></app-text-input>
+        </div>
+      </div>
+
+      <!-- REMARKS : text-area -->
+      <div class="row align_center-md">
+        <div class="col-12 col-md-2 form-label">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.REMARKS" [optional]="true"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          <app-text-input formControlName="remarks" [readonly]="readonly.remarks"></app-text-input>
+        </div>
+      </div>
+      <div class="row align_center-md" *ngIf="flowDetail.handshaker">
+        <div class="col-12 col-md-2 form-label">
+          <app-label translationCode="FLOWS.DELIVERY.LABELS.REMARKS_HANDSHAKER" [optional]="true"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          <app-text-input formControlName="remarksHandshaker"></app-text-input>
+        </div>
+      </div>
+    </div>
+
+    <!--
+  http://patorjk.com/software/taag/#p=display&c=c%2B%2B&f=Big&t=Read%20only%20version
+    _____                _               _                            _
+   |  __ \              | |             | |                          (_)
+   | |__) |___  __ _  __| |   ___  _ __ | |_   _  __   _____ _ __ ___ _  ___  _ __
+   |  _  // _ \/ _` |/ _` |  / _ \| '_ \| | | | | \ \ / / _ \ '__/ __| |/ _ \| '_ \
+   | | \ \  __/ (_| | (_| | | (_) | | | | | |_| |  \ V /  __/ |  \__ \ | (_) | | | |
+   |_|  \_\___|\__,_|\__,_|  \___/|_| |_|_|\__, |   \_/ \___|_|  |___/_|\___/|_| |_|
+                                            __/ |
+                                           |___/
+  -->
+
+    <!--Form displayed when detail is opend  -->
+    <div class="deliveryForm" [formGroup]="deliveryForm" *ngIf="!panelStatus.isEdit">
+      <div class="row align_top" *ngIf="!panelStatus.isNew && flowDetail.etmOrderNumber">
+        <div class="row col-12 col-sm-6 col-xs-wrapper">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.FILTER.LABELS.ETM_DOCUMENT_NUMBER"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{flowDetail.etmOrderNumber}}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row one-line align_top">
+        <div class="col-12 col-md-2">
+          <app-label translationCode="FLOWS.DELIVERY.LABELS.FLOWTYPE"></app-label>
+        </div>
+        <div class="col-12 col-md-10">
+          <app-radio-group formControlName="type">
+            <app-radio *ngFor="let type of definitions.flow.type" value="{{type.id}}" label="{{type.name}}" [readonly]="true" [view]="panelStatus.isEditable"></app-radio>
+          </app-radio-group>
+        </div>
+      </div>
+
+      <!-- arrow header -->
+      <div class="row three-lines align_top">
+        <div class="row col-12 col-md-6">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.FROM"></app-label>
+          </div>
+          <div class="col-12 col-md-6">
+            {{ flowDetail.deliveryMethod.from?.name }}
+          </div>
+          <div class="col-md-2 show-from-md">
+            <app-arrow class="myarrow" [width]="60"></app-arrow>
+          </div>
+        </div>
+        <div class="row col-12 col-md-6">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.TO"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{ flowDetail.deliveryMethod.to?.name }}
+          </div>
+        </div>
+      </div>
+      <!--end of arrow header  -->
+
+      <div class="hr"></div>
+
+      <div class="row align_top">
+        <div class="row col-12 col-md-6 col-xs-wrapper">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.COMMENTS"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{deliveryMethod?.remarks || ('ORDERS.DELIVERY.LABELS.NO_REMARKS' | translate)}}
+          </div>
+        </div>
+
+        <div class="row col-12 col-md-6 col-xs-wrapper">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.TRANSPORTER"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{deliveryMethod?.transporter || ('ORDERS.DELIVERY.LABELS.NO_TRANSPORTER' | translate)}}
+          </div>
+        </div>
+      </div>
+
+      <div class="row align_top">
+        <div class="row col-12 col-md-6 col-xs-wrapper">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.PLATE"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{deliveryMethod?.licensePlate || ('ORDERS.DELIVERY.LABELS.NO_LICENCE_PLATE' | translate)}}
+          </div>
+        </div>
+        <div class="row col-12 col-md-6 col-xs-wrapper">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.RECEIVER_REF"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{deliveryMethod?.customerReferenceNumber || ('ORDERS.DELIVERY.LABELS.NO_RECEIVER_REF' | translate)}}
+          </div>
+        </div>
+      </div>
+
+      <div class="row align_top" @growInOut *ngIf="poValidationWarning || poValidationError">
+        <div class="row col-12 col-md-6 col-xs-wrapper">
+          <div class="col-12 col-md-4">
+          </div>
+          <div class="col-12 col-md-8">
+          </div>
+        </div>
+        <div class="row col-12 col-md-6 col-xs-wrapper">
+          <div class="col-12 col-md-4">
+          </div>
+          <div class="col-12 col-md-8 warning-message" *ngIf="poValidationWarning">
+            {{ poValidationWarning }}
+          </div>
+          <div class="col-12 col-md-8 error-message" *ngIf="poValidationError">
+            {{poValidationError}}
+          </div>
+        </div>
+      </div>
+
+      <div class="row align_top">
+        <div class="row col-12 col-md-6 col-xs-wrapper">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.CLEARING"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            <app-slide-toggle formControlName="clearing" readonly="true" *ngIf="deliveryForm && (deliveryForm.value.clearing === false || deliveryForm.value.clearing === true)"></app-slide-toggle>
+          </div>
+        </div>
+        <div class="row col-12 col-md-6 col-xs-wrapper">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.SENDER_REF"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{deliveryMethod?.senderReferenceNumber || ('ORDERS.DELIVERY.LABELS.NO_SENDER_REF' | translate)}}
+          </div>
+        </div>
+      </div>
+
+      <div class="row align_top">
+        <div class="row col-12 col-md-6 col-xs-wrapper" *ngIf="deliveryMethod.wholesaler && deliveryMethod.wholesaler.name && deliveryMethod.wholesaler.name !== '-'">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="FLOWS.DELIVERY.LABELS.WHOLESALER"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{deliveryMethod.wholesaler.name}}
+          </div>
+        </div>
+
+        <div class="row col-12 col-md-6 col-xs-wrapper" *ngIf="!panelStatus.isNew">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="FLOWS.DELIVERY.LABELS.REMARKS_HANDSHAKER"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{deliveryMethod?.remarksHandshaker || ('ORDERS.DELIVERY.LABELS.NO_REMARKS' | translate)}}
+          </div>
+        </div>
+
+        <div class="row col-12 col-sm-6 col-xs-wrapper" *ngIf="flowDetail.salesOrderNumber">
+          <div class="col-12 col-md-4">
+            <app-label translationCode=ORDERS.FILTER.LABELS.SALES_ORDER_NUMBER></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{ flowDetail.salesOrderNumber }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div *ngIf="panelStatus.isEdit" class="footer-block">
+      <div class="row empty">
+        <div class="col-12 hr-thick "></div>
+      </div>
+
+      <div class="buttons">
+        <a md-raised-button class="primary btn-next" button-click-on-enter [disabled]="!deliveryForm.valid || pending" (click)="nextClickedFn()">
+          <i class="fa fa-check" aria-hidden="true" *ngIf="!pending"></i>
+          <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="pending"></i>
+          <span *ngIf="panelStatus.isNew">{{ 'FLOWS.DELIVERY.BUTTONS.NEXT' | translate }}</span>
+          <span *ngIf="!panelStatus.isNew">{{ 'ORDERS.DELIVERY.BUTTONS.SAVE' | translate }}</span>
+        </a>
+      </div>
+    </div>
+  </form>
+</div>

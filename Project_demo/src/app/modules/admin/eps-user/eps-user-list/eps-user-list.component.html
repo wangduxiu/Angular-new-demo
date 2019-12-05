@@ -1,0 +1,72 @@
+<div class="form-container" *ngIf="totalItems > 0">
+    <div>
+        <div class="col-12 row heading">
+            <div class="title">{{ 'ADMIN.EPS_USERS.LIST.TITLE' | translate }}</div>
+            <div class="subtitle">{{ 'ADMIN.EPS_USERS.LIST.SUBTITLE' | translate }}</div>
+            <div class="count-block">
+                <div class="count">
+                    <span *ngIf="totalItems > 1 || totalItems === 0">{{ 'ADMIN.SHARED.COUNT' | translate:{count:totalItems} }}</span>
+                    <span *ngIf="totalItems == 1">{{ 'ADMIN.SHARED.COUNT_1' | translate }}</span>
+                </div>
+                <div class="count-postscript">{{ 'ADMIN.SHARED.COUNT-POSTSCRIPT' | translate }}</div>
+            </div>
+
+        </div>
+
+      <div class="row col-12 pagination" *ngIf="!isLoading && totalItems > 0">
+        <app-pager
+          [itemsPerPage]="pageSize"
+          (pageChange)="onPageChange($event)"
+          (itemsPerPageChange)="itemsPerPageChange.emit($event)"
+        ></app-pager>
+      </div>
+
+      <div class="col-12 row bottom-line bold show-from-sm sorters" *ngIf="totalItems > 0">
+            <span class="col-md-2 sorter" sortable-header='firstName' [sortField]="sortField" [sortAscending]="sortAscending" [sortFn]="sortBnd">{{ 'ADMIN.EPS_USERS.NAME' | translate }}</span>
+            <span class="col-md-2 sorter" sortable-header='lastName' [sortField]="sortField" [sortAscending]="sortAscending" [sortFn]="sortBnd">{{ 'ADMIN.EPS_USERS.LAST_NAME' | translate }}</span>
+            <span class="col-md-4 sorter">{{ 'ADMIN.EPS_USERS.EMAIL' | translate }}</span>
+            <span class="col-md-1 sorter">{{ 'ADMIN.EPS_USERS.ADMIN' | translate }}</span>
+            <span class="col-md-1 sorter">{{ 'ADMIN.CLIENT_USERS.ACTIVE' | translate }}</span>
+            <span class="col-md-1 sorter">{{ 'ADMIN.CLIENT_USERS.IS_DELAYED' | translate }}</span>
+        </div>
+
+        <ng-container *ngIf="!isLoading" class="form-content">
+
+            <div *ngFor="let user of users | paginate: {itemsPerPage: pageSize, currentPage: pageNr, totalItems:totalItems}" class="row col-12 striped cell soft-line user_line"
+                (click)="openUser.emit(user)">
+                <div class="row col-10 col-md-12">
+                    <span class="sorter show-sm">{{ 'ADMIN.EPS_USERS.NAME' | translate }}</span>
+                    <div class="col-md-2 cell-row">{{ user.firstName }}</div>
+                    <span class="sorter show-sm">{{ 'ADMIN.EPS_USERS.LAST_NAME' | translate }}</span>
+                    <div class="col-md-2 cell-row">{{ user.lastName }}</div>
+                    <span class="sorter show-sm">{{ 'ADMIN.EPS_USERS.EMAIL' | translate }}</span>
+                    <div class="col-md-4 cell-row">{{ user.email }}</div>
+                    <span class="sorter show-sm">{{ 'ADMIN.EPS_USERS.ADMIN' | translate }}</span>
+                    <div class="col-md-1 cell-row">
+                        <i class="fa" [ngClass]="{'fa-check': user.isAdmin}"></i>
+                    </div>
+                    <span class="sorter show-sm">{{ 'ADMIN.CLIENT_USERS.ACTIVE' | translate }}</span>
+                    <div class="col-md-1 cell-row">
+                        <i class="fa" [ngClass]="{'fa-check': user.isActive}"></i>
+                    </div>
+                    <span class="sorter show-sm">{{ 'ADMIN.CLIENT_USERS.IS_DELAYED' | translate }}</span>
+                    <div class="col-md-1 cell-row">
+                        <i class="fa" [ngClass]="{'fa-check': user.isDelayed}"></i>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <div class="loading_spinner" *ngIf="isLoading">
+            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+        </div>
+
+      <div class="row col-12 pagination" *ngIf="!isLoading && totalItems > 0">
+        <app-pager
+          [itemsPerPage]="pageSize"
+          (pageChange)="onPageChange($event)"
+          (itemsPerPageChange)="itemsPerPageChange.emit($event)"
+        ></app-pager>
+      </div>
+    </div>
+</div>

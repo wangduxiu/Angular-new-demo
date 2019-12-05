@@ -1,0 +1,39 @@
+<div class="center-xs custom_modal">
+    <div class="modal-head"
+        [innerHTML]="data.headerTranslationCode | translate:data"
+        [ngClass]="data.type"></div>
+
+    <div class="modal-body"
+        [innerHTML]="data.bodyTranslationCode | translate:data"></div>
+
+    <div class="modal-buttons">
+        <a (click)="gotoOverviewAndClose()"
+            class="default"
+            md-button
+           button-click-on-enter
+           [is-modal]="true"
+            aria-disabled="false"
+            tabindex="0"><i class="fa fa-plus-square-o" aria-hidden="true"></i> {{data.overviewButtonText | translate}}</a>
+
+        <a  *ngIf="data.type == 'success' && !data.disableClose"
+            (click)="gotoDetailAndClose()"
+            class="default"
+            md-button
+            aria-disabled="false"
+            tabindex="0"><i class="fa fa-plus-square-o" aria-hidden="true"></i> {{data.detailButtonText | translate}}</a>
+
+        <a  *ngIf="data.type == 'success' && data.showDownloadDocumentButton"
+            (click)="downloadAndClose()"
+            class="default"
+            md-button
+            aria-disabled="false"
+            tabindex="0"><i class="fa fa-download" aria-hidden="true"></i> {{data.downloadButtonText | translate}}</a>
+
+        <a  *ngIf="data.type == 'success' && data.showCreateButton"
+            (click)="createAndClose()"
+            class="default"
+            md-button
+            aria-disabled="false"
+            tabindex="0"><i class="fa fa-plus-square-o" aria-hidden="true"></i> {{data.createButtonText | translate}}</a>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<md-radio-group *ngIf="!readonly && !view">
+  <md-radio-button
+    [value]="value"
+    [checked]="isChecked()"
+    [disabled]="disabled"
+    (click)="!disabled && check($event)"
+  >{{label || (translationCode | translate)}}</md-radio-button>
+</md-radio-group>
+<div *ngIf="readonly || view">
+  {{ getSelectedLabel() || (getSelectedTranslationCode() | translate) }}
+</div>

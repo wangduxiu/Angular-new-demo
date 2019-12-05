@@ -1,0 +1,55 @@
+@import '../styles/globalVars.less';
+
+.page-wrap {
+  position: relative;
+  margin-top: @header-height;
+  margin-bottom: @footer-height;
+
+  &:after {
+    content: '';
+    display: block;
+  }
+}
+
+:host ::ng-deep .jaspero__overlay {
+  background-color: rgba(0,0,0,0.30) !important;
+}
+
+:host ::ng-deep .jaspero__dialog{
+  position: static !important;
+  pointer-events: auto !important;
+  width: 50% !important;
+  height: auto !important;
+  text-align: center !important;
+  padding: 30px;
+
+  .jaspero__dialog-title {
+    color: @accent-blue !important;
+    font-size: 64px;
+  }
+
+  .jaspero__dialog-content{
+    font-size: @medium-font;
+    margin-top: 15px;
+  }
+
+  .jaspero__dialog-actions {
+    margin: auto;
+
+    button {
+      &.default, &.primary{
+        border-radius: 50px;
+        box-shadow: none;
+        text-transform: uppercase;
+        border-width: 2px;
+        border-color: @accent-blue;
+        border-style: solid;
+        color: @accent-blue;
+      }
+
+      &.primary {
+        color: black !important;
+      }
+    }
+  }
+}

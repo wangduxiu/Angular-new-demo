@@ -1,0 +1,28 @@
+<div class="service_box_wrapper" @fadeInAnimation>
+  <div class="cards">
+    <app-service-box
+      icon="fa-phone"
+      [title]="'SERVICE.SHARED.CALL_US' | translate"
+      [subtitle]="phoneNumber"
+      [description]="'SERVICE.SHARED.CALL_DESCRIPTION' | translate"
+    ></app-service-box>
+    <div class="hr no_margin_bottom"></div>
+    <app-service-box
+      icon="fa-envelope-o"
+      [title]="'SERVICE.SHARED.MAIL_US' | translate"
+      [subtitle]="emailAddress"
+      [showMailto]="true"
+      [description]="'SERVICE.SHARED.MAIL_DESCRIPTION' | translate"
+    ></app-service-box>
+  </div>
+
+  <div class="cards" [hidden]="hideFAQ">
+    <app-service-box
+      icon="fa-question-circle"
+      [title]="'SERVICE.SHARED.FAQ' | translate"
+      [description]="'SERVICE.SHARED.FAQ_DESCRIPTION' | translate"
+      redirectTo="/faq"
+      (openModule)="openModule($event)"
+    ></app-service-box>
+  </div>
+</div>

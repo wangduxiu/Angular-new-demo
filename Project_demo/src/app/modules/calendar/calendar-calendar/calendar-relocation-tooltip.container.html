@@ -1,0 +1,80 @@
+<div class="florder-tooltip">
+  <div class="loading-container">
+    <div *ngIf="!relocationDetail" class="loading">
+      <i class="fa fa-spinner fa-pulse fa-fw"></i>
+      {{ 'ADMIN.I18N.BUTTONS.LOADING' | translate }}
+    </div>
+  </div>
+  <div class="tooltip_wrapper" *ngIf="relocationDetail">
+
+    <div class="order-page-title" id="top">
+      <div class="content">
+        <div class="title">
+          <app-status layout="BULLET" key="{{'ORDER_' + relocationDetail.status}}" height="40" [size]="1"></app-status>
+          <div class="multi-line">
+            <div>
+              <app-title title="RELOCATIONS.DETAILS.TITLE"></app-title>
+              <span class="subtitle">{{relocationDetail.etmOrderNumber}}</span>
+            </div>
+            <div *ngIf="relocationDetail.registeredBy">
+              <span class="bold">{{ 'ORDERS.DETAILS.REGISTERED_BY' | translate }}</span> {{relocationDetail.registeredBy}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row filter-container">
+      <div class="col-12 col-md-12 col-lg-12 filter-container-inner">
+        <div class="order-create-title-bar">
+          <div class="order-create-title-bar">
+            <div class="row order-create-title-bar-header">
+              <div class="order-create-title">
+                <i class='fa fa-truck' aria-hidden='true'></i>
+                <b>1&nbsp;&nbsp;{{'ORDERS.DELIVERY.TITLE' | translate}}</b> {{'ORDERS.DELIVERY.SUBTITLE' | translate}}
+              </div>
+            </div>
+          </div>
+          <app-relocation-edit-delivery
+            [definitions]="definitions"
+            [deliveryMethod]="relocationDetail.deliveryMethod"
+            [panelStatus]="panelStatus"
+            [relocationDetail]="relocationDetail"
+          ></app-relocation-edit-delivery>
+        </div>
+
+        <div class="order-create-title-bar">
+          <div class="row order-create-title-bar-header">
+            <div class="order-create-title">
+              <i class='fa fa-file-o' aria-hidden='true'></i>
+              <b>2&nbsp;&nbsp;{{'RELOCATIONS.DETAILS.TITLE' | translate}}</b> {{'RELOCATIONS.DETAILS.SUBTITLE' | translate}}
+            </div>
+          </div>
+        </div>
+        <app-relocation-edit-detail
+          [definitions]="definitions"
+          [relocationDetail]="relocationDetail"
+          [panelStatusMaterial]="null"
+          [panelStatus]="panelStatus"
+          [materialTypes]="null"
+        ></app-relocation-edit-detail>
+
+        <div class="order-create-title-bar">
+          <div class="row order-create-title-bar-header">
+            <div class="order-create-title">
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+              <b>3&nbsp;&nbsp;{{'RELOCATIONS.PLANNING.TITLE' | translate}}</b> {{'RELOCATIONS.PLANNING.SUBTITLE' | translate}}
+            </div>
+          </div>
+        </div>
+        <app-relocation-edit-planning
+          [authorization]="authorization"
+          [relocationDetail]="relocationDetail"
+          [panelStatus]="panelStatus"
+          [availableLoadingDates]="[]"
+        ></app-relocation-edit-planning>
+
+      </div>
+    </div>
+  </div>
+</div>

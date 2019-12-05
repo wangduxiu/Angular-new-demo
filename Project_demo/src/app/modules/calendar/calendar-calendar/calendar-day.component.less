@@ -1,0 +1,76 @@
+@import '../../../shared/styles/globalVars.less';
+
+.day {
+  border: 1px solid @disabled;
+  padding: 5px 5px 0 5px;
+  font-size: @middle-font;
+  display: flex;
+  position: relative;
+  cursor: default;
+  flex-grow: 1;
+
+  &:before {
+    content: "";
+    float: left;
+    padding-top: 100%;
+  }
+
+  &.today {
+    background: #E3F2FF;
+  }
+
+  &.unavailable {
+    color: @disabled-light;
+    background-image: repeating-linear-gradient(30deg,
+      @disabled,
+      @disabled 2px,
+      transparent 1px,
+      transparent 10px);
+  }
+
+  &.selected, &:hover, &.focus {
+    border: 1px solid @accent-blue;
+    color: @accent-blue !important;
+  }
+
+  &.weekend {
+    background-color: @light-grey;
+    color: @lightText;
+  }
+
+  // &:hover {
+  //   .plus {
+  //     display: block;
+  //   }
+  // }
+
+  .day_inner {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+
+    .orders_wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .orders_list {
+        height: 100%;
+      }
+    }
+
+    .month_starting {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: @base-font;
+    }
+  }
+
+  // .plus {
+  //   display: none;
+  //   position: absolute;
+  //   bottom: 5px;
+  //   right: 10px;
+  //   cursor: pointer;
+  // }
+}

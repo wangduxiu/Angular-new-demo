@@ -1,0 +1,82 @@
+<div class="form-container" *ngIf="invoices.totalItems > 0 || invoices.totalItems === 0">
+  <div>
+    <div class="col-12 row heading">
+      <div class="title">{{ 'INVOICES.LIST.TITLE' | translate }}</div>
+      <div class="subtitle">{{ 'INVOICES.LIST.SUBTITLE' | translate }}</div>
+      <div class="results-actions-block">
+        <div class="count-block">
+          <div class="count">
+            <span *ngIf="invoices.totalItems > 1 || invoices.totalItems === 0">{{ 'INVOICES.LIST.LABELS.COUNT' | translate:{count:invoices.totalItems} }}</span>
+            <span *ngIf="invoices.totalItems == 1">{{ 'INVOICES.LIST.LABELS.COUNT_1' | translate }}</span>
+          </div>
+          <div class="count-postscript">{{ 'INVOICES.LIST.LABELS.COUNT-POSTSCRIPT' | translate }}</div>
+        </div>
+
+        <div class="results-actions" *ngIf="invoices.totalItems > 0">
+          <div class="download_list" *ngIf="!invoices.downloading && authorization.INVOICES.LIST_INVOICES_AS_DOCUMENT">
+            {{ 'INVOICES.LIST.LABELS.DOWNLOAD_AS' | translate }}
+            <span class="link" (click)="downloadList.emit()">{{ 'INVOICES.LIST.LABELS.EXCEL' | translate }}</span>
+          </div>
+          <div class="download_list" *ngIf="invoices.downloading && authorization.INVOICES.LIST_INVOICES_AS_DOCUMENT">
+            {{ 'INVOICES.LIST.LABELS.DOWNLOADING' | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row col-12 pagination" *ngIf="!invoices.isLoading && invoices.totalItems > 0">
+      <app-pager
+        [itemsPerPage]="invoices.filter.pageSize"
+        (pageChange)="onPageChange($event)"
+        (itemsPerPageChange)="itemsPerPageChange.emit($event)"
+      ></app-pager>
+    </div>
+
+    <div class="col-12 row bottom-line bold sorters" *ngIf="invoices.totalItems > 0">
+      <span class="col-md-3 sorter" sortable-header='soldTo' [sortField]="invoices.filter.sortField" [sortAscending]="invoices.filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'INVOICES.LIST.LABELS.SOLD_TO' | translate }}</span>
+      <span class="col-md-2 sorter" sortable-header='invoiceNumber' [sortField]="invoices.filter.sortField" [sortAscending]="invoices.filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'INVOICES.LIST.LABELS.NUMBER' | translate }}</span>
+      <span class="col-md-2 sorter" sortable-header='invoiceDate' [sortField]="invoices.filter.sortField" [sortAscending]="invoices.filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'INVOICES.LIST.LABELS.DATE' | translate }}</span>
+      <span class="col-md-2 sorter" sortable-header='netAmount' [sortField]="invoices.filter.sortField" [sortAscending]="invoices.filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'INVOICES.LIST.LABELS.NET_AMOUNT' | translate }}</span>
+      <span class="col-md-2 sorter" sortable-header='vat' [sortField]="invoices.filter.sortField" [sortAscending]="invoices.filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'INVOICES.LIST.LABELS.VAT_AMOUNT' | translate }}</span>
+      <span class="col-md-1 sorter" sortable-header='totalAmount' [sortField]="invoices.filter.sortField" [sortAscending]="invoices.filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'INVOICES.LIST.LABELS.TOTAL' | translate }}</span>
+    </div>
+
+    <ng-container *ngIf="!invoices.isLoading">
+      <div *ngFor="let invoice of invoices.items | paginate: {itemsPerPage: invoices.filter.pageSize, currentPage: invoices.filter.pageNr, totalItems: invoices.totalItems}"
+        class="row col-12 striped cell soft-line user_line invoice-row" (click)="openInvoice.emit(invoice)">
+        <div class="row col-10 col-md-12">
+          <span class="sorter show-sm">{{ 'INVOICES.LIST.LABELS.SOLD_TO' | translate }}</span>
+          <div class="col-md-3 cell-row">{{ getName(invoice.soldTo) }}</div>
+          <span class="sorter show-sm">{{ 'INVOICES.LIST.LABELS.NUMBER' | translate }}</span>
+          <div class="col-md-2 cell-row">{{ invoice.invoiceNumber }}</div>
+          <span class="sorter show-sm">{{ 'INVOICES.LIST.LABELS.DATE' | translate }}</span>
+          <div class="col-md-2 cell-row">{{ invoice.invoiceDate }}</div>
+          <span class="sorter show-sm">{{ 'INVOICES.LIST.LABELS.NET_AMOUNT' | translate }}</span>
+          <div class="col-md-2 cell-row number">{{ invoice.netAmount | number : '1.2-2' }} {{invoice.currency}}</div>
+          <span class="sorter show-sm">{{ 'INVOICES.LIST.LABELS.VAT_AMOUNT' | translate }}</span>
+          <div class="col-md-2 cell-row number">{{ invoice.vat | number : '1.2-2' }} {{invoice.currency}}</div>
+          <span class="sorter show-sm">{{ 'INVOICES.LIST.LABELS.TOTAL' | translate }}</span>
+          <div class="col-md-1 cell-row number">{{ invoice.totalAmount | number : '1.2-2' }} {{invoice.currency}}</div>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="loading_spinner" *ngIf="invoices.isLoading">
+      <i class="fa fa-spinner fa-pulse fa-fw"></i>
+    </div>
+
+    <div class="row col-12 pagination" *ngIf="!invoices.isLoading && invoices.totalItems > 0">
+      <app-pager
+        [itemsPerPage]="invoices.filter.pageSize"
+        (pageChange)="onPageChange($event)"
+        (itemsPerPageChange)="itemsPerPageChange.emit($event)"
+      ></app-pager>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="filter-container">
+  <div class="filter-window">
+    <div class="title-header">
+      <i class="fa fa-building-o" aria-hidden="true"></i>
+      <span class="title" [innerHTML]="'REPORT.FILTER_TITLE' | translate"></span>
+    </div>
+
+    <div class="row">
+      <div class="form-container col-12">
+        <form [formGroup]="filterForm">
+          <div class="form_inner">
+            <div class="form-group row">
+              <app-label class="col-12 col-sm-2" translationCode="REPORT.LOCATION"></app-label>
+              <app-select class="col-12 col-sm-10" [elements]="locations" formControlName="location"></app-select>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="end-xs">
+              <a md-raised-button class="default" button-click-on-enter (click)="filterClicked()" [disabled]="filterForm.invalid || isLoading">
+                <i class="fa fa-check" aria-hidden="true" *ngIf="!isLoading"></i>
+                <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="isLoading"></i>
+                {{ 'REPORT.CHECK_STOCK' | translate }}
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

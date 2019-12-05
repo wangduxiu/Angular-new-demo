@@ -1,0 +1,46 @@
+<div class="calendar-page" @fadeInAnimation>
+  <div class="calendar-page-title">
+    <span class="title">
+      {{ "CALENDAR.TITLE" | translate }} <span class="bold">{{ "CALENDAR.SUBTITLE" | translate }}</span>
+    </span>
+    <div>
+      <a md-button class="default" (click)="createFlorder()">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i> {{ "ORDERS.FILTER.BUTTONS.ADD_RELOCATION" | translate }}
+      </a>
+    </div>
+  </div>
+  <div class="calendar-page-content">
+    <div class="row">
+      <div class="col-3">
+        <app-calendar-draggable-templates
+          [authorization]="authorization"
+          [templates]="templates.templates"
+          [editing]="templates.editing"
+          [deleting]="templates.deleting"
+          [selectedTemplate]="selectedTemplate"
+          [deliveryDaysRequesting]="deliveryDaysRequesting"
+          (createTemplate)="createTemplate()"
+          (deleteTemplate)="deleteTemplate($event)"
+          (selectTemplate)="selectTemplate($event)"
+          (editTemplate)="editTemplate($event)"
+        >
+        </app-calendar-draggable-templates>
+      </div>
+      <div class="col-9">
+        <div class="calendar-container">
+          <div class="calendar-wrapper">
+            <app-calendar-calendar
+              [days]="flordersState.days"
+              [availableDays]="availableDays"
+              (showFlorderModal)="showFlorderModal($event)"
+              (loadFlorders)="loadFlorders($event)"
+              (openFlorder)="openFlorder($event)"
+              (requestDeliveryDates)="requestDeliveryDates()"
+            >
+            </app-calendar-calendar>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

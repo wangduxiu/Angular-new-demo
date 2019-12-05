@@ -1,0 +1,117 @@
+<div @fadeInAnimation>
+  <div class="order-page-title" id="top">
+    <div class="edit-button"
+         *ngIf="panelStatus.backButton.isVisible"
+         (click)="cancelClicked()">
+      <a md-raised-button
+         class="default">{{ 'SHARED.BUTTONS.BACK' | translate }}</a>
+    </div>
+    <app-title *ngIf="mode.state !== 'view' && !mode.createTemplate && !mode.editTemplate" title="SHARED.BUTTONS.CREATE" subtitle="RELOCATIONS.DETAILS.TITLE"></app-title>
+    <app-title *ngIf="mode.state !== 'view' && (mode.createTemplate || mode.editTemplate)" [title]="mode.editTemplate ? 'SHARED.BUTTONS.EDIT' : 'SHARED.BUTTONS.CREATE'" subtitle="TEMPLATES.DETAILS.TITLE_RELOCATION"></app-title>
+
+  </div>
+
+  <div class="row filter-container">
+    <div class="col-12 col-md-12 col-lg-9 filter-container-inner">
+      <div class="order-create-title-bar">
+        <div class="row order-create-title-bar-header" [ngClass]="{activated: panelStatus.delivery.isEdit}">
+          <div class="order-create-title">
+            <i class='fa fa-truck' aria-hidden='true'></i>
+            <b>1&nbsp;&nbsp;{{'ORDERS.DELIVERY.TITLE' | translate}}</b> {{'ORDERS.DELIVERY.SUBTITLE' | translate}}
+          </div>
+          <div class="edit-button" *ngIf="(panelStatus.delivery.isEditable ||( mode.editWindow === 'detail' || mode.editWindow === 'planning' ))  && !panelStatus.busy && !disableButtons" (click)="editDeliveryMethodClicked()">
+            <a md-raised-button class="default">{{ 'SHARED.BUTTONS.EDIT' | translate }}</a>
+          </div>
+        </div>
+        <app-relocation-edit-delivery
+          [definitions]="definitions"
+          [relocationDetail]="relocationDetail"
+          [deliveryMethod]="relocationDetail.deliveryMethod"
+          [panelStatus]="panelStatus.delivery"
+          [locations]="locations"
+
+          (cancelClicked)="cancelClicked()"
+          (nextClicked)="setDeliveryMethod($event)"
+          (formValidChanged)="formValidChanged('delivery', $event)"
+        >
+        </app-relocation-edit-delivery>
+      </div>
+
+      <div class="order-create-title-bar">
+        <div class="row order-create-title-bar-header" [ngClass]="{activated: panelStatus.detail.isEdit}">
+          <div class="order-create-title">
+            <i class='fa fa-file-o' aria-hidden='true'></i>
+            <b>2&nbsp;&nbsp;{{'RELOCATIONS.DETAILS.TITLE' | translate}}</b> {{'RELOCATIONS.DETAILS.SUBTITLE' | translate}}
+          </div>
+          <div class="edit-button" *ngIf="(panelStatus.detail.isEditable || mode.editWindow === 'planning') && !panelStatus.busy && !disableButtons" (click)="editDetailClicked()">
+            <a md-raised-button class="default"> {{ 'SHARED.BUTTONS.EDIT' | translate }} </a>
+          </div>
+        </div>
+      </div>
+      <app-relocation-edit-detail
+        *ngIf="panelStatus.detail.isVisible"
+
+        [definitions]="definitions"
+        [editMaterial]="mode.material"
+        [relocationDetail]="relocationDetail"
+        [panelStatusMaterial]="panelStatus.material"
+        [panelStatus]="panelStatus.detail"
+        [materialTypes]="materialTypes"
+
+        (cancelClicked)="cancelClicked()"
+        (nextClicked)="saveDetails()"
+        (saveMaterialClicked)="saveMaterial($event)"
+        (removeMaterialClicked)="removeMaterial($event)"
+        (startEditMaterialClicked)="editMaterial($event)"
+        (formValidChanged)="formValidChanged('detail', $event)"
+      >
+      </app-relocation-edit-detail>
+
+      <!-- PLANNING -->
+      <div class="order-create-title-bar">
+        <div class="row order-create-title-bar-header" [ngClass]="{activated: panelStatus.planning.isEdit}">
+          <div class="order-create-title" *ngIf="!mode.createTemplate && !mode.editTemplate">
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+            <b>3&nbsp;&nbsp;{{'RELOCATIONS.PLANNING.TITLE' | translate}}</b> {{'RELOCATIONS.PLANNING.SUBTITLE' | translate}}
+          </div>
+          <div class="order-create-title" *ngIf="mode.createTemplate || mode.editTemplate">
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+            <b>3&nbsp;&nbsp;{{'ORDERS.NO_PLANNING.TITLE' | translate}}</b> {{'ORDERS.NO_PLANNING.SUBTITLE' | translate}}
+          </div>
+          <div class="edit-button" *ngIf="panelStatus.planning.isEditable && !panelStatus.busy && !disableButtons" (click)="editPlanningClicked()">
+            <a md-raised-button class="default">
+              {{ 'SHARED.BUTTONS.EDIT' | translate }}
+            </a>
+          </div>
+          <div class="edit-button" *ngIf="panelStatus.planning.isEditable && panelStatus.planning.opening">
+            <a md-raised-button class="default">
+              <i class="fa fa-spinner fa-pulse fa-fw"></i>
+              {{ 'SHARED.BUTTONS.EDIT' | translate }}
+            </a>
+          </div>
+        </div>
+      </div>
+      <app-relocation-edit-planning
+        *ngIf="panelStatus.planning.isVisible"
+
+        [authorization]="authorization"
+        [relocationDetail]="relocationDetail"
+        [panelStatus]="panelStatus.planning"
+        [availableLoadingDates]="availableLoadingDates"
+
+        (cancelClicked)="cancelClicked()"
+        (nextClicked)="savePlanning($event)"
+        (formValidChanged)="formValidChanged('planning', $event)"
+      >
+      </app-relocation-edit-planning>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12 col-lg-9 buttons" *ngIf="panelStatus.submitButton.isVisible && !mode.saved && (!mode.createTemplate || !templateState?.saved) && (!mode.editTemplate || !templateState?.saved)" button-click-on-enter (click)="!disableButtons && panelStatus.submitButton.isEnabled && formsAreValid.all && submitClicked()">
+    <a md-raised-button class="default" [ngClass]="{disabled: !panelStatus.submitButton.isEnabled}" [disabled]="disableButtons || !formsAreValid.all">
+      <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="disableButtons"></i>
+      {{ 'SHARED.BUTTONS.SUBMIT' | translate }}
+    </a>
+  </div>
+<!-- </div> -->
+</div>

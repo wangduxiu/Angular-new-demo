@@ -1,0 +1,5 @@
+<div class="tutorial-popup">
+  {{ 'TUTORIALS.POPUP_TEXT' | translate }}
+  <a (click)="goToTutorials()" md-raised-button class="button blue">&gt; {{ 'TUTORIALS.TITLE' | translate }}</a>
+  <a (click)="hideTutorial(false)" >{{ 'TUTORIALS.REMIND_LATER' | translate }}</a> {{ 'SHARED.LABELS.OR' | translate }} <a (click)="hideTutorial(true)">{{ 'TUTORIALS.DONT_SHOW_AGAIN' | translate }}</a>
+</div>

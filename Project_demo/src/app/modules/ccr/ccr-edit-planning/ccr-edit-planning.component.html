@@ -1,0 +1,48 @@
+<form [formGroup]="ccrForm" class="form-container">
+  <div class="row cell align_center-md">
+    <div class="col-12 col-md-2">
+      <app-label translationCode="ORDERS.FILTER.LABELS.SEAL_NUMBER"></app-label>
+    </div>
+    <div class="col-12 col-md-10">
+      <app-text-input formControlName="sealNumber"></app-text-input>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+  <div class="row cell" *ngIf="!panelStatus.isEdit">
+    <div class="col-12 col-md-2">
+      <app-label translationCode="ORDERS.FILTER.LABELS.ORDER_DATE"></app-label>
+    </div>
+    <div class="col-12 col-md-10">
+      <app-date-input 
+        formControlName="orderDate" 
+        [readonly]="!panelStatus.isEdit" 
+        [view]="!panelStatus.isEdit && panelStatus.isEditable"
+        [editableDateField]="false" 
+        [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"
+        [showOnTop]="true">
+      </app-date-input>
+    </div>
+  </div>
+  <!-- LOADING DATE : date -->
+  <div class="row cell">
+    <div class="col-12 col-md-2">
+      <app-label translationCode="ORDERS.DETAIL.LABELS.LOADING_DATE"></app-label>
+    </div>
+    <div class="col-12 col-md-10">
+      <app-date-input formControlName="loadingDate" [readonly]="!panelStatus.isEdit" [enableDays]="availablePickingDates" [editableDateField]="false" [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate" [showOnTop]="true"></app-date-input>
+    </div>
+  </div>
+
+  <!-- exchange pallets -->
+  <div class="row cell">
+    <app-label class="col-12 col-md-2" translationCode="ORDERS.DETAIL.LABELS.EXCHANGE_PALLETS"></app-label>
+    <app-slide-toggle class="col-12 col-md-10" formControlName="exchangePallets" [readonly]="!panelStatus.isEdit"></app-slide-toggle>
+  </div>
+
+  <div class="row cell" *ngIf="ccrForm.value.exchangePallets">
+    <app-label class="col-12 col-md-2" translationCode="ORDERS.DETAIL.LABELS.NUMBER_OF_EXCHANGE_PALLETS"></app-label>
+    <app-text-input class="col-12 col-md-10" formControlName="numberOfExchangePallets" [readonly]="!panelStatus.isEdit"  pattern="^\d{0,6}$"></app-text-input>
+  </div>
+
+</form>

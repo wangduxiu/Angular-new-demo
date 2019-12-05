@@ -1,0 +1,16 @@
+<div class="list-container">
+  <div class="tile-container">
+    <div *ngFor="let letterTile of tilesGroupedByLetter">
+      <!-- first letter -->
+      <h1>{{letterTile.firstLetter}}</h1>
+      <div class="row">
+        <div *ngFor="let tile of letterTile.tiles" class="col-lg-4 col-md-4 col-sm-6">
+          <tile [tile]="tile" (tileClicked)="!tileIdLoading && tileClicked.emit($event)" [loading]="tile.id === tileIdLoading"></tile>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!tilesGroupedByLetter || tilesGroupedByLetter.length === 0">
+      {{ filterToNarrowTranslationCode | translate }}
+    </div>
+  </div>
+</div>

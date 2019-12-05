@@ -1,0 +1,64 @@
+<div class="filter-container">
+  <div class="row">
+    <div class="filter-window col-12">
+      <div class="row">
+        <div class="title-header col-12">
+          <i class="fa fa-filter" aria-hidden="true"></i> <span class="title">{{ 'INVOICES.FILTER.TITLE' | translate }}</span> <span class="subtitle">{{ 'INVOICES.FILTER.SUBTITLE' | translate }}</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-container col-12">
+          <form [formGroup]="invoiceForm">
+            <div class="row cell">
+              <!-- invoice type  -->
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="INVOICES.FILTER.LABELS.TYPE"></app-label>
+                <app-checkbox *ngFor="let invoiceType of invoiceTypes" class="col-md-4" [label]="invoiceType.name" [formControlName]="'invoiceType_'+invoiceType.id"></app-checkbox>
+              </div>
+            </div>
+
+            <div class="row cell">
+              <!-- invoice number -->
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="INVOICES.FILTER.LABELS.NUMBER"></app-label>
+                <app-text-input class="col-12 col-md-8" formControlName="invoiceNumber" [focus]="true"></app-text-input>
+              </div>
+
+              <!-- (un)loading date -->
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="INVOICES.FILTER.LABELS.LOADING_DATE"></app-label>
+                <app-date-input class="col-12 col-md-4" formControlName='invoiceDateFrom' [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"></app-date-input>
+                <app-date-input class="col-12 col-md-4" formControlName='invoiceDateTo' [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"></app-date-input>
+              </div>
+            </div>
+
+            <div class="row cell">
+              <!-- currency -->
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="INVOICES.FILTER.LABELS.CURRENCY"></app-label>
+                <app-checkbox *ngFor="let currency of currencies" class="col-md-4" [label]="currency.name" [value]="currency.checked" (change)="onCurrencyChange($event, currency)"></app-checkbox>
+              </div>
+
+              <!-- invoice amount -->
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="INVOICES.FILTER.LABELS.AMOUNT"></app-label>
+                <app-text-input class="col-12 col-md-4" formControlName="netAmountFrom"></app-text-input>
+                <app-text-input class="col-12 col-md-4" formControlName="netAmountTo"></app-text-input>
+              </div>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="end-xs action_buttons">
+              <a md-raised-button class="default" button-click-on-enter (click)="filterClicked()" [disabled]="loading">
+                <i class="fa fa-filter" aria-hidden="true" *ngIf="!loading"></i>
+                <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="loading"></i>
+                 {{ 'INVOICES.FILTER.BUTTONS.FILTER_TEXT' | translate }}
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

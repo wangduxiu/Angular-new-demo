@@ -1,0 +1,33 @@
+@import '../../../shared/styles/globalVars.less';
+
+.tutorial-page {
+  .tutorial-page-title {
+    font-size: @title-font;
+    text-transform: uppercase;
+    height: 80px;
+    padding: 0 @page-horizontal-padding;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      color: @blue-underline;
+      font-weight: 300;
+    }
+  }
+
+  .tutorial-wrapper {
+    background-color: @background;
+    padding: @page-horizontal-padding;
+    display: flex;
+
+    .tutorial-left {
+      width: 25%;
+    }
+
+    .tutorial-right {
+      width: 75%;
+      margin-left: 30px;
+    }
+  }
+}

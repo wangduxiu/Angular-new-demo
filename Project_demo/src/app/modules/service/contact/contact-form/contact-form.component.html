@@ -1,0 +1,112 @@
+<div class="contact_form-wrapper">
+  <div class="heading">
+    <i class="fa fa-question-circle"></i>
+    <span>{{ 'SERVICE.CONTACT.ASK_US' | translate }}</span>
+  </div>
+  <div class="form">
+    <form [formGroup]="contactForm">
+      <div class="row align_center-md">
+        <div class="col-12 col-md-4">
+          <app-label translationCode="SERVICE.CONTACT.LOOKING_FOR"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          <app-select [elements]="subjects" formControlName="subject" [allowBlank]="false" (change)="subjectSelected()" [valueAsObject]="true"></app-select>
+        </div>
+      </div>
+
+      <!-- Conditional fields -->
+      <div class="row align_center-md" *ngIf="selectedSubject && selectedSubject.id === '3'">
+        <div class="col-12 col-md-4">
+          <app-label translationCode="SERVICE.CONTACT.NAME_SOLD_TO"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          <app-text-input formControlName="soldToName"></app-text-input>
+        </div>
+      </div>
+
+      <div class="row align_center-md" *ngIf="selectedSubject && selectedSubject.id === '4'">
+        <div class="col-12 col-md-4">
+          <app-label translationCode="SERVICE.CONTACT.NAME_SHIP_TO"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          <app-text-input formControlName="shipToName"></app-text-input>
+        </div>
+      </div>
+
+      <div class="row align_center-md" *ngIf="selectedSubject && selectedSubject.id === '3'">
+        <div class="col-12 col-md-4">
+          <app-label translationCode="SERVICE.CONTACT.VAT"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          <app-text-input formControlName="vat"></app-text-input>
+        </div>
+      </div>
+
+      <div class="row align_center-md" *ngIf="selectedSubject && (selectedSubject.id === '3' || selectedSubject.id === '4')">
+        <div class="col-12 col-md-4">
+          <app-label translationCode="SERVICE.CONTACT.ADDRESS"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          <app-text-input formControlName="address"></app-text-input>
+        </div>
+      </div>
+
+      <div class="row align_center-md" *ngIf="selectedSubject && (selectedSubject.id === '3' || selectedSubject.id === '4')">
+        <div class="col-12 col-md-4">
+          <app-label translationCode="SERVICE.CONTACT.POSTAL_CODE"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          <app-text-input formControlName="postalCode"></app-text-input>
+        </div>
+      </div>
+
+      <div class="row align_center-md" *ngIf="selectedSubject && (selectedSubject.id === '3' || selectedSubject.id === '4')">
+        <div class="col-12 col-md-4">
+          <app-label translationCode="SERVICE.CONTACT.CITY"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          <app-text-input formControlName="city"></app-text-input>
+        </div>
+      </div>
+
+      <div class="row align_center-md" *ngIf="selectedSubject && (selectedSubject.id === '3' || selectedSubject.id === '4')">
+        <div class="col-12 col-md-4">
+          <app-label translationCode="SERVICE.CONTACT.COUNTRY"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          <app-text-input formControlName="country"></app-text-input>
+        </div>
+      </div>
+      <!-- /End of conditional fields -->
+
+      <div class="row align_center-md" *ngIf="selectedSubject && selectedSubject.id === '7'">
+        <div class="col-12 col-md-4">
+          <app-label translationCode="SERVICE.CONTACT.SALES_ORDER"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          <app-text-input formControlName="salesOrder"></app-text-input>
+        </div>
+      </div>
+
+      <div class="row align_center-md">
+        <div class="col-12 col-md-4">
+          <app-label translationCode="SERVICE.CONTACT.COMMENTS"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          <app-text-input formControlName="comments"></app-text-input>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="action-buttons">
+        <a class="btn-cancel hand" (click)="resetForm()">{{ 'SERVICE.CONTACT.RESET' | translate }}</a>
+        <a md-raised-button class="default" button-click-on-enter (click)="submitClickedFn()" [disabled]="isSaving || contactForm.invalid">
+          <i class="fa fa-angle-right" aria-hidden="true" *ngIf="!isSaving"></i>
+          <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="isSaving"></i>
+          {{ 'SERVICE.CONTACT.SEND' | translate }}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

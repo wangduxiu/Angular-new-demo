@@ -1,0 +1,7 @@
+<svg height="10" [attr.width]="width" class="svg">
+  <line [attr.x1]="start.x" [attr.y1]="start.y" [attr.x2]="end.x" [attr.y2]="end.y"/>
+  <g class="points">
+    <circle [attr.cx]="start.x" [attr.cy]="start.y" r="4"/>
+    <path [attr.d]="path" class="arrow"/>
+  </g>
+</svg>

@@ -1,0 +1,112 @@
+@import '../../../shared/styles/globalVars.less';
+
+.material-lines-panel {
+  padding: 20px @page-horizontal-padding;
+}
+
+.headings {
+  font-size: @big-font / 1.2;
+  font-weight: 700;
+  display: flex;
+}
+
+.packingType {
+  position: relative;
+}
+
+@media only screen and (min-width: @medium-screen-width) {
+  .connector {
+    top: 3px;
+    left: -20px;
+    position: absolute;
+  }
+}
+
+@media only screen and (max-width: @medium-screen-width) {
+  .connector {
+    top: 60px;
+    left: -30px;
+    position: absolute;
+  }
+}
+
+.material_line {
+  height: 40px;
+  display: flex;
+  align-items: center;
+
+  @media only screen and (max-width: @medium-screen-width) {
+    display: block;
+    min-height: 40px;
+    height: auto;
+  }
+
+  &.combination {
+    background-color: @background;
+  }
+
+  .button {
+    font-size: 18px;
+  }
+
+  .ccrItem {
+    margin-left: 10px;
+    color: @lightText;
+    font-size: @small-font;
+  }
+}
+
+.icon-buttons {
+  display: inherit;
+  @media only screen and (max-width: @medium-screen-width) {
+    margin: 0.5em;
+  }
+
+  i {
+    &:not([disabled]) {
+      cursor: pointer;
+    }
+
+    &.edit {
+      color: @accent-blue;
+      margin-right: 15px;
+    }
+
+    &.remove {
+      color: @error;
+    }
+  }
+}
+
+.epp {
+  padding-top: 20px;
+
+  .loadedBar {
+    display: flex;
+    flex-direction: row;
+
+    .loaded {
+      display: block;
+      height: 20px;
+
+      &.normal {
+        background-color: green;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+      }
+      &.overloaded {
+        background-color: orange;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+      }
+    }
+
+    .total {
+      background-color: lightgray;
+      display: block;
+      height: 20px;
+    }
+  }
+}

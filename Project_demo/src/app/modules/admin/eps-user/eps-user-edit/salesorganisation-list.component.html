@@ -1,0 +1,20 @@
+<div class="list_wrapper">
+  <div class="list-body">
+
+    <form class="list-item newCustomerForm" [formGroup]="newSalesOrganisationForm">
+      <div class="list-item-data row">
+        <div class="col-12">
+          <app-select
+            [elements]="availableSalesOrganisations"
+            [allowBlank]="false"
+            [multiple]="true"
+            [includeAll]="true"
+            [disabled]="readonly"
+            formControlName="salesOrganisationId"
+            (change)="addSalesOrganisation()"
+          ></app-select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

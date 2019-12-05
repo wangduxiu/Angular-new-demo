@@ -1,0 +1,9 @@
+{
+  "bail": false,
+  "verbose": true,
+  "preset": "jest-preset-angular",
+  "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts",
+  "transformIgnorePatterns": [
+    "node_modules/(?!@ngrx|@angular|angular2-ui-switch|ng-dynamic|angular2-multiselect-dropdown)"
+  ]
+}

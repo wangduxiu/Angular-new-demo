@@ -1,0 +1,50 @@
+<div class="florder-page" @fadeInAnimation *ngIf="!loading">
+  <div class="florder-page-title">
+    <span class="title">
+      {{ "FLOWS.LIST.SUBTITLE" | translate }}
+    </span>
+    <div class="buttons">
+      <a md-button class="default" (click)="createFlorder()" *ngIf="authorization.FLOW.CREATE">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+        {{ "FLOWS.FILTER.BUTTONS.ADD_FLOW" | translate }}
+      </a>
+    </div>
+  </div>
+  <div class="florder-page-search">
+    <app-flow-filter
+      [definitions]="definitions"
+      [filter]="filter"
+      [isLoading]="flordersAreLoading"
+      [filterValues]="filterValues"
+      [shipTos]="shipTos"
+      (filterFlows)="filterFlorders($event)"
+    ></app-flow-filter>
+  </div>
+  <div class="florder-page-list">
+    <app-flow-list
+      [authorization]="authorization"
+      [definitions]="definitions"
+      [filter]="filter"
+      [isLoading]="flordersAreLoading"
+      [isDownloading]="isDownloading"
+      [flows]="flows.items"
+      [totalItems]="flows.totalItems"
+      [handshaking]="handshaking"
+      [filterExcecutionTimestamp]="filterExcecutionTimestamp"
+
+      (openFlow)="openFlow($event)"
+      (downloadList)="downloadList($event)"
+      (downloadDocument)="downloadDocument($event)"
+      (acceptFlows)="acceptFlows($event)"
+      (acceptFlow)="acceptFlow($event)"
+      (cancelFlow)="cancelFlow($event)"
+      (copyFlow)="copyFlow($event)"
+      (editFlow)="editFlow($event)"
+      (editAcceptFlow)="editAcceptFlow($event)"
+
+      (sortChange)="sortChange($event)"
+      (pageChange)="onPageChange($event)"
+      (itemsPerPageChange)="onItemsPerPageChange($event)"
+    ></app-flow-list>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="faq-page" @fadeInAnimation>
+  <div class="faq-page-title">
+    <span class="title" [innerHTML]="'SERVICE.FAQ.TITLE' | translate"></span>
+    <span class="subtitle" [innerHTML]="'SERVICE.FAQ.SUBTITLE' | translate"></span>
+  </div>
+  <div class="faq-page-content row">
+    <div class="col-md-9">
+      <div class="topics_wrapper">
+        <div class="topic" *ngFor="let topic of topics">
+          <div class="header">
+            {{ 'SERVICE.FAQ.QUESTIONS_ABOUT' | translate }}
+            <span class="bold">{{ topic.title }}</span>
+          </div>
+          <div class="questions_wrapper">
+            <div class="question" *ngFor="let question of topic.questions" [ngClass]="{'open': openQuestionId === question.id}" (click)="openQuestion(question.id)">
+              <div class="heading">
+                <i class="fa fa-angle-up" [ngClass]="{'fa-angle-up': openQuestionId === question.id, 'fa-angle-down': openQuestionId !== question.id}"></i>
+                <span class="text">{{ question.question }}</span>
+              </div>
+              <div class="content_wrapper">
+                <div class="content" [innerHTML]="question.answer"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 service-boxes">
+      <app-service-boxes
+        [hideFAQ]="true"
+      ></app-service-boxes>
+    </div>
+  </div>
+</div>

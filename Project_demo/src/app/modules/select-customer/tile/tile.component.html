@@ -1,0 +1,7 @@
+<md-card class="tile" (click)="tileClicked.emit(tile)">
+  <div class="content">
+    <span class="tile-name"><i class="fa fa-spinner fa-pulse fa-fw" *ngIf="loading"></i>{{tile.name}}</span>
+    <span class="tile-number" *ngIf="tile.number">{{tile.number}}</span>
+    <span *ngIf="tile.role" class="tile-role">{{tile.role}}</span>
+  </div>
+</md-card>

@@ -1,0 +1,268 @@
+@import '../../../shared/styles/globalVars.less';
+
+.invoice-row {
+  cursor: pointer;
+}
+
+.cel-row.number {
+  text-align: right;
+}
+
+.heading {
+  margin-bottom: 20px;
+  padding: 5px;
+
+  .title {
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .subtitle {
+    font-weight: 300;
+  }
+
+  .title,
+  .subtitle {
+    font-size: @title-font;
+    color: @blue-underline;
+  }
+
+  .count-block {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .count {
+    font-weight: 700;
+    @media only screen and (min-width: @medium-screen-width) {
+      margin-left: 20px;
+    }
+  }
+
+  .count-postscript {
+    font-weight: 300;
+  }
+
+  .count,
+  .count-postscript {
+    color: @underLine;
+  }
+  .results-actions-block {
+    display: flex;
+
+    @media only screen and (max-width: @medium-screen-width) {
+      flex-direction: column;
+      margin-left: 3em;
+    }
+    @media only screen and (min-width: @medium-screen-width) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  .results-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .download_list {
+      @media only screen and (min-width: @medium-screen-width) {
+        margin-left: 30px;
+      }
+
+      .link {
+        text-decoration: underline;
+        color: @accent-blue;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.order_line {
+  .app_status {
+    margin-right: 20px;
+  }
+}
+
+.flow_line {
+  display: flex;
+
+  .checkbox_wrapper {
+    width: 30px;
+  }
+}
+
+.order_line,
+.flow_line {
+  .content {
+    flex: 1;
+
+    .order_data,
+    .flow_data {
+      display: flex;
+
+      .handshake_date {
+        margin-left: 10px;
+        align-self: center;
+      }
+    }
+
+    .more_ellipsis {
+      cursor: pointer;
+      width: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .items {
+      background-color: white;
+      border: 1px solid @light-blue-grey;
+      padding: 0 20px;
+
+      .heading {
+        color: @lightText;
+        margin: 10px 0 5px 0;
+
+        .link {
+          text-decoration: underline;
+          color: @accent-blue;
+          cursor: pointer;
+        }
+      }
+
+      .item {
+        height: 35px;
+        display: flex;
+        align-items: center;
+
+        input {
+          width: 100%;
+          border: 1px solid @light-blue-grey;
+          border-radius: 4px;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.bottom-line {
+  border-bottom: 1px solid @accent-blue;
+}
+
+.cell {
+  margin-bottom: 0;
+
+  @media only screen and (min-width: @large-screen-width) {
+    padding: 15px 2px;
+  }
+}
+
+@media only screen and (max-width: @large-screen-width) {
+  .sales-number {
+    font-size: 15px;
+    line-height: 19px;
+    color: @accent-blue;
+    font-weight: bold;
+  }
+
+  .value {
+    color: @underLine;
+  }
+
+  .cell {
+    padding: 10px 5px;
+  }
+
+  .cell-row {
+    padding: 2px 0;
+  }
+
+  .striped:nth-child(even) {
+    background-color: transparent;
+  }
+
+  .striped:hover {
+    background-color: transparent;
+  }
+
+  .arrow {
+    color: @accent-blue;
+  }
+}
+
+.soft-line {
+  border-bottom: 1px solid @soft-underline;
+}
+
+.sorters {
+  display: flex;
+
+  .status {
+    width: 50px;
+  }
+
+  .sorter {
+    font-size: @middle-font;
+    padding-left: 10px;
+    cursor: pointer;
+  }
+
+  .menu_col {
+    width: 25px;
+  }
+}
+
+@media only screen and (min-width: @large-screen-width) {
+  .order_line,
+  .flow_line {
+    display: flex;
+  }
+
+  .heading {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.count {
+  @media only screen and (min-width: @medium-screen-width) {
+    padding-left: 5px;
+  }
+  padding-right: 5px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.loading_spinner {
+  text-align: center;
+  font-size: @title-font;
+  padding: 50px 10px;
+}
+@media only screen and (min-width: @medium-screen-width) {
+  .show-sm {
+    display: none;
+  }
+}
+@media only screen and (max-width: @medium-screen-width) {
+  .sorter.show-sm {
+    font-size: 12px !important;
+    font-weight: bold;
+  }
+  .sorter.show-sm:not(:first-of-type) {
+    margin-top: 0.5em;
+  }
+}
+@media only screen and (max-width: @medium-screen-width) {
+  .sorters {
+    display: none;
+  }
+}

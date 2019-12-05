@@ -1,0 +1,38 @@
+@import '../../../shared/styles/globalVars.less';
+
+.order-edit-detail-container {
+  background: @background-form;
+  .form-container .buttons {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: @medium-screen-width) {
+  .save-button {
+    display: flex;
+    flex-direction: row !important;
+  }
+}
+
+
+/* RECURRENCE CONTAINER */
+.recurrence-container {
+  border: 1px solid @accent-blue;
+  margin: 0 10px 10px 10px;
+  padding: 20px;
+  opacity: 0;
+
+  &.transition-show {
+    transition: 0.667s;
+    opacity: 1;
+    position: relative;
+  }
+}
+
+span.text {
+  height: 40px;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  align-items: center;
+}

@@ -1,0 +1,115 @@
+<div @fadeInAnimation>
+<div class="order-page-title" id="top">
+  <div class="edit-button"
+       *ngIf="panelStatus.backButton.isVisible"
+       (click)="cancelClicked()">
+    <a md-raised-button
+       class="default">{{ 'SHARED.BUTTONS.BACK' | translate }}</a>
+  </div>
+  <div *ngIf="mode.state === 'view'"
+       class="content">
+    <app-status *ngIf="mode.state === 'view'"
+                layout="BULLET"
+                key="{{'ORDER_' + orderDetail.status}}"
+                height="40"
+                [size]="1">
+    </app-status>
+    <div class="multi-line">
+      <div>
+        <app-title title="ORDERS.DETAILS.TITLE"></app-title>
+        <span class="subtitle">{{orderDetail.etmOrderNumber}}</span>
+      </div>
+      <div>
+        <span class="bold">{{ 'ORDERS.DETAILS.REGISTERED_BY' | translate }}</span> {{orderDetail.registeredBy}}
+      </div>
+    </div>
+  </div>
+  <app-title *ngIf="mode.state !== 'view'" title="SHARED.BUTTONS.CREATE" subtitle="CCR.DETAILS.TITLE"></app-title>
+</div>
+
+<div class="row filter-container">
+  <div class="col-12 col-md-12 col-lg-9 filter-container-inner">
+    <form [formGroup]="ccrForm">
+      <div class="order-create-title-bar">
+        <div class="row order-create-title-bar-header" [ngClass]="{activated: panelStatus.delivery.isEdit}">
+          <div class="order-create-title">
+            <i class='fa fa-truck' aria-hidden='true'></i>
+            <b>1&nbsp;&nbsp;{{'ORDERS.DELIVERY.TITLE' | translate}}</b> {{'ORDERS.DELIVERY.SUBTITLE' | translate}}
+          </div>
+          <div class="edit-button" *ngIf="panelStatus.delivery.isEditable" (click)="editDeliveryMethodClicked()">
+            <a md-raised-button class="default">{{ 'SHARED.BUTTONS.EDIT' | translate }}</a>
+          </div>
+        </div>
+        <app-ccr-edit-delivery     [ccrForm]="ccrForm"
+                                   [definitions]="definitions"
+                                   [deliveryMethod]="orderDetail.deliveryMethod"
+                                   [orderTypes]="orderTypes"
+                                   [panelStatus]="panelStatus.delivery">
+        </app-ccr-edit-delivery>
+      </div>
+
+      <div class="order-create-title-bar">
+        <div class="row order-create-title-bar-header" [ngClass]="{activated: panelStatus.detail.isEdit}">
+          <div class="order-create-title">
+            <i class='fa fa-file-o' aria-hidden='true'></i>
+            <b>2&nbsp;&nbsp;{{'CCR.DETAILS.TITLE' | translate}}</b> {{'ORDERS.DETAILS.SUBTITLE' | translate}}
+          </div>
+          <div class="edit-button" *ngIf="panelStatus.detail.isEditable" (click)="editDetailClicked()">
+            <a md-raised-button class="default"> {{ 'SHARED.BUTTONS.EDIT' | translate }} </a>
+          </div>
+        </div>
+      </div>
+      <app-ccr-edit-detail *ngIf="panelStatus.detail.isVisible"
+                               [ccrForm]="ccrForm"
+                               [definitions]="definitions"
+                               [editMaterial]="mode.material"
+                               [orderDetail]="orderDetail"
+                               [orderTypes]="orderTypes"
+                               [panelStatusMaterial]="panelStatus.material"
+                               [panelStatus]="panelStatus.detail"
+                               [materialTypes]="incoterm"
+                               (cancelClicked)="cancelClicked()"
+                               (backClicked)="backToDeliveryClicked()"
+                               (nextClicked)="submitClickedFn()"
+                               (saveMaterialClicked)="saveMaterial($event)"
+                               (removeMaterialClicked)="removeMaterial($event)"
+                               (startEditMaterialClicked)="editMaterial($event)"
+      >
+      </app-ccr-edit-detail>
+
+      <!-- PLANNING -->
+      <div class="order-create-title-bar">
+        <div class="row order-create-title-bar-header" [ngClass]="{activated: panelStatus.planning.isEdit}">
+          <div class="order-create-title">
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+            <b>3&nbsp;&nbsp;{{'CCR.DETAILS.TITLE' | translate}}</b> {{'ORDERS.PLANNING.SUBTITLE' | translate}}
+          </div>
+          <div class="edit-button" *ngIf="panelStatus.planning.isEditable" (click)="editPlanningClicked()">
+            <a md-raised-button class="default">
+              {{ 'SHARED.BUTTONS.EDIT' | translate }}
+            </a>
+          </div>
+        </div>
+      </div>
+      <app-ccr-edit-planning *ngIf="panelStatus.planning.isVisible"
+                                 [ccrForm]="ccrForm"
+                                 [orderDetail]="orderDetail"
+                                 [panelStatus]="panelStatus.planning"
+                                 [availablePickingDates]="getAvailablePickingDates()"
+                                 (cancelClicked)="cancelClicked()"
+                                 (backClicked)="backToDetailClicked()"
+      >
+      </app-ccr-edit-planning>
+    </form>
+  </div>
+</div>
+
+<div class="col-12 col-md-12 col-lg-9 buttons">
+  <a class="btn-cancel" *ngIf="panelStatus.ccr.isEdit" (click)="cancelClicked()">{{ 'SHARED.BUTTONS.CANCEL' | translate }}</a>
+
+  <a md-raised-button [ngClass]="{default: panelStatus.submitButton.isEnabled, disabled: !panelStatus.submitButton.isEnabled}" [disabled]="!ccrForm.valid || mode.saving" (click)="submitClickedFn()">
+    <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="mode.saving"></i>
+    {{ 'SHARED.BUTTONS.SUBMIT' | translate }}
+  </a>
+</div>
+</div>

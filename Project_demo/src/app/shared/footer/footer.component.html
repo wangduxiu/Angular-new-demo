@@ -1,0 +1,6 @@
+<footer class="footer">
+  <span>&copy; Euro Pool System {{year}}</span>
+  <span class="version" (click)="isEpsUser && versionClicked()">{{version}}</span>
+  <span  *ngIf="isEpsUser" class="buildDate">{{buildDate}}</span>
+  <span *ngIf="isEpsUser && autologoutDisabled"> No auto-logout</span>
+</footer>

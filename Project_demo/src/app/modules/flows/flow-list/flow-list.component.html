@@ -1,0 +1,233 @@
+<div class="form-container" *ngIf="totalItems === 0 || totalItems > 0" id="top">
+
+  <form [formGroup]="flowListForm">
+
+    <div class="col-12 row heading form-header">
+      <div class="col-lg-6 results-heading">
+        <div class="results-heading-title">
+          <div class="title">{{ 'ORDERS.LIST.TITLE' | translate }}</div>
+          <div class="subtitle">{{ 'FLOWS.LIST.SUBTITLE' | translate }}</div>
+        </div>
+        <div class="results-heading-text">
+          <div class="count">
+            <span *ngIf="totalItems > 1 || totalItems === 0">{{ 'FLOWS.LIST.COUNT' | translate:{count:totalItems} }}</span>
+            <span *ngIf="totalItems == 1">{{ 'FLOWS.LIST.COUNT_1' | translate }}</span>
+          </div>
+          <div class="count-postscript" *ngIf="authorization.FLOW.MULTI_ACCEPT">{{ 'FLOWS.LIST.COUNT-POSTSCRIPT' | translate }},
+            <span class="bold">{{ 'FLOWS.LIST.SELECTED' | translate:{selected:selected} }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 results-actions" *ngIf="totalItems > 0">
+        <div class="download_file" *ngIf="!isDownloading">
+          {{ 'ORDERS.LIST.DOWNLOAD_AS' | translate }}
+          <span class="link" (click)="downloadList.emit('XLS')">{{ 'ORDERS.LIST.EXCEL' | translate }}</span>
+        </div>
+        <div class="download_file" *ngIf="isDownloading">
+          {{ 'ORDERS.LIST.DOWNLOADING' | translate }}
+        </div>
+        <div class="accept-cancel-buttons" *ngIf="authorization.FLOW.MULTI_ACCEPT">
+          <a md-raised-button class="default accept" (click)="toggleCollapseAll()">
+            {{ 'SHARED.LABELS.' + (showAll ? 'COLLAPSE_ALL' : 'SHOW_ALL') | translate }}
+          </a>
+          <a md-raised-button class="default accept" (click)="acceptFlowsClicked()" [disabled]="containsBlacklistedItems || !flowListForm.valid || selected === 0 || !pageStats.allOtherFlowEditsValid">
+            <i class="fa fa-check" aria-hidden="true"></i>
+            {{ 'FLOWS.LIST.BUTTONS.MULTI_ACCEPT' | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row col-12 pagination" *ngIf="!isLoading && totalItems > 0">
+      <app-pager
+        [itemsPerPage]="filter.pageSize"
+        (pageChange)="onPageChange($event)"
+        (itemsPerPageChange)="itemsPerPageChange.emit($event)"
+      ></app-pager>
+    </div>
+
+    <div class="col-12 row bottom-line bold show-from-sm sorters" *ngIf="totalItems > 0">
+      <app-checkbox [ngModel]="pageStats.allSelected" [ngModelOptions]="{standalone: true}" (change)="toggleSelectAll($event)"
+        *ngIf="authorization.FLOW.MULTI_ACCEPT"></app-checkbox>
+      <span class="sorter col-md" sortable-header='flowDate' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'FLOWS.LIST.LABELS.FLOW_DATE' | translate }}</span>
+      <span class="sorter col-md" sortable-header='etmOrderNumber' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'FLOWS.LIST.LABELS.NUMBER' | translate }}</span>
+      <span class="sorter col-md" sortable-header='customerRefNumber' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'FLOWS.LIST.LABELS.REFERENCE' | translate }}</span>
+      <span class="sorter col-md" sortable-header='fromId' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.FROM' | translate }}</span>
+      <span class="sorter col-md" sortable-header='toId' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.TO' | translate }}</span>
+      <span class="sorter col-md" sortable-header='handshakeStatus' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'FLOWS.LIST.LABELS.STATUS_HANDSHAKE' | translate }}</span>
+      <span class="menu_col"></span>
+    </div>
+
+    <div formArrayName="flows" *ngIf="!isLoading">
+      <div *ngFor="let flow of flows | paginate: {itemsPerPage: filter.pageSize, currentPage: filter.pageNr, totalItems:totalItems}; let i=index;"
+        [formGroupName]="i" class="row col-12 striped cell soft-line order" [ngClass]="{'cancelled': flow.handshakeStatus === '04'}" [class.canOpen]="authorization.FLOW.GET">
+        <div class="col-lg-12 col-md-12 col-sm-11 flow_line">
+          <div class="checkbox_wrapper">
+            <app-checkbox formControlName="checked" (change)="toggleSelected($event, flow)" *ngIf="canAcceptHandshake(flow)"></app-checkbox>
+          </div>
+          <div class="content" (click)="openFlow.emit(flow)">
+            <div class="flow_data">
+              <div class="flow_data-data">
+                <div class="col-md col-12 desktop-only">
+                  {{ flow.flowDate | date:dateFormat }}
+                </div>
+
+                <div class="col-md col-12 sales-number cell-row">{{ flow.etmOrderNumber }}</div>
+
+                <div class="col-md col-12 row cell-row">
+                  <div class="row col-xs start-xs">
+                    <div class="col-xs mobile-only">
+                      <span class="bold">{{ 'FLOWS.LIST.LABELS.REFERENCE' | translate }}:</span> {{ flow.customerRefNumber }}
+                    </div>
+                    <div class="col-xs desktop-only">
+                      {{ flow.customerRefNumber }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md col-12 row cell-row">
+                  <div class="row col-xs start-xs">
+                    <div class="col-xs mobile-only">
+                      <span class="bold">{{ 'ORDERS.LIST.LABELS.FROM' | translate }}:</span> {{ flow.from.name }}
+                    </div>
+                    <div class="col-xs desktop-only">
+                      {{ flow.from.name }}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- copy -->
+                <div class="col-md col-12 row cell-row">
+                  <div class="row col-xs start-xs">
+                    <div class="col-xs mobile-only">
+                      <span class="bold">{{ 'ORDERS.LIST.LABELS.TO' | translate }}: </span> {{ flow.to.name }}
+                    </div>
+                    <div class="col-xs desktop-only">
+                      {{ flow.to.name }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md col-12 desktop-only">
+                  <app-status layout="BULLET" [type]="flow.status" mode="flow" [size]="1" height="30" *ngIf="!flow.blacklisted"></app-status>
+                  <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="flow.blacklisted"></i>
+                  <span style="color:lightcyan">{{flow.handshaker ? '.' : ''}}</span>
+                  <!-- show small discrete dot if customer is handshaker for flow -->
+                  <span class="handshake_date">{{ flow.handshakeDate | date:dateFormat }}</span>
+                </div>
+
+                <!-- <div class="col-md col-12 desktop-only"></div> -->
+              </div>
+              <div class="flow_data-menu" *ngIf="!flow.blacklisted">
+                <div class="more_ellipsis" [mdMenuTriggerFor]="menuFlowLine" (click)="openMenu($event)">
+                  <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                </div>
+                <md-menu #menuFlowLine="mdMenu" [overlapTrigger]="false">
+                  <button md-menu-item (click)="copyFlow.emit(flow)" *ngIf="authorization.FLOW.CREATE">
+                    <span>{{'ORDERS.LIST.BUTTONS.COPY' | translate}}</span>
+                  </button>
+                  <button md-menu-item (click)="editFlow.emit(flow)" *ngIf="authorization.FLOW.UPDATE && canCancelHandshake(flow) && !flow.salesOrderNumber">
+                    <span>{{'FLOWS.LIST.BUTTONS.EDIT_FLOW_REGISTRAR' | translate}}</span>
+                  </button>
+                  <button md-menu-item (click)="editAcceptFlow.emit(flow)" *ngIf="canAcceptHandshake(flow)">
+                    <span>{{'FLOWS.LIST.BUTTONS.EDIT_FLOW_HANDSHAKER' | translate}}</span>
+                  </button>
+                  <button md-menu-item (click)="downloadDocument.emit(flow)">
+                    <span>{{'SHARED.BUTTONS.DOWNLOAD_DOCUMENT' | translate}}</span>
+                  </button>
+                </md-menu>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Children -->
+              <div class="col-md-8 items">
+                <div class="row heading">
+                  <div class="col-sm-12 col-md-2"> {{ 'FLOWS.LIST.LABELS.TYPE' | translate }}</div>
+                  <div class="col-sm-12 col-md-2"> {{ 'FLOWS.LIST.LABELS.ORIGINAL' | translate }}</div>
+                  <div class="col-sm-12 col-md-2"> {{ 'FLOWS.LIST.LABELS.DEFINITIVE' | translate }}</div>
+                  <div class="col-sm-12 col-md-2"> {{ 'FLOWS.LIST.LABELS.DIFFERENCE' | translate }}</div>
+                  <div class="col-sm-12 col-md-2"> {{ 'FLOWS.LIST.LABELS.CONTENT' | translate }}</div>
+                  <div class="col-sm-12 col-md-2"> {{ 'FLOWS.LIST.LABELS.REFERENCE' | translate }}</div>
+                  <div class="col-sm-12 col-md-2 link">
+                    <span *ngIf="flow.flowLineItems.length > 1" (click)="preventRouting($event); toggleCollapsed(flow.etmOrderNumber)">
+                      <span *ngIf="!isCollapsed(flow.etmOrderNumber)">{{ 'FLOWS.LIST.LABELS.COLLAPSE_COUNT' | translate: {count: flow.flowLineItems.length} }}</span>
+                      <span *ngIf="isCollapsed(flow.etmOrderNumber)">{{ 'FLOWS.LIST.LABELS.SHOW_COUNT' | translate: {count: flow.flowLineItems.length} }}</span>
+                    </span>
+                  </div>
+                </div>
+                <div formArrayName="items" class="items-content">
+                  <div class="row item" *ngFor="let item of flow.flowLineItems | oneOrAllFilter:isCollapsed(flow.etmOrderNumber); let j=index;"
+                    [formGroupName]="j">
+                    <div class="col-sm-12 col-md-2">
+                      <app-select [elements]="definitions.packing.type" value="{{item.packingId}}" [readonly]="true" [hideReadonlyPadding]="true"></app-select>
+                    </div>
+                    <div class="col-sm-12 col-md-2" [ngSwitch]="flow.editOriginalQuantity">
+                      <input class="quantity" *ngSwitchCase="true" (click)="preventRouting($event)" formControlName="originalQuantity" (ngModelChange)="originalQuantityChanged($event, flow, item)">
+                      <span class="quantity" *ngSwitchCase="false">{{item.originalQuantity}}</span>
+                    </div>
+                    <div class="col-sm-12 col-md-2" [ngSwitch]="flow.editDefinitiveQuantity">
+                      <input class="quantity" *ngSwitchCase="true" (click)="preventRouting($event)" formControlName="definitiveQuantity" (ngModelChange)="definitiveQuantityChanged($event, flow, item)">
+                      <span class="quantity" *ngSwitchCase="false">{{item.definitiveQuantity}}</span>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                      {{item.differenceQuantity}}
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                      {{getContent(item.contentId)}}
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                      {{item.lineReferenceId}}
+                    </div>
+                    <div class="col-sm-12 col-md-2" *ngIf="flow.flowLineItems.length > 1"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 flow_accept_button">
+                <a md-raised-button class="default accept" (click)="preventRouting($event); !handshaking && !containsBlacklistedItems && flow.valid && !flow.isChecked && acceptFlowClicked($event, flow);"
+                  *ngIf="canAcceptHandshake(flow)" [disabled]="handshaking || containsBlacklistedItems || !flow.valid || flow.isChecked">
+                  <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="handshaking || flow.blacklisted"></i>
+                  <i class="fa fa-check" aria-hidden="true" *ngIf="!handshaking && !flow.blacklisted"></i>
+                  {{ 'FLOWS.LIST.BUTTONS.ACCEPT' | translate }}
+                </a>
+                <a md-raised-button class="default cancel" (click)="preventRouting($event); !handshaking && !containsBlacklistedItems && !flow.isChecked && cancelFlowClicked($event, flow);"
+                  *ngIf="canCancelHandshake(flow)" [disabled]="handshaking || containsBlacklistedItems || flow.isChecked">
+                  <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="handshaking || flow.blacklisted"></i>
+                  <i class="fa fa-check" aria-hidden="true" *ngIf="!handshaking && !flow.blacklisted"></i>
+                  {{ 'FLOWS.LIST.BUTTONS.CANCEL' | translate }}
+                </a>
+                <span class="fail" *ngIf="flow.failed">
+                  <i class="fa fa-exclamation-triangle"></i> {{flow.failMessage.message}}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- end -->
+        </div>
+        <div class="row col-1 col-md-1 mobile-only arrow">
+          <i class="fa fa-angle-right"></i>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="loading_spinner" *ngIf="isLoading">
+    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+  </div>
+
+  <div class="row col-12 pagination" *ngIf="!isLoading && totalItems > 0">
+    <app-pager
+      [itemsPerPage]="filter.pageSize"
+      (pageChange)="onPageChange($event)"
+      (itemsPerPageChange)="itemsPerPageChange.emit($event)"
+    ></app-pager>
+  </div>
+</div>

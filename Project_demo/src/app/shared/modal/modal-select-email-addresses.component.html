@@ -1,0 +1,22 @@
+<div class="custom_modal">
+  <div class="modal-header">
+    <div class="title" [innerHTML]="'SHARED.MODAL.HEADER_EMAIL' | translate"></div>
+    <div>
+      <span class="close_button" (click)="close(false)">
+        <i class="fa fa-times"></i>
+      </span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="selectEmailAddressesForm" *ngIf="data.emailAddresses.length > 0">
+      <app-select formControlName="selectedEmailAddresses" [elements]="data.emailAddresses" [multiple]="true"></app-select>
+    </form>
+    <span *ngIf="data.emailAddresses.length === 0">{{ 'EMAIL_ACTORS.LIST.NO_EMAIL_ACTORS' | translate }}</span>
+  </div>
+  <div class="modal-footer">
+    <a class="btn-cancel" (click)="close(false)">{{ 'SHARED.BUTTONS.CANCEL' | translate }}</a>
+    <a class="default" md-button aria-disabled="false" button-click-on-enter [is-modal]="true" tabindex="0" (click)="close(true)">
+      <i class="fa fa-plus-square-o" aria-hidden="true"></i> {{ 'SHARED.BUTTONS.SUBMIT' | translate }}
+    </a>
+  </div>
+</div>

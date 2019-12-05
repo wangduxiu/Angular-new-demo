@@ -1,0 +1,39 @@
+<div class="florder-page" @fadeInAnimation>
+  <div class="florder-page-title">
+    <span class="title">
+      {{ "INVOICES.LIST.SUBTITLE" | translate }}
+    </span>
+    <div class="buttons">
+      <a md-raised-button class="primary" (click)="openDescartesInvoices()">{{ "INVOICES.GO_TO_DESCARTES" | translate }}</a>
+    </div>
+  </div>
+
+  <div class="florder-page-search">
+    <invoices-filter
+      [invoiceTypes]="invoiceTypes"
+      [filter]="invoices.filter"
+      [loading]="invoices.loading"
+      [places]="places"
+      [localCurrency]="localCurrency"
+      (filterInvoices)="filterInvoices($event)"
+    >
+    </invoices-filter>
+  </div>
+
+  <div class="florder-page-list">
+    <app-invoices-list
+      [invoices]="invoices"
+      [authorization]="authorization"
+      [places]="places"
+      [currency]="invoices.filter.currency"
+      (openInvoice)="downloadInvoice($event)"
+      (downloadList)="downloadList()"
+
+      (changePage)="changePage($event)"
+      (itemsPerPageChange)="onItemsPerPageChange($event)"
+      (sortChange)="sortChange($event)"
+    >
+    </app-invoices-list>
+  </div>
+
+</div>

@@ -1,0 +1,92 @@
+@import '../../../shared/styles/globalVars.less';
+
+.tile {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .center-panel {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-direction:column;
+
+    .header {
+      margin: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+
+      .title {
+        flex-direction: row;
+        display: inline;
+        flex-wrap: nowrap;
+        font-size: @big-font * 1.3;
+        text-transform: uppercase;
+        color: @blue-underline;
+
+        .line1 {
+          display: inline;
+          font-weight: 300;
+        }
+        .line2 {
+          display: inline;
+          font-weight: @bold;
+        }
+      }
+      .name {
+        font-size: @big-font * 1.3;
+        text-transform: uppercase;
+        color: @blue-underline;
+      }
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .address {
+        .street {
+
+        }
+        .city {
+
+        }
+      }
+
+      .openingHours {
+        flex: 1;
+
+        .innerContainer {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .days {
+          color: @eps-yellow;
+          font-weight: @bold;
+          font-size: @big-font;
+        }
+        .hours {
+          font-size: @big-font;
+        }
+      }
+    }
+  }
+
+  .left-panel, .right-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    font-size: @title-font;
+    cursor: pointer;
+  }
+}

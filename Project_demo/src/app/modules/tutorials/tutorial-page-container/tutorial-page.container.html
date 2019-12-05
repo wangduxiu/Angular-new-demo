@@ -1,0 +1,31 @@
+<div class="tutorial-page">
+    <div class="tutorial-page-title">
+        <span class="title">{{ "TUTORIALS.TITLE" | translate }}</span>
+        <div class="right-side">
+            <a md-button class="default" (click)="finishTutorial()">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                {{ "TUTORIALS.HEADER.FINISH_BUTTON" | translate }}
+            </a>
+        </div>
+    </div>
+
+    <div class="tutorial-wrapper">
+        <div class="tutorial-left">
+            <app-tutorial-menu 
+                [tutorials]="tutorials" 
+                [toggleTutorial]="toggleTutorial">
+            </app-tutorial-menu>
+        </div>
+
+        <div class="tutorial-right">
+            <app-tutorial-content 
+                [tutorial]="tutorial" 
+                (nextTutorial)="nextTutorial()" 
+                (prevTutorial)="prevTutorial()" 
+                [nextTutorialTitle]="nextTutorialTitle"
+                [prevTutorialTitle]="prevTutorialTitle" 
+                [status]="status">
+            </app-tutorial-content>
+        </div>
+    </div>
+</div>

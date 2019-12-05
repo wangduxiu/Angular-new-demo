@@ -1,0 +1,74 @@
+@import '../../../shared/styles/globalVars.less';
+
+.accept-cancel-buttons {
+  .cancel {
+    color: @error;
+    border-color: @error;
+  }
+}
+
+@media only screen and (min-width: @large-screen-width) {
+  .heading {
+    .accept-cancel-buttons {
+      position: absolute;
+      right: 5px;
+    }
+  }
+}
+@media only screen and (min-width: @medium-screen-width) {
+  .heading {
+    .results-actions {
+      margin-left: 0;
+    }
+  }
+}
+
+.flow_data-menu {
+  height: 30px;
+}
+
+.more_ellipsis {
+  height: 100%;
+}
+.items {
+  .quantity {
+    max-width: 30px;
+    text-align: right;
+    display: block;
+  }
+  input.quantity {
+    max-width: 50px;
+  }
+}
+
+.content {
+  .flow_accept_button {
+    padding: 10px;
+
+    a {
+      line-height: 26px;
+      font-size: @base-font;
+      padding: 0 12px;
+    }
+
+    a + a {
+      margin-left: 10px;
+    }
+
+    .accept {
+      border-color: @success;
+      color: @success;
+    }
+
+    .cancel {
+      border-color: @error;
+      color: @error;
+    }
+  }
+}
+.fail {
+  color: red;
+  i.fa-exclamation-triangle {
+    font-size: 14pt;
+  }
+}

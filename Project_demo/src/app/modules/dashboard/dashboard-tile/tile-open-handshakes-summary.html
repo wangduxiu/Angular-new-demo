@@ -1,0 +1,14 @@
+<div class="tile">
+
+
+  <div class="count">{{customerSummary.openHandshakes.openHandshakeTotal}}</div>
+
+  <div class="title">
+    <div class="line1">{{'DASHBOARD.OPEN_HANDSHAKES_SUMMARY.TITLE.LINE1' | translate}}</div>
+    <div class="line2">{{'DASHBOARD.OPEN_HANDSHAKES_SUMMARY.TITLE.LINE2' | translate}}</div>
+  </div>
+
+  <div class="button" *ngIf="customerSummary.openHandshakes.openHandshakeTotal">
+    <a md-button class="default" (click)="viewAll.emit()">{{'DASHBOARD.OPEN_HANDSHAKES_SUMMARY.BUTTON' | translate}}</a>
+  </div>
+</div>

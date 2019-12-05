@@ -1,0 +1,36 @@
+<div class="florder-page" @fadeInAnimation>
+  <div class="florder-page-title">
+        <span class="title">
+      {{ "ADMIN.GENERAL.EPS_USERS" | translate }}
+    </span>
+    <div class="buttons">
+      <!-- <a md-button class="default" (click)="createNewEpsUser()">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i> {{ "ADMIN.SHARED.CREATE" | translate }}
+      </a> -->
+      <a md-button class="default" (click)="inviteNewEpsUser()" *ngIf="authorization.adminRoles.inviteEpsUser">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i> {{ "ADMIN.SHARED.INVITE" | translate }}
+      </a>
+    </div>
+  </div>
+
+
+  <div class="florder-page-search">
+    <admin-eps-user-filter (filterUsers)="filterUsers($event)" [isLoading]="users.loading"></admin-eps-user-filter>
+  </div>
+  <div class="florder-page-list">
+        <admin-eps-user-list
+          [isLoading]="users.loading"
+          [pageNr]="users.pageNr"
+          [pageSize]="users.pageSize"
+          [sortField]="sortField"
+          [sortAscending]="sortAscending"
+          [totalItems]="users.totalItems"
+          [users]="users.items"
+          (openUser)="openEpsUser($event)"
+          (pageChange)="onPageChange($event)"
+          (sortFieldChange)="sortFieldChange($event)"
+          (sortAscendingChange)="sortAscendingChange($event)"
+          (itemsPerPageChange)="onItemsPerPageChange($event)"
+        ></admin-eps-user-list>
+    </div>
+</div>

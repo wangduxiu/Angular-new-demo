@@ -1,0 +1,30 @@
+<form [formGroup]="editFlorderPlanningForm" class="form-container edit-planning-form">
+  <div class="row cell align_center-md">
+    <div class="col-12 col-md-2">
+      <app-label translationCode="FLOWS.FILTER.LABELS.FLOW_DATE"></app-label>
+    </div>
+    <div class="col-12 col-md-10">
+      <app-date-input
+        formControlName="flowDate" [inPastOrPresent]="frequency !== 'T'"
+        [readonly]="!panelStatus.isEdit || panelStatus.isFlowEdit"
+        [validRange]="datesRange"
+        [selectWeek]="frequency === 'W'"
+        [datePattern]="datePattern"
+        [showOnTop]="true"
+        [error]="flowDetail.flowDateError"
+        [date]="flowDetail.planning"
+        (change)="setDatePattern()"
+      ></app-date-input>
+    </div>
+  </div>
+  <div class="buttons" *ngIf="panelStatus.isEdit">
+    <div class="hr-thick "></div>
+    <a md-raised-button class="primary" button-click-on-enter (click)="!editFlorderPlanningForm.pending && editFlorderPlanningForm.valid && nextClicked.emit(editFlorderPlanningForm.value)"
+      [disabled]="editFlorderPlanningForm.pending || !editFlorderPlanningForm.valid">
+      <i class="fa fa-check" aria-hidden="true" *ngIf="!editFlorderPlanningForm.pending"></i>
+      <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="editFlorderPlanningForm.pending"></i>
+      <span *ngIf="panelStatus.isNew">{{ 'ORDERS.PLANNING.BUTTONS.NEXT' | translate }}</span>
+      <span *ngIf="!panelStatus.isNew">{{ 'ORDERS.DETAIL.BUTTONS.SAVE' | translate }}</span>
+    </a>
+  </div>
+</form>

@@ -1,0 +1,27 @@
+<div class="select" #selectDiv [ngClass]="{'focused': focused, 'readonly': readonly}">
+
+  <!--<form class="example-form">-->
+  <md-input-container #inputContainer class="example-full-width" *ngIf="!readonly && elements.length >= 1">
+      <input #textInput type="text" mdInput
+        [formControl]="myControl"
+        [mdAutocomplete]="auto"
+        (focus)="inputFocussed()"
+        (blur)="inputBlurred()"
+        (click)="inputClicked()">
+      <md-autocomplete #auto="mdAutocomplete"
+        [displayWith]="displayFn"
+        (keyup.enter)="elementSelected(null)">
+        <md-option
+          *ngFor="let element of filteredElements | async"
+          [value]="element"
+          (onSelectionChange)="$event.source.selected && elementSelected($event.source.value)">
+        <span [innerHTML]="element.valueAndTitle || element"></span>
+      </md-option>
+    </md-autocomplete>
+  </md-input-container>
+  <!--</form>-->
+
+  <div *ngIf="readonly" class="read-only">
+    <span class="value">{{selected && selected.name}}</span>
+  </div>
+</div>

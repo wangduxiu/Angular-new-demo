@@ -1,0 +1,26 @@
+@import '../../styles/globalVars.less';
+
+.labelContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  @media only screen and (min-width: @medium-screen-width) {
+    padding-top: 10px;
+  }
+}
+
+.label {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: @base-font;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0 !important;
+}
+
+div.optional {
+  color: @lightText;
+  text-transform: uppercase;
+  font-size: @base-font * 0.7;
+}

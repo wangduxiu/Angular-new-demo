@@ -1,0 +1,5 @@
+<div class="checkbox_wrapper">
+  <md-checkbox [(ngModel)]="value" disabled *ngIf="readonly || view"></md-checkbox>
+  <md-checkbox [(ngModel)]="value" #checkbox *ngIf="!readonly" (change)="change.emit($event)"></md-checkbox>
+  {{ translationCode | translate }}{{ label }}
+</div>

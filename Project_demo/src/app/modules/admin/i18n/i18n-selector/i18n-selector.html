@@ -1,0 +1,48 @@
+<div class="container">
+  <div>&nbsp;</div>
+  <form [formGroup]="i18nSelectorForm">
+    <div class="row">
+      <div class="col-md-6">
+        <app-radio-group formControlName="type">
+          <app-radio *ngFor="let type of types" value="{{type}}" label="{{type}}" [disabled]="loading || saving"></app-radio>
+        </app-radio-group>
+      </div>
+      <div class="col-md-6 buttons" *ngIf="isCsv()">
+        <a md-raised-button class="default accept" *ngIf="loading">
+          <i class="fa fa-spinner fa-pulse fa-fw"></i>
+          {{ 'ADMIN.I18N.BUTTONS.LOADING' | translate }}
+        </a>
+        <a md-raised-button class="default accept" (click)="preventRouting($event); !saving && editAllCsv.emit()" [disabled]="loading || saving" *ngIf="!loading">
+          {{ 'ADMIN.I18N.BUTTONS.EDIT' | translate }}
+        </a>
+
+        <a md-raised-button class="default accept" (click)="preventRouting($event); lang.value && !saving && !loading && resetLanguages.emit()" [disabled]="loading || saving">
+          {{ 'ADMIN.I18N.BUTTONS.RESET' | translate }}
+        </a>
+      </div>
+    </div>
+    <div class="row" *ngIf="isJson()">
+      <div class="col-md-6">
+        <app-select #lang [elements]="languages" value="{{usedLanguage}}" formControlName="language"></app-select>
+      </div>
+      <div class="col-md-6 buttons">
+        <a md-raised-button class="default accept" *ngIf="loading">
+          <i class="fa fa-spinner fa-pulse fa-fw"></i>
+          {{ 'ADMIN.I18N.BUTTONS.LOADING' | translate }}
+        </a>
+        <a md-raised-button class="default accept" (click)="preventRouting($event); !saving && editLanguage.emit(i18nSelectorForm.value.language)" [disabled]="loading || saving" *ngIf="!loading">
+          {{ 'ADMIN.I18N.BUTTONS.EDIT' | translate }}
+        </a>
+
+        <a md-raised-button class="default accept" (click)="preventRouting($event); lang.value && !saving && !loading && testLanguage.emit(i18nSelectorForm.value.language)" [disabled]="loading || saving">
+          {{ 'ADMIN.I18N.BUTTONS.TEST' | translate }}
+        </a>
+
+        <a md-raised-button class="default accept" (click)="preventRouting($event); lang.value && !saving && !loading && resetLanguages.emit()" [disabled]="loading || saving">
+          {{ 'ADMIN.I18N.BUTTONS.RESET' | translate }}
+        </a>
+      </div>
+    </div>
+  </form>
+  <div>&nbsp;</div>
+</div>

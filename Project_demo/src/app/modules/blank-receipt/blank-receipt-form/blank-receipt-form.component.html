@@ -1,0 +1,35 @@
+<div class="filter-container">
+  <div class="filter-window">
+    <div class="row">
+      <div class="form-container col-12">
+        <form [formGroup]="blankReceiptForm">
+          <div class="form_inner">
+            <div class="form-group row">
+              <app-label class="col-12 col-sm-2" translationCode="BLANK_RECEIPT.RECEIPT_TYPE"></app-label>
+              <div class="col-12 col-sm-10">
+                <app-radio-group formControlName="type">
+                  <app-radio *ngFor="let type of receiptTypes" value="{{type.id}}" label="{{type.name}}"></app-radio>
+                </app-radio-group>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <app-label class="col-12 col-sm-2" translationCode="BLANK_RECEIPT.QUANTITY"></app-label>
+              <app-text-input class="col-12 col-sm-10" formControlName="quantity"></app-text-input>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="end-xs">
+              <a md-raised-button class="default" button-click-on-enter (click)="createReceipts()" [disabled]="blankReceiptForm.invalid || isSaving">
+                <i class="fa fa-plus-square-o" aria-hidden="true" *ngIf="!isSaving"></i>
+                <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="isSaving"></i>
+                {{ 'BLANK_RECEIPT.CREATE_RECEIPT' | translate }}
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

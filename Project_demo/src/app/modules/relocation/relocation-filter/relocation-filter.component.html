@@ -1,0 +1,108 @@
+<div class="filter-container">
+  <div class="row">
+    <div class="filter-window col-12">
+      <div class="row">
+        <div class="title-header col-12">
+          <i class="fa fa-filter" aria-hidden="true"></i> <span class="title">{{ 'RELOCATIONS.FILTER.TITLE' | translate }}</span> <span class="subtitle">{{ 'RELOCATIONS.FILTER.SUBTITLE' | translate }}</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-container col-12">
+          <form [formGroup]="filterForm">
+            <div class="row cell">
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.FROM"></app-label>
+                <app-autocomplete2 class="col-12 col-md-8" [elements]="definitions.places" formControlName="froms" [focus]="true" [multiple]="true"></app-autocomplete2>
+              </div>
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.ORDER_DATE"></app-label>
+                <app-date-input class="col-12 col-md-4" formControlName='florderDateFrom' [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"></app-date-input>
+                <app-date-input class="col-12 col-md-4" formControlName='florderDateTo' [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"></app-date-input>
+              </div>
+            </div>
+
+            <div class="row cell">
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.TO"></app-label>
+                <app-autocomplete2 class="col-12 col-md-8" [elements]="definitions.places" formControlName="tos" [multiple]="true"></app-autocomplete2>
+              </div>
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.UNLOADING_DATE"></app-label>
+                <app-date-input class="col-12 col-md-4" formControlName='unloadingDateFrom' [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"></app-date-input>
+                <app-date-input class="col-12 col-md-4" formControlName='unloadingDateTo' [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"></app-date-input>
+              </div>
+            </div>
+
+            <div class="row cell">
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.ETM_SHIPPING_NUMBER"></app-label>
+                <app-text-input  class="col-12 col-md-8" formControlName="etmShippingNumber"></app-text-input>
+              </div>
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.RECEIVER_REFERENCE_NUMBER"></app-label>
+                <app-text-input class="col-12 col-md-8" formControlName="customerReferenceNumber"></app-text-input>
+              </div>
+            </div>
+
+            <div class="row cell">
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.ETM_DOCUMENT_NUMBER"></app-label>
+                <app-text-input class="col-12 col-md-8" formControlName="etmDocumentNumber"></app-text-input>
+              </div>
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.SENDER_REFERENCE"></app-label>
+                <app-text-input class="col-12 col-md-8" formControlName="senderReferenceNumber"></app-text-input>
+              </div>
+            </div>
+
+            <div class="row cell">
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.SALES_ORDER_NUMBER"></app-label>
+                <app-text-input  class="col-12 col-md-8" formControlName="salesOrderNumber"></app-text-input>
+              </div>
+            </div>
+
+            <div *ngIf="showAdvanced">
+              <div class="row cell">
+                <div class="row col-12 col-md-6">
+                  <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.ORDER_STATUS"></app-label>
+                  <app-autocomplete2 class="col-12 col-md-8" [elements]="definitions.order.status" formControlName="orderStatuses" [focus]="true" [multiple]="true"></app-autocomplete2>
+                </div>
+                <div class="row col-12 col-md-6">
+                  <div class="col-12 column">
+                    <div class="row cell">
+                      <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.PALLET_ID"></app-label>
+                      <app-autocomplete2 class="col-12 col-md-8" [elements]="definitions.pallet.type" formControlName="palletIds" [multiple]="true"></app-autocomplete2>
+                    </div>
+
+                    <div class="row cell">
+                      <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.TRANSPORTER"></app-label>
+                      <div class="col-12 col-md-8">
+                        <app-text-input formControlName="transporter"></app-text-input>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="end-xs">
+              <a md-button (click)="showAdvanced=true" *ngIf="!showAdvanced" [disabled]="isLoading">
+                {{ 'ORDERS.FILTER.BUTTONS.MORE_SEARCH_OPTIONS'| translate }}
+              </a>
+              <a md-button (click)="showAdvanced=false" *ngIf="showAdvanced" [disabled]="isLoading">
+                {{ 'ORDERS.FILTER.BUTTONS.LESS_SEARCH_OPTIONS' | translate }}
+              </a>
+              <a md-raised-button class="default" (click)="filterClicked()" [disabled]="filterForm.invalid || isLoading">
+                <i class="fa fa-filter" aria-hidden="true" *ngIf="!isLoading"></i>
+                <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="isLoading"></i>
+                {{ 'RELOCATIONS.FILTER.BUTTONS.FILTER_TEXT' | translate }}
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

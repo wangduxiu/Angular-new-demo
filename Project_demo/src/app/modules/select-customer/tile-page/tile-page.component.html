@@ -1,0 +1,26 @@
+<div>
+
+  <div class="fixed">
+    <div class="parent-tile" *ngIf="parentTile">{{parentTile.name}}</div>
+    <!-- search -->
+    <tile-search
+      [tilesGroupedByLetter]="tilesGroupedByLetter"
+      (filteredTilesUpdated)="updateFilteredTiles($event)"
+      [clearFilter]="clearFilter"
+    ></tile-search>
+  </div>
+
+  <div class="vertical-scroll">
+    <!-- list -->
+    <tile-list
+      [tilesGroupedByLetter]="filteredTilesGroupedByLetter"
+      [tileIdLoading]="tileIdLoading"
+      [filterToNarrowTranslationCode]="filterToNarrowTranslationCode"
+      (tileClicked)="tileClicked.emit($event)"
+    ></tile-list>
+
+    <div *ngIf="!tilesGroupedByLetter || tilesGroupedByLetter.length === 0" class="errorMessages"><!-- TODO STYLING -->
+      {{noTilesFoundTranslationCode | translate}}
+    </div>
+  </div>
+</div>

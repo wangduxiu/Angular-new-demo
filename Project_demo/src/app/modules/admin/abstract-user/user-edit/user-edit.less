@@ -1,0 +1,89 @@
+@import '../../../../shared/styles/globalVars.less';
+
+.button-container {
+  background-color: @background;
+  padding-top: 20px;
+  padding-bottom: 0;
+  margin-bottom: -20px;
+  padding-right: 15px;
+
+  .buttons {
+    float: right;
+
+    a.mat-button {
+      background-color: white !important;
+    }
+  }
+}
+
+.admin-page-title {
+  height: 80px;
+  padding: 0 @page-horizontal-padding;
+  display: flex;
+  align-items: center;
+  @media only screen and (max-width: @medium-screen-width) {
+    flex-direction: column;
+    margin: 0.5em 0;
+  }
+
+  .content {
+    margin-left: 20px;
+  }
+}
+
+.admin-options {
+  padding-left: 30px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+}
+
+.userForm {
+  padding: @form-padding;
+  background-color: @background-form;
+
+  .row {
+    margin-bottom: 20px;
+    display: flex;
+  }
+
+  .input_wrapper {
+    width: 100%;
+
+    .mat-input-container {
+      width: 100%;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    a + a {
+      margin-left: 10px;
+    }
+  }
+
+  .align_top {
+    ::ng-deep .labelContainer {
+      padding-top: 0;
+    }
+  }
+}
+
+.mat-tooltip {
+  display: inline-block;
+  position: absolute;
+  top: -20px;
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 2px;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 10px;
+  margin: 14px;
+  max-width: 250px;
+  background: rgba(97, 97, 97, 0.9);
+}

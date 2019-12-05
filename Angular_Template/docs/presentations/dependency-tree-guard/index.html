@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+        @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+        body {
+            font-family: 'Droid Serif';
+        }
+
+        h1, h2, h3 {
+            font-family: 'Yanone Kaffeesatz';
+            font-weight: normal;
+        }
+
+        .remark-code, .remark-inline-code {
+            font-family: 'Ubuntu Mono';
+        }
+
+        .title {
+            font-size: 96pt;
+            font-family: 'Yanone Kaffeesatz';
+        }
+    </style>
+</head>
+<body>
+<textarea id="source">
+  class: center, middle
+  .title[Guards]
+  ## The issue with dependencies
+  ---
+
+  # Problem setting
+
+  **Problem detected in EPS Webportal**
+
+  If you want to edit a user, this needs to happen first:
+  - Load the user data
+  - Check if you have the right authorization
+  - Check if you are logged in
+  - Load the definitions (translations of select fields)
+
+  ---
+
+  ## Most used approach:
+  - Use a guard
+
+  ````javascript
+  const routes: Routes = [
+  {
+    path: 'admin/user/edit/:id',
+    component: EditUserContainer,
+    canActivate: [IsAuthenticatedGuard, IsAuthorizedGuard,
+                  DefinitionsLoadedGuard, UserLoadedGuard],
+    data: {
+      authorization: 'CAN-EDIT-USER'
+    }
+  }
+  ```
+
+  ps: a guard implements the interface CanActivate and has 1 method that returns true or false
+
+  ---
+
+  ## Problem
+
+  .center[![alt guard](in-parallel.png "Title")]
+
+  **All started in parallel**
+  And some API calls can fail if you're not logged in
+
+  ---
+
+  ## Chaining is not optimal and cumbersome
+
+  .center[![alt guard](in-sequel.png "Title")]
+
+  - takes too long
+  - hard to define which guards needed in which order
+
+  ---
+
+  # Best solution
+
+  - Each guard can define on which guard it depends
+    - EditUserGuard depends on UserLoadedGuard
+    - UserLoadedGuard depends on DefinitionsLoadedGuard and IsAuthorizedGuard
+    - IsAuthorizedGuard depends on IsAuthenticatedGuard
+
+  --
+
+  .center[![alt guard](optimal.png "Title")]
+
+  ---
+
+  # Implementation: DependencyTreeGuard
+
+  Route:
+  ````javascript
+  const routes: Routes = [{
+    path: 'admin/user/edit/:id',
+    component: EditUserContainer,
+    canActivate: [DependencyTreeGuard],
+    data: {
+      guards: [EditUserGuard]
+    }
+  }]
+  ```
+  EditUserGuard:
+  ````javascript
+  export class EditUserGuard implements DependencyTreeCanActivate {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+      return true;
+    }
+    getDependencies(): any {
+      return [GetUserGuard, IsAuthorizedGuard];
+    }
+    getDependencyRouteData(): any {
+      return {
+        authorization: 'CAN-EDIT-USER'
+      }
+    }
+  }
+  ```
+
+  ---
+  # Unit tested !!!
+
+  .center[![alt guard](unit-tested.png "Title")]
+
+  ---
+
+  # One more thing
+
+  --
+
+  The DependencyTreeGuard will make a tree of all guards involved.
+  - Every guard will be converted into an Observable and stored in the tree
+  - Then the tree is executed
+
+  --
+
+  ### Problem: don't do anything as long as the DTG doesn't subscribe to the observable !
+
+  --
+
+  Fixed it with a **ColdSubject**
+
+  ```javascript
+      return new ColdSubject((subject) => {
+        return <boolean>;
+        or
+        return Promise<boolean>;
+        or
+        return Observable<boolean>;
+        or
+        subject.next() || subject.fail() || subject.complete()
+      });
+  ```
+
+  ---
+
+  # That's all folks
+
+  ## Check it out:
+
+  ### GitHub
+  - The angular template: [MW_Delaware_AngularTemplate](https://github.com/netweaverdlw/MW_Delaware_AngularTemplate)
+  - action-reducer-guard: [W_delaware_dlw_action_reducer_guard](https://github.com/netweaverdlw/W_delaware_dlw_action_reducer_guard)
+  - action-reducer: [MW_delaware_dlw_action_reducer](https://github.com/netweaverdlw/MW_delaware_dlw_action_reducer)
+
+  ### MyGet
+  - @dlw/action-reducer-ng-guard
+  - @dlw/action-reducer
+
+
+</textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>
+    var slideshow = remark.create();
+</script>
+</body>
+</html>

@@ -1,0 +1,1131 @@
+{
+  "SHARED": {
+    "SYNC_SUCCESS": "Sync successful",
+    "DATE_FORMATS": {
+      "WEEK": "week ww, yyyy",
+      "DAY": "dd/mm/yyyy"
+    },
+    "PAGING": {
+      "PREVIOUS": "",
+      "NEXT": ""
+    },
+    "BUTTONS": {
+      "YES": "Yes",
+      "NO": "No",
+      "CANCEL": "Cancel",
+      "EDIT": "Edit",
+      "SUBMIT": "Submit",
+      "SAVE": "Save",
+      "CREATE": "Create",
+      "GO_TO_DASHBOARD": "Go to dashboard",
+      "GO_TO_DETAIL": "Go to detail",
+      "GO_TO_OVERVIEW": "Go to overview",
+      "BACK": "Back",
+      "CLOSE": "Close",
+      "DOWNLOAD_DOCUMENT": "Download document",
+      "CREATE_A_NEW_ONE": "Create a new one",
+      "COPY_TO_CLIPBOARD": "Copy to clipboard"
+    },
+    "DAYS": {
+      "MONDAY": "Monday",
+      "TUESDAY": "Tuesday",
+      "WEDNESDAY": "Wednesday",
+      "THURSDAY": "Thursday",
+      "FRIDAY": "Friday",
+      "SATURDAY": "Saturday",
+      "SUNDAY": "Sunday",
+      "UNTIL": "until"
+    },
+    "ORDINAL": {
+      "FIRST": "First",
+      "SECOND": "Second",
+      "THIRD": "Third",
+      "FOURTH": "Fourth",
+      "LAST": "Last"
+    },
+    "HEADER": {
+      "ORDERS": "ORDERS",
+      "FLOWS": "FLOWS",
+      "CALENDAR": "CALENDAR",
+      "INVOICES": "INVOICES",
+      "STOCK": "STOCK",
+      "REPORT": "REPORT",
+      "BLANK": "BLANK RECEIPT",
+      "LOGGED_AS": "LOGGED IN AS",
+      "LOGIN": "Log in",
+      "LOGOUT": "Log out",
+      "SWITCH_CUSTOMER": "Switch customer",
+      "LOADING_CONTRACT": "Loading contract",
+      "LOADING_CONTEXT": "Loading context",
+      "FAQ": "FAQ",
+      "CONTACT_US": "CONTACT US",
+      "EMAIL_ACTORS": "EMAIL ACTORS",
+      "WELCOME": "Welcome",
+      "RELOCATIONS": "RELOCATIONS",
+      "TUTORIALS": "TUTORIALS",
+      "MORE": "MORE..."
+    },
+    "LABELS": {
+      "OPTIONAL": "Optional",
+      "COLLAPSE_ALL": "Collapse all",
+      "SHOW_ALL": "Show all",
+      "SEARCH": "Search: ",
+      "NO_ADDRESS": "No address",
+      "FROM": "from",
+      "TO": "to",
+      "OR": "or",
+      "MORE": "more",
+      "NO_RESULTS_FOUND": "No results found"
+    },
+    "MODAL": {
+      "HEADER_SUCCESS": "<p class='col-12'><span class='spanStyle'>Dear {{name}},</span></p><br><p class='col-12'> your registration was <span class='spanStyle'>successfully</span> saved in our system!</p>",
+      "HEADER_ERROR": "<p class='col-12'><span class='spanStyle'>Dear {{name}},</span></p><br><p class='col-12'> there has been an <span class='spanStyle'>error</span> while saving in our system!</p>",
+      "HEADER_HANDSHAKE_SUCCESS": "<p class='col-12'><span class='spanStyle'>Dear {{name}},</span></p><br><p class='col-12'> your flow handshake was <span class='spanStyle'>successfully</span> saved in our system!</p>",
+      "HEADER_HANDSHAKE_ERROR": "<p class='col-12'><span class='spanStyle'>Dear {{name}},</span></p><br><p class='col-12'> there has been an <span class='spanStyle'>error</span> while handshaking this flow in our system!</p>",
+      "HEADER_WARNING": "<p class='col-12'><span class='spanStyle'>WARNING</span> MESSAGE</p>",
+      "HEADER_EMAIL": "Select email addresses",
+      "HEADER_INACTIVE": "Inactive",
+      "MSG_SUCCESS": "<p class='col-12'>In case of questions or remarks refer to transaction number <span class='spanStyle'>#{{number}}</span> when</p> <p class='col-12'>contacting your Local Office</p> <p class='col-12'>Thank you and have a good day!</p>",
+      "MSG_ERROR": "<p class='col-12'>In case of questions or remarks contact your Local Office</p> <p class='col-12'>Thank you and have a good day!</p>",
+      "MSG_HANDSHAKE_SUCCESS": "<p class='col-12'>In case of questions or remarks refer to transaction number <span class='spanStyle'>#{{number}}</span> when</p> <p class='col-12'>contacting your Local Office</p> <p class='col-12'>Thank you and have a good day!</p>",
+      "MSG_HANDSHAKE_ERROR": "<p class='col-12'>In case of questions or remarks contact your Local Office</p> <p class='col-12'>Thank you and have a good day!</p>",
+      "MSG_WARNING": "<p class='col-12'><span class='spanStyle'>WARNING</span> In case of questions or remarks refer to transaction number <span class='spanStyle'>#{{number}}</span> when</p> <p class='col-12'>contacting your Local Office</p> <p class='col-12'>Thank you and have a good day!</p>",
+      "MSG_INACTIVE": "You have been inactive for a while. You will be logged out in",
+      "MSG_DL40_SUCCESS": "<p class='col-12'><span class='multiModalWarning'>Due to multi-modal transportation, please contact your Customer Service support for an exact delivery date</span></p><p class='col-12'><span class='spanStyle'>Dear {{name}},</span></p><br><p class='col-12'> your order was <span class='spanStyle'>successfully</span> saved in our system!</p>",
+      "SUCCESS": "Success",
+      "ERROR": "Error",
+      "INFO": "Info",
+      "WARNING": "Warning"
+    }
+  },
+  "DASHBOARD": {
+    "TITLE": {
+      "YOUR": "YOUR",
+      "DASHBOARD": "DASHBOARD"
+    },
+    "GENERAL": {
+      "VIEW_ALL": "View all",
+      "NEW_FEATURE": {
+        "NEW": "New",
+        "FEATURE": "feature"
+      }
+    },
+    "TEMPLATE": {
+      "TITLE": {
+        "LINE1": "Create",
+        "LINE2": "template"
+      },
+      "DESCRIPTION": "<p>Are your harvests scattered across the season?</p><p>And as a consequence need to reorder the same amounts each time?</p>",
+      "BUTTON": "Create a template"
+    },
+    "CALENDAR": {
+      "TITLE": {
+        "LINE1": "Check the",
+        "LINE2": "Calendar"
+      },
+      "DESCRIPTION": "Create orders directly in the calendar view or easily create orders by dragging templates to the calendar",
+      "BUTTON": "Go to calendar"
+    },
+    "OPEN_HANDSHAKES": {
+      "TITLE": {
+        "LINE1": "Open",
+        "LINE2": "handshakes"
+      },
+      "ELEMENT_PREFIX": "Handshake"
+    },
+    "OPEN_HANDSHAKES_SUMMARY": {
+      "TITLE": {
+        "LINE1": "Open",
+        "LINE2": "handshakes"
+      },
+      "BUTTON": "Confirm open handshakes"
+    },
+    "LATEST_ORDERS": {
+      "TITLE": {
+        "LINE1": "Your latest",
+        "LINE2": "orders"
+      },
+      "ELEMENT_PREFIX": "Order"
+    },
+    "DEPOT": {
+      "TITLE": {
+        "LINE1": "Your",
+        "LINE2": "depot"
+      },
+      "ELEMENT_PREFIX": "Order"
+    },
+    "LATEST_FLOWS": {
+      "TITLE": {
+        "LINE1": "Your latest",
+        "LINE2": "flows"
+      },
+      "ELEMENT_PREFIX": "Flow"
+    },
+    "STOCK": {
+      "TITLE": {
+        "LINE1": "Your",
+        "LINE2": "stock"
+      },
+      "PALLETS": "pallets",
+      "PACKINGS": "packings"
+    }
+  },
+  "SELECT_CUSTOMER": {
+    "SALES_ORG": "Sales organisation",
+    "CUSTOMERS": "Customers",
+    "FILTER": {
+      "NO_CUSTOMER": "No customers match your filter",
+      "NO_SALES_ORGANISATION": "No sales organisations match your filter"
+    }
+  },
+  "ORDERS": {
+    "FILTER": {
+      "TITLE": "Filter",
+      "SUBTITLE": "orders",
+      "LABELS": {
+        "ORDER_DATE": "Order date",
+        "UNLOADING_DATE": "(Un)loading date",
+        "ORDER_TYPE": "Order type",
+        "TRANSPORT": "Transport",
+        "INCOTERM": "Incoterm",
+        "SHIPPING_CONDITION": "Shipping condition",
+        "TRANSPORT_PICKUP": "Pickup",
+        "TRANSPORT_EPS": "By EPS",
+        "ORDER_STATUS": "Order status",
+        "CUSTOMERS": "Customers",
+        "CUSTOMER_REFERENCE_NUMBER": "Customer reference no",
+        "RECEIVER_REFERENCE_NUMBER": "Receiver reference",
+        "SENDER_REFERENCE": "Sender reference",
+        "PALLET_ID": "Pallet ID",
+        "PACKING_ID": "Packing ID",
+        "TRANSPORTER": "Transporter",
+        "ETM_DOCUMENT_NUMBER": "ETM document no",
+        "ETM_SHIPPING_NUMBER": "ETM shipping no",
+        "CCR-CHECK": "CCR-check",
+        "FROM": "From",
+        "TO": "To",
+        "SHIPTO": "Ship to",
+        "SEAL_NUMBER": "Seal number",
+        "CCR": "CCR",
+        "CREATE_CCR": "Create CCR",
+        "SALES_ORDER_NUMBER": "Sales order number"
+      },
+      "BUTTONS": {
+        "MORE_SEARCH_OPTIONS": "More search options",
+        "LESS_SEARCH_OPTIONS": "Less search options",
+        "FILTER_TEXT": "Filter orders",
+        "ADD_TEMPLATE": "Template",
+        "ADD_ORDER": "Order",
+        "ADD_RELOCATION": "Relocation"
+      }
+    },
+    "LIST": {
+      "TITLE": "RESULTS",
+      "SUBTITLE": "ORDERS",
+      "COUNT": "{{count}} orders",
+      "COUNT_1": "1 order",
+      "COUNT-POSTSCRIPT": "match your criteria",
+      "DOWNLOAD_AS": "Download the results in",
+      "DOWNLOADING": "Downloading...",
+      "PDF": "pdf",
+      "EXCEL": "excel",
+      "OR": "or",
+      "LABELS": {
+        "ORDER_DATE": "Order date",
+        "NUMBER": "Number",
+        "FROM": "From",
+        "TO": "To",
+        "REQUESTED_DATE": "Requested date",
+        "CONFIRMED_DATE": "Confirmed date",
+        "TRANSPORT": "Transport",
+        "GLOBAL_TYPE": "Global type",
+        "ACCEPTED": "Accepted",
+        "REJECTED": "Rejected",
+        "ACCEPT_DEVIATION": "Accept deviation",
+        "REJECT_DEVIATION": "Reject deviation"
+      },
+      "BUTTONS": {
+        "COPY": "Copy",
+        "AS_TEMPLATE": "Create template from order",
+        "ACCEPT": "Accept",
+        "REJECT": "Reject",
+        "DOWNLOAD_DOCUMENT": "Download document"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "ORDER",
+      "SUBTITLE": "LINES",
+      "REGISTERED_BY": "Registered by"
+    },
+    "PLANNING": {
+      "TITLE": "ORDER",
+      "SUBTITLE": "PLANNING",
+      "BUTTONS": {
+        "NEXT": "Next",
+        "SAVE": "Save"
+      }
+    },
+    "NO_PLANNING": {
+      "TITLE": "TEMPLATE",
+      "SUBTITLE": "DETAILS"
+    },
+    "DELIVERY": {
+      "TITLE": "GENERAL",
+      "SUBTITLE": "",
+      "VALUES": {
+        "RECURRENCY": {
+          "WEEKLY": "Weekly, every {{days}}",
+          "MONTHLY-NROFDAY": "Monthly, day {{day}} of every {{monthPeriodicy1}} month(s)",
+          "MONTHLY-WHICHDAY": "Monthly, the {{which}} {{weekday}} of every {{monthPeriodicy2}} month(s)",
+          "UNTIL": "until {{endDate}}"
+        }
+      },
+      "LABELS": {
+        "CHOOSE_TYPE": "Order type",
+        "TYPE_DELIVERY": "Delivery",
+        "TYPE_RETURN": "Return",
+        "TYPE_DIRECT_SERVICES": "Direct services",
+        "TYPE_MOVEMENT": "Movement",
+        "SOLD_TO": "Sold to",
+        "TO": "To",
+        "TRANSPORT": "Transport",
+        "SHIPPING_CONDITION": "Shipping condition",
+        "INCOTERM": "Incoterm",
+        "TRANSPORT_PICKUP": "Pickup",
+        "TRANSPORT_EPS": "By EPS",
+        "PICKUP_POINT": "Pickup point",
+        "RECURRENCE": "Recurrence",
+        "CUSTOMER_REFERENCE_NUMBER": "Receiver ref.",
+        "SENDER_REFERENCE": "Sender ref.",
+        "CLEARING": "Clearing",
+        "LICENCE_PLATE": "Licence plate",
+        "REMARKS": "Remarks",
+        "RECURRENCY_PATTERN": "Recurrency pattern",
+        "PATTERN_WEEKLY": "Weekly",
+        "PATTERN_MONTHLY": "Monthly",
+        "END_DATE_RECURRENCE": "End date recurrence",
+        "FROM": "From",
+        "RECURRENCY_TIME": "Recurrency time",
+        "MONTHLY": {
+          "DAY": "Day",
+          "OF_EVERY": "of every",
+          "MONTHS": "month(s)",
+          "THE": "The"
+        },
+        "REQUESTED_DATE": "REQUESTED UNLOADING DATE",
+        "CONFIRMED_DATE": "CONFIRMED UNLOADING DATE",
+        "EXCHANGE_PALLET": "EXCHANGE PALLETS",
+        "NUMBER_OF_EXCHANGE_PALLETS": "NUMBER OF EXCHANGE PALLETS",
+        "COMMENTS": "REMARKS",
+        "TRANSPORTER": "TRANSPORTER",
+        "PLATE": "LICENCE PLATE",
+        "CUSTOMER_REF": "CUSTOMER REF NUMBER",
+        "RECEIVER_REF": "RECEIVER REF",
+        "SENDER_REF": "SENDER REF",
+        "NO_REMARKS": "No remarks",
+        "NO_TRANSPORTER": "No transporter",
+        "NO_LICENCE_PLATE": "No licence plate",
+        "MASK": "Mask: ",
+        "NO_RECEIVER_REF": "No receiver reference",
+        "NO_SENDER_REF": "No sender reference"
+      },
+      "BUTTONS": {
+        "NEXT": "Go to order lines",
+        "SAVE": "Save"
+      }
+    },
+    "DETAIL": {
+      "LABELS": {
+        "LOADING_DATE": "Loading date",
+        "UNLOADING_DATE": "Unloading date",
+        "EXCHANGE_PALLETS": "Exchange pallets",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Amount of pallets",
+        "CREATE_TEMPLATE": "Save as template",
+        "TEMPLATE_NAME": "Name template",
+        "SUBMIT_ORDER": "Submit order",
+        "OPEN_ORDER": "Open order",
+        "COPY_ORDER": "Copy order",
+        "GET_DELIVERY_DATES": "Get delivery dates"
+      },
+      "BUTTONS": {
+        "NEXT": "Go to order planning",
+        "SAVE": "Save"
+      }
+    },
+    "MATERIAL": {
+      "TITLE": "Add Material",
+      "TYPE": "Choose type",
+      "LABELS": {
+        "TYPES": {
+          "PACKING": "Packing",
+          "PALLET": "Pallet",
+          "COMBO": "Combination"
+        },
+        "TYPE_PACKING": "Type packing",
+        "TYPE_PALLET": "Type pallet",
+        "NO_LC": "Free material",
+        "STATUS_PALLET": "Status pallet",
+        "STATUS_PACKING": "Status packing",
+        "LOGISTIC_VARIETY": "Logistic variety p.",
+        "PACKING_PER_PALLET": "Packings per pallet",
+        "NUMBER_OF_PALLETS": "Number of pallets",
+        "QUANTITY": "Quantity",
+        "PO_NUMBER": "Po number",
+        "PO_NUMBER_ITEM": "Po item number",
+        "MESSAGE": "Message",
+        "PFQ_EUR": "Number of EPP (Euro size)",
+        "PFQ_POOL": "Number of EPP (Pool size)",
+        "EXCHANGE_PALLETS": "Exchange pallets",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Number of europallets to exchange",
+        "CREATE_TEMPLATE": "Save as template",
+        "TEMPLATE_NAME": "Name template",
+        "NR_OF_PFQS": "Number of EPPs",
+        "FULL": "Full truck",
+        "OVERLOADED": "Overloaded",
+        "PACKING": "Packing",
+        "STATUS": "Status",
+        "LOGISTIC_VAR": "Logistic var.",
+        "QTY": "Quantity",
+        "QTY_LOADED": "Loaded quantity",
+        "QTY_UNLOADED": "Unloaded quantity",
+        "QTY_DIFFERENCE": "Difference",
+        "EXCHANGE": "Exchange",
+        "BALANCED": "Requested balance",
+        "REFERENCE": "Reference",
+        "CONTENT": "Content",
+        "LINE_REFERENCE": "Line reference"
+      },
+      "NOTIFICATIONS": {
+        "MATERIAL_ADDED": "Material added succesfully",
+        "MATERIAL_REMOVED": "Material removed succesfully",
+        "MATERIAL_ALREADY_EXISTS": "Material already added.  Please add something else or edit existing line."
+      },
+      "BUTTONS": {
+        "ADD_MATERIAL": "Add material",
+        "SAVING": "Saving"
+      }
+    },
+    "DOCUMENTS": {
+      "TITLE": "Documents",
+      "NO_DOCUMENTS": "No documents"
+    },
+    "RECURRENCE": {
+      "TITLE": "Recurrence dates",
+      "REQUESTED_DATE": "Requested date",
+      "PROPOSED_DATE": "Proposed date",
+      "DATE": "Date",
+      "CREATE": "Create orders"
+    }
+  },
+  "TEMPLATES": {
+    "DETAILS": {
+      "TITLE_ORDER": "ORDER TEMPLATE",
+      "TITLE_RELOCATION": "RELOCATION TEMPLATE",
+      "CREATE_SUCCESS": "Template has been created successfully",
+      "EDIT_SUCCESS": "Template has been updated successfully"
+    }
+  },
+  "FLOWS": {
+    "FILTER": {
+      "TITLE": "Filter",
+      "SUBTITLE": "flows",
+      "LABELS": {
+        "FLOW_DATE": "Flow date",
+        "FLOW_TYPE": "Flow type",
+        "STATUS": "Status",
+        "STATUS_HANDSHAKE": "Waiting for handshake",
+        "STATUS_DEFINITIVE": "Definitive",
+        "STATUS_CANCEL": "Cancel",
+        "DIFFERENCE": "Difference",
+        "CLEARING": "Clearing",
+        "HANDSHAKE_DATE": "Handshake date",
+        "PACKING_ID": "Packing ID",
+        "CHECKED": "Checked"
+      },
+      "BUTTONS": {
+        "FILTER_TEXT": "Filter flows",
+        "ADD_FLOW": "Flow"
+      }
+    },
+    "LIST": {
+      "TITLE": "RESULTS",
+      "SUBTITLE": "FLOWS",
+      "SELECTED": "{{selected}} selected",
+      "COUNT": "{{count}} flows",
+      "COUNT_1": "1 flow",
+      "COUNT-POSTSCRIPT": "match your criteria",
+      "LABELS": {
+        "FLOW_DATE": "Flow date",
+        "NUMBER": "Document number",
+        "STATUS_HANDSHAKE": "Status handshake",
+        "TYPE": "Type",
+        "ORIGINAL": "Sender",
+        "DEFINITIVE": "Receiver",
+        "DIFFERENCE": "Difference",
+        "CONTENT": "Content",
+        "REFERENCE": "Reference",
+        "COLLAPSE_COUNT": "Collapse ({{count}})",
+        "SHOW_COUNT": "Show all ({{count}})",
+        "COPY_FLOW": "Copy flow",
+        "OPEN_FLOW": "Open flow",
+        "CANCEL_FLOW": "Cancel flow",
+        "CANCEL_FLOW_CONFIRM": "Are you sure you want to cancel flow {{flowId}}?"
+      },
+      "BUTTONS": {
+        "CANCEL": "Cancel",
+        "ACCEPT": "Accept",
+        "MULTI_ACCEPT": "Accept all",
+        "HANDSHAKE_FLOW": "Handshake flow",
+        "REJECT": "Reject",
+        "EDIT_FLOW_REGISTRAR": "Edit flow",
+        "EDIT_FLOW_HANDSHAKER": "Update flow"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "FLOW",
+      "SUBTITLE": "LINES",
+      "BUTTONS": {
+        "NEXT": "Go to transaction date"
+      }
+    },
+    "PLANNING": {
+      "TITLE": "TRANSACTION",
+      "SUBTITLE": "DATE"
+    },
+    "DELIVERY": {
+      "TITLE": "GENERAL",
+      "SUBTITLE": "",
+      "LABELS": {
+        "FLOW_DIRECTION": "Flow direction",
+        "WHOLESALER": "Wholesaler",
+        "FLOWTYPE": "Flow type",
+        "REMARKS_HANDSHAKER": "Remarks handshaker"
+      },
+      "BUTTONS": {
+        "NEXT": "Go to flow lines"
+      }
+    },
+    "NOTIFICATIONS": {
+      "ACCEPT_INVALID": "The following flows with document number contain invalid input: {{invalids}}",
+      "ACCEPT_FLOW": "Accept flow",
+      "ACCEPT_FLOWS": "Accept flows",
+      "FIND_FLOWS": "Find flows",
+      "CANCEL_FLOWS": "Cancel flows",
+      "DOWNLOAD_FILE": "Download file"
+    }
+  },
+  "CCR": {
+    "DETAILS": {
+      "TITLE": "CCR",
+      "MATERIAL_LINES": "Material lines",
+      "CCR_LINES": "CCR lines",
+      "CREATE_SUCCESS": "CCR was successfully created"
+    }
+  },
+  "INVOICES": {
+    "GO_TO_DESCARTES": "E-Invoices",
+    "DESCARTES_INVOICES": "Descartes invoices",
+    "FILTER": {
+      "TITLE": "FILTER",
+      "SUBTITLE": "INVOICES",
+      "LABELS": {
+        "SOLD_TO": "SOLD TO",
+        "TYPE": "INVOICE TYPE",
+        "NUMBER": "INVOICE NUMBER",
+        "LOADING_DATE": "(Un)loading date",
+        "CURRENCY": "CURRENCY",
+        "AMOUNT": "INVOICE AMOUNT",
+        "EURO": "EURO",
+        "LOCAL": "Local currency"
+      },
+      "BUTTONS": {
+        "FILTER_TEXT": "Filter invoices"
+      }
+    },
+    "LIST": {
+      "TITLE": "RESULTS",
+      "SUBTITLE": "INVOICES",
+      "LABELS": {
+        "PARTNER": "Financial partner",
+        "NUMBER": "Invoice number",
+        "DATE": "Invoice date",
+        "NET_AMOUNT": "NET amount",
+        "VAT_AMOUNT": "VAT amount",
+        "TOTAL": "Total amount",
+        "CURRENCY": "Currency",
+        "TYPE": "Type",
+        "SOLD_TO": "Financial partner",
+        "COUNT": "{{count}} invoices",
+        "COUNT-POSTSCRIPT": "match your criteria",
+        "COUNT_1": "1 user",
+        "DOWNLOAD_AS": "Download the results in",
+        "DOWNLOADING": "Downloading...",
+        "EXCEL": "excel"
+      }
+    }
+  },
+  "ADMIN": {
+    "GENERAL": {
+      "EPS_USERS": "EPS users",
+      "CLIENT_USERS": "Client users"
+    },
+    "FILTER": {
+      "TITLE": "Filter",
+      "LABELS": {
+        "FIRST_NAME": "First Name",
+        "ASSIGNED": "Assigned",
+        "SYNC_WITH_AD": "Synchronize with Active Directory",
+        "SYNCING_WITH_AD": "Synchronizing with Active Directory",
+        "LAST_NAME": "Last name",
+        "EMAIL": "E-mail",
+        "ID": "Id",
+        "PHONE": "Mobile phone"
+      },
+      "BUTTONS": {
+        "INVITE": "Invite user",
+        "EDIT": "Edit"
+      }
+    },
+    "I18N": {
+      "LABEL": "TRANSLATIONS",
+      "BUTTONS": {
+        "SAVE": "SAVE",
+        "SAVING": "SAVING...",
+        "TEST": "TEST LANGUAGE",
+        "EDIT": "EDIT",
+        "LOADING": "LOADING...",
+        "VERIFY": "VERIFY",
+        "RESET": "RESET TO INITIAL VALUES"
+      }
+    },
+    "SHARED": {
+      "COPIED": "Copied!",
+      "CLIENTUSERS": "CLIENT USERS",
+      "CLIENTUSER": "Client user",
+      "EPSUSERS": "EPS USERS",
+      "EPSUSER": "EPS user",
+      "INVITATION_DATES": "INVITATION DATES",
+      "INVITE": "Invite",
+      "RE_INVITE": "Re-invite",
+      "USER_RE_INVITE_SUCCESS": "The user has been re-invited",
+      "USER_RE_INVITE_FAIL": "The user could not be re-invited",
+      "RESET_PASSWORD": "Reset password",
+      "USER_RESET_PASSWORD_SUCCESS": "The user's password has been reset.  New password is <b>{{newPassword}}</b>",
+      "USER_RESET_PASSWORD_FAIL": "The user's password could not be reset",
+      "CREATE": "Create",
+      "BULK_INVITE_CREATE": "Bulk invite & create",
+      "UPDATE": "Update",
+      "EDIT": "Edit",
+      "COUNT": "{{count}} users",
+      "COUNT-POSTSCRIPT": "match your criteria",
+      "COUNT_1": "1 user",
+      "ADD": "Add",
+      "USER_UPDATE_SUCCESS": "User was successfully updated.",
+      "USER_UPDATE_FAIL": "User could not be updated.",
+      "USER_INVITE_SUCCESS": "User was successfully invited.",
+      "USER_INVITE_FAIL": "User could not be invited.",
+      "USER_CREATE_SUCCESS": "<div>User was successfully created with following details:</div><div>Username: <b>{{mail}}</b></div><div>Password: <b>{{password}}</b></div><div>Copy the credentials and store them as you cannot retrieve the password again.</div>",
+      "USER_CREATE_FAIL": "User could not be created.",
+      "NAME": "Name",
+      "ID": "ID"
+    },
+    "EPS_USERS": {
+      "NAME": "First name",
+      "EMAIL": "E-mail",
+      "ALTERNATE_EMAIL": "Alternate e-mail",
+      "LAST_NAME": "Last name",
+      "SALES_ORG": "Sales organisations",
+      "NO_SALES_ORG": "No sales organisations",
+      "SEARCH_SALES_ORG": "Search sales organisation",
+      "ADMIN": "Admin",
+      "CUSTOMER_ROLE_LIST": "Customer mapping",
+      "ADD_SALES_ORGANISATION": "Add sales organisation",
+      "LANGUAGE": "Language",
+      "RELOCATION": "Relocation",
+      "UPDATE_EPS_USER": "Update EPS users",
+      "INVITE_EPS_USER": "Invite EPS users",
+      "CREATE_CLIENT_USER": "Create client users",
+      "UPDATE_CLIENT_USER": "Update client users",
+      "INVITE_CLIENT_USER": "Invite client users",
+      "RESET_PASSWORD": "Reset passwords",
+      "RE_INVITE": "Re-invite users",
+      "LIST": {
+        "TITLE": "RESULTS",
+        "SUBTITLE": "EPS USERS"
+      }
+    },
+    "CLIENT_USERS": {
+      "LIST": {
+        "TITLE": "RESULTS",
+        "SUBTITLE": "CLIENT USERS",
+        "ASSIGNED": "Assigned"
+      },
+      "BUTTONS": {
+        "PROCESS": "Process",
+        "PROCESSING": "Processing",
+        "GET_EXAMPLE": "Get example excel file",
+        "UPLOAD_XLS": "Upload excel file"
+      },
+      "SALES_ORG": "Sales organisation",
+      "CUSTOMER": "Customer",
+      "SHIPTOS": "Ship to's",
+      "SOLDTO": "Sold to",
+      "ROLE": "Role",
+      "SEARCH_CUSTOMER": "Search customer",
+      "ADD_CUSTOMER": "Add new customer",
+      "ACTIVE": "Active",
+      "LANGUAGE": "Language",
+      "NO_CUSTOMER_ROLE_MAPPINGS": "No customer roles mappings",
+      "ALL_SHIPTOS": "All ship to's",
+      "IS_DELAYED": "Delayed invitation",
+      "CAN_USE_EMAIL_ACTORS": "Can use email-actors",
+      "IS_TRANSPORTER": "Is transporter (can query orders for multiple customers)"
+    },
+    "INVITATION_DATES": {
+      "NEXT_CLIENT_USER_INVITATION_DATE": "Next Client user invitation date",
+      "NEXT_EPS_USER_INVITATION_DATE": "Next EPS user invitation date"
+    },
+    "ROLES": {
+      "COMP": "Tray management complete",
+      "FIN": "Finance (invoice retrieval)",
+      "OWNER": "Owner",
+      "TMF_BAS": "Tray management flows (basic)",
+      "TMF_MED": "Tray management flows (medium)",
+      "TMF_PRO": "Tray management flows (pro)",
+      "TMF_RO": "Tray management flows (read-only)",
+      "TMO_BAS": "Tray management ordering (basic)",
+      "TMO_MED": "Tray management ordering (medium)",
+      "TMO_PRO": "Tray management ordering (pro)",
+      "TMO_RO": "Tray management ordering (read-only)",
+      "TMRC_RO": "Tray management complete (read-only)"
+    }
+  },
+  "ERRORS": {
+    "AUTHORIZATION": {
+      "ANOTHER_SESSION_WITH_DIFFERENT_CUSTOMER_OPENED": "You just opened a new session for another customer in another browser.  This session has been invalidated.",
+      "NO_CUSTOMERS": "You don't have any customers assigned to you.  Please contact your Euro Pool System administrator to give you access",
+      "NO_CUSTOMERS_IN_SALES_ORGANIZATION": "There are no customers in this sales organization group.  Please select another sales organization",
+      "NO_SALES_ORGANIZATIONS": "You don't have any sales organizations assigned to you.  Please contact your administrator to give you access",
+      "CONTRACT_EMPTY": {
+        "TITLE": "Contract not active",
+        "MESSAGE": "The selected customer has no active contract.  Please contact your Euro Pool System administrator to fix this"
+      },
+      "USER_NOT_PORTAL_VALID": "The logged in user has no rights to access the portal. Please login with another user."
+    },
+    "CONTRACT-INFO": {
+      "TITLE": "Contract",
+      "INVALID_CONTRACT_PART_1": "No contract found for selected fields. Please contact Euro Pool System to verify the validity of your contract."
+    },
+    "GET_RECURRENCE_DATES": {
+      "TITLE": "Get recurrence dates"
+    },
+    "GET_MATERIALS": {
+      "TITLE": "Get materials list"
+    },
+    "FILTER_FAILED": {
+      "TITLE": "Execute filter"
+    },
+    "PDF_DOWNLOAD_FAILED": {
+      "TITLE": "Download PDF file",
+      "MESSAGE": "Downloading the PDF failed"
+    },
+    "XLS_DOWNLOAD_FAILED": {
+      "TITLE": "Download excel file",
+      "MESSAGE": "Downloading the excel failed"
+    },
+    "COPY_ORDER": {
+      "NO_VALID_CONTRACT": "Your contract has changed.  You cannot create a similar order anymore.",
+      "NO_VALID_CONTRACT_ID": "Your contract has changed.  You cannot create a similar order anymore."
+    },
+    "EDIT_TEMPLATE": {
+      "NO_VALID_CONTRACT": "Your contract has changed.  This template can't be used anymore.  Please remove."
+    },
+    "CREATE_ORDER_FROM_TEMPLATE": {
+      "NO_VALID_CONTRACT": "Your contract has changed.  You cannot create an order from this template anymore."
+    },
+    "CREATE_TEMPLATE_FROM_ORDER": {
+      "NO_VALID_CONTRACT": "Your contract has changed.  You cannot create template from this order anymore."
+    },
+    "CREATE_CCR": {
+      "NO_VALID_CONTRACT": "Your contract has changed.  You cannot create a CCR for this order anymore."
+    },
+    "COPY_FLOW": {
+      "NO_VALID_CONTRACT": "Your contract has changed.  You cannot create a similar flow anymore."
+    },
+    "TEMPLATE": {
+      "CREATE": "ERROR template",
+      "COPY_FROM_ORDER": "Unable to copy from order",
+      "CHECK_DELIVERY_DATES": "Check delivery dates",
+      "EDIT": {
+        "TITLE": "Edit template",
+        "CONTRACT_CHANGED": "The contract has changed and it doesn't allow editing this template anymore"
+      }
+    },
+    "ORDER": {
+      "CREATE": {
+        "TRUCK_LOAD": "Check truck load",
+        "RECEIVER_REF_IS_EMPTY": "Receiver Reference Number is empty"
+      },
+      "CREATE_FROM_TEMPLATE": {
+        "TITLE": "Create order from template",
+        "CONTRACT_CHANGED": "The contract has changed and it doesn't allow creating an order from this template anymore"
+      }
+    },
+    "FLOW": {
+      "EDIT": {
+        "TITLE": "Edit flow",
+        "CONTRACT_CHANGED": "The contract has changed and it doesn't allow editing this flow anymore"
+      }
+    },
+    "CUSTOMER-SUMMARY": {
+      "LOAD": "Loading customer summary"
+    },
+    "INVOICE": {
+      "LOAD": "Loading invoices",
+      "DOWNLOAD": "Downloading invoice",
+      "DOWNLOAD_LIST": "Downloading invoices"
+    }
+  },
+  "validation-error": {
+    "numberOfExchangePallets": {
+      "text": {
+        "max": "It's not allowed to exchange more pallets that ordered",
+        "min": "Amount of pallets must be greater than zero"
+      }
+    },
+    "flowDate": {
+      "date": {
+        "invalid": "Flow date is invalid"
+      }
+    },
+    "customerReferenceNumber": {
+      "text": {
+        "required": "Customer reference number is required",
+        "custom": "{{message}}"
+      }
+    },
+    "text": {
+      "required": "This field can't be blank"
+    },
+    "date": {
+      "required": "This date is required",
+      "datePatternValidator": "This date is not properly formatted",
+      "dateRangeValidator": "Date out of range",
+      "dateSameOrAfter": "Date must be after {{otherDate}}",
+      "dateNotAvailable": "Date is not an available date. Please select another one",
+      "unloadingDateAfterLoadingDateValidator": "Unloading date must be on or after loading date"
+    },
+    "custom": {
+      "recurrence": {
+        "atLeastOneDay": "Please check at least 1 day"
+      }
+    }
+  },
+  "CALENDAR": {
+    "TITLE": "YOUR",
+    "SUBTITLE": "CALENDAR",
+    "SHOW_TODAY": "Show today",
+    "CREATE_TEMPLATE": "Create template",
+    "TEMPLATES": "Templates",
+    "JUMP_TO_DATE": "Jump to specific date",
+    "MORE_ORDERS": "more ...",
+    "FILTER": {
+      "TITLE": "<span class='bold'>Filter</span> on your calendar",
+      "DEPOT": "Depot",
+      "DELIVERY": "Delivery",
+      "RETURN": "Return",
+      "DIRECT": "Direct service",
+      "OWN": "Own",
+      "BY_EPS": "By EPS"
+    },
+    "ADD_ORDER_MODAL": {
+      "TITLE": "ADD",
+      "START_FROM_A": "Start from a",
+      "TEMPLATE": "template",
+      "NEW_ORDER": "new order",
+      "NO_ORDERS": "No orders"
+    },
+    "ADD_RELOCATION_MODAL": {
+      "LIST": "Relocations",
+      "TITLE": "ADD",
+      "START_FROM_A": "Start from a",
+      "TEMPLATE": "template",
+      "NEW_RELOCATION": "new relocation",
+      "NO_RELOCATIONS": "No relocations"
+    },
+    "TEMPLATE": {
+      "DRAG_TEMPLATE": "Start <span class='bold'>dragging</span> a template",
+      "SUBTEXT": "Please select a template and drag & drop it to the calendar. Or add an order by clicking the 'plus' icon on a specific date.",
+      "CLEAR_SELECTION": "Clear selection"
+    },
+    "MONTHS": {
+      "1": "January",
+      "2": "February",
+      "3": "March",
+      "4": "April",
+      "5": "May",
+      "6": "June",
+      "7": "July",
+      "8": "August",
+      "9": "September",
+      "10": "October",
+      "11": "November",
+      "12": "December"
+    }
+  },
+  "REPORT": {
+    "TITLE": "<span class='bold'>REPORT</span> OVERVIEW",
+    "FILTER_TITLE": "<span class='bold'>Choose the location</span> to get the stock",
+    "LOCATION": "Location",
+    "CHECK_STOCK": "Check stock",
+    "THIS_WEEK": "This week",
+    "TRAYS": "Trays",
+    "TABS": {
+      "POWER_BI": "Power BI",
+      "STOCK": "Stock"
+    },
+    "POWER_BI_UNAVAILABLE": "Power BI report is currently not available"
+  },
+  "EMAIL_ACTORS": {
+    "TITLE": "<span class='bold'>E-MAIL</span> ACTORS",
+    "SUBTITLE": "The following persons will <span class='bold'>receive</span> an <span class='bold'>e-mail</span> when an <span class='bold'>order</span> is <span class='bold'>created</span>.",
+    "LIST": {
+      "NAME": "name",
+      "EMAIL": "e-mail",
+      "ADD_EMAIL_ACTOR": "Add e-mail",
+      "DELETE": "Delete",
+      "EDIT": "Edit",
+      "ACTIVATE": "Activate",
+      "DEACTIVATE": "Deactivate",
+      "SAVE": "Save",
+      "CANCEL": "Cancel",
+      "NO_EMAIL_ACTORS": "No email actors"
+    }
+  },
+  "BLANK_RECEIPT": {
+    "TITLE": "<span class='bold'>CREATE A</span> BLANK RECEIPT",
+    "RECEIPT_TYPE": "Receipt type",
+    "QUANTITY": "Quantity",
+    "CREATE_RECEIPT": "Create receipt"
+  },
+  "SERVICE": {
+    "SHARED": {
+      "CALL_US": "Call us",
+      "CALL_DESCRIPTION": "Available Mon - Fri, 09:00 - 17:00",
+      "FAQ": "FAQ",
+      "FAQ_DESCRIPTION": "Find the answers you are looking for",
+      "MAIL_US": "Mail us",
+      "MAIL_DESCRIPTION": "We respond within 48 hours"
+    },
+    "CONTACT": {
+      "TITLE": "Can we <span class='bold'>help</span> you?",
+      "ASK_US": "Ask us",
+      "LOOKING_FOR": "What are you looking for?",
+      "SALES_ORDER": "Sales order",
+      "NAME_SOLD_TO": "Name sold to",
+      "VAT": "VAT number",
+      "ADDRESS": "Address",
+      "POSTAL_CODE": "Postal code",
+      "CITY": "City",
+      "COUNTRY": "Country",
+      "NAME_SHIP_TO": "Name ship to",
+      "COMMENTS": "Comments",
+      "RESET": "Reset",
+      "SEND": "Send",
+      "SEND_SUCCESS": "Contact message successfully send",
+      "DROPDOWN": {
+        "REQUEST_EXTRA_USERS": "Request extra users",
+        "ADDRESS_CHANGE": "Address change",
+        "ADD_SOLDTO": "Add sold to party",
+        "ADD_SHIPTO": "Add ship to party",
+        "REPORT_STOCK_PROBLEMS": "Report stock problems",
+        "CHANGE_CUSTOMER_REF": "Change customer reference number",
+        "CHANGE_ORDER": "Change/delete a delivery/return order",
+        "CHANGE_LANGUAGE": "Change logon language"
+      }
+    },
+    "FAQ": {
+      "TITLE": "FAQ",
+      "SUBTITLE": "Find the <span class='bold'>answer</span> you are looking for",
+      "QUESTIONS_ABOUT": "Questions about",
+      "ORDERS": {
+        "TITLE": "Orders",
+        "QUESTION_1": "Can I place an order and receive trays on the same day?",
+        "ANSWER_1": "Ordering dates are dependent on country specific ordering terms. If you are not able to place an order with date of today, please contact your local Customer Service support.",
+        "QUESTION_2": "After which time will I receive an order confirmation after my registration is saved in the portal?",
+        "ANSWER_2": "Order confirmation is sent out immediately after order is approved. However, timing may vary based on operational and financial implications of individual customers.",
+        "QUESTION_3": "Can I change the loading date of my order if it wasn’t collected on time?",
+        "ANSWER_3": "In order to make changes after order was submitted, please contact your local Customer Service support.",
+        "QUESTION_4": "Where can I find the opening hours of my depot?",
+        "ANSWER_4": "Depot opening hours a displayed and 'Your depot' tile at Dashboard of this page.",
+        "QUESTION_5": "I saved my order but need to make an update – how can I do it?",
+        "ANSWER_5": "In order to make changes after order was submitted, please contact your local Customer Service support.",
+        "QUESTION_6": "Can I return unused trays to any EPS depot?",
+        "ANSWER_6": "Yes, but specific terms and conditions might apply - contact your local Customer Service support for more details."
+      },
+      "CUSTOMER_ACCOUNT": {
+        "TITLE": "Customer account",
+        "QUESTION_1": "How can I add / remove trays / pallets in the portal?",
+        "ANSWER_1": "Please contact your local Customer Service support to make changes in your picklists.",
+        "QUESTION_2": "I forgot my password – how can I reset it?",
+        "ANSWER_2": "Please refer to your Microsoft account as this is where the password is stored.",
+        "QUESTION_3": "My password has expired – how can I set up a new one?",
+        "ANSWER_3": "Please refer to your Microsoft account as this is where the password is stored.",
+        "QUESTION_4": "I’d like to change my contact details – can I do it myself?",
+        "ANSWER_4": "Please contact your local Customer Service support to make adjustments in your details.",
+        "QUESTION_5": "Where can I find a manual for using the portal?",
+        "ANSWER_5": "Tutorial videos can be found under this link."
+      },
+      "PRODUCTS": {
+        "TITLE": "Products",
+        "QUESTION_1": "Does Euro Pool have a technical datasheet for each tray?",
+        "ANSWER_1": "Yes, all details are available at <a href='http://www.europoolsystem.com' target='_blank'>www.europoolsystem.com</a>, section Trays.",
+        "QUESTION_2": "Does EPS have any official certification (ISO, HAACP)?",
+        "ANSWER_2": "Yes. For more details please contact your local Customer Service support.",
+        "QUESTION_3": "How can I check my current stock of trays / pallets?",
+        "ANSWER_3": "Your current stock is available at “Reports” section of this page.",
+        "QUESTION_4": "How can I place a complaint on received trays / pallets?",
+        "ANSWER_4": "You can use 'Contact' section of this page or get in touch directly with your local Customer Service support."
+      },
+      "FLOWS": {
+        "TITLE": "Flows",
+        "QUESTION_1": "I chose a wrong date in flows and the registration is now definitive – what’s the consequence?",
+        "ANSWER_1": "The consequence is that your registration will not be invoiced before the registered date.",
+        "QUESTION_2": "I noticed differences in flows – who should I contact to explain them?",
+        "ANSWER_2": "Receiver of trays that confirmed the incoming flow should be your first point of contact in case of differences.",
+        "QUESTION_3": "Can I pass my trays to a different grower?",
+        "ANSWER_3": "Yes. Please remember that all transactions must be registered. For more details please contact local Customer Service support."
+      },
+      "INVOICING": {
+        "TITLE": "Invoicing",
+        "QUESTION_1": "How can I retrieve a copy of an invoice?",
+        "ANSWER_1": "Please refer to 'Invoices' section of this page.",
+        "QUESTION_2": "When do I have to pay my invoice?",
+        "ANSWER_2": "Not later than the due date displayed on your invoice.",
+        "QUESTION_3": "When will I receive the amount of the credit note?",
+        "ANSWER_3": "Not later than the due date displayed on your credit note."
+      }
+    }
+  },
+  "RELOCATIONS": {
+    "FILTER": {
+      "TITLE": "Filter",
+      "SUBTITLE": "relocations",
+      "BUTTONS": {
+        "FILTER_TEXT": "Filter relocations"
+      }
+    },
+    "LIST": {
+      "TITLE": "RESULTS",
+      "SUBTITLE": "RELOCATIONS",
+      "BUTTONS": {
+        "COPY": "Copy",
+        "AS_TEMPLATE": "Create template from relocation"
+      }
+    },
+    "DELIVERY": {
+      "BUTTONS": {
+        "NEXT": "Go to relocation lines"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "RELOCATION",
+      "SUBTITLE": "LINES",
+      "REGISTERED_BY": "Registered by",
+      "BUTTONS": {
+        "NEXT": "Go to relocation planning"
+      }
+    },
+    "PLANNING": {
+      "TITLE": "RELOCATION",
+      "SUBTITLE": "PLANNING"
+    },
+    "LABELS": {
+      "COPY_RELOCATION": "Copy relocation",
+      "OPEN_RELOCATION": "Open relocation",
+      "SUBMIT_RELOCATION": "Submit relocation"
+    },
+    "RECURRENCE": {
+      "CREATE": "Create relocations"
+    }
+  },
+  "TUTORIALS": {
+    "TITLE": "Let's get started",
+    "POPUP_TEXT": "Take a look ay our explanatory video and learn more on how to",
+    "REMIND_LATER": "Remind me later",
+    "DONT_SHOW_AGAIN": "Don't show again",
+    "HEADER": {
+      "FINISH_BUTTON": "Finish tutorials & start using the portal"
+    },
+    "CONTENT": {
+      "NEXT_BUTTON": "Finish & go to next tutorial",
+      "PREVIOUS_BUTTON": "Go to previous tutorial"
+    },
+    "TUTORIALS_LOOP": {
+      "TITLE_1": "Flows",
+      "SUBTITLE_1": "Flows",
+      "TEXT_1": "Learn how to register flow transactions for a better stock overview and asset tracebility",
+      "VIDEO_ID_1": "262705319",
+      "LOCATION_1": "en/Create Flow ENG.mp4",
+      "TITLE_2": "Orders",
+      "SUBTITLE_2": "Orders",
+      "TEXT_2": "Find out how to register deliveries and returns with just a few clicks.",
+      "VIDEO_ID_2": "262705319",
+      "LOCATION_2": "en/Create Order ENG.mp4",
+      "TITLE_3": "Templates",
+      "SUBTITLE_3": "Templates",
+      "TEXT_3": "Have a look how to create TEMPLATES and save time with order creation!",
+      "VIDEO_ID_3": "262705319",
+      "LOCATION_3": "",
+      "TITLE_4": "Calendar",
+      "SUBTITLE_4": "Calendar",
+      "TEXT_4": "Already familiar with TEMPLATES? Learn how they can be combined with your CALENDAR using drag&drop technology. It's a good overview, too!",
+      "VIDEO_ID_4": "262705319",
+      "LOCATION_4": "en/Calendar ENG.mp4",
+      "TITLE_5": "Invoices",
+      "SUBTITLE_5": "Invoices",
+      "TEXT_5": "A complete list of your invoices just a click away!",
+      "VIDEO_ID_5": "262705319",
+      "LOCATION_5": "en/Invoices ENG.mp4",
+      "TITLE_6": "E-invoices",
+      "SUBTITLE_6": "E-invoices",
+      "TEXT_6": "A complete list of your e-invoices just few clicks away!",
+      "VIDEO_ID_6": "262705319",
+      "LOCATION_6": "en/eInvoices ENG.mp4",
+      "TITLE_7": "Report",
+      "SUBTITLE_7": "Report",
+      "TEXT_7": "Intertested in your stock and flow overview? It's the place to be!",
+      "VIDEO_ID_7": "262705319",
+      "LOCATION_7": "",
+      "TITLE_8": "Blank receipt",
+      "SUBTITLE_8": "Blank receipt",
+      "TEXT_8": "No internet access or power shortage but you still need to add document to your shipment? Print BLANK RECEIPT in advance and be prepared!",
+      "VIDEO_ID_8": "262705319",
+      "LOCATION_8": "en/Blank Receipt ENG.mp4",
+      "TITLE_9": "FAQ",
+      "SUBTITLE_9": "FAQ",
+      "TEXT_9": "More questions than answers? Find them in our FAQ section!",
+      "VIDEO_ID_9": "262705319",
+      "LOCATION_9": "",
+      "TITLE_10": "E-mail actors",
+      "SUBTITLE_10": "E-mail actors",
+      "TEXT_10": "Need to infrom a colleague about an ORDER you created? Save some time with E-MAIL ACTORS!",
+      "VIDEO_ID_10": "262705319",
+      "LOCATION_10": "en/Email Actors ENG.mp4",
+      "TITLE_11": "Handshake",
+      "SUBTITLE_11": "Handshake",
+      "TEXT_11": "Learn how to confirm flow transactions for a better stock overview and asset tracebility",
+      "VIDEO_ID_11": "262705319",
+      "LOCATION_11": ""
+    }
+  },
+  "COOKIE": {
+    "HEADER": "Cookies used on the website!",
+    "MESSAGE": "This website uses cookies to ensure you get the best experience on our website.",
+    "DISMISS": "Got it!",
+    "ALLOW": "Allow cookies",
+    "DENY": "Decline",
+    "LINK": "Learn more",
+    "POLICY": "Cookie Policy"
+  }
+}

@@ -1,0 +1,45 @@
+<div class="calendar-container">
+  <div class="heading">
+    <div>
+      <span class="arrow" (click)="previous()" *ngIf="isCurrentMonthNotInPast()"><i class="fa fa-angle-left"></i></span>
+      <span class="current_month"><span class="bold">{{"CALENDAR.MONTHS." + (month.month() + 1) | translate}}</span> {{month.format("YYYY")}}</span>
+      <span class="arrow" (click)="next()"><i class="fa fa-angle-right"></i></span>
+
+      <a md-button class="default show_today" (click)="showToday()">
+        {{ "CALENDAR.SHOW_TODAY" | translate }}
+      </a>
+    </div>
+    <div class="date">
+      <my-date-picker name="mydate" #mydate
+                      [(ngModel)]="date"
+                      [options]="myDatePickerOptions"
+                      [placeholder]="'CALENDAR.JUMP_TO_DATE' | translate"
+                      (dateChanged)="onDateChanged($event)"
+      >
+      </my-date-picker>
+    </div>
+  </div>
+  <div class="calendar">
+    <div class="day_names">
+      <span class="day_name">{{ 'SHARED.DAYS.MONDAY' | translate }}</span>
+      <span class="day_name">{{ 'SHARED.DAYS.TUESDAY' | translate }}</span>
+      <span class="day_name">{{ 'SHARED.DAYS.WEDNESDAY' | translate }}</span>
+      <span class="day_name">{{ 'SHARED.DAYS.THURSDAY' | translate }}</span>
+      <span class="day_name">{{ 'SHARED.DAYS.FRIDAY' | translate }}</span>
+      <span class="day_name weekend">{{ 'SHARED.DAYS.SATURDAY' | translate }}</span>
+      <span class="day_name weekend">{{ 'SHARED.DAYS.SUNDAY' | translate }}</span>
+    </div>
+    <div class="week" *ngFor="let week of weeks">
+      <div class="day" *ngFor="let day of week.days">
+        <app-calendar-day
+          class="day_inner"
+          [day]="day"
+          [selectedDay]="selectedDay"
+          (showFlorderModal)="showFlorderModal.emit($event)"
+          (openFlorder)="openFlorder.emit($event)"
+        >
+        </app-calendar-day>
+      </div>
+    </div>
+  </div>
+</div>

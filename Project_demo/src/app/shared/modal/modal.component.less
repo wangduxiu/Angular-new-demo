@@ -1,0 +1,79 @@
+@import '../styles/globalVars.less';
+
+.custom_modal {
+  font-weight: 300;
+  text-align: center;
+
+  .modal-head {
+    color: @white-font;
+    padding: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &::after {
+      content: '';
+      width: 0;
+      height: 0;
+      position: absolute;
+      bottom: -15px;
+      left: calc(~'50% - 35px');
+      border-style: solid;
+      border-left: solid 35px transparent;
+      border-right: solid 35px transparent;
+      clear: both;
+    }
+
+    &.error {
+      &::after {
+        border-top: solid 15px @error-modal;
+      }
+    }
+    &.warning {
+      &::after {
+        border-top: solid 15px @warning;
+      }
+    }
+    &.success,
+    &.email {
+      background-color: @success;
+
+      &::after {
+        border-top: solid 15px @success;
+      }
+    }
+  }
+
+  .modal-body {
+    padding: 50px;
+  }
+
+  @media only screen and (min-width: @medium-screen-width) {
+    .modal-buttons {
+      a + a {
+        margin-left: 20px;
+      }
+    }
+  }
+  @media only screen and (max-width: @medium-screen-width) {
+    .modal-buttons {
+      display: flex;
+      flex-direction: column;
+      a {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .error {
+    background-color: @error-modal;
+  }
+
+  .warning {
+    background-color: @warning;
+  }
+
+  .email {
+    height: 15rem;
+  }
+}

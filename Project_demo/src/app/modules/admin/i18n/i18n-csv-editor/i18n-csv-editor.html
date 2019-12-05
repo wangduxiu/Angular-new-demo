@@ -1,0 +1,23 @@
+<div class="container" *ngIf="csv">
+
+  <div class="row">
+    <div class="col-md-12">
+      <textarea #csvField rows="30" cols="200" (keyup)="dirty = true" [disabled]="loading || saving">{{csv}}</textarea>
+    </div>
+  </div>
+  <div class=""row>
+    {{errorMessage}}
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <a md-raised-button class="default accept" [disabled]="true" *ngIf="saving">
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+        {{ 'ADMIN.I18N.BUTTONS.SAVING' | translate }}
+      </a>
+      <a md-raised-button class="default accept" (click)="$event.stopPropagation(); !loading && save.emit(csvField.value)" [disabled]="loading">
+        {{ 'ADMIN.I18N.BUTTONS.SAVE' | translate }}
+      </a>
+    </div>
+  </div>
+
+</div>

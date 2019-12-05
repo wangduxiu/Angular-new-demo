@@ -1,0 +1,26 @@
+<div @fadeInAnimation>
+<admin-client-user-edit
+  id="top"
+  [adminDefinitions]="adminDefinitions"
+  [saving]="editUser.saving"
+  [reInviting]="editUser.reInviting"
+  [resettingPassword]="editUser.resettingPassword"
+  [user]="editUser && editUser.user"
+  [isView]="readonly"
+  [isCreate]="!readonly && editUser && editUser.isCreate"
+  [isEdit]="!readonly && !(editUser && (editUser.isInvitation || editUser.isCreate))"
+  [isInvitation]="!readonly && editUser && editUser.isInvitation"
+  [soldTosOfSalesOrganisation]="editUser.soldTosOfSalesOrganisation"
+  [shipTosOfSoldTo]="editUser.shipTosOfSoldTo"
+  [loading]="editUser.loading"
+  [authorization]="authorization"
+  (cancelClicked)="cancelClicked()"
+  (updateUser)="updateUser($event)"
+  (inviteUser)="inviteUser($event)"
+  (createUser)="createUser($event)"
+  (salesOrganisationIdSelected)="salesOrganisationIdSelected($event)"
+  (soldToIdSelected)="soldToIdSelected($event)"
+  (reInvite)="reInvite($event)"
+  (resetPassword)="resetPassword($event)"
+></admin-client-user-edit>
+</div>

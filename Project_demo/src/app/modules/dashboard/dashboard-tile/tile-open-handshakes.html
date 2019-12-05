@@ -1,0 +1,23 @@
+<div class="tile">
+
+  <div class="header">
+    <div class="icon">
+      <app-status key="FLOW_02" size="1" width="80" height="80"></app-status>
+      <div class="count">{{customerSummary.openHandshakes.openHandshakeTotal}}</div>
+    </div>
+
+    <div class="title">
+      <div class="line1">{{'DASHBOARD.OPEN_HANDSHAKES.TITLE.LINE1' | translate}}</div>
+      <div class="line2">{{'DASHBOARD.OPEN_HANDSHAKES.TITLE.LINE2' | translate}}</div>
+    </div>
+  </div>
+  <div class="list">
+    <div class="element" *ngFor="let id of firstThree()" (click)="view.emit(id)">
+      <div>{{'DASHBOARD.OPEN_HANDSHAKES.ELEMENT_PREFIX' | translate}} {{id}}</div>
+      <div><i class="fa fa-angle-right"></i></div>
+    </div>
+  </div>
+  <div class="view-all" *ngIf="customerSummary.openHandshakes.openHandshakeTotal">
+    <i class="fa fa-angle-right"></i><div class="link" (click)="viewAll.emit()">{{'DASHBOARD.GENERAL.VIEW_ALL' | translate}}</div>
+  </div>
+</div>

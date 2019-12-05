@@ -1,0 +1,16 @@
+<div class="contact-page" @fadeInAnimation>
+  <div class="contact-page-title">
+    <span class="title" [innerHTML]="'SERVICE.CONTACT.TITLE' | translate"></span>
+  </div>
+  <div class="contact-page-content row">
+    <div class="col-md-9">
+      <app-contact-form
+        [isSaving]="isSaving"
+        (sendForm)="sendForm($event)"
+      ></app-contact-form>
+    </div>
+    <div class="col-md-3">
+      <app-service-boxes></app-service-boxes>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+{
+  "production": true,
+
+  "api": {
+    "url": "http://mydomain.com/"
+  },
+
+  "localisation": {
+    "languages": [{ "code": "nl", "name": "NL", "culture": "nl-NL" }, { "code": "en", "name": "EN", "culture": "en-EN" }],
+    "defaultLanguage": "default"
+  }
+}

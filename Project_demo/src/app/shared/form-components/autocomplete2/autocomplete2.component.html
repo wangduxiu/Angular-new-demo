@@ -1,0 +1,17 @@
+<div class="select" #selectDiv [ngClass]="{'focused': focused, 'readonly': readonly}">
+
+  <ngx-select-dropdown-custom
+    [config]="config"
+    [options]="elements"
+    [(ngModel)]="dataModel"
+    [multiple]="multiple"
+    [autoselectIfOnlyOne]="autoselectIfOnlyOne"
+    (change)="setValue(dataModel)"
+    *ngIf="!readonly && elements.length >= 1"
+  >
+  </ngx-select-dropdown-custom>
+
+  <div *ngIf="readonly" class="read-only">
+    <span class="value">{{selected && selected.name}}</span>
+  </div>
+</div>

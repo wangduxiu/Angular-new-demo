@@ -1,0 +1,50 @@
+@import '../../../shared/styles/globalVars.less';
+
+.calendar-page {
+  .calendar-page-title {
+    font-size: @title-font;
+    text-transform: uppercase;
+    height: 80px;
+    padding: 0 @page-horizontal-padding;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      color: @blue-underline;
+      font-weight: 300;
+    }
+  }
+
+  .calendar-page-content {
+    background-color: @background;
+    padding: 40px;
+    overflow: scroll;
+
+    .calendar-container {
+      padding: 0 20px;
+      background-color: #fff;
+      box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.25), 2px 2px 4px rgba(0, 0, 0, 0.25);
+
+      .calendar-wrapper {
+        border-top: 2px solid @background;
+        padding: 20px 0;
+      }
+    }
+
+
+    .sticky-template-container {
+      display: inline-block;
+      position: sticky;
+      top: 0;
+      width: 25%;
+      vertical-align: top;
+      min-height: 400px;
+    }
+
+    .template-destination {
+      display: inline-block;
+      width: 74%;
+    }
+  }
+}

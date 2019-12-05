@@ -1,0 +1,10 @@
+<ul class="tutorial-menu">
+    <li *ngFor="let tutorial of tutorials; index as i;">
+        <a (click)="toggleTutorial(tutorial)" [class.active]="tutorial.active === true">
+            <span *ngIf="!!tutorial.finished" class="checked-ball">
+                <i class="fa fa-check" aria-hidden="true"></i>
+            </span>
+            <span *ngIf="!tutorial.finished">{{i+1}}</span> {{tutorial.title}}
+        </a>
+    </li>
+</ul>

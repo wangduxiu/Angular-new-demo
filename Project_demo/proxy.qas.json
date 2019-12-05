@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://eps-webportal-qas-webapp-eps.azurewebsites.net/api/",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

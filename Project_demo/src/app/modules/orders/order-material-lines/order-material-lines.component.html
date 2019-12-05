@@ -1,0 +1,97 @@
+<div class="material-lines-panel" *ngIf="materials.length > 0">
+  <h3>{{"CCR.DETAILS.MATERIAL_LINES" | translate}}</h3>
+
+  <div class="row cell headings hide-xs">
+    <div class="col-md">
+      {{"ORDERS.MATERIAL.LABELS.PACKING" | translate}}
+    </div>
+    <div class="col-md">
+      {{"ORDERS.MATERIAL.LABELS.STATUS" | translate}}
+    </div>
+    <div class="col-md">
+      {{"ORDERS.MATERIAL.LABELS.LOGISTIC_VAR" | translate}}
+    </div>
+    <div class="col-md">
+      {{"ORDERS.MATERIAL.LABELS.QTY" | translate}}
+    </div>
+    <div class="col-md">
+
+    </div>
+  </div>
+
+  <div class="hr-accent no_margin_bottom hide-xs"></div>
+
+  <div *ngFor="let material of materials; index as i" class="striped" [ngClass]="{readonly: readonly}">
+    <div class="material_line" *ngIf="material.type === 'packing' || material.type === 'combination'">
+      <div class="col-md packingType">
+        <div class="connector" *ngIf="material.type === 'combination'">
+          <app-connector [height]="connectorHeight" [width]="connectorWidth"></app-connector>
+        </div>
+        <span class="bold mobile-only">{{ 'ORDERS.MATERIAL.LABELS.PACKING' | translate }}: </span>
+        <app-select [elements]="definitions.packing.type" value="{{material.packingId}}" [readonly]="true" [hideReadonlyPadding]="true"></app-select>
+      </div>
+      <div class="col-md">
+        <span class="bold mobile-only">{{ 'ORDERS.MATERIAL.LABELS.STATUS' | translate }}: </span>
+        <app-select [elements]="definitions.packing.status" value="{{material.packingStatus}}" [readonly]="true" [hideReadonlyPadding]="true"></app-select>
+      </div>
+      <div class="col-md">
+        <span class="bold mobile-only">{{ 'ORDERS.MATERIAL.LABELS.LOGISTIC_VAR' | translate }}: </span>
+        <app-select [elements]="definitions.order.logisticsVarietyPacking" value="{{material.logisticsVarietyPacking}}" [readonly]="true"
+          [hideReadonlyPadding]="true"></app-select>
+      </div>
+      <div class="col-md">
+        <span class="bold mobile-only">{{ 'ORDERS.MATERIAL.LABELS.QTY' | translate }}: </span>
+        <span>{{material.packingQuantity}}</span>
+      </div>
+      <div class="col-md icon-buttons">
+        <div *ngIf="!readonly">
+          <i class="fa fa-2x fa-pencil edit" aria-hidden="true" (click)="editMaterialClicked.emit(material);"></i>
+          <i class="fa fa-2x fa-trash-o remove" aria-hidden="true" (click)="removeMaterialClicked.emit(material);"></i>
+        </div>
+      </div>
+    </div>
+    <div class="material_line" [ngClass]="{'combination': material.type === 'combination'}" *ngIf="material.type === 'pallet' || material.type === 'combination'">
+      <div class="col-md">
+        <span class="bold mobile-only">{{ 'ORDERS.MATERIAL.LABELS.TYPES.PALLET' | translate }}: </span>
+        <app-select [elements]="definitions.pallet.type" value="{{material.palletId}}" [readonly]="true" [hideReadonlyPadding]="true"></app-select>
+      </div>
+      <div class="col-md">
+        <span class="bold mobile-only" *ngIf="material.type === 'pallet'">{{ 'ORDERS.MATERIAL.LABELS.STATUS' | translate }}: </span>
+        <app-select [elements]="definitions.packing.status" value="{{material.packingStatus}}" [readonly]="true" [hideReadonlyPadding]="true"
+          *ngIf="material.type === 'pallet'"></app-select>
+      </div>
+      <div class="col-md">
+        <span class="bold mobile-only" *ngIf="material.type === 'pallet'">{{ 'ORDERS.MATERIAL.LABELS.LOGISTIC_VAR' | translate }}: </span>
+        <app-select [elements]="definitions.order.logisticsVarietyPacking" value="{{material.logisticsVarietyPacking}}" [readonly]="true"
+          [hideReadonlyPadding]="true" *ngIf="material.type === 'pallet'"></app-select>
+      </div>
+      <div class="col-md">
+        <span class="bold mobile-only">{{ 'ORDERS.MATERIAL.LABELS.QTY' | translate }}: </span>
+        {{material.numberOfPallets}}
+      </div>
+      <div class="col-md icon-buttons">
+        <div *ngIf="material.type != 'combination' && !readonly">
+          <i class="fa fa-2x fa-pencil edit" aria-hidden="true" (click)="editMaterialClicked.emit(material);"></i>
+          <i class="fa fa-2x fa-trash-o remove" aria-hidden="true" (click)="removeMaterialClicked.emit(material);"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hr-accent"></div>
+
+  <div class="row epp" *ngIf="maxEpp">
+    <div class="col-4 col-md-2"><span class="bold">{{"ORDERS.MATERIAL.LABELS.NR_OF_PFQS" | translate}}</span></div>
+    <div class="col-2 col-md-1">
+      {{loadedEpp}} / {{maxEpp}}
+    </div>
+    <div class="col-6 col-md-9 loadedBar">
+      <span class="loaded" [ngStyle]="loadedStyle" [ngClass]="{normal: loadedEpp <= maxEpp, overloaded: loadedEpp > maxEpp}">
+        <span *ngIf="fullTruck && loadedEpp == maxEpp">{{"ORDERS.MATERIAL.LABELS.FULL" | translate}}</span>
+        <span *ngIf="loadedEpp > maxEpp">{{"ORDERS.MATERIAL.LABELS.OVERLOADED" | translate}}</span>
+      </span>
+      <span class="total"[ngStyle]="notLoadedStyle"></span>
+    </div>
+
+  </div>
+</div>

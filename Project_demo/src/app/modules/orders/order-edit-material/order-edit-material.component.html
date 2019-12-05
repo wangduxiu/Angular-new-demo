@@ -1,0 +1,76 @@
+<div class="material-panel">
+  <div class="title">
+    <h3>{{"ORDERS.MATERIAL.TITLE" | translate}}</h3>
+  </div>
+
+  <form [formGroup]="editMaterialForm" class="row">
+    <div class="row col-12">
+      <div class="row col-12 cell align_center-md">
+        <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.TYPE"></app-label>
+        <app-radio-group class="col-12 col-md-10" formControlName="type" formControlName="type">
+          <app-radio value="packing" translationCode="ORDERS.MATERIAL.LABELS.TYPES.PACKING" [disabled]="!materialTypes || materialTypes.packings.length === 0" (onSelect)="typeChanged()"></app-radio>
+          <app-radio value="pallet" translationCode="ORDERS.MATERIAL.LABELS.TYPES.PALLET" [disabled]="!materialTypes || materialTypes.pallets.length === 0" (onSelect)="typeChanged()"></app-radio>
+          <app-radio value="combination" translationCode="ORDERS.MATERIAL.LABELS.TYPES.COMBO" [disabled]="!materialTypes || materialTypes.combination.palletIds.length === 0" (onSelect)="typeChanged()"></app-radio>
+        </app-radio-group>
+      </div>
+
+      <div class="col-12 hr"></div>
+    </div>
+
+    <div class="row col-12 cell align_center-md" *ngIf="isCombination() || isPallet()">
+      <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.TYPE_PALLET"></app-label>
+      <app-autocomplete2 class="col-12 col-md-10" [elements]="palletIds" formControlName="palletId" (change)="palletIdChanged()" [multiple]="false"></app-autocomplete2>
+    </div>
+
+    <div class="row col-12 cell align_center-md" *ngIf="isCombination() || isPacking()">
+      <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.TYPE_PACKING"></app-label>
+      <app-autocomplete2 class="col-12 col-md-10" [elements]="packingIds" formControlName="packingId" (change)="packingIdChanged()" [multiple]="false"></app-autocomplete2>
+    </div>
+
+    <div class="row col-12 cell align_center-md" *ngIf="isCombination() || isPacking() || isPallet()">
+      <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.STATUS_PACKING"></app-label>
+      <app-autocomplete2 class="col-12 col-md-10" [elements]="packingStatusses" formControlName="packingStatus" (change)="packingStatusChanged()" [multiple]="false"></app-autocomplete2>
+    </div>
+
+    <div class="row col-12 cell align_center-md" *ngIf="isCombination() || isPacking() || isPallet()">
+      <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.LOGISTIC_VARIETY"></app-label>
+      <app-autocomplete2 class="col-12 col-md-10" [elements]="logisticsVarietyPackings" formControlName="logisticsVarietyPacking" (change)="logisticsVarietyPackingChanged()" [multiple]="false"></app-autocomplete2>
+    </div>
+
+    <div class="row col-12 cell align_center-md" *ngIf="isCombination()">
+      <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.PACKING_PER_PALLET"></app-label>
+      <app-autocomplete2 class="col-12 col-md-10" [elements]="packingPerPalletList" formControlName="packingsPerPallet" [multiple]="false"></app-autocomplete2>
+    </div>
+
+    <div class="row col-12 cell align_center-md" *ngIf="isCombination() || isPallet()">
+      <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.NUMBER_OF_PALLETS"></app-label>
+      <app-text-input class="col-12 col-md-10" formControlName="numberOfPallets" pattern="^\d{0,6}$"></app-text-input>
+    </div>
+
+    <div class="row col-12 cell align_center-md" *ngIf="isPacking()">
+      <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.QUANTITY"></app-label>
+      <app-text-input class="col-12 col-md-10" formControlName="packingQuantity" pattern="^\d{0,6}$"></app-text-input>
+    </div>
+
+    <div class="col-12 hr"></div>
+
+    <div class="col-12 buttons save-button" *ngIf="panelStatus.isNew">
+      <a md-raised-button class="default end-xs" [disabled]="true" *ngIf="saving">
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>{{ 'ORDERS.MATERIAL.BUTTONS.SAVING' | translate }}
+      </a>
+      <a md-raised-button class="default end-xs" button-click-on-enter (click)="nextClickedFn()" [disabled]="editMaterialForm.invalid" *ngIf="!saving">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        {{ 'ORDERS.MATERIAL.BUTTONS.ADD_MATERIAL' | translate }}
+      </a>
+    </div>
+    <div class="col-12 buttons" *ngIf="panelStatus.isUpdate">
+      <a md-raised-button class="default end-xs" button-click-on-enter [disabled]="true" *ngIf="saving">
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>{{ 'ORDERS.MATERIAL.BUTTONS.SAVING' | translate }}
+      </a>
+      <a md-raised-button class="default end-xs" button-click-on-enter (click)="nextClickedFn()" [disabled]="editMaterialForm.invalid" *ngIf="!saving">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        {{ 'SHARED.BUTTONS.SAVE' | translate }}
+      </a>
+    </div>
+  </form>
+</div>

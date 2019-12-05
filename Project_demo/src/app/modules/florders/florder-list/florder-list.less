@@ -1,0 +1,357 @@
+@import '../../../shared/styles/globalVars.less';
+
+.heading {
+  margin-bottom: 20px;
+  padding: 5px;
+
+  .results-heading-title {
+    display: flex;
+
+    .title {
+      font-weight: 700;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    .subtitle {
+      font-weight: 300;
+    }
+
+    .title,
+    .subtitle {
+      font-size: @title-font;
+      color: @blue-underline;
+    }
+  }
+
+  .results-heading-text {
+    display: flex;
+
+    .count {
+      font-weight: 700;
+      @media only screen and (min-width: @medium-screen-width) {
+        margin-left: 20px;
+      }
+    }
+
+    .count-postscript {
+      font-weight: 300;
+    }
+
+    .count,
+    .count-postscript {
+      color: @underLine;
+    }
+    // }
+  }
+
+  .results-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media only screen and (min-width: @medium-screen-width) {
+      margin-left: 3em;
+    }
+
+    .download_file {
+      @media only screen and (min-width: @large-screen-width) {
+        margin-left: 30px;
+      }
+
+      .link {
+        text-decoration: underline;
+        color: @accent-blue;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.results-actions-block {
+  display: flex;
+
+  @media only screen and (max-width: @medium-screen-width) {
+    flex-direction: column;
+    margin-left: 3em;
+  }
+  @media only screen and (min-width: @medium-screen-width) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.order {
+  display: flex;
+
+  .order_line {
+    .app_status {
+      margin-right: 20px;
+    }
+  }
+
+  .arrow {
+    font-size: @big-font;
+    align-self: center;
+    justify-content: flex-end;
+  }
+}
+
+.flow_line {
+  display: flex;
+
+  .checkbox_wrapper {
+    width: 30px;
+  }
+}
+
+@media only screen and (max-width: @medium-screen-width) {
+  .order_line {
+    display: flex;
+  }
+}
+
+.order_line,
+.flow_line {
+  .content {
+    flex: 1;
+
+    .order_data,
+    .flow_data {
+      display: flex;
+
+      .handshake_date {
+        margin-left: 10px;
+        align-self: center;
+      }
+    }
+    @media only screen and (max-width: @medium-screen-width) {
+      .row .items {
+        display: flex;
+        flex-direction: row;
+        margin: 10px 0 5px;
+        padding: 5px;
+        span.quantity {
+          text-align: left;
+        }
+      }
+      .heading {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        .col-sm-12 {
+          height: 24px;
+          display: flex;
+          align-items: center;
+        }
+      }
+      .items-content {
+        margin: 10px 0 5px;
+        padding: 5px;
+        .col-sm-12 {
+          height: 24px;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+    @media only screen and (min-width: @medium-screen-width) {
+      .items-content {
+        padding: 5px 10px;
+        span.quantity {
+          text-align: left;
+        }
+      }
+      .row .items {
+        flex-direction: column;
+      }
+    }
+
+    .order_data,
+    .flow_data {
+      .order_data-data,
+      .flow_data-data {
+        flex: 1;
+        display: flex;
+        @media only screen and (max-width: @medium-screen-width) {
+          display: block;
+          .cell-row .mobile-only {
+            display: flex !important;
+            flex-direction: column;
+          }
+        }
+      }
+
+      .order_data-menu,
+      .flow_data-menu {
+        align-self: center;
+      }
+    }
+
+    .more_ellipsis {
+      cursor: pointer;
+      width: 25px;
+      font-size: @big-font;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .items {
+      background-color: white;
+      border: 1px solid @light-blue-grey;
+      padding: 0 20px;
+
+      .heading {
+        color: @lightText;
+        margin: 10px 0 5px 0;
+
+        .link {
+          text-decoration: underline;
+          color: @accent-blue;
+          cursor: pointer;
+        }
+      }
+
+      .item {
+        min-height: 35px;
+        display: flex;
+        align-items: center;
+
+        input {
+          width: 100%;
+          border: 2px solid @info;
+          border-radius: 4px;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.bottom-line {
+  border-bottom: 1px solid @accent-blue;
+}
+
+.cell {
+  margin-bottom: 0;
+
+  @media only screen and (min-width: @large-screen-width) {
+    padding: 15px 2px;
+  }
+}
+
+.cancelled {
+  color: #dc3545 !important;
+}
+
+@media only screen and (max-width: @large-screen-width) {
+  .sales-number {
+    font-size: 15px;
+    line-height: 19px;
+    color: @blue-underline;
+    font-weight: bold;
+  }
+  .value {
+    color: @underLine;
+  }
+  .cell {
+    padding: 10px 5px;
+  }
+  .cell-row {
+    padding: 2px 0;
+  }
+  .striped:nth-child(even) {
+    background-color: transparent;
+  }
+  .striped:hover {
+    background-color: transparent;
+  }
+  .arrow {
+    color: @accent-blue;
+  }
+}
+
+.soft-line {
+  border-bottom: 1px solid @soft-underline;
+}
+
+.sorters {
+  display: flex;
+
+  .status {
+    width: 50px;
+  }
+
+  .sorter {
+    font-size: @middle-font;
+    padding-left: 10px;
+    cursor: pointer;
+  }
+
+  .menu_col {
+    width: 25px;
+  }
+}
+
+@media only screen and (min-width: @medium-screen-width) {
+  .striped:nth-child(even) {
+    background-color: @light-grey;
+  }
+  .striped:hover {
+    background-color: @light-grey;
+  }
+}
+
+@media only screen and (min-width: @large-screen-width) {
+  .order_line,
+  .flow_line {
+    display: flex;
+  }
+
+  .heading {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.count {
+  @media only screen and (min-width: @medium-screen-width) {
+    padding-left: 5px;
+  }
+  padding-right: 5px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.loading_spinner {
+  text-align: center;
+  font-size: @title-font;
+  padding: 50px 10px;
+}
+
+
+@media only screen and (min-width: @large-screen-width) {
+  .form-header, .results-actions, .results-heading {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  .form-header .results-heading {
+    justify-content: space-between;
+  }
+}
+@media only screen and (max-width: @large-screen-width) {
+  .form-header, .results-actions, .results-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .results-actions .accept-cancel-buttons {
+    margin-top: 1em;
+  }
+}

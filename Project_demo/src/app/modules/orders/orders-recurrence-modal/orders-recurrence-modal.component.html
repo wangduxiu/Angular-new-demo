@@ -1,0 +1,45 @@
+<div class="custom_modal">
+  <div class="modal-header" [ngClass]="{created: isCreated}">
+    <div class="title">
+      {{ 'ORDERS.RECURRENCE.TITLE' | translate }}
+    </div>
+  </div>
+  <div class="modal-body row">
+      <div class="dates-header">
+        <div class="row header" *ngIf="inSelectState">
+          <div class="col-5 column-header">{{ 'ORDERS.RECURRENCE.REQUESTED_DATE' | translate }}</div>
+          <div class="col-5 column-header">{{ 'ORDERS.RECURRENCE.PROPOSED_DATE' | translate }}</div>
+          <div class="col-1"></div>
+        </div>
+        <div class="row header" *ngIf="inCreateState">
+          <div class="col-5 column-header">{{ 'ORDERS.RECURRENCE.DATE' | translate }}</div>
+          <div class="col-5 column-header">{{ 'ORDERS.FILTER.LABELS.ETM_DOCUMENT_NUMBER' | translate }}</div>
+          <div class="col-1"></div>
+        </div>
+        </div>
+        <div class="dates-list">
+        <div class="row date" *ngFor="let date of dates">
+          <div class="col-5 requested" *ngIf="inSelectState" [ngClass]="{valid:date.valid, removed: date.removed}">{{date.requestedDate | stringdate}}</div>
+          <div class="col-5 proposed"  *ngIf="inSelectState" [ngClass]="{valid:date.valid, removed: date.removed}">{{date.proposedDate | stringdate}}</div>
+          <div class="col-1 buttons"   *ngIf="inSelectState">
+            <i class="fa fa-trash" *ngIf="!date.removed && selected > 1" (click)="remove(date)"></i>
+            <i class="fa fa-repeat" *ngIf="date.removed" (click)="add(date)"></i>
+          </div>
+
+          <div class="col-5 requested" *ngIf="inCreateState && date.removed" [ngClass]="{valid:date.valid, removed: date.removed}">{{(date.valid && date.requestedDate || date.proposedDate) | stringdate}}</div>
+          <div class="col-5 valid" *ngIf="inCreateState && !date.removed">{{date.createDate | stringdate}}</div>
+          <div class="col-5 valid link" *ngIf="inCreateState" (click)="isCreated && openOrder(date)">{{date.etmOrderNumber}}</div>
+          <div class="col-1 buttons"   *ngIf="inCreateState">
+            <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="date.saving"></i>
+            <i class="fa fa-check" *ngIf="date.etmOrderNumber"></i>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="modal-footer">
+    <a class="btn-cancel" (click)="cancel()" *ngIf="inSelectState">{{ 'SHARED.BUTTONS.CANCEL' | translate }}</a>
+    <a class="default" md-button aria-disabled="false" (click)="create(true)" *ngIf="inSelectState">{{ createButtonLabel | translate }}</a>
+    <a class="default" md-button aria-disabled="false" (click)="gotoOverview()" *ngIf="isCreated && inCreateState">{{ 'SHARED.BUTTONS.GO_TO_OVERVIEW' | translate }}</a>
+  </div>
+</div>

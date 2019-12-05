@@ -1,0 +1,25 @@
+<div class="datePicker" [hidden]="readonly || view">
+    <my-date-picker name="mydate" #mydate
+                    [(ngModel)]="value"
+                    [options]="myDatePickerOptions"
+                    [ngClass]="{'error': errorMessage || (view && readOnlyErrorMessage), 'focused': focused}"
+                    (dateChanged)="onDateChanged($event)"
+                    (calendarToggle)="onCalendarToggle($event)"
+                    (inputFieldChanged)="onInputFieldChanged($event)"
+                    (inputFocusBlur)="onInputFocusBlur($event)"
+    >
+    </my-date-picker>
+    <div class="inner_text" *ngIf="innerText">{{innerText}}</div>
+    <div class="error-container">
+      <div [ngClass]="{'error': error}" *ngIf="error" class="error-message mat-input-error">{{error}}</div>
+      <div [ngClass]="{'error': errorMessage}" *ngIf="!error" class="error-message mat-input-error">{{errorMessage}}</div>
+    </div>
+</div>
+
+<div *ngIf="readonly || view">
+  {{formattedDate}}
+  <span class="openingHours" *ngIf="innerText">{{innerText}}</span>
+  <div class="error-container" *ngIf="view">
+    <div [ngClass]="{'error': readOnlyErrorMessage}" class="error-message mat-input-error">{{readOnlyErrorMessage}}</div>
+  </div>
+</div>

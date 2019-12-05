@@ -1,0 +1,26 @@
+<div class="stock-page" @fadeInAnimation>
+  <div class="stock-page-title">
+    <span class="title" [innerHTML]="'REPORT.TITLE' | translate"></span>
+  </div>
+
+  <md-tab-group
+    [selectedIndex]="selectedTab"
+    >
+      <md-tab [label]='"REPORT.TABS.POWER_BI" | translate'>
+        <app-power-bi-page
+          [powerBIConfig]="stock.powerBIConfig"
+        ></app-power-bi-page>
+      </md-tab>
+      <md-tab [label]='"REPORT.TABS.STOCK" | translate'>
+        <app-stock-page
+          [authorization]="authorization"
+          [isLoading]="isLoading"
+          [items]="stock.items"
+          [location]="location"
+          [locations]="locations"
+          [totalItems]="totalItems"
+          (filterStock)="filterStock($event)"
+        ></app-stock-page>
+      </md-tab>
+  </md-tab-group>
+</div>

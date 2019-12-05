@@ -1,0 +1,81 @@
+<div class="list-wrapper">
+  <div class="heading">
+    <div class="row">
+      <div class="col-2">{{ 'EMAIL_ACTORS.LIST.NAME' | translate }}</div>
+      <div class="col-10">{{ 'EMAIL_ACTORS.LIST.EMAIL' | translate }}</div>
+    </div>
+  </div>
+  <div class="items">
+    <div *ngFor="let item of items">
+      <div class="item row" [ngClass]="{'edit-row': emailActorInEditMode === item.id, 'static-row': !canEditLine}">
+        <div class="content col-xl-7 col-md-12 col-sm-12">
+          <div class="row" *ngIf="emailActorInEditMode !== item.id">
+            <div class="col-md-3 col-sm-12">
+              <span class="bold">{{item.name}}</span>
+            </div>
+            <div class="col-md-9 col-sm-12">{{item.email}}</div>
+          </div>
+          <div *ngIf="emailActorInEditMode === item.id">
+            <form [formGroup]="editEmailActorForm">
+              <div class="row">
+                <div class="col-md-3 col-sm-12 ">
+                  <app-text-input formControlName="name"></app-text-input>
+                </div>
+                <div class="col-md-9 col-sm-12">
+                  <app-text-input formControlName="email"></app-text-input>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="action-buttons col-xl-5 col-md-12 col-sm-12">
+          <!-- in view mode -->
+          <a class="btn-cancel hand" (click)="deleteEmailActor.emit(item.id)" *ngIf="!isSaving && canEditLine">{{ 'EMAIL_ACTORS.LIST.DELETE' | translate }}</a>
+          <a md-raised-button class="default" (click)="editEmailActor(item)" *ngIf="!isSaving && canEditLine">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            {{ 'EMAIL_ACTORS.LIST.EDIT' | translate }}
+          </a>
+          <a md-raised-button class="primary btn-next" (click)="deactivateEmailActor.emit(item)" *ngIf="!isSaving && canEditLine">
+            {{ 'EMAIL_ACTORS.LIST.' + (item.isActive ? 'DEACTIVATE' : 'ACTIVATE') | translate }}
+          </a>
+          <!-- /in view mode -->
+
+          <!-- in edit mode -->
+          <a class="btn-cancel hand" (click)="cancelEditEmailActor()" *ngIf="!canEditLine && emailActorInEditMode === item.id">{{ 'EMAIL_ACTORS.LIST.CANCEL' | translate }}</a>
+          <a md-raised-button class="default" (click)="!isSaving && !editEmailActorForm.invalid && saveEmailActor(editEmailActorForm, false)"
+            [disabled]="editEmailActorForm.invalid" *ngIf="!canEditLine && emailActorInEditMode === item.id">
+            <i class="fa fa-building-o" *ngIf="!isSaving" aria-hidden="true"></i>
+            <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="isSaving"></i>
+            {{ 'EMAIL_ACTORS.LIST.SAVE' | translate }}
+          </a>
+          <!-- /in edit mode -->
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!isLoading && items.length === 0">
+      <span>{{ 'EMAIL_ACTORS.LIST.NO_EMAIL_ACTORS' | translate }}</span>
+    </div>
+
+    <div class="loading_spinner" *ngIf="isLoading">
+      <i class="fa fa-spinner fa-pulse fa-fw"></i>
+    </div>
+
+    <form class="newEmailActorForm" [formGroup]="newEmailActorForm">
+      <div class="row">
+        <div class="col-xl-2 col-md-4 col-sm-12">
+          <app-text-input formControlName="name" [placeholder]="'EMAIL_ACTORS.LIST.NAME' | translate" [disabled]="!showNewLine"></app-text-input>
+        </div>
+        <div class="col-xl-2 col-md-4 col-sm-12">
+          <app-text-input formControlName="email" [placeholder]="'EMAIL_ACTORS.LIST.EMAIL' | translate" [disabled]="!showNewLine"></app-text-input>
+        </div>
+        <div class="col-md-3 col-sm-12 action-buttons">
+          <a md-raised-button class="default inverse" (click)="!newEmailActorForm.invalid && saveEmailActor(newEmailActorForm, true)"
+            [disabled]="!showNewLine || newEmailActorForm.invalid">
+            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+            {{ 'EMAIL_ACTORS.LIST.ADD_EMAIL_ACTOR' | translate }}
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

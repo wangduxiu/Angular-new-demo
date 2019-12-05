@@ -1,0 +1,55 @@
+<div class="calendar-page" @fadeInAnimation>
+  <div class="calendar-page-title">
+    <span class="title">
+      {{ "CALENDAR.TITLE" | translate }} <span class="bold">{{ "CALENDAR.SUBTITLE" | translate }}</span>
+    </span>
+    <div>
+      <a md-button class="default" (click)="createFlorder()" *ngIf="authorization.ORDER.CREATE">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i> {{ "ORDERS.FILTER.BUTTONS.ADD_ORDER" | translate }}
+      </a>
+    </div>
+  </div>
+  <div *ngIf="authorization.ORDER.QUERY" class="calendar-page-content" [ngStyle]="{'height.px': height}">
+    <div class="sticky-template-container" [ngStyle]="{'height.px': height - 100}">
+      <app-calendar-draggable-templates
+        [authorization]="authorization"
+        [templates]="templates.templates"
+        [editing]="templates.editing"
+        [deleting]="templates.deleting"
+        [selectedTemplate]="selectedTemplate"
+        [deliveryDaysRequesting]="deliveryDaysRequesting"
+        (createTemplate)="createTemplate()"
+        (deleteTemplate)="deleteTemplate($event)"
+        (selectTemplate)="selectTemplate($event)"
+        (editTemplate)="editTemplate($event)"
+      >
+      </app-calendar-draggable-templates>
+    </div>
+
+    <div class="template-destination">
+      <div>
+        <app-calendar-filter
+          [authorization]="authorization"
+          [definitions]="definitions"
+          [depots]="depots"
+          [filter]="filter"
+          (filterCalendar)="filterCalendar($event)"
+        >
+        </app-calendar-filter>
+      </div>
+      <div class="calendar-container">
+        <div class="calendar-wrapper">
+          <app-calendar-calendar
+            [days]="flordersState.days"
+            [availableDays]="availableDays"
+            (showFlorderModal)="showFlorderModal($event)"
+            (loadFlorders)="loadFlorders($event)"
+            (openFlorder)="openFlorder($event)"
+            (requestDeliveryDates)="requestDeliveryDates()"
+          >
+          </app-calendar-calendar>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

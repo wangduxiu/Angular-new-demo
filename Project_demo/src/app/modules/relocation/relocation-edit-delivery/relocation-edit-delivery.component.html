@@ -1,0 +1,169 @@
+<div class="order-edit-delivery">
+  <form class="deliveryForm row" [formGroup]="deliveryForm" *ngIf="panelStatus.isEdit">
+
+    <div class="row align_top" *ngIf="!panelStatus.isNew && relocationDetail.etmOrderNumber">
+      <div class="row col-12 col-sm-6 col-xs-wrapper">
+        <div class="col-12 col-md-4 form-label">
+          <app-label translationCode="ORDERS.FILTER.LABELS.ETM_DOCUMENT_NUMBER"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          {{relocationDetail.etmOrderNumber}}
+        </div>
+      </div>
+      <div class="row col-12 col-sm-6 col-xs-wrapper">
+        <div class="col-12 col-md-4 form-label">
+          <app-label translationCode="ORDERS.FILTER.LABELS.ETM_SHIPPING_NUMBER"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          {{getETMShipmentNumbersAsString(relocationDetail.shipmentNumber)}}
+        </div>
+      </div>
+    </div>
+
+    <!-- FROM : select -->
+    <div class="row align_center-md">
+      <div class="col-12 col-md-2 form-label">
+        <app-label translationCode="ORDERS.DELIVERY.LABELS.FROM"></app-label>
+      </div>
+      <div class="col-12 col-md-10">
+        <app-autocomplete2 [elements]="locations" formControlName="from" [valueAsObject]="true"></app-autocomplete2>
+      </div>
+    </div>
+
+    <!-- TO : select -->
+    <div class="row align_center-md">
+      <div class="col-12 col-md-2 form-label">
+        <app-label translationCode="ORDERS.DELIVERY.LABELS.TO"></app-label>
+      </div>
+      <div class="col-12 col-md-10">
+        <app-autocomplete2 [elements]="locations" formControlName="to" [valueAsObject]="true"></app-autocomplete2>
+      </div>
+    </div>
+
+    <!-- CUSTOMER REFERENCE NUMBER : text -->
+    <div class="row align_center-md">
+      <div class="col-12 col-md-2 form-label">
+        <app-label translationCode="ORDERS.DELIVERY.LABELS.CUSTOMER_REFERENCE_NUMBER" [optional]="true"></app-label>
+      </div>
+      <div class="col-12 col-md-10">
+        <app-text-input formControlName="customerReferenceNumber"></app-text-input>
+      </div>
+    </div>
+
+    <!-- LICENCE PLATE : text -->
+    <div class="row align_center-md">
+      <div class="col-12 col-md-2 form-label">
+        <app-label translationCode="ORDERS.DELIVERY.LABELS.LICENCE_PLATE" [optional]="true"></app-label>
+      </div>
+      <div class="col-12 col-md-10">
+        <app-text-input formControlName="licensePlate"></app-text-input>
+      </div>
+    </div>
+
+    <div class="row empty">
+      <div class="col-12 hr-thick"></div>
+    </div>
+
+    <div class="buttons">
+      <a class="btn-cancel" *ngIf="panelStatus.isNew"
+         (click)="cancelClicked.emit()">{{ 'SHARED.BUTTONS.CANCEL' | translate }}</a>
+      <a md-raised-button class="primary btn-next" button-click-on-enter
+         [disabled]="deliveryForm.pending || !deliveryForm.valid"
+         (click)="doNextClicked()">
+        <i class="fa fa-check" aria-hidden="true" *ngIf="!deliveryForm.pending"></i>
+        <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="deliveryForm.pending"></i>
+        <span *ngIf="panelStatus.isNew">{{ 'RELOCATIONS.DELIVERY.BUTTONS.NEXT' | translate }}</span>
+        <span *ngIf="panelStatus.isUpdate">{{ 'ORDERS.DELIVERY.BUTTONS.SAVE' | translate }}</span>
+      </a>
+    </div>
+  </form>
+
+  <!--
+  http://patorjk.com/software/taag/#p=display&c=c%2B%2B&f=Big&t=Read%20only%20version
+    _____                _               _                            _
+   |  __ \              | |             | |                          (_)
+   | |__) |___  __ _  __| |   ___  _ __ | |_   _  __   _____ _ __ ___ _  ___  _ __
+   |  _  // _ \/ _` |/ _` |  / _ \| '_ \| | | | | \ \ / / _ \ '__/ __| |/ _ \| '_ \
+   | | \ \  __/ (_| | (_| | | (_) | | | | | |_| |  \ V /  __/ |  \__ \ | (_) | | | |
+   |_|  \_\___|\__,_|\__,_|  \___/|_| |_|_|\__, |   \_/ \___|_|  |___/_|\___/|_| |_|
+                                            __/ |
+                                           |___/
+  -->
+  <!--Form displayed when detail is opend  -->
+  <form class="deliveryForm desktop-only" [formGroup]="deliveryForm" *ngIf="!panelStatus.isEdit">
+    <div class="row align_top" *ngIf="!panelStatus.isNew && relocationDetail.etmOrderNumber">
+      <div class="row col-12 col-sm-6 col-xs-wrapper">
+        <div class="col-12 col-md-4 form-label">
+          <app-label translationCode="ORDERS.FILTER.LABELS.ETM_DOCUMENT_NUMBER"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          {{relocationDetail.etmOrderNumber}}
+        </div>
+      </div>
+      <div class="row col-12 col-sm-6 col-xs-wrapper">
+        <div class="col-12 col-md-4 form-label">
+          <app-label translationCode="ORDERS.FILTER.LABELS.ETM_SHIPPING_NUMBER"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          {{getETMShipmentNumbersAsString(relocationDetail.shipmentNumber)}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row align_top" *ngIf="relocationDetail.salesOrderNumber">
+      <div class="row col-12 col-sm-6 col-xs-wrapper">
+        <div class="col-12 col-md-4 form-label">
+          <app-label translationCode=ORDERS.FILTER.LABELS.SALES_ORDER_NUMBER></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          {{ relocationDetail.salesOrderNumber }}
+        </div>
+      </div>
+    </div>
+
+    <!-- arrow header -->
+    <div class="three-lines align_top">
+      <div class="row col-12 col-md-6 col-xs-wrapper">
+        <div class="col-12 col-md-4 form-label">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.FROM"></app-label>
+        </div>
+        <div class="col-12 col-md-6">
+          {{ deliveryForm.value.from?.name }}
+        </div>
+        <div class="col-md-2 show-from-md">
+          <app-arrow class="myarrow" [width]="60"></app-arrow>
+        </div>
+      </div>
+      <div class="row col-12 col-md-6 col-xs-wrapper">
+        <div class="col-12 col-md-4 form-label">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.TO"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          {{ deliveryForm.value.to?.name }}
+        </div>
+      </div>
+    </div>
+    <!--end of arrow header  -->
+
+    <div class="hr"></div>
+
+    <div class="row align_top">
+      <div class="row col-12 col-sm-6 col-xs-wrapper">
+        <div class="col-12 col-md-4 form-label">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.CUSTOMER_REF"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          {{deliveryMethod?.customerReferenceNumber || ''}}
+        </div>
+      </div>
+      <div class="row col-12 col-sm-6 col-xs-wrapper">
+        <div class="col-12 col-md-4 form-label">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.PLATE"></app-label>
+        </div>
+        <div class="col-12 col-md-8">
+          {{deliveryMethod?.licensePlate ? deliveryMethod?.licensePlate : ('ORDERS.DELIVERY.LABELS.NO_LICENCE_PLATE' | translate)}}
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

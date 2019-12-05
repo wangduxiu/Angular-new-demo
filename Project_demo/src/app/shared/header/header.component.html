@@ -1,0 +1,91 @@
+<nav class="header-background-color header" [ngClass]="environment !== '' ? environment + '-background-color' : ''">
+  <div class="logo" (click)="gotoDashboard.emit()">
+    <img src="../assets/img/logo.png" />
+    <span>{{ environment }}</span>
+  </div>
+
+  <div class="right">
+    <!-- begin main menu -->
+    <span class="modules" [@modules]="visibleModules.length">
+      <a *ngFor="let module of visibleModules" [ngClass]="{module: true, enabled: loggedIn && !module.disabled && activeCustomer, disabled: module.disabled, active: isActive(module, path)}"
+        (click)="activeCustomer && moduleClicked(module)">{{ module.translationCode | translate}}</a>
+    </span>
+    <!-- end main menu -->
+
+    <span class="modules" [@modules]="authorized !== false" *ngIf="loggedIn">
+    <a [ngClass]="{enabled: loggedIn}" class="more_ellipsis" [mdMenuTriggerFor]="headerMenu" *ngIf="authorized !== false">
+      {{'SHARED.HEADER.MORE' | translate}}
+    </a>
+    </span>
+
+    <!-- begin dropdown menu user -->
+    <md-menu #headerMenu="mdMenu" [overlapTrigger]="false">
+      <button md-menu-item *ngFor="let module of visibleHeaderModules" [ngClass]="{enabled: loggedIn && !module.disabled && activeCustomer, disabled: module.disabled, active: isActive(module, path)}"
+        (click)="activeCustomer && moduleClicked(module)">
+        <span>{{ module.translationCode | translate}}</span>
+      </button>
+    </md-menu>
+    <!-- end dropdown menu user -->
+
+    <div class="usermenu-container">
+      <!-- LOGGED IN & ACTIVE CUSTOMER -->
+      <a class="usermenu" @usermenu [mdMenuTriggerFor]="menuLoggedIn" *ngIf="loggedIn && activeCustomer && activeCustomer.id && !contractDetailsLoading">
+        <div class="user-container">
+          <span class="initials">{{initials}}</span>
+          <div class="userInfo">
+            <span class="loggedAs">{{activeCustomer.id}}</span>
+            <span class="customer">{{activeCustomer.name}}</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- LOGGED IN & NO ACTIVE CUSTOMER -->
+      <a @usermenu class="usermenu" [mdMenuTriggerFor]="menuLoggedIn" *ngIf="loggedIn && (!activeCustomer || !activeCustomer.id) && !contextLoading && !contractDetailsLoading">
+        <div class="user-container">
+          <span class="initials">{{initials}}</span>
+          <div class="userInfo">
+            <span class="loggedAs">{{ 'SHARED.HEADER.WELCOME' | translate }}</span>
+            <span class="customer">{{firstName}}</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- LOGGED IN & LOADING CONTEXT or CONTRACT-->
+      <a @usermenu class="usermenu" *ngIf="contextLoading || contractDetailsLoading">
+        <div class="user-container">
+          <i class="fa fa-spinner fa-pulse fa-fw"></i>
+          {{ 'SHARED.HEADER.' + (contextLoading ? 'LOADING_CONTEXT' : 'LOADING_CONTRACT') | translate }}
+        </div>
+      </a>
+
+      <!-- LOGGED OUT -->
+      <a @usermenu class="usermenu enabled login" *ngIf="!loggedIn && !contextLoading && !contractDetailsLoading && authorized !== false">
+        <span (click)="login.emit()">{{'SHARED.HEADER.LOGIN' | translate}}</span>
+      </a>
+
+      <!-- LOGGED OUT -->
+      <a @usermenu class="usermenu enabled login" *ngIf="!loggedIn && !contextLoading && !contractDetailsLoading && authorized === false">
+        <span (click)="logout.emit()">{{'SHARED.HEADER.LOGOUT' | translate}}</span>
+      </a>
+
+      <!-- USER MENU -->
+      <md-menu #menuLoggedIn="mdMenu" [overlapTrigger]="false">
+        <button md-menu-item (click)="logout.emit()">
+          <span>{{'SHARED.HEADER.LOGOUT' | translate}}</span>
+        </button>
+        <button md-menu-item (click)="selectCustomer.emit()" *ngIf="activeCustomer && canSwitchCustomer">
+          <span>{{'SHARED.HEADER.SWITCH_CUSTOMER' | translate}}</span>
+        </button>
+      </md-menu>
+      <div class="mobile_menu_bars" (click)="openMobileMenu = !openMobileMenu" (clickOutside)="closeMobileMenu()" [menuOpen]="openMobileMenu">
+        <i class="fa fa-bars"></i>
+      </div>
+      <div class="mobile_menu" *ngIf="openMobileMenu">
+        <div *ngFor="let module of visibleMobileModules" [ngClass]="{enabled: loggedIn && !module.disabled, disabled: module.disabled, active_mobile: isActive(module, path)}"
+          (click)="moduleClicked(module); openMobileMenu = !openMobileMenu" class="mobile_menu_item">
+          <span>{{ module.translationCode | translate}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

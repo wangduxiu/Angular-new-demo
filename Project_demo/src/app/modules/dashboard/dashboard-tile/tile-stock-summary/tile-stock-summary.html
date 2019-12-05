@@ -1,0 +1,32 @@
+<div class="tile">
+  <div class="header">
+    <div class="title">
+      <div class="line1">{{'DASHBOARD.STOCK.TITLE.LINE1' | translate}}</div>
+      <div class="line2">{{'DASHBOARD.STOCK.TITLE.LINE2' | translate}}</div>
+    </div>
+  </div>
+
+  <div class="loader" *ngIf="customerSummary.loadingStockOverview">
+    <i class="fa fa-spinner fa-3x fa-pulse fa-fw"></i>
+  </div>
+  <div class="bar_chart" *ngIf="!customerSummary.loadingStockOverview">
+    <div class="item" [ngClass]="{'pos': customerSummary.stockOverview.packingAmount > 0 || customerSummary.stockOverview.packingAmount == 0, 'neg': customerSummary.stockOverview.packingAmount < 0}">
+      <div class="amount">
+        <span [ngStyle]="{'width': 'calc(' + calculateBarWidth(customerSummary.stockOverview.packingAmount) + '% - 10px)'}" class="bar" [ngClass]="{'notZero': customerSummary.stockOverview.packingAmount !== 0}"></span>
+        <span class="text">
+          <span class="bold number">{{customerSummary.stockOverview.packingAmount}}</span>
+          {{'DASHBOARD.STOCK.PACKINGS' | translate}}
+        </span>
+      </div>
+    </div>
+    <div class="item" [ngClass]="{'pos': customerSummary.stockOverview.palletAmount > 0 || customerSummary.stockOverview.palletAmount == 0, 'neg': customerSummary.stockOverview.palletAmount < 0}">
+      <div class="amount">
+        <span [ngStyle]="{'width': 'calc(' + calculateBarWidth(customerSummary.stockOverview.palletAmount) + '% - 10px)'}" class="bar" [ngClass]="{'notZero': customerSummary.stockOverview.palletAmount !== 0}"></span>
+        <span class="text">
+          <span class="bold number">{{customerSummary.stockOverview.palletAmount}}</span>
+          {{'DASHBOARD.STOCK.PALLETS' | translate}}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

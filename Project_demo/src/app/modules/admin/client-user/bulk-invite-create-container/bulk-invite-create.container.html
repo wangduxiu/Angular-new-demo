@@ -1,0 +1,27 @@
+<div @fadeInAnimation>
+  <div>
+    <app-title title="ADMIN.SHARED.BULK_INVITE_CREATE" subtitle="ADMIN.SHARED.CLIENTUSERS"></app-title>
+  </div>
+
+  <div class="body">
+    <div class="row">
+      <a md-raised-button class="primary btn-next" [disabled]="inProgress" (click)="!inProgress && getExample()">
+        <i class="fa fa-download" aria-hidden="true" *ngIf="!downloadExampleInProgress"></i>
+        <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="downloadExampleInProgress"></i>
+        <span>{{ 'ADMIN.CLIENT_USERS.BUTTONS.GET_EXAMPLE' | translate }}</span>
+      </a>
+    </div>
+
+    <div class="row">
+      <input type="file" #fileInput placeholder="Upload file..." (change)="fileSelectedChange()"/>
+    </div>
+
+    <div class="row">
+      <a md-raised-button class="primary btn-next" [disabled]="inProgress || !selectedFile" (click)="!inProgress && selectedFile && doUpload()">
+        <i class="fa fa-upload" aria-hidden="true" *ngIf="!uploadInProgress"></i>
+        <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="uploadInProgress"></i>
+        <span>{{ 'ADMIN.CLIENT_USERS.BUTTONS.UPLOAD_XLS' | translate }}</span>
+      </a>
+    </div>
+  </div>
+</div>

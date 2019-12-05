@@ -1,0 +1,19 @@
+@import '../../styles/globalVars.less';
+
+md-radio-button {
+  margin-right: 30px;
+  width: 100%;
+}
+
+:host ::ng-deep .mat-radio-label {
+  max-width: 100%;
+}
+
+:host ::ng-deep .mat-radio-label-content {
+  top: -2px;
+  position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  overflow: hidden;
+}

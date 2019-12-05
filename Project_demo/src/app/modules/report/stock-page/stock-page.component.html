@@ -1,0 +1,18 @@
+<div class="stock-page">
+  <div *ngIf="authorization.STOCK.GET_CURRENT_STOCK_LIST">
+    <div class="stock-page-search">
+      <app-stock-filter
+        [locations]="locations"
+        [isLoading]="isLoading"
+        (filterStock)="filterStock.emit($event)"
+      ></app-stock-filter>
+    </div>
+
+    <div *ngIf="!isLoading && (totalItems === 0 || totalItems > 0)">
+      <app-stock-list
+        [items]="items"
+        [location]="location"
+      ></app-stock-list>
+    </div>
+  </div>
+</div>

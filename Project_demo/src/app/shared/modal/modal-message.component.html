@@ -1,0 +1,28 @@
+<div class="center-xs custom_modal">
+  <div class="modal-body">
+    <div class="modal-status" [ngClass]="data.type">
+      <i class="fa fa-check-circle-o" *ngIf="data.type == 'success'"></i>
+      <i class="fa fa-exclamation-triangle" *ngIf="data.type == 'error' || data.type === 'warning'"></i>
+      <i class="fa fa-info" *ngIf="data.type == 'info'"></i>
+      {{data.title || ('SHARED.MODAL.' + data.titleCode | translate)}}
+    </div>
+    <div>
+      <span *ngIf="data.messageCode" [innerHTML]="data.messageCode | translate:params"></span>
+      <span *ngIf="data.message">{{data.message}}</span>
+      <span *ngIf="data.timeToDoAction" class="time-to-do-action">{{(timeToDoAction$ | async) || data.timeToDoAction}}</span>
+      <ul class="subMessages">
+        <li *ngFor="let subMessage of data.subMessages">{{subMessage}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="modal-buttons" *ngIf="!data.disableClose">
+    <a (click)="close()" class="default" button-click-on-enter [is-modal]="true" md-button aria-disabled="false" tabindex="0">{{data.buttonText | translate}}</a>
+    <a ngxClipboard *ngIf="data.copyToClipboard" [cbContent]="data.copyToClipboard" class="default" md-button aria-disabled="false" tabindex="0">{{"SHARED.BUTTONS.COPY_TO_CLIPBOARD" | translate}}</a>
+  </div>
+
+  <div class="modal-buttons" *ngIf="data.showLogout">
+    <a (click)="logout()" class="default" button-click-on-enter [is-modal]="true" md-button aria-disabled="false" tabindex="0">{{data.buttonText | translate}}</a>
+    <a ngxClipboard *ngIf="data.copyToClipboard" [cbContent]="data.copyToClipboard" class="default" md-button aria-disabled="false" tabindex="0">{{"SHARED.BUTTONS.COPY_TO_CLIPBOARD" | translate}}</a>
+  </div>
+</div>

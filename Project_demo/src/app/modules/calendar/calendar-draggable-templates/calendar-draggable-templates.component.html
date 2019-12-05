@@ -1,0 +1,53 @@
+<div class="draggable-templates-container">
+  <div class="inner">
+    <div class="content">
+      <div class="top">
+        <div class="title">
+          {{ 'CALENDAR.TEMPLATES' | translate }}
+        </div>
+        <div class="subtitle">
+          <span [innerHTML]="'CALENDAR.TEMPLATE.DRAG_TEMPLATE' | translate"></span>
+        </div>
+        <div class="subtext">
+          {{ 'CALENDAR.TEMPLATE.SUBTEXT' | translate }}
+        </div>
+
+        <a class="btn-cancel clear_selection" (click)="selectTemplate.emit(null)" *ngIf="selectedTemplate">{{ 'CALENDAR.TEMPLATE.CLEAR_SELECTION' | translate }}</a>
+      </div>
+      <div class="templates" [dragula]="'templates-bag'" [ngStyle]="{'height.px': height}">
+        <div *ngFor="let template of templates" class="template" [ngClass]="{'selected': selectedTemplate && template.id == selectedTemplate.id, 'grayed': selectedTemplate && template.id != selectedTemplate.id}" [attr.data-id]="template.id" [attr.data-name]="'templates'" (click)="selectTemplate.emit(template)">
+          <div class="content">
+            <span class="drag_icon" *ngIf="!deliveryDaysRequesting && selectedTemplate && template.id == selectedTemplate.id">
+              <i class="fa fa-arrows"></i>
+            </span>
+            <span *ngIf="(deliveryDaysRequesting && selectedTemplate && template.id == selectedTemplate.id) || editing == template.id">
+              <i class="fa fa-spinner fa-pulse fa-fw"></i>
+            </span>
+            <div class="text">
+              <span class="bold">{{template.name}}</span>
+              <span>{{template.id}}</span>
+            </div>
+          </div>
+          <div class="action_buttons" *ngIf="!(editing == template.id)">
+            <span class="edit_icon" (click)="$event.stopPropagation();editTemplate.emit(template.id)">
+              <i class="fa fa-pencil" *ngIf="!deleting"></i>
+              <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="deleting"></i>
+            </span>
+            <span class="trash_icon" (click)="$event.stopPropagation();deleteTemplate.emit(template.id)">
+              <i class="fa fa-trash" *ngIf="!deleting"></i>
+              <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="deleting"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="buttons">
+      <a md-button class="default" (click)="createTemplate.emit()" *ngIf="authorization.ORDER.CREATE">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i> {{ "CALENDAR.CREATE_TEMPLATE" | translate }}
+      </a>
+    </div>
+  </div>
+</div>

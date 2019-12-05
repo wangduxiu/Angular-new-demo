@@ -1,0 +1,133 @@
+<div class="form-container" *ngIf="totalItems === 0 || totalItems > 0" id="top">
+  <div *ngIf="!isLoading">
+    <div class="col-12 row heading">
+      <div class="col-lg-6 results-heading">
+        <div class="results-heading-title">
+          <div class="title">{{ 'RELOCATIONS.LIST.TITLE' | translate }}</div>
+          <div class="subtitle">{{ 'RELOCATIONS.LIST.SUBTITLE' | translate }}</div>
+        </div>
+        <div class="results-heading-text">
+          <div class="count">
+            <span *ngIf="totalItems > 1 || totalItems === 0">{{ 'ORDERS.LIST.COUNT' | translate:{count:totalItems} }}</span>
+            <span *ngIf="totalItems == 1">{{ 'ORDERS.LIST.COUNT_1' | translate }}</span>
+          </div>
+          <div class="count-postscript">{{ 'ORDERS.LIST.COUNT-POSTSCRIPT' | translate }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row col-12 pagination" *ngIf="!isLoading && totalItems > 0">
+      <app-pager
+        [itemsPerPage]="filter.pageSize"
+        (pageChange)="onPageChange($event)"
+        (itemsPerPageChange)="itemsPerPageChange.emit($event)"
+      ></app-pager>
+    </div>
+
+    <div class="col-12 row bottom-line bold show-from-sm sorters" *ngIf="totalItems > 0">
+      <span class="status"></span>
+      <span class="sorter col-md" sortable-header='orderDate' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.ORDER_DATE' | translate }}</span>
+      <span class="sorter col-md" sortable-header='etmOrderNumber' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.NUMBER' | translate }}</span>
+      <span class="sorter col-md" sortable-header='salesOrderNumber' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+            [sortFn]="sortBnd">{{ 'ORDERS.FILTER.LABELS.SALES_ORDER_NUMBER' | translate }}</span>
+      <span class="sorter col-md" sortable-header='fromId' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.FROM' | translate }}</span>
+      <span class="sorter col-md" sortable-header='toId' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.TO' | translate }}</span>
+      <span class="sorter col-md" sortable-header='requestedUnloadingDate' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.REQUESTED_DATE' | translate }}</span>
+      <span class="sorter col-md" sortable-header='confirmedUnloadingDate' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.CONFIRMED_DATE' | translate }}</span>
+      <span class="menu_col"></span>
+    </div>
+
+    <div *ngFor="let relocation of relocations | paginate: {itemsPerPage: filter.pageSize, currentPage: filter.pageNr, totalItems:totalItems}"
+      class="row col-12 striped cell soft-line order" [class.canOpen]="authorization.canRelocate" (click)="authorization.canRelocate && openRelocation.emit(relocation)">
+      <div class="col-11 col-md-12 order_line">
+        <div class="desktop-only app_status">
+          <app-status layout="BULLET" mode="order" [type]="relocation.status" [size]="1" [height]="40" position="right"></app-status>
+        </div>
+        <div class="content">
+          <div class="row order_data">
+            <div class="order_data-data">
+              <div class="col-md col-12 desktop-only">{{ relocation.orderDate | date:dateFormat }}</div>
+              <div class="col-md col-12 sales-number cell-row">{{ relocation.etmOrderNumber }}</div>
+              <div class="col-md col-12 sales-number cell-row">{{ relocation.salesOrderNumber }}</div>
+              <div class="col-md col-12 row cell-row">
+                <div class="row col-xs start-xs">
+                  <div class="col-xs mobile-only">
+                    <span class="bold">{{ 'ORDERS.LIST.LABELS.FROM' | translate }}:</span>
+                    {{relocation.from.name}}
+                  </div>
+                  <div class="col-xs desktop-only">
+                    {{relocation.from.name}}
+                  </div>
+                </div>
+              </div>
+
+              <!-- copy -->
+              <div class="col-md col-12 row cell-row">
+                <div class="row col-xs start-xs">
+                  <div class="col-xs mobile-only">
+                    <span class="bold">{{ 'ORDERS.LIST.LABELS.TO' | translate }}: </span>
+                    {{relocation.to.name}}
+                  </div>
+                  <div class="col-xs desktop-only">
+                    {{relocation.to.name}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md col-12 desktop-only">
+                {{ relocation.requestedUnloadingDate | date:dateFormat }}
+              </div>
+
+              <div class="col-md col-12 row cell-row">
+                <div class="row col-xs start-xs">
+                  <div class="col-xs mobile-only">
+                    <span class="bold">{{ 'ORDERS.LIST.LABELS.CONFIRMED_DATE' | translate }}:</span>
+                    {{ relocation.confirmedUnloadingDate | date:dateFormat }}
+                  </div>
+                  <div class="col-xs desktop-only">
+                    {{ relocation.confirmedUnloadingDate | date:dateFormat }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="order_data-menu">
+              <div class="more_ellipsis" [mdMenuTriggerFor]="menuOrderLine" (click)="openMenu($event)">
+                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+              </div>
+              <md-menu #menuOrderLine="mdMenu" [overlapTrigger]="false">
+                <button md-menu-item (click)="copyRelocation.emit(relocation)">
+                  <span>{{'RELOCATIONS.LIST.BUTTONS.COPY' | translate}}</span>
+                </button>
+                <button md-menu-item (click)="asTemplate.emit(relocation)">
+                  <span>{{'RELOCATIONS.LIST.BUTTONS.AS_TEMPLATE' | translate}}</span>
+                </button>
+              </md-menu>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-1 col-md-1 mobile-only arrow">
+          <i class="fa fa-angle-right"></i>
+        </div>
+      </div>
+    </div>
+    <div class="loading_spinner" *ngIf="isLoading">
+      <i class="fa fa-spinner fa-pulse fa-fw"></i>
+    </div>
+
+    <div class="row col-12 pagination" *ngIf="!isLoading && totalItems > 0">
+      <app-pager
+        [itemsPerPage]="filter.pageSize"
+        (pageChange)="onPageChange($event)"
+        (itemsPerPageChange)="itemsPerPageChange.emit($event)"
+      ></app-pager>
+    </div>
+  </div>
+</div>

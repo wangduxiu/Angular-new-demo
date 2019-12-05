@@ -1,0 +1,245 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import './app/shared/styles/globalVars.less';
+@import './app/shared/styles/app.less';
+
+/*GENERAL CSS*/
+body {
+  margin: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans', open-sans, sans-serif;
+}
+
+.site-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: @medium-font;
+
+  .site-content-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.block {
+  display: flex;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.hr {
+  height: 2px;
+  background-color: @underLine;
+  opacity: 0.12;
+  margin-bottom: 20px;
+}
+
+.hr-thick {
+  height: 2px;
+  background-color: @blue-underline;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.hr-accent {
+  height: 2px;
+  background-color: @accent-blue;
+  opacity: 0.12;
+  margin-bottom: 20px;
+}
+
+.hr,
+.hr-thick,
+.hr-accent {
+  &.no_margin_bottom {
+    margin-bottom: 0;
+  }
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.big-font {
+  font-size: @big-font;
+}
+
+.small-font {
+  font-size: @base-font;
+}
+/*
+FORMS
+*/
+.form-container {
+  padding: 20px;
+
+  .action {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+
+    > * {
+      margin-left: 10px;
+    }
+
+    .btn-cancel {
+      height: 38px;
+      line-height: 38px;
+      color: #4d4d4d;
+      font-weight: 100;
+    }
+
+    .btn-cancel:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .form-group {
+    app-date-input + app-date-input {
+      margin-top: 10px;
+    }
+    @media only screen and (min-width: @medium-screen-width) {
+      app-date-input + app-date-input {
+        margin-top: 0;
+      }
+    }
+    app-text-input + app-text-input {
+      margin-top: 10px;
+    }
+    @media only screen and (min-width: @medium-screen-width) {
+      app-text-input + app-text-input {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.filter-container {
+  background-color: @background;
+  padding: @page-horizontal-padding;
+
+  .filter-window {
+    max-width: calc(100%);
+  }
+
+  .filter-container-inner {
+    box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.25);
+    background-color: white;
+  }
+}
+
+.cell {
+  margin-bottom: 20px;
+}
+
+.striped {
+  &:nth-child(even) {
+    background-color: @light-grey;
+  }
+
+  &:hover {
+    &:not(.readonly) {
+      background-color: @stripe-hover;
+    }
+  }
+  &:hover {
+    &.canOpen:not(.readonly) {
+      cursor: pointer;
+    }
+  }
+}
+
+/*
+For select input field
+*/
+.option-title::after {
+  content: attr(accesskey);
+  float: right;
+  font-family: 'Open Sans', open-sans, sans-serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 10px;
+  color: @lightText;
+  padding-right: 10px;
+}
+/*
+BUTTONS
+*/
+a.primary {
+  height: 38px;
+}
+
+.mailStyling {
+  .cuppa-dropdown {
+    .selected-list {
+      .c-btn {
+        .c-list {
+          .c-token {
+            background: @accent-blue;
+          }
+        }
+      }
+    }
+  }
+  .dropdown-list {
+    .list-area {
+      .pure-checkbox {
+        label {
+          &::before {
+            border: 2px solid @accent-blue;
+            &:checked {
+              background: @accent-blue;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.hand {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: @medium-screen-width) {
+  .cdk-overlay-pane {
+    width: 90% !important;
+    left: 19px !important;
+    .mat-dialog-container {
+      max-width: 100vw;
+    }
+    .mat-select-panel {
+      min-width: 100% !important;
+    }
+  }
+  .mat-menu-before.mat-menu-below,
+  .mat-menu-panel {
+    float: right;
+  }
+}
+
+
+.cc-window {
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  bottom: auto !important;
+  right: auto !important;
+}

@@ -1,0 +1,91 @@
+@import '../../../../shared/styles/globalVars.less';
+
+.list-wrapper {
+  .heading {
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 2px solid @light-blue;
+    padding: 10px;
+  }
+
+  .items {
+    .item {
+      padding: 10px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+
+      &:nth-child(even) {
+        background-color: @light-grey;
+      }
+
+      .content {
+        flex: 1;
+      }
+
+      .action-buttons {
+        padding: 0 10px;
+
+        a + a {
+          margin-left: 10px;
+        }
+      }
+      @media only screen and (max-width: @medium-screen-width) {
+        padding-bottom: 8em;
+        .action-buttons {
+          padding: 10px;
+        }
+      }
+      @media only screen and (min-width: @medium-screen-width) {
+        .action-buttons {
+          text-align: right;
+        }
+      }
+    }
+    @media only screen and (max-width: @medium-screen-width) {
+      .edit-row {
+        margin-bottom: 7em;
+        form .col-md-3:not(:last-of-type) {
+          margin-bottom: 10px;
+        }
+      }
+      .static-row {
+        padding-bottom: 0px;
+      }
+    }
+    .loading_spinner {
+      text-align: center;
+      font-size: @title-font;
+      padding: 50px 10px;
+    }
+
+    .newEmailActorForm {
+      padding: 10px;
+      background-color: @blue-underline;
+
+      ::ng-deep .mat-input-table {
+        background-color: white;
+      }
+
+      .action-buttons {
+        text-align: center;
+      }
+      @media only screen and (max-width: @small-screen-width) {
+        .row {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      @media only screen and (max-width: @medium-screen-width) {
+        .row {
+          .col-sm-12 {
+            margin-bottom: 1em;
+          }
+          .action-buttons {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

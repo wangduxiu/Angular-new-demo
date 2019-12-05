@@ -1,0 +1,612 @@
+{
+  "SHARED": {
+    "DATE_FORMATS": {
+      "WEEK": "semana ww, aaaa",
+      "DAY": "dd/mm/aaaa"
+    },
+    "PAGING": {
+      "PREVIOUS": "",
+      "NEXT": ""
+    },
+    "BUTTONS": {
+      "YES": "Si",
+      "NO": "No",
+      "CANCEL": "Cancelar",
+      "EDIT": "Editar",
+      "SUBMIT": "Enviar",
+      "SAVE": "Guardar",
+      "CREATE": "Crear",
+      "GO_TO_DASHBOARD": "Acceder al escritorio",
+      "GO_TO_DETAIL": "Detalles",
+      "GO_TO_OVERVIEW": "Resumen",
+      "BACK": "Atrás",
+      "CLOSE": "Cerrar"
+    },
+    "DAYS": {
+      "MONDAY": "Lunes",
+      "TUESDAY": "Martes",
+      "WEDNESDAY": "Miércoles",
+      "THURSDAY": "Jueves",
+      "FRIDAY": "Viernes",
+      "SATURDAY": "Sábado",
+      "SUNDAY": "Domingo",
+      "UNTIL": "hasta"
+    },
+    "ORDINAL": {
+      "FIRST": "Primero",
+      "SECOND": "Segundo ",
+      "THIRD": "Tercero",
+      "FOURTH": "Cuarto",
+      "LAST": "Por último"
+    },
+    "HEADER": {
+      "ORDERS": "PEDIDOS",
+      "FLOWS": "MOVIMIENTOS",
+      "CALENDAR": "CALENDARIO",
+      "INVOICES": "FACTURAS",
+      "STOCK": "STOCK",
+      "BLANK": "ALBARÁN MANUAL",
+      "LOGGED_AS": "CONECTADO COMO",
+      "LOGIN": "Iniciar sesión",
+      "LOGOUT": "Cerrar sesión ",
+      "SWITCH_CUSTOMER": "Cambiar cliente",
+      "LOADING_CONTRACT": "Cargando contrato",
+      "LOADING_CONTEXT": "Cargando contexto",
+      "FAQ": "FAQ",
+      "CONTACT_US": "CONTACTO",
+      "EMAIL_ACTORS": "EMAIL ACTORS",
+      "WELCOME": "Bienvenido"
+    },
+    "LABELS": {
+      "OPTIONAL": "Opcional",
+      "COLLAPSE_ALL": "Han habido problemas",
+      "SHOW_ALL": "Ver todo",
+      "SEARCH": "Buscar:",
+      "NO_ADDRESS": "Sin dirección"
+    },
+    "MODAL": {
+      "HEADER_SUCCESS": "<p class='col-12'><span class='spanStyle'>Estimado Sr./Sra {{name}},</span></p><br><p class='col-12'> su registro ha sido<span class='spanStyle'>guardado</span> correctamente en nuestro sistema!</p>",
+      "HEADER_ERROR": "<p class='col-12'><span class='spanStyle'>Estimado Sr./Sra. {{name}},</span></p><br><p class='col-12'> ha habido un <span class='spanStyle'>error</span> mientras intentaba guardar el registro!</p>",
+      "HEADER_WARNING": "<p class='col-12'><span class='spanStyle'>AVISO</span> MESSAGE</p>",
+      "HEADER_EMAIL": "<p class='col-12'><span class='spanStyle'>SELECCIONAR EMAILS</span> </p>",
+      "MSG_SUCCESS": "<p class='col-12'>En caso de preguntas o dudas, haga referencia a su número de transacción<span class='spanStyle'>#{{number}}</span> cuando</p> <p class='col-12'>contacte con su oficina local </p> <p class='col-12'>Muchas gracias y que tenga un buen día!</p>",
+      "MSG_ERROR": "<p class='col-12'>En caso de preguntas o dudas contacte a su oficina local</p> <p class='col-12'>Muchas gracias y que tenga un buen día p>",
+      "MSG_WARNING": "<p class='col-12'><span class='spanStyle'>AVISO</span>En caso de preguntas o dudas, haga referencia a su número de transacción cuando<span class='spanStyle'>#{{number}}</span> when</p> <p class='col-12'>contacte con su oficina local</p> <p class='col-12'>Muchas gracias y que tenga un buen día!</p>",
+      "SUCCESS": "Éxito",
+      "ERROR": "Error",
+      "WARNING": "Aviso"
+    }
+  },
+  "DASHBOARD": {
+    "TITLE": {
+      "YOUR": "SU",
+      "DASHBOARD": "ESCRITORIO"
+    },
+    "GENERAL": {
+      "VIEW_ALL": "Ver todo",
+      "NEW_FEATURE": {
+        "NEW": "Nuevo",
+        "FEATURE": "Caracterísiticas"
+      }
+    },
+    "TEMPLATE": {
+      "TITLE": {
+        "LINE1": "Crear",
+        "LINE2": "Plantilla"
+      },
+      "DESCRIPTION": "<p>¿Sus recolectas están repartidas a lo largo de la temporada?</p><p>Y como consecuencia, ¿necesita modificar las cantidades? </?</p>",
+      "BUTTON": "Use nuestras plantillas"
+    },
+    "CALENDAR": {
+      "TITLE": {
+        "LINE1": "Compruebe el",
+        "LINE2": "Calendario"
+      },
+      "DESCRIPTION": "Cree pedidos directamente en el calendario o cree facilmente pedidos arratrando las plantillas al calendario",
+      "BUTTON": "Acceder al calendario"
+    },
+    "OPEN_HANDSHAKES": {
+      "TITLE": {
+        "LINE1": "Verificar",
+        "LINE2": "validaciones"
+      },
+      "ELEMENT_PREFIX": "Validar"
+    },
+    "OPEN_HANDSHAKES_SUMMARY": {
+      "TITLE": {
+        "LINE1": "Abrir",
+        "LINE2": "validaciones"
+      },
+      "BUTTON": "Confirmar las validaciones pendientes"
+    },
+    "LATEST_ORDERS": {
+      "TITLE": {
+        "LINE1": "Sus últimos",
+        "LINE2": "pedidos"
+      },
+      "ELEMENT_PREFIX": "pedido"
+    },
+    "DEPOT": {
+      "TITLE": {
+        "LINE1": "Su",
+        "LINE2": "depot"
+      },
+      "ELEMENT_PREFIX": "Pedido"
+    },
+    "LATEST_FLOWS": {
+      "TITLE": {
+        "LINE1": "Sus últimos",
+        "LINE2": "movimientos"
+      },
+      "ELEMENT_PREFIX": "Movimiento"
+    }
+  },
+  "SELECT_CUSTOMER": {
+    "SALES_ORG": "Oficina local",
+    "CUSTOMERS": "Clientes",
+    "FILTER": {
+      "NO_CUSTOMER": "Su búsqueda no coincide con ningún cliente",
+      "NO_SALES_ORGANISATION": "Su búsqueda no coincide con ninguna oficina local"
+    }
+  },
+  "ORDERS": {
+    "FILTER": {
+      "TITLE": "Búsqueda",
+      "SUBTITLE": "pedidos",
+      "LABELS": {
+        "ORDER_DATE": "Fecha del pedido",
+        "UNLOADING_DATE": "Fecha de descarga/carga",
+        "ORDER_TYPE": "Tipo de pedido",
+        "TRANSPORT": "Tranporte",
+        "TRANSPORT_PICKUP": "Recogida",
+        "TRANSPORT_EPS": "Por EPS",
+        "ORDER_STATUS": "Estado del pedido",
+        "CUSTOMER_REFERENCE_NUMBER": "Referencia del cliente",
+        "PALLET_ID": "Pallet ID",
+        "TRANSPORTER": "Transportista",
+        "ETM_SHIPPING_NUMBER": "Número de envío ETM",
+        "CCR-CHECK": "CCR-check",
+        "FROM": "Desde",
+        "TO": "A",
+        "SEAL_NUMBER": "Número de precinto",
+        "CCR": "CCR",
+        "CREATE_CCR": "Crear CCR"
+      },
+      "BUTTONS": {
+        "MORE_SEARCH_OPTIONS": "Más opciones de búsqueda",
+        "LESS_SEARCH_OPTIONS": "Menos opciones de búsqueda",
+        "FILTER_TEXT": "Filtrar pedidos",
+        "ADD_TEMPLATE": "Plantilla",
+        "ADD_ORDER": "Pedido"
+      }
+    },
+    "LIST": {
+      "TITLE": "RESULTADOS",
+      "SUBTITLE": "PEDIDOS",
+      "COUNT": "{{count}} pedidos",
+      "COUNT_1": "1 pedido",
+      "COUNT-POSTSCRIPT": "seleccione sus criterios de búsqueda",
+      "DOWNLOAD_AS": "Descargue los resultados en",
+      "DOWNLOADING": "Descargando...",
+      "PDF": "pdf",
+      "EXCEL": "excel",
+      "OR": "o",
+      "LABELS": {
+        "ORDER_DATE": "Fecha del pedido",
+        "NUMBER": "Número",
+        "FROM": "Desde",
+        "TO": "A",
+        "REQUESTED_DATE": "Fecha solicitada",
+        "CONFIRMED_DATE": "Fecha confirmada",
+        "TRANSPORT": "Transporte",
+        "GLOBAL_TYPE": "Global type"
+      },
+      "BUTTONS": {
+        "COPY": "Copiar",
+        "AS_TEMPLATE": "Crear plantilla a partir del pedido"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "PEDIDO",
+      "SUBTITLE": "LINIAS",
+      "REGISTERED_BY": "Registrado por"
+    },
+    "PLANNING": {
+      "TITLE": "PEDIDO",
+      "SUBTITLE": "PLANIFICACIÓN",
+      "BUTTONS": {
+        "NEXT": "Siguiente",
+        "SAVE": "Guardar"
+      }
+    },
+    "NO_PLANNING": {
+      "TITLE": "PLANTILLA",
+      "SUBTITLE": "DETALLES"
+    },
+    "DELIVERY": {
+      "TITLE": "GENERAL",
+      "SUBTITLE": "",
+      "VALUES": {
+        "RECURRENCY": {
+          "WEEKLY": "Semanalmente, cada {{days}}",
+          "MONTHLY-NROFDAY": "Mensualmente, día {{day}} de cada {{monthPeriodicy1}} mes",
+          "MONTHLY-DAYOFMONTH": "Mensualmente, el {{which}} {{weekday}} de cada {{monthPeriodicy2}} mes"
+        }
+      },
+      "LABELS": {
+        "CHOOSE_TYPE": "Tipo de pedido",
+        "TYPE_DELIVERY": "Entrega",
+        "TYPE_RETURN": "Devolución",
+        "TYPE_DIRECT_SERVICES": "Servicios directos",
+        "TYPE_MOVEMENT": "Movimiento",
+        "SOLD_TO": "Vendido a ",
+        "TO": "A",
+        "TRANSPORT": "Transporte",
+        "TRANSPORT_PICKUP": "Recogida",
+        "TRANSPORT_EPS": "Por EPS",
+        "PICKUP_POINT": "Punto de recogida",
+        "RECURRENCE": "Incidencia",
+        "CUSTOMER_REFERENCE_NUMBER": "Referencia",
+        "CLEARING": "Clearing",
+        "LICENCE_PLATE": "Matrícula",
+        "REMARKS": "Observaciones",
+        "RECURRENCY_PATTERN": "Patrón de incidencia",
+        "PATTERN_WEEKLY": "Semanalmente",
+        "PATTERN_MONTHLY": "Mensualmente",
+        "END_DATE_RECURRENCE": "Fecha final de la incidencia",
+        "FROM": "Desde",
+        "RECURRENCY_TIME": "Fecha de la incidencia",
+        "MONTHLY": {
+          "DAY": "Día",
+          "OF_EVERY": "de cada",
+          "MONTHS": "mes",
+          "THE": ""
+        },
+        "REQUESTED_DATE": "FECHA DE DESCARGA SOLICITADA",
+        "CONFIRMED_DATE": "FECHA DE DESCARGA CONFIRMADA",
+        "EXCHANGE_PALLET": "INTERCAMBIO PALLETS",
+        "NUMBER_OF_EXCHANGE_PALLETS": "CANTIDAD DE PALLETS INTERCAMBIADOS",
+        "COMMENTS": "OBSERVACIONES",
+        "TRANSPORTER": "TRANSPORTISTA",
+        "PLATE": "MATRICULA",
+        "REF": "REFERENCIA",
+        "NO_REMARKS": "Sin comentarios",
+        "NO_TRANSPORTER": "Sin transportista",
+        "NO_LICENCE_PLATE": "Sin matrícula"
+      },
+      "BUTTONS": {
+        "NEXT": "Acceder a las líneas del pedido",
+        "SAVE": "Guardar"
+      }
+    },
+    "DETAIL": {
+      "LABELS": {
+        "LOADING_DATE": "Fecha de carga",
+        "EXCHANGE_PALLETS": "Intercambio pallets",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Cantidad de pallets",
+        "CREATE_TEMPLATE": "Guardar como plantilla",
+        "TEMPLATE_NAME": "Nombre plantilla"
+      },
+      "BUTTONS": {
+        "NEXT": "Acceder al histórico de pedidos",
+        "SAVE": "Guardar "
+      }
+    },
+    "MATERIAL": {
+      "TITLE": "Añadir cantidades",
+      "TYPE": "Seleccione el tipo de",
+      "LABELS": {
+        "TYPES": {
+          "PACKING": "Packing",
+          "PALLET": "Pallet",
+          "COMBO": "Combinación"
+        },
+        "TYPE_PACKING": "Tipo de packing",
+        "TYPE_PALLET": "Tipo de pallet",
+        "STATUS_PALLET": "Estatus pallet",
+        "STATUS_PACKING": "Estatus packing",
+        "LOGISTIC_VARIETY": "Variedad logística",
+        "PACKING_PER_PALLET": "Packings por pallet",
+        "NUMBER_OF_PALLETS": "Cantidad de pallets",
+        "QUANTITY": "Cantidad",
+        "PO_NUMBER": "Número de documento",
+        "PO_NUMBER_ITEM": "Número de documento",
+        "MESSAGE": "Aviso",
+        "PFQ_EUR": "Cantidad de EPP (tamaño Euro )",
+        "PFQ_POOL": "Cantidad de EPP (tamaño Pool)",
+        "EXCHANGE_PALLETS": "Intercambio pallets",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Cantidad de europallets intercambiados",
+        "CREATE_TEMPLATE": "Guardar como plantilla",
+        "TEMPLATE_NAME": "Nombre plantilla",
+        "NR_OF_PFQS": "Cantidad de PFQs",
+        "PACKING": "Packing",
+        "STATUS": "Estatus",
+        "LOGISTIC_VAR": "Variedad logística",
+        "QTY": "Cantidad",
+        "EXCHANGE": "Intercambio",
+        "BALANCED": "Saldo solicitado",
+        "REFERENCE": "Referencia",
+        "CONTENT": "Contenido",
+        "LINE_REFERENCE": "Referencia línea"
+      },
+      "NOTIFICATIONS": {
+        "MATERIAL_ADDED": "Modelo añadido correctamente",
+        "MATERIAL_REMOVED": "Modelo eliminado correctamente",
+        "MATERIAL_ALREADY_EXISTS": "Modelo ya registrado previamente.  Por favor registre otro modelo o edite la línea existente."
+      },
+      "BUTTONS": {
+        "ADD_MATERIAL": "Añadir modelo",
+        "SAVING": "Guardando"
+      }
+    }
+  },
+  "TEMPLATES": {
+    "DETAILS": {
+      "TITLE": "PLANTILLA",
+      "CREATE_SUCCESS": "La plantilla ha sido creada correctamente"
+    }
+  },
+  "FLOWS": {
+    "FILTER": {
+      "TITLE": "FILTRO",
+      "SUBTITLE": "movimientos",
+      "LABELS": {
+        "FLOW_DATE": "Fecha del movimiento",
+        "STATUS": "Estatus",
+        "STATUS_HANDSHAKE": "Esperando verificación",
+        "STATUS_DEFINITIVE": "Definitivo",
+        "STATUS_CANCEL": "Cancelar",
+        "DIFFERENCE": "Diferencia",
+        "CLEARING": "Clearing",
+        "HANDSHAKE_DATE": "Fecha de verificación",
+        "PACKING_ID": "Packing ID",
+        "CHECKED": "Aceptado"
+      },
+      "BUTTONS": {
+        "FILTER_TEXT": "Histórico movimientos",
+        "ADD_FLOW": "Movimiento"
+      }
+    },
+    "LIST": {
+      "TITLE": "RESULTADOS",
+      "SUBTITLE": "MOVIMIENTOS",
+      "SELECTED": "{{selected}} seleccionado",
+      "COUNT": "{{count}} movimientos",
+      "COUNT_1": "1 movimiento",
+      "COUNT-POSTSCRIPT": "seleccione sus criterios de búsqueda",
+      "LABELS": {
+        "FLOW_DATE": "Fecha del movimiento",
+        "NUMBER": "Número de documento",
+        "STATUS_HANDSHAKE": "Estatus verificación",
+        "TYPE": "Tipo",
+        "ORIGINAL": "Remitente",
+        "DEFINITIVE": "Receptor",
+        "DIFFERENCE": "Diferencia",
+        "CONTENT": "Contenido",
+        "REFERENCE": "Referencia",
+        "COLLAPSE_COUNT": "Han habido problemas ({{count}})",
+        "SHOW_COUNT": "Ver todo ({{count}})"
+      },
+      "BUTTONS": {
+        "CANCEL": "Cancelar",
+        "ACCEPT": "Aceptar",
+        "REJECT": "Rechazar"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "movimientos",
+      "SUBTITLE": "LÍNEAS",
+      "BUTTONS": {
+        "NEXT": "Acceder a la fecha de transacción"
+      }
+    },
+    "PLANNING": {
+      "TITLE": "TRANSACCIÓN",
+      "SUBTITLE": "FECHA"
+    },
+    "DELIVERY": {
+      "TITLE": "GENERAL",
+      "SUBTITLE": "",
+      "LABELS": {
+        "FLOW_DIRECTION": "Dirección del movimiento",
+        "WHOLESALER": "Mayorista"
+      },
+      "BUTTONS": {
+        "NEXT": "Acceder a las líneas del movimiento"
+      }
+    },
+    "NOTIFICATIONS": {
+      "ACCEPT_INVALID": "Los siguientes flujos con número de documento contienen entradas no válidas: {{invalids}}"
+    }
+  },
+  "CCR": {
+    "DETAILS": {
+      "TITLE": "CCR",
+      "MATERIAL_LINES": "Líneas con modelos",
+      "CCR_LINES": "Líneas CCR",
+      "CREATE_SUCCESS": "CCR ha sido creado correctamente"
+    }
+  },
+  "ADMIN": {
+    "GENERAL": {
+      "EPS_USERS": "Usuarios EPS ",
+      "CLIENT_USERS": "Usuarios del cliente"
+    },
+    "FILTER": {
+      "TITLE": "Filtro",
+      "LABELS": {
+        "FIRST_NAME": "Nombre",
+        "ASSIGNED": "Asignado",
+        "SYNC_WITH_AD": "Sincronizar con Active Directory",
+        "SYNCING_WITH_AD": "Sincronización con Active Directory",
+        "LAST_NAME": "Apellido/s",
+        "EMAIL": "E-mail",
+        "ID": "Id",
+        "PHONE": "Número de teléfono móvil"
+      },
+      "BUTTONS": {
+        "INVITE": "Invitar usuario",
+        "EDIT": "Editar"
+      }
+    },
+    "SHARED": {
+      "CLIENTUSERS": "USUARIOS DEL CLIENTE",
+      "CLIENTUSER": "Usuario del cliente",
+      "EPSUSERS": "USUARIOS EPS ",
+      "EPSUSER": "Usuario EPS ",
+      "INVITE": "Invitar",
+      "UPDATE": "Actualizar",
+      "EDIT": "Editar",
+      "COUNT": "{{count}} usuarios",
+      "COUNT-POSTSCRIPT": "seleccione sus criterios de búsqueda",
+      "COUNT_1": "1 usuario",
+      "ADD": "Añadir",
+      "USER_UPDATE_SUCCESS": "El usuario ha sido actualizado correctamente",
+      "USER_UPDATE_FAIL": "El usuario no puede ser actualizado",
+      "USER_INVITE_SUCCESS": "El usuario ha sido invitado correctamente",
+      "USER_INVITE_FAIL": "El usuario no puede ser invitado",
+      "NAME": "Nombre",
+      "ID": "ID"
+    },
+    "EPS_USERS": {
+      "NAME": "Nombre",
+      "EMAIL": "E-mail",
+      "LAST_NAME": "Apellido/s",
+      "SALES_ORG": "Oficina local",
+      "NO_SALES_ORG": "Sin oficina local",
+      "SEARCH_SALES_ORG": "Buscar oficina local",
+      "ADMIN": "Admin",
+      "CUSTOMER_ROLE_LIST": "Histórico cliente",
+      "ADD_SALES_ORGANISATION": "Añadir oficina lcoal",
+      "LANGUAGE": "Idioma",
+      "LIST": {
+        "TITLE": "RESULTADOS",
+        "SUBTITLE": "Usuarios EPS "
+      }
+    },
+    "CLIENT_USERS": {
+      "LIST": {
+        "TITLE": "RESULTADOS",
+        "SUBTITLE": "USUARIOS DEL CLIENTE",
+        "ASSIGNED": "Asignado"
+      },
+      "CUSTOMER": "Cliente",
+      "ROLE": "Función",
+      "SEARCH_CUSTOMER": "Buscar cliente",
+      "ADD_CUSTOMER": "Añadir nuevo cliente",
+      "ACTIVE": "Activar",
+      "LANGUAGE": "Idioma"
+    }
+  },
+  "ERRORS": {
+    "AUTHORIZATION": {
+      "NO_CUSTOMERS": "No tiene ningún cliente registrado a su cuenta. Por favor, póngase en contacto con su administrador de Euro Pool System para darle acceso",
+      "NO_CUSTOMERS_IN_SALES_ORGANIZATION": "No hay clientes registrados a esta oficina local. Seleccione otra oficina local",
+      "NO_SALES_ORGANIZATIONS": "No tiene ninguna oficina local asignada. Por favor, póngase en contacto con su administrador para darle acceso",
+      "CONTRACT_EMPTY": {
+        "TITLE": "El siguiente contrato no está activo",
+        "MESSAGE": "El cliente seleccionado no tiene ningún contrato activo. Póngase en contacto con su administrador de Euro Pool System para solucionar este problema."
+      }
+    },
+    "FILTER_FAILED": {
+      "TITLE": "Ejecutar filtro"
+    },
+    "PDF_DOWNLOAD_FAILED": {
+      "TITLE": "Descargar archivo PDF",
+      "MESSAGE": "No se pudo descargar el PDF"
+    },
+    "XLS_DOWNLOAD_FAILED": {
+      "TITLE": "Descargar archivo excel",
+      "MESSAGE": "No se pudo descargar el excel"
+    },
+    "COPY_ORDER": {
+      "NO_VALID_CONTRACT": "Su contrato ha cambiado. Ya no puede crear un pedido similar."
+    },
+    "COPY_FLOW": {
+      "NO_VALID_CONTRACT": "Su contrato ha cambiado. Ya no puede crear un pedido similar."
+    },
+    "TEMPLATE": {
+      "CREATE": "ERROR plantilla",
+      "COPY_FROM_ORDER": "No se puede copiar desde el pedido"
+    },
+    "ORDER": {
+      "CREATE": {
+        "TRUCK_LOAD": "Controlar la carga del camión"
+      }
+    },
+    "CUSTOMER-SUMMARY": {
+      "LOAD": "Cargando histórico del cliente"
+    }
+  },
+  "validation-error": {
+    "numberOfExchangePallets": {
+      "text": {
+        "max": "No está permitido cambiar más pallets de los que ordenó en un principio",
+        "min": "La cantidad de pallets debe ser mayor que cero"
+      }
+    },
+    "customerReferenceNumber": {
+      "text": {
+        "required": "La referencia del cliente no puede estar en blanco"
+      }
+    },
+    "flowDate": {
+      "date": {
+        "invalid": "La fecha del movimiento es incorrecta"
+      }
+    },
+    "text": {
+      "required": "Este campo no puede estar en blanco"
+    },
+    "date": {
+      "required": "Esta fecha es obligatoria",
+      "datePatternValidator": "Esta fecha no está formateada correctamente",
+      "dateRangeValidator": "Fecha fuera de rango",
+      "dateSameOrAfter": "La fecha debe de ir después de {{otherDate}}",
+      "dateNotAvailable": "La fecha seleccionada no es una fecha disponible. Por favor seleccione otra fecha"
+    },
+    "custom": {
+      "recurrence": {
+        "atLeastOneDay": "Por favor verifique al menos 1 día"
+      }
+    }
+  },
+  "CALENDAR": {
+    "TITLE": "SU",
+    "SUBTITLE": "CALENDARIO",
+    "SHOW_TODAY": "Ver hoy",
+    "CREATE_TEMPLATE": "Crear plantilla",
+    "TEMPLATES": "Plantillas",
+    "FILTER": {
+      "DEPOT": "Depot",
+      "DELIVERY": "Entrega",
+      "RETURN": "Devolución",
+      "OWN": "Propio",
+      "BY_EPS": "Por EPS"
+    },
+    "ADD_ORDER_MODAL": {
+      "TITLE": "AÑADIR",
+      "START_FROM_A": "Empezar desde",
+      "TEMPLATE": "plantilla",
+      "NEW_ORDER": "nuevo pedido"
+    },
+    "TEMPLATE": {
+      "DRAG_TEMPLATE": "Empezar a <span class='bold'>arrastrar</span> la plantilla",
+      "SUBTEXT": "Arrastre y suelte las plantillas al calendario. O agregue un pedido haciendo clic en una fecha específica."
+    }
+  },
+  "STOCK": {
+    "TITLE": "<span class='bold'>STOCK</span> HISTÓRICO",
+    "FILTER_TITLE": "<span class='bold'>Elija la ubicación</span> para obtener el stock",
+    "LOCATION": "Ubicación",
+    "CHECK_STOCK": "Comprobar stock",
+    "THIS_WEEK": "Esta semana",
+    "TRAYS": "Cajas"
+  },
+  "BLANK_RECEIPT": {
+    "TITLE": "<span class='bold'>CREAR</span> ALBARÁN MANUAL",
+    "RECEIPT_TYPE": "Tipo de albarán",
+    "QUANTITY": "Cantidad",
+    "CREATE_RECEIPT": "Crear albarán"
+  }
+}

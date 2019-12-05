@@ -1,0 +1,15 @@
+<div class="container">
+  <pagination-controls
+    class="app-pagination"
+    (pageChange)="pageChange.emit($event)"
+    [previousLabel]="'SHARED.PAGING.PREVIOUS' | translate"
+    [nextLabel]="'SHARED.PAGING.NEXT' | translate"
+  ></pagination-controls>
+  <form [formGroup]="form">
+    <app-select
+      [elements]="itemsPerPageOptions"
+      formControlName="itemsPerPage"
+      (change)="itemsPerPageChange.emit(+form.value.itemsPerPage)"
+    ></app-select>
+  </form>
+</div>

@@ -1,0 +1,11 @@
+<div class="order-documents-container">
+  <div class="row">
+    <div class="document col-12 col-md-6" *ngFor="let document of documents" (click)="download(document)">
+      <i class="fa fa-file-o"></i>
+      <span>{{document.fileName}}</span>
+    </div>
+    <div *ngIf="documents.length === 0">
+      {{ 'ORDERS.DOCUMENTS.NO_DOCUMENTS' | translate }}
+    </div>
+  </div>
+</div>

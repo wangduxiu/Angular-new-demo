@@ -1,0 +1,164 @@
+<div  @fadeInAnimation>
+<div class="order-page-title" id="top">
+  <div class="edit-button" *ngIf="panelStatus.backButton.isVisible" (click)="cancelClicked()">
+    <a md-raised-button class="default">{{ 'SHARED.BUTTONS.BACK' | translate }}</a>
+  </div>
+  <div *ngIf="mode.state === 'view'" class="content">
+    <div class="title">
+      <app-status *ngIf="mode.state === 'view'" layout="BULLET" key="{{'ORDER_' + orderDetail.status}}" height="40" [size]="1"></app-status>
+      <div class="multi-line">
+        <div>
+          <app-title title="ORDERS.DETAILS.TITLE"></app-title>
+          <span class="subtitle">{{orderDetail.etmOrderNumber}}</span>
+        </div>
+        <div *ngIf="orderDetail.registeredBy">
+          <span class="bold">{{ 'ORDERS.DETAILS.REGISTERED_BY' | translate }}</span> {{orderDetail.registeredBy}}
+        </div>
+      </div>
+    </div>
+
+    <div class="action_buttons">
+      <div class="show-from-md">
+<!--
+        <a md-raised-button class="default" (click)="createCCR()" *ngIf="authorization.ORDER.CREATE && restrictions.useCcrValidation && !orderDetail.ccr.ccrNumber && orderDetail.status === '02'">
+          {{ 'ORDERS.FILTER.LABELS.CREATE_CCR' | translate }}
+        </a>
+-->
+        <a md-raised-button class="default" (click)="copyOrder()"  *ngIf="authorization.ORDER.CREATE">
+          {{ 'ORDERS.LIST.BUTTONS.COPY' | translate }}
+        </a>
+      </div>
+      <div class="more_ellipsis hide-from-sm" [mdMenuTriggerFor]="menuOrderLine" *ngIf="authorization.ORDER.CREATE">
+        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+      </div>
+      <md-menu #menuOrderLine="mdMenu" [overlapTrigger]="false">
+        <button md-menu-item (click)="createCCR()" *ngIf="restrictions.useCcrValidation && !orderDetail.ccr.ccrNumber">
+          <span>{{'ORDERS.FILTER.LABELS.CREATE_CCR' | translate}}</span>
+        </button>
+        <button md-menu-item (click)="copyOrder()">
+          <span>{{'ORDERS.LIST.BUTTONS.COPY' | translate}}</span>
+        </button>
+      </md-menu>
+    </div>
+  </div>
+  <app-title *ngIf="mode.state !== 'view' && !mode.createTemplate && !mode.editTemplate" title="SHARED.BUTTONS.CREATE" subtitle="ORDERS.DETAILS.TITLE"></app-title>
+  <app-title *ngIf="mode.state !== 'view' && (mode.createTemplate || mode.editTemplate)" [title]="mode.editTemplate ? 'SHARED.BUTTONS.EDIT' : 'SHARED.BUTTONS.CREATE'" subtitle="TEMPLATES.DETAILS.TITLE_ORDER"></app-title>
+</div>
+
+<div class="row filter-container">
+  <div class="col-12 col-md-12 col-lg-9 filter-container-inner">
+    <div class="order-create-title-bar">
+      <div class="row order-create-title-bar-header" [ngClass]="{activated: panelStatus.delivery.isEdit}">
+        <div class="order-create-title">
+          <i class='fa fa-truck' aria-hidden='true'></i>
+          <b>1&nbsp;&nbsp;{{'ORDERS.DELIVERY.TITLE' | translate}}</b> {{'ORDERS.DELIVERY.SUBTITLE' | translate}}
+        </div>
+        <div class="edit-button" *ngIf="(panelStatus.delivery.isEditable ||( mode.editWindow === 'detail' || mode.editWindow === 'planning' ))  && !panelStatus.busy && !disableButtons" (click)="editDeliveryMethodClicked()">
+          <a md-raised-button class="default">{{ 'SHARED.BUTTONS.EDIT' | translate }}</a>
+        </div>
+      </div>
+      <app-order-edit-delivery
+        [definitions]="definitions"
+        [deliveryMethod]="orderDetail.deliveryMethod"
+        [contractInfo]="contractInfo"
+        [panelStatus]="panelStatus.delivery"
+        [orderDetail]="orderDetail"
+        [filterValues]="filterValues"
+        [isEpsUser]="sandbox.isEpsUser$ | async"
+        [defaultDepot]="sandbox.defaultDepot$ | async"
+        (cancelClicked)="cancelClicked()"
+        (nextClicked)="setDeliveryMethod($event)"
+        (orderTypeSelected)="loadContractInfoFromOrderTypeToIncoterm($event)"
+        (fromSelected)="loadContractInfoFromOrderTypeToFrom($event)"
+        (formValidChanged)="formValidChanged('delivery', $event)" (resetMaterialsAndPlanningEventEmiiter)="resetMaterialsAndPlanning()"
+      ></app-order-edit-delivery>
+    </div>
+
+    <div class="order-create-title-bar">
+      <div class="row order-create-title-bar-header" [ngClass]="{activated: panelStatus.detail.isEdit}">
+        <div class="order-create-title">
+          <i class='fa fa-file-o' aria-hidden='true'></i>
+          <b>2&nbsp;&nbsp;{{'ORDERS.DETAILS.TITLE' | translate}}</b> {{'ORDERS.DETAILS.SUBTITLE' | translate}}
+        </div>
+        <div class="edit-button" *ngIf="(panelStatus.detail.isEditable || mode.editWindow === 'planning') && !panelStatus.busy && !disableButtons" (click)="editDetailClicked()">
+          <a md-raised-button class="default"> {{ 'SHARED.BUTTONS.EDIT' | translate }} </a>
+        </div>
+      </div>
+    </div>
+    <app-order-edit-detail
+      *ngIf="panelStatus.detail.isVisible"
+      [definitions]="definitions"
+      [editMaterial]="mode.material"
+      [orderDetail]="orderDetail"
+      [panelStatusMaterial]="panelStatus.material"
+      [panelStatus]="panelStatus.detail"
+      [materialTypes]="incoterm"
+      (cancelClicked)="cancelClicked()"
+      [loadedEpp]="loadedEpp"
+      [maxEpp]="maxEpp"
+      (backClicked)="backToDeliveryClicked()"
+      (nextClicked)="saveDetails()"
+      (saveMaterialClicked)="saveMaterial($event)"
+      (removeMaterialClicked)="removeMaterial($event)"
+      (startEditMaterialClicked)="editMaterial($event)"
+      (formValidChanged)="formValidChanged('detail', $event)"
+    ></app-order-edit-detail>
+
+    <!-- PLANNING -->
+    <div class="order-create-title-bar">
+      <div class="row order-create-title-bar-header" [ngClass]="{activated: panelStatus.planning.isEdit}">
+        <div class="order-create-title" *ngIf="!mode.createTemplate && !mode.editTemplate">
+          <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+          <b>3&nbsp;&nbsp;{{'ORDERS.PLANNING.TITLE' | translate}}</b> {{'ORDERS.PLANNING.SUBTITLE' | translate}}
+        </div>
+        <div class="order-create-title" *ngIf="mode.createTemplate || mode.editTemplate">
+          <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+          <b>3&nbsp;&nbsp;{{'ORDERS.NO_PLANNING.TITLE' | translate}}</b> {{'ORDERS.NO_PLANNING.SUBTITLE' | translate}}
+        </div>
+        <div class="edit-button" *ngIf="panelStatus.planning.isEditable && !panelStatus.busy && !disableButtons" (click)="editPlanningClicked()">
+          <a md-raised-button class="default">
+            {{ 'SHARED.BUTTONS.EDIT' | translate }}
+          </a>
+        </div>
+        <div class="edit-button" *ngIf="panelStatus.planning.isEditable && panelStatus.planning.opening">
+          <a md-raised-button class="default">
+            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+            {{ 'SHARED.BUTTONS.EDIT' | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+    <app-order-edit-planning
+      *ngIf="panelStatus.planning.isVisible"
+      [authorization]="authorization"
+      [orderDetail]="orderDetail"
+      [panelStatus]="panelStatus.planning"
+      [availablePickingDates]="getAvailablePickingDates()"
+      [openingHours]="getOpeningHours()"
+      (cancelClicked)="cancelClicked()"
+      (backClicked)="backToDetailClicked()"
+      (nextClicked)="savePlanning($event)"
+      (formValidChanged)="formValidChanged('planning', $event)"
+    ></app-order-edit-planning>
+
+    <!-- DOCUMENTS -->
+    <div class="order-create-title-bar" *ngIf="mode.state === 'view'">
+      <div class="row order-create-title-bar-header">
+        <div class="order-create-title">
+          <i class='fa fa-file-text-o' aria-hidden='true'></i>
+          <b>4&nbsp;&nbsp;{{'ORDERS.DOCUMENTS.TITLE' | translate}}</b>
+        </div>
+      </div>
+      <app-order-documents [documents]="orderDetail.documents" (downloadDocument)="downloadDocumentFromList($event)"></app-order-documents>
+    </div>
+  </div>
+</div>
+
+<div class="col-12 col-md-12 col-lg-9 buttons" *ngIf="panelStatus.submitButton.isVisible && !mode.saved && (!mode.createTemplate || !templateState?.saved) && (!mode.editTemplate || !templateState?.saved)" (click)="!disableButtons && panelStatus.submitButton.isEnabled && formsAreValid.all && proceed()">
+  <a md-raised-button button-click-on-enter class="default" [ngClass]="{disabled: !panelStatus.submitButton.isEnabled}" [disabled]="disableButtons || !formsAreValid.all">
+    <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="disableButtons"></i>
+    {{ 'SHARED.BUTTONS.SUBMIT' | translate }}
+  </a>
+</div><!-- </div> -->
+</div>
+

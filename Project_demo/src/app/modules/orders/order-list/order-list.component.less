@@ -1,0 +1,29 @@
+@import '../../../shared/styles/globalVars.less';
+
+.content {
+  .deviation_buttons {
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: Roboto,"Helvetica Neue",open_sans;
+    a {
+      line-height: 26px;
+      font-size: @base-font;
+      padding: 0 12px;
+    }
+
+    a + a {
+      margin-left: 10px;
+    }
+
+    .accept {
+      border-color: @success;
+      color: @success;
+    }
+
+    .reject {
+      border-color: @error-modal;
+      color: @error-modal;
+    }
+  }
+}

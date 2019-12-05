@@ -1,0 +1,22 @@
+<div class="email-actors-page" @fadeInAnimation>
+  <div class="email-actors-page-title">
+    <span class="title" [innerHTML]="'EMAIL_ACTORS.TITLE' | translate"></span>
+    <span class="subtitle" [innerHTML]="'EMAIL_ACTORS.SUBTITLE' | translate"></span>
+  </div>
+  <div class="email-actors-page-content row">
+    <div class="col-md-9">
+      <app-email-actors-list
+        [items]="emailActors.items"
+        [isLoading]="isLoading"
+        [isSaving]="isSaving"
+        (createOrUpdateEmailActor)="createOrUpdateEmailActor($event)"
+        (deleteEmailActor)="deleteEmailActor($event)"
+        (deactivateEmailActor)="deactivateEmailActor($event)"
+      >
+      </app-email-actors-list>
+    </div>
+    <div class="col-md-3 service-boxes">
+      <app-service-boxes></app-service-boxes>
+    </div>
+  </div>
+</div>

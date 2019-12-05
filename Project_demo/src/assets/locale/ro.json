@@ -1,0 +1,612 @@
+{
+  "SHARED": {
+    "DATE_FORMATS": {
+      "WEEK": "săptămână ww, aaaa",
+      "DAY": "zz/ll/aaaa"
+    },
+    "PAGING": {
+      "PREVIOUS": "",
+      "NEXT": ""
+    },
+    "BUTTONS": {
+      "YES": "Da",
+      "NO": "Nu",
+      "CANCEL": "A anula",
+      "EDIT": "A edita",
+      "SUBMIT": "A trimite",
+      "SAVE": "A salva",
+      "CREATE": "A crea",
+      "GO_TO_DASHBOARD": "Accesați tabloul de bord",
+      "GO_TO_DETAIL": "Accesați la detalii",
+      "GO_TO_OVERVIEW": "Accesați prezentarea generală",
+      "BACK": "Înapoi",
+      "CLOSE": "A închide"
+    },
+    "DAYS": {
+      "MONDAY": "Luni",
+      "TUESDAY": "Marţi",
+      "WEDNESDAY": "Miercuri",
+      "THURSDAY": "Joi",
+      "FRIDAY": "Vineri",
+      "SATURDAY": "Sâmbătă",
+      "SUNDAY": "Duminică",
+      "UNTIL": "până"
+    },
+    "ORDINAL": {
+      "FIRST": "Întâi",
+      "SECOND": "În al doilea rând ",
+      "THIRD": "În al treilea rând",
+      "FOURTH": "În al patrulea rând",
+      "LAST": " În sfârşit"
+    },
+    "HEADER": {
+      "ORDERS": "COMENZII",
+      "FLOWS": "FLUX",
+      "CALENDAR": "CALENDAR",
+      "INVOICES": "FACTURII",
+      "STOCK": "STOCK",
+      "BLANK": "Scrisoare de trăsură manuală",
+      "LOGGED_AS": "CONECTAT CA",
+      "LOGIN": "Logare",
+      "LOGOUT": "Desconectare",
+      "SWITCH_CUSTOMER": "Schimbați clientul",
+      "LOADING_CONTRACT": "Contractul să incarcă",
+      "LOADING_CONTEXT": "Se încarcă contextul",
+      "FAQ": "FAQ",
+      "CONTACT_US": "Contactați-ne",
+      "EMAIL_ACTORS": "EMAILUL ACTORILOR",
+      "WELCOME": "Bun venit"
+    },
+    "LABELS": {
+      "OPTIONAL": "Opțional",
+      "COLLAPSE_ALL": "Colapsare",
+      "SHOW_ALL": "Consultare",
+      "SEARCH": "Căutare:",
+      "NO_ADDRESS": "Nicio adresă"
+    },
+    "MODAL": {
+      "HEADER_SUCCESS": "<p class='col-12'><span class='spanStyle'>{{name}},</span></p><br><p class='col-12'> înregistrarea dumneavoastră a fost <span class='spanStyle'>cu succes</span> salvată în sistemul nostru!</p>",
+      "HEADER_ERROR": "<p class='col-12'><span class='spanStyle'>{{name}},</span></p><br><p class='col-12'> a apărut  <span class='spanStyle'>o eroare</span> în timpul salvării în sistemul nostru</p>",
+      "HEADER_WARNING": "<p class='col-12'><span class='spanStyle'>AVERTIZARE </span> MESSAGE</p>",
+      "HEADER_EMAIL": "<p class='col-12'><span class='spanStyle'>SELECTAȚI EMAILELE</span> </p>",
+      "MSG_SUCCESS": "<p class='col-12'>În cazul unor observații sau întrebări dați numărul de tranzacții <span class='spanStyle'>#{{number}}</span> atunci când </p> <p class='col-12'> o să contactați cu biroul local</p> <p class='col-12'>Vă mulțumim și să aveți o zi bună!</p>",
+      "MSG_ERROR": "<p class='col-12'>În cazul unor observații sau întrebări contactați cu biroul local</p> <p class='col-12'>Vă mulțumim și aveți o zi bună!</p>",
+      "MSG_WARNING": "<p class='col-12'><span class='spanStyle'>AVERTIZARE</span> În cazul unor observații sau întrebări dați numărul de tranzacții <span class='spanStyle'>#{{number}}</span> atunci când </p> <p class='col-12'> o să contactați cu biroul local</p> <p class='col-12'>Vă mulțumim și să aveți o zi bună!</p>",
+      "SUCCESS": "Success",
+      "ERROR": "Eroare",
+      "WARNING": "Avertizare"
+    }
+  },
+  "DASHBOARD": {
+    "TITLE": {
+      "YOUR": "VOSTRU",
+      "DASHBOARD": "TABLOU DE BORD"
+    },
+    "GENERAL": {
+      "VIEW_ALL": "A vedea totul",
+      "NEW_FEATURE": {
+        "NEW": "Nou",
+        "FEATURE": "caracteristică"
+      }
+    },
+    "TEMPLATE": {
+      "TITLE": {
+        "LINE1": "a crea",
+        "LINE2": "model"
+      },
+      "DESCRIPTION": "<p>Sunt recoltele dvs. dispersate în  întreaga perioadă a sezonului?</p><p>Și, ca o consecință, trebuie să rearanjați aceleași cantități de fiecare dată?</p>",
+      "BUTTON": "Utilizați modelele noastre"
+    },
+    "CALENDAR": {
+      "TITLE": {
+        "LINE1": "verificați",
+        "LINE2": "Calendar"
+      },
+      "DESCRIPTION": "Create orders directly in the calendar view or easily create orders by dragging templates to the calendar",
+      "BUTTON": "accesați la calendar"
+    },
+    "OPEN_HANDSHAKES": {
+      "TITLE": {
+        "LINE1": "Confirm open",
+        "LINE2": "a verifica"
+      },
+      "ELEMENT_PREFIX": "verificare"
+    },
+    "OPEN_HANDSHAKES_SUMMARY": {
+      "TITLE": {
+        "LINE1": "a deschide",
+        "LINE2": "verificari"
+      },
+      "BUTTON": "Confirmați verificările"
+    },
+    "LATEST_ORDERS": {
+      "TITLE": {
+        "LINE1": "Cele mai recente",
+        "LINE2": "COMENZII"
+      },
+      "ELEMENT_PREFIX": "comandă"
+    },
+    "DEPOT": {
+      "TITLE": {
+        "LINE1": "Vostru",
+        "LINE2": "depozit"
+      },
+      "ELEMENT_PREFIX": "comandă"
+    },
+    "LATEST_FLOWS": {
+      "TITLE": {
+        "LINE1": "Cele mai recente",
+        "LINE2": "fluxuri"
+      },
+      "ELEMENT_PREFIX": "flux"
+    }
+  },
+  "SELECT_CUSTOMER": {
+    "SALES_ORG": "Biroul național",
+    "CUSTOMERS": "clienţii",
+    "FILTER": {
+      "NO_CUSTOMER": "Niciun client nu se potrivește cu filtrul dvs.",
+      "NO_SALES_ORGANISATION": "Nu există nici un birou corespund filtrului"
+    }
+  },
+  "ORDERS": {
+    "FILTER": {
+      "TITLE": "filtru",
+      "SUBTITLE": "COMENZII",
+      "LABELS": {
+        "ORDER_DATE": "Data comenzii",
+        "UNLOADING_DATE": "data încărcării/descărcării",
+        "ORDER_TYPE": "Tip de comandă",
+        "TRANSPORT": "Transport",
+        "TRANSPORT_PICKUP": "a ridica",
+        "TRANSPORT_EPS": "prin  EPS",
+        "ORDER_STATUS": "statul comenzii",
+        "CUSTOMER_REFERENCE_NUMBER": "Numărul de referință al clientului",
+        "PALLET_ID": "ID-ul paletei",
+        "TRANSPORTER": "transportator",
+        "ETM_SHIPPING_NUMBER": "Numărul de expediere ETM",
+        "CCR-CHECK": "CCR-check",
+        "FROM": "De",
+        "TO": "La",
+        "SEAL_NUMBER": "Numărul sigiliului",
+        "CCR": "CCR",
+        "CREATE_CCR": "Crează CCR"
+      },
+      "BUTTONS": {
+        "MORE_SEARCH_OPTIONS": "Mai multe opțiuni de căutare",
+        "LESS_SEARCH_OPTIONS": "Mai puține opțiuni de căutare",
+        "FILTER_TEXT": "Filtrați ordinele",
+        "ADD_TEMPLATE": "model",
+        "ADD_ORDER": "comandă"
+      }
+    },
+    "LIST": {
+      "TITLE": "REZULTATE",
+      "SUBTITLE": "COMENZII",
+      "COUNT": "{{count}} comenzii",
+      "COUNT_1": "1 comandă",
+      "COUNT-POSTSCRIPT": "potriviți criteriile dvs.",
+      "DOWNLOAD_AS": "Descărcați rezultatele în",
+      "DOWNLOADING": "Descărcarea...",
+      "PDF": "pdf",
+      "EXCEL": "excel",
+      "OR": "sau",
+      "LABELS": {
+        "ORDER_DATE": "Data comenzii",
+        "NUMBER": "Număr",
+        "FROM": "De",
+        "TO": "La",
+        "REQUESTED_DATE": "Data solicitată",
+        "CONFIRMED_DATE": "Data confirmată",
+        "TRANSPORT": "Transport",
+        "GLOBAL_TYPE": "Tipul global"
+      },
+      "BUTTONS": {
+        "COPY": "Exemplar",
+        "AS_TEMPLATE": "Creați model din comandă"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "comandă",
+      "SUBTITLE": "LINII",
+      "REGISTERED_BY": "Înregistrat de către"
+    },
+    "PLANNING": {
+      "TITLE": "comandă",
+      "SUBTITLE": "PLANIFICARE",
+      "BUTTONS": {
+        "NEXT": "Următorul",
+        "SAVE": "A salva"
+      }
+    },
+    "NO_PLANNING": {
+      "TITLE": "MODEL",
+      "SUBTITLE": "DETALII"
+    },
+    "DELIVERY": {
+      "TITLE": "GENERAL",
+      "SUBTITLE": "",
+      "VALUES": {
+        "RECURRENCY": {
+          "WEEKLY": "Săptămânal, în fiecare  {{days}}",
+          "MONTHLY-NROFDAY": "Lunar, ziua {{day}} din fiecare {{monthPeriodicy1}} lună",
+          "MONTHLY-DAYOFMONTH": "Lunar, {{}}} {{weekday}} din fiecare {{lună Perioada 2}} luni)"
+        }
+      },
+      "LABELS": {
+        "CHOOSE_TYPE": "Tipul de comandă",
+        "TYPE_DELIVERY": "Livrare",
+        "TYPE_RETURN": "Întoarcere",
+        "TYPE_DIRECT_SERVICES": "Servicii directe",
+        "TYPE_MOVEMENT": "Flux",
+        "SOLD_TO": "Vândut către",
+        "TO": "A",
+        "TRANSPORT": "Transport",
+        "TRANSPORT_PICKUP": "A ridica",
+        "TRANSPORT_EPS": "prin  EPS",
+        "PICKUP_POINT": "Punct de ridicare",
+        "RECURRENCE": "Recurență",
+        "CUSTOMER_REFERENCE_NUMBER": "Referinţă",
+        "CLEARING": "Clearing",
+        "LICENCE_PLATE": "număr de înmatriculare",
+        "REMARKS": "Comentarii",
+        "RECURRENCY_PATTERN": "Modelul recurenței",
+        "PATTERN_WEEKLY": "Săptămânal",
+        "PATTERN_MONTHLY": "Lunar",
+        "END_DATE_RECURRENCE": "Data reapariției datei finale",
+        "FROM": "De",
+        "RECURRENCY_TIME": "Timp de repornire",
+        "MONTHLY": {
+          "DAY": "Zi",
+          "OF_EVERY": "din fiecare",
+          "MONTHS": "lună/luni",
+          "THE": "/"
+        },
+        "REQUESTED_DATE": "DATA DE DESCĂRCARE ",
+        "CONFIRMED_DATE": "DATA CONFIRMATĂ DE DESCĂRCARE",
+        "EXCHANGE_PALLET": "Schimb de paleți ",
+        "NUMBER_OF_EXCHANGE_PALLETS": "NUMĂRUL de paleți schimbați ",
+        "COMMENTS": "OBSERVATII",
+        "TRANSPORTER": "transportator",
+        "PLATE": "număr de înmatriculare",
+        "REF": "NUMAR DE REFERINTA",
+        "NO_REMARKS": "Nu există observații",
+        "NO_TRANSPORTER": "Nici un transportator",
+        "NO_LICENCE_PLATE": "Nu există număr de înmatriculare"
+      },
+      "BUTTONS": {
+        "NEXT": "Accesați la linii de comandă",
+        "SAVE": "A salva"
+      }
+    },
+    "DETAIL": {
+      "LABELS": {
+        "LOADING_DATE": "Data încărcării",
+        "EXCHANGE_PALLETS": "Schimb de paleți ",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Cantitatea de paleți",
+        "CREATE_TEMPLATE": "Salvați ca model",
+        "TEMPLATE_NAME": "Numele modelului "
+      },
+      "BUTTONS": {
+        "NEXT": "Accesați la planificarea comenzilor",
+        "SAVE": "A salva"
+      }
+    },
+    "MATERIAL": {
+      "TITLE": "Adăugați material",
+      "TYPE": "Alegeți tipul",
+      "LABELS": {
+        "TYPES": {
+          "PACKING": "împachetare",
+          "PALLET": "Palet",
+          "COMBO": "Combinaţie"
+        },
+        "TYPE_PACKING": "tip de împachetare",
+        "TYPE_PALLET": "tip de palet",
+        "STATUS_PALLET": "Starea paletului",
+        "STATUS_PACKING": "starea  împachetarei",
+        "LOGISTIC_VARIETY": "varietatea logistică",
+        "PACKING_PER_PALLET": " împachetarea pe palet",
+        "NUMBER_OF_PALLETS": "Număr de paleți",
+        "QUANTITY": "Cantitate",
+        "PO_NUMBER": "Numărul PO",
+        "PO_NUMBER_ITEM": "PO- Numărul articolului",
+        "MESSAGE": "Mesaj",
+        "PFQ_EUR": "Număr de EPP (mărimea euro)",
+        "PFQ_POOL": "Număr de EPP (mărimea pool)",
+        "EXCHANGE_PALLETS": "Schimb de paleți ",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Numărul de europaleți de schimbați",
+        "CREATE_TEMPLATE": "a salva ca model",
+        "TEMPLATE_NAME": "Numele modelului ",
+        "NR_OF_PFQS": "",
+        "PACKING": "împachetarea",
+        "STATUS": "starea",
+        "LOGISTIC_VAR": "varietatea logistică",
+        "QTY": "cantitate",
+        "EXCHANGE": "schimb",
+        "BALANCED": "Soldul solicitat",
+        "REFERENCE": "Referinţă",
+        "CONTENT": "Conţinut",
+        "LINE_REFERENCE": "Linia de referință"
+      },
+      "NOTIFICATIONS": {
+        "MATERIAL_ADDED": "Cantitatea a fost adăugat cu succes",
+        "MATERIAL_REMOVED": "Cantitatea a fost eliminată cu succes",
+        "MATERIAL_ALREADY_EXISTS": "Cantitate deja adăugată. Adăugați altceva sau editați linia existentă."
+      },
+      "BUTTONS": {
+        "ADD_MATERIAL": "Adăugați cantiate",
+        "SAVING": "A salva"
+      }
+    }
+  },
+  "TEMPLATES": {
+    "DETAILS": {
+      "TITLE": "model",
+      "CREATE_SUCCESS": "modelul a fost creat cu succes"
+    }
+  },
+  "FLOWS": {
+    "FILTER": {
+      "TITLE": "Filtru",
+      "SUBTITLE": "fluxuri",
+      "LABELS": {
+        "FLOW_DATE": "Data fluxului",
+        "STATUS": "Starea",
+        "STATUS_HANDSHAKE": "Așteptând verificare",
+        "STATUS_DEFINITIVE": "Definitiv",
+        "STATUS_CANCEL": "Anulare",
+        "DIFFERENCE": "Diferență",
+        "CLEARING": "Clearing",
+        "HANDSHAKE_DATE": "verificarea datelor",
+        "PACKING_ID": "ID-ul împachetarei",
+        "CHECKED": "verificat"
+      },
+      "BUTTONS": {
+        "FILTER_TEXT": "Filtrează fluxurile",
+        "ADD_FLOW": "Flux"
+      }
+    },
+    "LIST": {
+      "TITLE": "REZULTATE",
+      "SUBTITLE": "FLUXURI",
+      "SELECTED": "{{selected}} selectat",
+      "COUNT": "{{count}} fluxuri",
+      "COUNT_1": "1 flux",
+      "COUNT-POSTSCRIPT": "potriviți criteriile dvs.",
+      "LABELS": {
+        "FLOW_DATE": "Data fluxului",
+        "NUMBER": "Numarul documentului",
+        "STATUS_HANDSHAKE": "Starea verificări",
+        "TYPE": "Tip",
+        "ORIGINAL": "Expeditor",
+        "DEFINITIVE": "Receptor",
+        "DIFFERENCE": "Diferență",
+        "CONTENT": "Conţinut",
+        "REFERENCE": "Referinţă",
+        "COLLAPSE_COUNT": "Colapsare({{count}})",
+        "SHOW_COUNT": "Consultare ({{count}})"
+      },
+      "BUTTONS": {
+        "CANCEL": "Anulare",
+        "ACCEPT": "Acceptare",
+        "REJECT": "Refuzat"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "FLUX",
+      "SUBTITLE": "LINII",
+      "BUTTONS": {
+        "NEXT": "Accezați la data tranzacției"
+      }
+    },
+    "PLANNING": {
+      "TITLE": "TRANZACŢIE",
+      "SUBTITLE": "DATA"
+    },
+    "DELIVERY": {
+      "TITLE": "GENERAL",
+      "SUBTITLE": "",
+      "LABELS": {
+        "FLOW_DIRECTION": "Direcția fluxului",
+        "WHOLESALER": "Angrosist"
+      },
+      "BUTTONS": {
+        "NEXT": "Accesați la flux"
+      }
+    },
+    "NOTIFICATIONS": {
+      "ACCEPT_INVALID": "Următoarele fluxuri cu numărul documentului conțin intrări nevalide: {{invalid}}"
+    }
+  },
+  "CCR": {
+    "DETAILS": {
+      "TITLE": "CCR",
+      "MATERIAL_LINES": "Cantiate pe linie",
+      "CCR_LINES": "CCR linii",
+      "CREATE_SUCCESS": "CCR a fost creat cu success"
+    }
+  },
+  "ADMIN": {
+    "GENERAL": {
+      "EPS_USERS": "EPS utilizator",
+      "CLIENT_USERS": "Utilizatorul clientului"
+    },
+    "FILTER": {
+      "TITLE": "A filtra",
+      "LABELS": {
+        "FIRST_NAME": "Prenume",
+        "ASSIGNED": "Atribuit",
+        "SYNC_WITH_AD": "Sincronizați cu Active Directory",
+        "SYNCING_WITH_AD": "Sincronizarea cu Active Directory",
+        "LAST_NAME": "Numele de familie",
+        "EMAIL": "E-mail",
+        "ID": "Id",
+        "PHONE": "Telefon mobil"
+      },
+      "BUTTONS": {
+        "INVITE": "Invitați alt utilizator",
+        "EDIT": "Editați "
+      }
+    },
+    "SHARED": {
+      "CLIENTUSERS": "Utilizatorul clientului",
+      "CLIENTUSER": "Utilizatorii clientului",
+      "EPSUSERS": "Uilizatorul EPS",
+      "EPSUSER": "Uilizatorii EPS",
+      "INVITE": "A invita",
+      "UPDATE": "Actualizare",
+      "EDIT": "A edita",
+      "COUNT": "{{count}} utilizatori",
+      "COUNT-POSTSCRIPT": "potriviți criteriile dvs.",
+      "COUNT_1": "1 utilizator",
+      "ADD": "Adăuga",
+      "USER_UPDATE_SUCCESS": "Utilizatorul a fost actualizat cu succes.",
+      "USER_UPDATE_FAIL": "Utilizatorul nu a putut fi actualizat.",
+      "USER_INVITE_SUCCESS": "Utilizatorul a fost invitat cu succes.",
+      "USER_INVITE_FAIL": "Utilizatorul nu a putut fi invitat.",
+      "NAME": "Nume",
+      "ID": "ID"
+    },
+    "EPS_USERS": {
+      "NAME": "Prenume",
+      "EMAIL": "E-mail",
+      "LAST_NAME": "Numele de familie",
+      "SALES_ORG": "Organizație de vânzări",
+      "NO_SALES_ORG": "Nu există nici un birou",
+      "SEARCH_SALES_ORG": "Căutați biroul național",
+      "ADMIN": "Admin",
+      "CUSTOMER_ROLE_LIST": "Cartografierea clientului",
+      "ADD_SALES_ORGANISATION": "Adăugați biroul național",
+      "LANGUAGE": "Limba",
+      "LIST": {
+        "TITLE": "REZULTATE",
+        "SUBTITLE": "Utilizatorul EPS"
+      }
+    },
+    "CLIENT_USERS": {
+      "LIST": {
+        "TITLE": "REZULTATE",
+        "SUBTITLE": "CLIENT USERS",
+        "ASSIGNED": "Atribuit"
+      },
+      "CUSTOMER": "Client",
+      "ROLE": "Rol",
+      "SEARCH_CUSTOMER": "Căutați clientul",
+      "ADD_CUSTOMER": "Adăugați un client nou",
+      "ACTIVE": "Activ",
+      "LANGUAGE": "Limba "
+    }
+  },
+  "ERRORS": {
+    "AUTHORIZATION": {
+      "NO_CUSTOMERS": "Nu aveți nici un client registrat pentru dvs. Contactați administratorul dvs. la Euro Pool System pentru a vă oferi acces",
+      "NO_CUSTOMERS_IN_SALES_ORGANIZATION": "Nu există clienți atribuit acestui birou. Selectați alt birou",
+      "NO_SALES_ORGANIZATIONS": "Nu aveți nici un birou registrat pentru dvs. Contactați administratorul dvs. la Euro Pool System pentru a vă oferi acces",
+      "CONTRACT_EMPTY": {
+        "TITLE": "Contractul nu este activ",
+        "MESSAGE": "Clientul selectat nu are un contract activ. Contactați administratorul dvs. La Euro Pool System pentru a remedia acest lucru"
+      }
+    },
+    "FILTER_FAILED": {
+      "TITLE": "Executați filtrul"
+    },
+    "PDF_DOWNLOAD_FAILED": {
+      "TITLE": "Descărcați fișierul PDF",
+      "MESSAGE": "Descărcarea PDF-ului a eșuat"
+    },
+    "XLS_DOWNLOAD_FAILED": {
+      "TITLE": "Descărcați fișierul excel",
+      "MESSAGE": "Descărcarea Excel-ului eșuat"
+    },
+    "COPY_ORDER": {
+      "NO_VALID_CONTRACT": "Contractul dvs. sa schimbat. Nu mai puteți crea o comandă similară."
+    },
+    "COPY_FLOW": {
+      "NO_VALID_CONTRACT": "Contractul dvs. sa schimbat. Nu mai puteți crea un flux similar. "
+    },
+    "TEMPLATE": {
+      "CREATE": "EROARE model",
+      "COPY_FROM_ORDER": "Imposibil de copiat din comandă"
+    },
+    "ORDER": {
+      "CREATE": {
+        "TRUCK_LOAD": "Verificați sarcina camioanelor"
+      }
+    },
+    "CUSTOMER-SUMMARY": {
+      "LOAD": "Se încarcă rezumatul clientului"
+    }
+  },
+  "validation-error": {
+    "numberOfExchangePallets": {
+      "text": {
+        "max": "Nu este permisă schimbarea mai multor paleți care au comandat",
+        "min": "Cantitatea de paleți trebuie să fie mai mare decât zero"
+      }
+    },
+    "customerReferenceNumber": {
+      "text": {
+        "required": "Numărul de referință al clientului nu poate fi gol"
+      }
+    },
+    "flowDate": {
+      "date": {
+        "invalid": "Data fluxului este nevalidă"
+      }
+    },
+    "text": {
+      "required": "Acest câmp nu poate fi gol"
+    },
+    "date": {
+      "required": "Această informație este necesară",
+      "datePatternValidator": "Această  informațienu este formatată corect",
+      "dateRangeValidator": "Dată în afara intervalului",
+      "dateSameOrAfter": "Data trebuie să fie după  {{otherDate}}",
+      "dateNotAvailable": "Data nu este o dată disponibilă. Selectați alta"
+    },
+    "custom": {
+      "recurrence": {
+        "atLeastOneDay": "Verificați cel puțin o zi"
+      }
+    }
+  },
+  "CALENDAR": {
+    "TITLE": "Vostru",
+    "SUBTITLE": "CALENDAR",
+    "SHOW_TODAY": "Selectați astăzi",
+    "CREATE_TEMPLATE": "Creați modelul",
+    "TEMPLATES": "Modele",
+    "FILTER": {
+      "DEPOT": "Depozit",
+      "DELIVERY": "Livrare",
+      "RETURN": "Întoarcere",
+      "OWN": "Propriu",
+      "BY_EPS": "Prin EPS"
+    },
+    "ADD_ORDER_MODAL": {
+      "TITLE": "A adăuga",
+      "START_FROM_A": "Începeți de la ",
+      "TEMPLATE": "model",
+      "NEW_ORDER": "comandă nouă"
+    },
+    "TEMPLATE": {
+      "DRAG_TEMPLATE": "Creați <span class = 'bold'> un </ span>  model",
+      "SUBTEXT": "Please drag & drop the templates to the calendar. Or add an order by clicking on a specific date."
+    }
+  },
+  "STOCK": {
+    "TITLE": "<span class='bold'>STOC</span> PREZENTARE GENERALĂ",
+    "FILTER_TITLE": "<span class = 'bold'> Alegeți locația </ span> pentru a obține stocul",
+    "LOCATION": "Locație",
+    "CHECK_STOCK": "Verificați stocul",
+    "THIS_WEEK": "Săptămâna aceasta",
+    "TRAYS": "Recipient"
+  },
+  "BLANK_RECEIPT": {
+    "TITLE": "<span class='bold'>CREATI A</span> FISA DE LIVRARE",
+    "RECEIPT_TYPE": "Tip de avis de livrare",
+    "QUANTITY": "cantitate",
+    "CREATE_RECEIPT": "Creați fișa de livrare"
+  }
+}

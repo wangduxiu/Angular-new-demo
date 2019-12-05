@@ -1,0 +1,26 @@
+
+<div class="tile" [ngClass]="{blue:colorClass==='blue', yellow: colorClass==='yellow'}">
+
+  <div class="left">
+    <div class="tile-container">
+      <div class="icon">
+        <i class="fa" [ngClass]="icon" aria-hidden="true"></i>
+      </div>
+      <div class="title">
+        <div class="line1">{{ ("DASHBOARD." + translationCode + ".TITLE.LINE1") | translate}}</div>
+        <div class="line2">{{("DASHBOARD." + translationCode + ".TITLE.LINE2") | translate}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="tile-container">
+      <div class="new-feature" *ngIf="isNew">
+        <div class="part1">{{"DASHBOARD.GENERAL.NEW_FEATURE.NEW" | translate}}</div>
+        <div class="part2">{{"DASHBOARD.GENERAL.NEW_FEATURE.FEATURE" | translate}}</div></div>
+      <div class="description" [innerHTML]='"DASHBOARD." + translationCode + ".DESCRIPTION" | translate'></div>
+      <div class="button">
+        <a md-button class="default" (click)="buttonClicked.emit()">{{("DASHBOARD." + translationCode + ".BUTTON") | translate}}</a>
+      </div>
+    </div>
+  </div>
+</div>

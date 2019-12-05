@@ -1,0 +1,63 @@
+<div class="filter-container">
+  <div class="row">
+    <div class="filter-window col-12">
+      <div class="row">
+        <div class="title-header col-12">
+          <i class="fa fa-filter" aria-hidden="true"></i>
+          <span class="title">{{ 'ADMIN.FILTER.TITLE' | translate }}</span>
+          <span class="subtitle">{{ "ADMIN.GENERAL.EPS_USERS" | translate }}</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-container col-12">
+          <form [formGroup]="userFilterForm">
+            <div class="row cell">
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ADMIN.FILTER.LABELS.FIRST_NAME"></app-label>
+                <app-text-input class="col-12 col-md-8" formControlName="firstName" [focus]="true"></app-text-input>
+              </div>
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ADMIN.FILTER.LABELS.LAST_NAME"></app-label>
+                <app-text-input class="col-12 col-md-8" formControlName="lastName"></app-text-input>
+              </div>
+            </div>
+            <div class="row cell">
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ADMIN.FILTER.LABELS.EMAIL"></app-label>
+                <app-text-input class="col-12 col-md-8" formControlName="email"></app-text-input>
+              </div>
+            </div>
+            <div class="row cell align_top">
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ADMIN.FILTER.LABELS.ASSIGNED"></app-label>
+                <app-checkbox class="col-3 col-md-2" translationCode="SHARED.BUTTONS.YES" formControlName="isAssigned"></app-checkbox>
+                <app-checkbox class="col-3 col-md-2" translationCode="SHARED.BUTTONS.NO" formControlName="isNotAssigned"></app-checkbox>
+              </div>
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ADMIN.CLIENT_USERS.ACTIVE"></app-label>
+                <app-checkbox class="col-3 col-md-2" translationCode="SHARED.BUTTONS.YES" formControlName="isActive"></app-checkbox>
+                <app-checkbox class="col-3 col-md-2" translationCode="SHARED.BUTTONS.NO" formControlName="isNotActive"></app-checkbox>
+              </div>
+            </div>
+            <div class="row cell align_top">
+              <div class="form-group row col-12 col-md-6">
+                <app-label class="col-12 col-md-4" translationCode="ADMIN.EPS_USERS.ADMIN"></app-label>
+                <app-checkbox class="col-3 col-md-2" translationCode="SHARED.BUTTONS.YES" formControlName="isAdmin"></app-checkbox>
+                <app-checkbox class="col-3 col-md-2" translationCode="SHARED.BUTTONS.NO" formControlName="isNotAdmin"></app-checkbox>
+              </div>
+            </div>
+
+            <div class="row center-xs end-sm end-lg">
+              <a md-raised-button button-click-on-enter class="default" (click)="filterClicked()" [disabled]="userFilterForm.invalid || isLoading">
+                <i class="fa fa-filter" aria-hidden="true" *ngIf="!isLoading"></i>
+                <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="isLoading"></i>
+                {{ 'ADMIN.FILTER.TITLE' | translate }} {{ "ADMIN.GENERAL.EPS_USERS" | translate }}
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

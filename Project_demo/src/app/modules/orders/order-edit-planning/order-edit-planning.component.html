@@ -1,0 +1,100 @@
+<form [formGroup]="editFlorderPlanningForm" class="form-container">
+  <div class="row cell align_center-md" *ngIf="!panelStatus.isEdit && !panelStatus.isEditable && orderDetail.ccr && !!orderDetail.ccr.ccrNumber">
+    <div class="col-12 col-md-2">
+      <app-label translationCode="ORDERS.FILTER.LABELS.SEAL_NUMBER"></app-label>
+    </div>
+    <div class="col-12 col-md-10">
+      {{ orderDetail.ccr.sealNumber}}
+    </div>
+  </div>
+
+  <div class="row cell align_center-md" *ngIf="!panelStatus.isEdit && !panelStatus.isEditable">
+    <div class="col-12 col-md-2">
+      <app-label translationCode="ORDERS.FILTER.LABELS.ORDER_DATE"></app-label>
+    </div>
+    <div class="col-12 col-md-10">
+      <app-date-input
+        formControlName="orderDate"
+        [readonly]="!panelStatus.isEdit && !panelStatus.isEditable"
+        [view]="!panelStatus.isEdit && panelStatus.isEditable"
+        [editableDateField]="false"
+        [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"
+        [showOnTop]="true"
+      ></app-date-input>
+    </div>
+  </div>
+  <!-- LOADING DATE : date -->
+  <div class="row cell align_center-md" *ngIf="!panelStatus.createTemplate && !panelStatus.editTemplate">
+    <div class="col-12 col-md-2">
+      <app-label translationCode="ORDERS.DETAIL.LABELS.LOADING_DATE"></app-label>
+    </div>
+    <div class="col-12 col-md-10">
+      <app-date-input
+        formControlName="loadingDate"
+        [readonly]="!panelStatus.isEdit && !panelStatus.isEditable"
+        [view]="!panelStatus.isEdit && panelStatus.isEditable"
+        [enableDays]="availablePickingDates"
+        [editableDateField]="false"
+        [innerText]="getOpeningHoursText()"
+        [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"
+        [showOnTop]="true"
+      ></app-date-input>
+    </div>
+  </div>
+
+  <app-florder-recurrence
+    *ngIf="!panelStatus.createTemplate && !panelStatus.editTemplate"
+    [form]="editFlorderPlanningForm.get('recurrence')"
+    [isEdit]="panelStatus.isEdit"
+  ></app-florder-recurrence>
+
+  <!-- exchange pallets -->
+  <div class="row cell align_center-md" *ngIf="orderContainsCombinations">
+    <app-label class="col-12 col-md-2" translationCode="ORDERS.DETAIL.LABELS.EXCHANGE_PALLETS"></app-label>
+    <app-slide-toggle class="col-12 col-md-10"
+                      formControlName="exchangePallets"
+                      [readonly]="(!panelStatus.isEdit && !panelStatus.isEditable) || orderDetail.planning.maxAmountOfPalletExchangeAvailable === 0"
+                      [view]="!panelStatus.isEdit && panelStatus.isEditable"
+    ></app-slide-toggle>
+  </div>
+
+  <div class="row cell align_center-md" *ngIf="orderContainsCombinations && editFlorderPlanningForm.value.exchangePallets">
+    <app-label class="col-12 col-md-2" translationCode="ORDERS.DETAIL.LABELS.NUMBER_OF_EXCHANGE_PALLETS"></app-label>
+    <app-text-input class="col-12 col-md-10"
+                    formControlName="numberOfExchangePallets"
+                    [readonly]="!panelStatus.isEdit && !panelStatus.isEditable"
+                    [view]="!panelStatus.isEdit && panelStatus.isEditable"
+                    pattern="^\d{0,6}$"
+    ></app-text-input>
+  </div>
+
+  <!-- save template -->
+  <div class="row cell align_center-md" *ngIf="authorization.ORDER.CREATE_TEMPLATE && !panelStatus.isView">
+    <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.CREATE_TEMPLATE"></app-label>
+    <app-slide-toggle class="col-12 col-md-10"
+                      formControlName="createTemplate"
+                      [readonly]="(!panelStatus.isEdit && !panelStatus.isEditable) || panelStatus.createTemplate || panelStatus.editTemplate"
+                      [view]="!panelStatus.isEdit && panelStatus.isEditable"
+    ></app-slide-toggle>
+  </div>
+
+  <div class="row cell align_center-md" *ngIf="editFlorderPlanningForm.value.createTemplate && !panelStatus.isView">
+    <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.TEMPLATE_NAME"></app-label>
+    <app-text-input class="col-12 col-md-10"
+                    formControlName="templateName"
+                    [readonly]="!panelStatus.isEdit && !panelStatus.isEditable"
+                    [view]="!panelStatus.isEdit && panelStatus.isEditable"
+    ></app-text-input>
+  </div>
+
+  <div class="buttons" *ngIf="panelStatus.isEdit">
+    <div class="hr-thick "></div>
+    <a class="btn-cancel" *ngIf="panelStatus.isNew" (click)="cancelClicked.emit()">{{ 'SHARED.BUTTONS.CANCEL' | translate }}</a>
+
+    <a md-raised-button class="primary" button-click-on-enter [disabled]="!isValidForm()" (click)="doNextClicked(this)">
+      <i class="fa fa-check" aria-hidden="true"></i>
+      <span *ngIf="panelStatus.isNew">{{ 'ORDERS.PLANNING.BUTTONS.NEXT' | translate }}</span>
+      <span *ngIf="panelStatus.isUpdate">{{ 'ORDERS.DETAIL.BUTTONS.SAVE' | translate }}</span>
+    </a>
+  </div>
+</form>

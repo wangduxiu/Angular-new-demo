@@ -1,0 +1,23 @@
+<div @fadeInAnimation>
+<admin-eps-user-edit
+  id="top"
+  [adminDefinitions]="adminDefinitions"
+  [saving]="editUser.saving"
+  [reInviting]="editUser.reInviting"
+  [resettingPassword]="editUser.resettingPassword"
+  [user]="editUser.user"
+  [isInvitation]="!readonly && editUser && editUser.isInvitation"
+  [isView]="readonly"
+  [isCreate]="!readonly && editUser && editUser.isCreate"
+  [isEdit]="!readonly && !(editUser && (editUser.isInvitation || editUser.isCreate))"
+  [authorization]="authorization"
+  (inviteUser)="inviteUser($event)"
+  (createUser)="createUser($event)"
+  (cancelClicked)="cancelClicked()"
+  (updateUser)="updateUser($event)"
+  (reInvite)="reInvite($event)"
+  (resetPassword)="resetPassword($event)"
+  >
+
+</admin-eps-user-edit>
+</div>

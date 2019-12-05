@@ -1,0 +1,36 @@
+@import '../../../shared/styles/globalVars.less';
+
+.dashboard {
+  position: relative;
+}
+@media only screen and (max-width: @large-screen-width) {
+  .calendar {
+    display: none;
+  }
+}
+
+.dashboard-title {
+  font-size: @title-font;
+  text-transform: uppercase;
+  height: 80px;
+  padding: 0 @page-horizontal-padding;
+  display: flex;
+  align-items: center;
+}
+
+.background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background-color: @background;
+  z-index: -1;
+}
+
+.tiles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 0 0 25px;
+}

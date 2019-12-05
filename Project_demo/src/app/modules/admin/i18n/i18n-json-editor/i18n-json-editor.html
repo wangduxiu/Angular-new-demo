@@ -1,0 +1,27 @@
+<div class="container" *ngIf="json">
+
+  <div class="row">
+    <div class="col-md-12">
+      <textarea #jsonField rows="30" cols="200" (keyup)="dirty = true">{{json}}</textarea>
+    </div>
+  </div>
+  <div class=""row>
+    {{errorMessage}}
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <a md-raised-button class="default accept" (click)="validateClicked($event)" [disabled]="loading || saving">
+        {{ 'ADMIN.I18N.BUTTONS.VERIFY' | translate }}
+      </a>
+
+      <a md-raised-button class="default accept" [disabled]="true" *ngIf="saving">
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+        {{ 'ADMIN.I18N.BUTTONS.SAVING' | translate }}
+      </a>
+      <a md-raised-button class="default accept" (click)="saveClicked($event)" [disabled]="loading" *ngIf="!saving">
+        {{ 'ADMIN.I18N.BUTTONS.SAVE' | translate }}
+      </a>
+    </div>
+  </div>
+
+</div>

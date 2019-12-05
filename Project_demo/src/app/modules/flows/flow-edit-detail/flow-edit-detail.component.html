@@ -1,0 +1,35 @@
+<div class="order-edit-detail-container" id="materials">
+  <!-- only show if there are ordered materials -->
+  <app-flow-material-lines [materials]="florderDetail.materials"
+                              [definitions]="definitions"
+                              [panelStatus]="panelStatusMaterial"
+                              [readonly]="!panelStatus.isEdit"
+                              [title]="'MATERIAL_LINES'"
+                              [handshaker]="florderDetail.handshaker || florderDetail.lateHandshake"
+                              (editMaterialClicked)="startEditMaterialClicked.emit($event)"
+                              (removeMaterialClicked)="removeMaterialClicked.emit($event)">
+  </app-flow-material-lines>
+
+  <app-flow-edit-material *ngIf="editMaterial"
+                             [saving]="panelStatus.busy"
+                             [definitions]="definitions"
+                             [material]="editMaterial"
+                             [materialTypes]="materialTypes"
+                             [panelStatus]="panelStatusMaterial"
+                             [editOnlyQuantity]="flowDetail.lateHandshake"
+                             (nextClicked)="nextClickedFn()"
+                             (saveMaterialClicked)="saveMaterialClicked.emit($event)">
+  </app-flow-edit-material>
+
+  <div class="form-container">
+    <div class="hr" *ngIf="panelStatus.isEdit"></div>
+    <div class="buttons save-button" *ngIf="panelStatus.isEdit">
+      <div class="hr-thick "></div>
+      <a md-raised-button class="primary" [disabled]="!isValid()" (click)="nextClickedFn()">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        <span *ngIf="panelStatus.isNew">{{ 'FLOWS.DETAILS.BUTTONS.NEXT' | translate }}</span>
+        <span *ngIf="!panelStatus.isNew">{{ 'ORDERS.DETAIL.BUTTONS.SAVE' | translate }}</span>
+      </a>
+    </div>
+  </div>
+</div>

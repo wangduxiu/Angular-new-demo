@@ -1,0 +1,14 @@
+<span class="day" [attr.data-id]="day.date" [attr.data-name]="'day'" [attr.data-can-drop]="day.isAvailableForDelivery" [dragula]="'templates-bag'" [ngClass]="{ today: day.isToday, selected: day.date.isSame(selectedDay.date), weekend: day.isWeekend, unavailable: !day.isAvailableForDelivery }" (click)="showFlorderModal.emit(day)">
+  <div class="day_inner">
+    <span>{{day.number}}</span>
+    <span class="month_starting" *ngIf="day.number == 1">{{getMonthAbbreviation()}}</span>
+    <div class="orders_wrapper">
+      <app-calendar-order-list
+        class="orders_list"
+        [day]="day"
+        (openFlorder)="openFlorder.emit($event)"
+      >
+      </app-calendar-order-list>
+    </div>
+  </div>
+</span>

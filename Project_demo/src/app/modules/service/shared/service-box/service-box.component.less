@@ -1,0 +1,43 @@
+@import '../../../../shared/styles/globalVars.less';
+
+@icon-dimensions: 40px;
+
+.box {
+  display: flex;
+  padding: 20px;
+  word-break: break-word;
+
+  &.hoverable:hover {
+    cursor: pointer;
+    background-color: @soft-underline;
+  }
+
+  .icon {
+    color: white;
+    background-color: @accent-blue;
+    border-radius: 20px;
+    width: @icon-dimensions;
+    height: @icon-dimensions;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: @middle-font;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    font-weight: 300;
+    margin-top: 5px;
+
+    .title {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .title, .subtitle {
+      color: @accent-blue;
+    }
+  }
+}

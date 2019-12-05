@@ -1,0 +1,12 @@
+<div class="text-input search-container">
+    <app-label class="search-label" translationCode="SHARED.LABELS.SEARCH"></app-label>
+    <div class="search-input">
+        <md-input-container>
+            <input #inputField
+                mdInput
+                autocomplete="off"
+                [(ngModel)]="filter"
+                (ngModelChange)="filterList($event)">
+        </md-input-container>
+    </div>
+</div>

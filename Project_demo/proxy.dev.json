@@ -1,0 +1,19 @@
+{
+  "/api": {
+    "target": "https://dev-webportal.europoolsystem.com/api/",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": "",
+      "^/swagger": ""
+    }
+  },
+  "/swagger": {
+    "target": "https://dev-webportal.europoolsystem.com/swagger/",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/swagger": ""
+    }
+  }
+}

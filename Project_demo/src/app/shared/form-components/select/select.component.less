@@ -1,0 +1,104 @@
+@import '../../styles/globalVars.less';
+
+div.select {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid rgba(77, 77, 77, 0.40);
+  min-height: 40px;
+
+  &.readonly {
+    border: none;
+    padding: 0 10px;
+
+    .title {
+      color: gray;
+      font-family: "Open Sans", open-sans, sans-serif;
+      font-style: italic;
+      font-weight: normal;
+      color: #B4B3B3;
+      padding-right: 10px;
+      display: block;
+    }
+
+    .value {
+      display: block;
+    }
+
+    &.hideReadonlyPadding {
+      padding: 0;
+      min-height: auto;
+    }
+  }
+
+  .read-only {
+    overflow: hidden;
+  }
+
+  &.focused   {
+    transition: 1s;
+    border: 1px solid @underLine;
+  }
+
+  &.autoHeight {
+    min-height: auto;
+  }
+
+  md-select {
+    width: 100%;
+  }
+}
+
+:host ::ng-deep .mat-select-underline {
+  display: none;
+}
+
+:host ::ng-deep .mat-select-trigger {
+  flex-direction: row;
+}
+
+:host ::ng-deep .mat-select-placeholder {
+  display: none;
+}
+
+:host ::ng-deep .mat-select-value {
+  flex: 1;
+  position: inherit;
+}
+
+:host ::ng-deep .mat-select-value-text {
+  width: 100%;
+  padding-left: 10px;
+  font-family: "Open Sans", open-sans, sans-serif;
+  color: @underLine;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  font-size: @middle-font;
+}
+
+:host ::ng-deep .mat-select-value-text::after {
+  content: attr(accesskey);
+  float: right;
+  font-family: "Open Sans", open-sans, sans-serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 10px;
+  color: @lightText;
+  padding-right: 10px;
+
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50%;
+}
+
+:host ::ng-deep .mat-select-arrow {
+  color: @accent-blue !important;
+  margin-right: 10px;
+  position: absolute;
+  right: 0;
+}

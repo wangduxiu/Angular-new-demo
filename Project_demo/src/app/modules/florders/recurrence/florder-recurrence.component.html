@@ -1,0 +1,127 @@
+<form [formGroup]="form" class="form-container">
+  <div class="row cell">
+    <div class="col-12 col-md-2">
+      <app-label translationCode="ORDERS.DELIVERY.LABELS.RECURRENCE"></app-label>
+    </div>
+    <div class="col-12 col-md-10" *ngIf="isEdit">
+      <div class="row">
+        <div class="col-12">
+          <app-slide-toggle formControlName="active"></app-slide-toggle>
+        </div>
+      </div>
+      <div class="row" *ngIf="isEdit">
+        <div class="col-12">
+          <div [hidden]="!form.value.active" [ngClass]="{'transition-show': form.value.active}" class="recurrence-container col-12">
+            <div class="row">
+              <div class="col-12">
+                <app-label translationCode="ORDERS.DELIVERY.LABELS.RECURRENCY_PATTERN"></app-label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <app-radio-group formControlName="pattern">
+                  <app-radio value="weekly" translationCode="ORDERS.DELIVERY.LABELS.PATTERN_WEEKLY" [readonly]="!isEdit"></app-radio>
+                  <app-radio value="monthly" translationCode="ORDERS.DELIVERY.LABELS.PATTERN_MONTHLY" [readonly]="!isEdit"></app-radio>
+                </app-radio-group>
+              </div>
+            </div>
+
+            <div formGroupName="weekly">
+              <div class="row weekly-row" *ngIf="form.value.pattern === 'weekly'">
+                <div class="col-6 col-md-3">
+                  <app-checkbox translationCode="SHARED.DAYS.MONDAY" formControlName="monday" [readonly]="!isEdit"></app-checkbox>
+                </div>
+                <div class="col-6 col-md-3">
+                  <app-checkbox translationCode="SHARED.DAYS.TUESDAY" formControlName="tuesday" [readonly]="!isEdit"></app-checkbox>
+                </div>
+                <div class="col-6 col-md-3">
+                  <app-checkbox translationCode="SHARED.DAYS.WEDNESDAY" formControlName="wednesday" [readonly]="!isEdit"></app-checkbox>
+                </div>
+                <div class="col-6 col-md-3">
+                  <app-checkbox translationCode="SHARED.DAYS.THURSDAY" formControlName="thursday" [readonly]="!isEdit"></app-checkbox>
+                </div>
+                <div class="col-6 col-md-3">
+                  <app-checkbox translationCode="SHARED.DAYS.FRIDAY" formControlName="friday" [readonly]="!isEdit"></app-checkbox>
+                </div>
+                <div class="col-6 col-md-3">
+                  <app-checkbox translationCode="SHARED.DAYS.SATURDAY" formControlName="saturday" [readonly]="!isEdit"></app-checkbox>
+                </div>
+                <div class="col-6 col-md-3">
+                  <app-checkbox translationCode="SHARED.DAYS.SUNDAY" formControlName="sunday" [readonly]="!isEdit"></app-checkbox>
+                </div>
+                <div class="col-6 col-md-3">
+                  <app-error translationCode="validation-error.custom.recurrence.atLeastOneDay" [showError]="this.form.controls.weekly.invalid"></app-error>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" formGroupName="monthly">
+              <div class="col-12" *ngIf="form.value.pattern === 'monthly'">
+                <app-radio-group formControlName="monthlyRecurrencyType">
+                  <div class="container monthly_sub">
+                    <div class="vert_center">
+                      <div>
+                        <app-radio value="nrOfDay" [readonly]="!isEdit"></app-radio>
+                      </div>
+                      <div>
+                        <span class="text">{{'ORDERS.DELIVERY.LABELS.MONTHLY.DAY' | translate}}&nbsp;</span>
+                      </div>
+                      <div>
+                        <app-text-input class="small-input" formControlName="day" width="50px" [readonly]="!isEdit"></app-text-input>
+                      </div>
+                      <div>
+                        <span class="text">&nbsp;{{'ORDERS.DELIVERY.LABELS.MONTHLY.OF_EVERY' | translate}}&nbsp;</span>
+                      </div>
+                      <div>
+                        <app-text-input class="small-input" formControlName="monthPeriodicy1" width="50px" [readonly]="!isEdit"></app-text-input>
+                      </div>
+                      <div>
+                        <span class="text">&nbsp;{{'ORDERS.DELIVERY.LABELS.MONTHLY.MONTHS' | translate}}</span>
+                      </div>
+                    </div>
+                    <div class="vert_center">
+                      <div>
+                        <app-radio value="whichDay" [readonly]="!isEdit"></app-radio>
+                      </div>
+                      <div>
+                        <span class="text">{{'ORDERS.DELIVERY.LABELS.MONTHLY.THE' | translate}}&nbsp;</span>
+                      </div>
+                      <div>
+                        <app-select class="small-input" [elements]="ordinalEnum" formControlName="which" [readonly]="!isEdit"></app-select>
+                      </div>
+                      <div>
+                        <app-select class="small-input" [elements]="weekdayEnum" formControlName="weekday" [readonly]="!isEdit"></app-select>
+                      </div>
+                      <div>
+                        <span class="text">&nbsp;{{'ORDERS.DELIVERY.LABELS.MONTHLY.OF_EVERY' | translate}}&nbsp;</span>
+                      </div>
+                      <div>
+                        <app-text-input class="small-input" formControlName="monthPeriodicy2" width="50px" [readonly]="readonly"></app-text-input>
+                      </div>
+                      <div>
+                        <span class="text">&nbsp;{{'ORDERS.DELIVERY.LABELS.MONTHLY.MONTHS' | translate}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </app-radio-group>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" [hidden]="!form.value.active">
+            <div class="col-12">
+              <app-label translationCode="ORDERS.DELIVERY.LABELS.END_DATE_RECURRENCE"></app-label>
+            </div>
+            <div class="col-12">
+              <app-date-input formControlName="endDate" [readonly]="!isEdit" [datePattern]="'SHARED.DATE_FORMATS.DAY' | translate"></app-date-input>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-10 recurrence-readonly" *ngIf="!isEdit">
+      <app-slide-toggle formControlName="active" [readonly]="true" *ngIf="!form.value.active"></app-slide-toggle>
+      <span *ngIf="form.value.active">{{recurrencyPattern}} {{endPattern}}</span>
+    </div>
+  </div>
+</form>

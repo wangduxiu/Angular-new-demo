@@ -1,0 +1,42 @@
+<div  @fadeInAnimation>
+<div class="florder-page">
+  <div class="florder-page-title">
+    <span class="title">
+      {{ "ADMIN.GENERAL.CLIENT_USERS" | translate }}
+    </span>
+    <div class="buttons">
+      <!-- <a md-button class="default" *ngIf="isAgent" (click)="bulkInviteOrCreate()">
+         <i class="fa fa-braille" aria-hidden="true"></i> {{ "ADMIN.SHARED.BULK_INVITE_CREATE" | translate }}
+      </a> -->
+      <a md-button class="default" *ngIf="authorization.adminRoles.createClientUser" (click)="createNewClientUser()">
+         <i class="fa fa-plus-square-o" aria-hidden="true"></i> {{ "ADMIN.SHARED.CREATE" | translate }}
+      </a>
+      <!-- <a md-button class="default" *ngIf="authorization.adminRoles.inviteClientUser" (click)="inviteNewClientUser()">
+         <i class="fa fa-envelope-o" aria-hidden="true"></i> {{ "ADMIN.SHARED.INVITE" | translate }}
+      </a> -->
+    </div>
+  </div>
+</div>
+<div class="florder-page-search">
+  <admin-client-user-filter
+      (filterUsers)="filterUsers($event)"
+      [isLoading]="users.loading">
+  </admin-client-user-filter>
+</div>
+<div class="florder-page-list">
+  <admin-client-user-list
+    [isLoading]="users.loading"
+    [totalItems]="users.totalItems"
+    [pageNr]="users.pageNr"
+    [pageSize]="users.pageSize"
+    [sortField]="sortField"
+    [sortAscending]="sortAscending"
+    [users]="users.items"
+    (pageChange)="onPageChange($event)"
+    (openUser)="openClientUser($event)"
+    (sortChange)="sortChange($event)"
+    (itemsPerPageChange)="onItemsPerPageChange($event)"
+  >
+  </admin-client-user-list>
+</div>
+</div>

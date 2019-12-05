@@ -1,0 +1,35 @@
+@import '../../../shared/styles/globalVars.less';
+
+.title {
+  color: @accent-blue;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.cell {
+  margin-bottom: 20px;
+}
+
+.cancel {
+  height: 38px;
+  line-height: 38px;
+  color:@underLine;
+  font-weight: 100;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.message app-text-input {
+  color: @error;
+  font-size: 16px;
+
+  display: flex;
+  align-items: center;
+}
+
+.material-panel {
+  padding: @page-horizontal-padding;
+  padding-bottom: 0;
+  background-color: @background-form;
+}

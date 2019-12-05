@@ -1,0 +1,16 @@
+<div class="button-container row">
+  <div class="col-12 col-md-12 col-lg-9">
+    <div class="buttons" @easeInOut *ngIf="authorization.adminRoles.resetPassword || authorization.adminRoles.reInvite">
+      <a md-button class="default" *ngIf="authorization.adminRoles.resetPassword" [disabled]="disabled" (click)="!disabled && resetPassword.emit(userId)">
+        <i class="fa fa-plus-square-o" aria-hidden="true" *ngIf="!resettingPassword"></i>
+        <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="resettingPassword"></i>
+        &nbsp;{{ "ADMIN.SHARED.RESET_PASSWORD" | translate }}
+      </a>
+      <!-- <a md-button class="default" *ngIf="authorization.adminRoles.reInvite" [disabled]="disabled" (click)="!disabled && reInvite.emit(userId)">
+        <i class="fa fa-envelope-o" aria-hidden="true" *ngIf="!reInviting"></i>
+        <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="reInviting"></i>
+        &nbsp;{{ "ADMIN.SHARED.RE_INVITE" | translate }}
+      </a> -->
+    </div>
+  </div>
+</div>

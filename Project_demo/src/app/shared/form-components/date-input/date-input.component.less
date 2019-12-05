@@ -1,0 +1,80 @@
+@import '../../styles/globalVars.less';
+
+.datePicker {
+  height: 40px;
+  position: relative;
+
+  .inner_text {
+    position: relative;
+    height: 100%;
+    float: right;
+    color: @lightText;
+    display: flex;
+    align-items: center;
+    margin-right: 52px; //width of the inner buttons
+  }
+
+  .error-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 60px;
+    display: flex;
+  }
+
+  .error-message {
+    width: 100%;
+    line-height: 1.2em;
+    overflow: hidden;
+    color: @error;
+    opacity: 0;
+    font-size: @base-font;
+    font-family: "Open Sans", open-sans, sans-serif;
+    align-self: center;
+  }
+
+  .error {
+    transition: 1s;
+    opacity: 1;
+    top: 0;
+  }
+}
+
+.datePicker My-date-picker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+:host ::ng-deep .error .mydp {
+  border: 1px solid @error;
+}
+
+:host ::ng-deep .focused .mydp {
+  border: 1px solid @underLine;
+  transition: 1s;
+}
+
+:host ::ng-deep .mydp {
+  border: 1px solid rgba(77, 77, 77, 0.40);
+  height: 40px;
+  font-family: "Open Sans", open-sans, sans-serif;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+:host ::ng-deep .mydp .selectiongroup {
+  position: relative;
+  top: 3px;
+}
+
+:host ::ng-deep .mydp .invaliddate {
+  background-color: inherit !important;
+}
+
+.openingHours {
+  color: @lightText;
+  margin-left: 10px;
+}

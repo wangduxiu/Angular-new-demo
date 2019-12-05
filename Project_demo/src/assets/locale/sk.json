@@ -1,0 +1,612 @@
+{
+  "SHARED": {
+    "DATE_FORMATS": {
+      "WEEK": "týždeň tt, rrrr",
+      "DAY": "dd/mm/rrrr"
+    },
+    "PAGING": {
+      "PREVIOUS": "",
+      "NEXT": ""
+    },
+    "BUTTONS": {
+      "YES": "Ano",
+      "NO": "Nie",
+      "CANCEL": "Zrušiť",
+      "EDIT": "Upraviť",
+      "SUBMIT": "Potvrdiť",
+      "SAVE": "Uložiť",
+      "CREATE": "Vytvoriť ",
+      "GO_TO_DASHBOARD": "Prejsť do informačného panela",
+      "GO_TO_DETAIL": "Prejsť na detail",
+      "GO_TO_OVERVIEW": "Prejsť na prehľad",
+      "BACK": "Späť",
+      "CLOSE": "Zavrieť"
+    },
+    "DAYS": {
+      "MONDAY": "Pondelok",
+      "TUESDAY": "Utorok",
+      "WEDNESDAY": "Streda",
+      "THURSDAY": "Štvrtok",
+      "FRIDAY": "Piatok",
+      "SATURDAY": "Sobota",
+      "SUNDAY": "Nedeľa ",
+      "UNTIL": "do"
+    },
+    "ORDINAL": {
+      "FIRST": "Prvvý",
+      "SECOND": "Druhý",
+      "THIRD": "Tretí",
+      "FOURTH": "Štvrtý",
+      "LAST": "Posledný"
+    },
+    "HEADER": {
+      "ORDERS": "OBJEDNÁVKY",
+      "FLOWS": "TOKY",
+      "CALENDAR": "KALENDÁR",
+      "INVOICES": "FAKTÚRY",
+      "STOCK": "ZÁSOBA",
+      "BLANK": "PRÁZDNÁ POTVRDENKA",
+      "LOGGED_AS": "PRIHLÁSENÝ AKO",
+      "LOGIN": "PRIHLÁSIŤ",
+      "LOGOUT": "ODHLÁSIŤ",
+      "SWITCH_CUSTOMER": "Prepnúť zákazníka",
+      "LOADING_CONTRACT": "Načítanie zmluvy",
+      "LOADING_CONTEXT": "Načítanie kontextu",
+      "FAQ": "FAQ",
+      "CONTACT_US": "KONTAKTUJTE NÁS",
+      "EMAIL_ACTORS": "EMAIL  UŽÍVATEĽOV",
+      "WELCOME": "Vitajte"
+    },
+    "LABELS": {
+      "OPTIONAL": "Voliteľný",
+      "COLLAPSE_ALL": "Celkový výpadok",
+      "SHOW_ALL": "Ukázať všetko  ",
+      "SEARCH": "Vyhľadávanie: ",
+      "NO_ADDRESS": "Chýba adresa"
+    },
+    "MODAL": {
+      "HEADER_SUCCESS": "<p class='col-12'><span class='spanStyle'>Milý/á {{name}},</span></p><br><p class='col-12'> Vaša registrácia bola <span class='spanStyle'>úspešne</span> uložená v našom systéme!</p>",
+      "HEADER_ERROR": "<p class='col-12'><span class='spanStyle'>Milý/á {{name}},</span></p><br><p class='col-12'> došlo k <span class='spanStyle'>chybe</span> pri ukladaní do nášho systému!</p>",
+      "HEADER_WARNING": "<p class='col-12'><span class='spanStyle'>UPOZORNENIE</span> MESSAGE</p>",
+      "HEADER_EMAIL": "<p class='col-12'><span class='spanStyle'>VYBERTE EMIALOVÉ ADRESY</span> </p>",
+      "MSG_SUCCESS": "<p class='col-12'>V prípade dotazov alebo otázok použite číslo transakcie <span class='spanStyle'>#{{number}}</span> pri</p> <p class='col-12'>kontakte miestnej kancelárie</p> <p class='col-12'>Ďakujeme a prajeme pekný deň!</p>",
+      "MSG_ERROR": "<p class='col-12'>V prípade otázok alebo dotazov kontaktujte miestnu kanceláriu</p> <p class='col-12'>Ďakujeme a prajeme pekný deň!</p>",
+      "MSG_WARNING": "<p class='col-12'><span class='spanStyle'>UPOZORNENIE</span> V prípade dotazov alebo otázok použite číslo transakcie <span class='spanStyle'>#{{number}}</span> pri</p> <p class='col-12'>kontakte miestnej kancelárie</p> <p class='col-12'>Ďakujeme a prajeme pekný deň!</p>",
+      "SUCCESS": "Úspech",
+      "ERROR": "Chyba",
+      "WARNING": "Varovanie"
+    }
+  },
+  "DASHBOARD": {
+    "TITLE": {
+      "YOUR": "VAŠE ",
+      "DASHBOARD": "INFORMAČNÝ PANEL"
+    },
+    "GENERAL": {
+      "VIEW_ALL": "Zobraziť všetko",
+      "NEW_FEATURE": {
+        "NEW": "Nový",
+        "FEATURE": "vlastnosti"
+      }
+    },
+    "TEMPLATE": {
+      "TITLE": {
+        "LINE1": "Vytvoriť ",
+        "LINE2": "šablóna"
+      },
+      "DESCRIPTION": "<p>Prebieha zber po celú dobu sezóny?</p><p>Potrebujete v dôsledku toho objednávať za každým rovnaké množstvo?</p>",
+      "BUTTON": "Použite naše šablóny"
+    },
+    "CALENDAR": {
+      "TITLE": {
+        "LINE1": "Skontrolovať",
+        "LINE2": "Kalendár"
+      },
+      "DESCRIPTION": "Vytvorte objednávky priamo v zobrazení kalendára alebo jednoducho vytvorte objednávky pretiahnutím šablón do kalendára. ",
+      "BUTTON": "Prejsť na kalendár"
+    },
+    "OPEN_HANDSHAKES": {
+      "TITLE": {
+        "LINE1": "Potvrďte otvorenie",
+        "LINE2": "handshakes"
+      },
+      "ELEMENT_PREFIX": "Handshake"
+    },
+    "OPEN_HANDSHAKES_SUMMARY": {
+      "TITLE": {
+        "LINE1": "Otvoriť",
+        "LINE2": "handshakes"
+      },
+      "BUTTON": "Potvrďiť otvorené handshaky"
+    },
+    "LATEST_ORDERS": {
+      "TITLE": {
+        "LINE1": "Vaše posledné",
+        "LINE2": "objednávky "
+      },
+      "ELEMENT_PREFIX": "Objednávka"
+    },
+    "DEPOT": {
+      "TITLE": {
+        "LINE1": "Vaše ",
+        "LINE2": "Depo"
+      },
+      "ELEMENT_PREFIX": "Objednávka"
+    },
+    "LATEST_FLOWS": {
+      "TITLE": {
+        "LINE1": "Vaše posledné",
+        "LINE2": "toky "
+      },
+      "ELEMENT_PREFIX": "Tok"
+    }
+  },
+  "SELECT_CUSTOMER": {
+    "SALES_ORG": "Obchodná spoločnosť",
+    "CUSTOMERS": "Zákazníci",
+    "FILTER": {
+      "NO_CUSTOMER": "Žiadny zo zákazníkov nezodpovedá Vašému filteru",
+      "NO_SALES_ORGANISATION": "Žiadna z obchodných spoločnosti nezodpovedá Vašému filteru"
+    }
+  },
+  "ORDERS": {
+    "FILTER": {
+      "TITLE": "Filter",
+      "SUBTITLE": "objednávky",
+      "LABELS": {
+        "ORDER_DATE": "Deň objednávky",
+        "UNLOADING_DATE": "deň nakládky / vykládky",
+        "ORDER_TYPE": "Typ objednávky",
+        "TRANSPORT": "Doprava",
+        "TRANSPORT_PICKUP": "Vyzdvihnutie",
+        "TRANSPORT_EPS": "s EPS",
+        "ORDER_STATUS": "Status objednávky",
+        "CUSTOMER_REFERENCE_NUMBER": "Referenčné číslo zákazníka",
+        "PALLET_ID": "ID paliet",
+        "TRANSPORTER": "Transportér",
+        "ETM_SHIPPING_NUMBER": "ETM prepravné číslo",
+        "CCR-CHECK": "CCR-kontrola",
+        "FROM": "Od ",
+        "TO": "Do ",
+        "SEAL_NUMBER": "Číslo plomby",
+        "CCR": "CCR",
+        "CREATE_CCR": "Vytvoriť CCR"
+      },
+      "BUTTONS": {
+        "MORE_SEARCH_OPTIONS": "Viac možnosti vyhľadávania",
+        "LESS_SEARCH_OPTIONS": "Menej možnosti vyhľadávania",
+        "FILTER_TEXT": "Filtrovať objednávky",
+        "ADD_TEMPLATE": "Šablóna ",
+        "ADD_ORDER": "Objednávka"
+      }
+    },
+    "LIST": {
+      "TITLE": "VÝSLEDKY",
+      "SUBTITLE": "OBJEDNÁVKY",
+      "COUNT": "{{count}} objednávky",
+      "COUNT_1": "1 objednávka",
+      "COUNT-POSTSCRIPT": "hodí sa k Vašim kritériam",
+      "DOWNLOAD_AS": "Stiahnúť výsledky v ",
+      "DOWNLOADING": "Sťahovanie…",
+      "PDF": "pdf",
+      "EXCEL": "excel",
+      "OR": "alebo",
+      "LABELS": {
+        "ORDER_DATE": "Dátum objednávky",
+        "NUMBER": "Číslo   ",
+        "FROM": "Od",
+        "TO": "Do",
+        "REQUESTED_DATE": "Požadovaný deň",
+        "CONFIRMED_DATE": "Potvrdený deň",
+        "TRANSPORT": "Doprava",
+        "GLOBAL_TYPE": "Globálny typ"
+      },
+      "BUTTONS": {
+        "COPY": "Kopírovať",
+        "AS_TEMPLATE": "Vytvoriť šablónu z objednávky"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "OBJEDNÁVKA",
+      "SUBTITLE": "RIADKY",
+      "REGISTERED_BY": "Zaregistrované"
+    },
+    "PLANNING": {
+      "TITLE": "OBJEDNÁVKA",
+      "SUBTITLE": "PLÁNOVANIE",
+      "BUTTONS": {
+        "NEXT": "Ďaľší",
+        "SAVE": "Uložiť"
+      }
+    },
+    "NO_PLANNING": {
+      "TITLE": "Šablóna",
+      "SUBTITLE": "DETAILY"
+    },
+    "DELIVERY": {
+      "TITLE": "VŠEOBECNÉ",
+      "SUBTITLE": "",
+      "VALUES": {
+        "RECURRENCY": {
+          "WEEKLY": "Týždenne, každý {{days}}",
+          "MONTHLY-NROFDAY": "Mesačne, deň {{day}} každého {{monthPeriodicy1}} mesiaca",
+          "MONTHLY-DAYOFMONTH": "Mesačne, {{which}} {{weekday}} každého {{monthPeriodicy2}} mesiaca"
+        }
+      },
+      "LABELS": {
+        "CHOOSE_TYPE": "Typ objednávky",
+        "TYPE_DELIVERY": "Doručenie",
+        "TYPE_RETURN": "Návrat",
+        "TYPE_DIRECT_SERVICES": "Priame služby",
+        "TYPE_MOVEMENT": "Pohyb ",
+        "SOLD_TO": "Predaný",
+        "TO": "Do",
+        "TRANSPORT": "Doprava",
+        "TRANSPORT_PICKUP": "Vyzdvihnutie",
+        "TRANSPORT_EPS": "s EPS",
+        "PICKUP_POINT": "Miesto vyzvihnutia",
+        "RECURRENCE": "Opakovanie",
+        "CUSTOMER_REFERENCE_NUMBER": "Referencia",
+        "CLEARING": "Clearing",
+        "LICENCE_PLATE": "ŠPZ",
+        "REMARKS": "Poznámky",
+        "RECURRENCY_PATTERN": "Šablóna opakovania",
+        "PATTERN_WEEKLY": "Týždenne ",
+        "PATTERN_MONTHLY": "Mesačne ",
+        "END_DATE_RECURRENCE": "Konečný deň opakovania",
+        "FROM": "Od",
+        "RECURRENCY_TIME": "Doba opakovania",
+        "MONTHLY": {
+          "DAY": "Deň",
+          "OF_EVERY": "každého",
+          "MONTHS": "mesiac (a) ",
+          "THE": "The"
+        },
+        "REQUESTED_DATE": "POŽADOVANÝ DEŇ VYKLÁDKY",
+        "CONFIRMED_DATE": "POTVRDENÝ DEŇ VYKLÁDKY",
+        "EXCHANGE_PALLET": "VÝMENA PALIET",
+        "NUMBER_OF_EXCHANGE_PALLETS": "MNOŽSTVO VYMENENÝCH PALIET",
+        "COMMENTS": "POZNÁMKY",
+        "TRANSPORTER": "DOPRAVCA",
+        "PLATE": "ŠPZ",
+        "REF": "REFERENČNÉ ČÍSLO  ",
+        "NO_REMARKS": "žiadne poznámky",
+        "NO_TRANSPORTER": "žiadny dopravca",
+        "NO_LICENCE_PLATE": "žiadna ŠPZ "
+      },
+      "BUTTONS": {
+        "NEXT": "Prejsť k riadkom objednávky",
+        "SAVE": "Uložiť"
+      }
+    },
+    "DETAIL": {
+      "LABELS": {
+        "LOADING_DATE": "Deň nakládky   ",
+        "EXCHANGE_PALLETS": "Výmena paliet",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Množstvo paliet",
+        "CREATE_TEMPLATE": "Uložiť ako šablónu",
+        "TEMPLATE_NAME": "Pomenovať šablónu"
+      },
+      "BUTTONS": {
+        "NEXT": "Prejsť k plánovaniu objednávok",
+        "SAVE": "Uložiť"
+      }
+    },
+    "MATERIAL": {
+      "TITLE": "Pridať podklady",
+      "TYPE": "Vybrať typ",
+      "LABELS": {
+        "TYPES": {
+          "PACKING": "Obaly na palete ",
+          "PALLET": "Paleta",
+          "COMBO": "Kombinácia"
+        },
+        "TYPE_PACKING": "Typ obalu",
+        "TYPE_PALLET": "Typ palety",
+        "STATUS_PALLET": "Status palety",
+        "STATUS_PACKING": "Status obalu",
+        "LOGISTIC_VARIETY": "Logistická varianta o. ",
+        "PACKING_PER_PALLET": "Obaly na palete ",
+        "NUMBER_OF_PALLETS": "Počeť paliet ",
+        "QUANTITY": "Kvantita",
+        "PO_NUMBER": "Ref. číslo",
+        "PO_NUMBER_ITEM": "Ref. číslo položky",
+        "MESSAGE": "Správa",
+        "PFQ_EUR": "Počet EPP (Euro size)",
+        "PFQ_POOL": "Počet EPP (Pool size)",
+        "EXCHANGE_PALLETS": "Výmena paliet",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Počet europaliet k výmene",
+        "CREATE_TEMPLATE": "Uložiť ako šablónu",
+        "TEMPLATE_NAME": "Pomenovať šablónu",
+        "NR_OF_PFQS": "Počet PFQs",
+        "PACKING": "Obal  ",
+        "STATUS": "Status",
+        "LOGISTIC_VAR": "Logistická var.",
+        "QTY": "Množstvo",
+        "EXCHANGE": "Výmena  ",
+        "BALANCED": "Požadovaný zostatok",
+        "REFERENCE": "Referencia",
+        "CONTENT": "Obsah",
+        "LINE_REFERENCE": "referencia riadku"
+      },
+      "NOTIFICATIONS": {
+        "MATERIAL_ADDED": "Podklady úspešne pridané",
+        "MATERIAL_REMOVED": "Podklady úspešne odstránené ",
+        "MATERIAL_ALREADY_EXISTS": "Podklady boli už pridané. Prosím pridajte niečo iné alebo upravte existujúci záznam. "
+      },
+      "BUTTONS": {
+        "ADD_MATERIAL": "Pridať podklady",
+        "SAVING": "Ukladanie"
+      }
+    }
+  },
+  "TEMPLATES": {
+    "DETAILS": {
+      "TITLE": "Šablóna ",
+      "CREATE_SUCCESS": "Šablóna bola úspešne vytvorená"
+    }
+  },
+  "FLOWS": {
+    "FILTER": {
+      "TITLE": "Filter",
+      "SUBTITLE": "toky",
+      "LABELS": {
+        "FLOW_DATE": "Dátum toku",
+        "STATUS": "Status",
+        "STATUS_HANDSHAKE": "Čakanie na handshake",
+        "STATUS_DEFINITIVE": "Konečný ",
+        "STATUS_CANCEL": "Zrušiť",
+        "DIFFERENCE": "Rozdiel",
+        "CLEARING": "Clearing",
+        "HANDSHAKE_DATE": "Handshake dátum",
+        "PACKING_ID": "ID balenia",
+        "CHECKED": "Skontrolované"
+      },
+      "BUTTONS": {
+        "FILTER_TEXT": "Filter tokov",
+        "ADD_FLOW": "Tok"
+      }
+    },
+    "LIST": {
+      "TITLE": "VÝSLEDOK",
+      "SUBTITLE": "TOKY",
+      "SELECTED": "{{selected}} vybraný",
+      "COUNT": "{{count}} toky",
+      "COUNT_1": "1 tok",
+      "COUNT-POSTSCRIPT": "zodpovedá vašim kritériam ",
+      "LABELS": {
+        "FLOW_DATE": "dátum toku",
+        "NUMBER": "Číslo dokumentu ",
+        "STATUS_HANDSHAKE": "Status handshake",
+        "TYPE": "Typ",
+        "ORIGINAL": "Odosielateľ",
+        "DEFINITIVE": "Príjemca",
+        "DIFFERENCE": "Rozdiely ",
+        "CONTENT": "Obsah",
+        "REFERENCE": "Referencia",
+        "COLLAPSE_COUNT": "Výpadok ({{count}})",
+        "SHOW_COUNT": "Ukázať všetko ({{count}})"
+      },
+      "BUTTONS": {
+        "CANCEL": "Zrušiť",
+        "ACCEPT": "Akceptovať",
+        "REJECT": "Odmietnúť"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "TOK",
+      "SUBTITLE": "RIADKY",
+      "BUTTONS": {
+        "NEXT": "Prejdi na deň transakcie"
+      }
+    },
+    "PLANNING": {
+      "TITLE": "TRANSAKCIA",
+      "SUBTITLE": "DÁTUM "
+    },
+    "DELIVERY": {
+      "TITLE": "VŠEOBECNE",
+      "SUBTITLE": "",
+      "LABELS": {
+        "FLOW_DIRECTION": "Smer toku",
+        "WHOLESALER": "Veľkoobchodník"
+      },
+      "BUTTONS": {
+        "NEXT": "Prejsť na riadky toku"
+      }
+    },
+    "NOTIFICATIONS": {
+      "ACCEPT_INVALID": "Nasledujúce toky s číslom dokumentu obsahujú neplatné vstupné dáta: {{invalids}}"
+    }
+  },
+  "CCR": {
+    "DETAILS": {
+      "TITLE": "CCR",
+      "MATERIAL_LINES": "Riadky podkladov",
+      "CCR_LINES": "CCR riadky",
+      "CREATE_SUCCESS": "CCR bolo úspešne vytvorené"
+    }
+  },
+  "ADMIN": {
+    "GENERAL": {
+      "EPS_USERS": "EPS užívatelia",
+      "CLIENT_USERS": "užívatelia Client "
+    },
+    "FILTER": {
+      "TITLE": "Filter",
+      "LABELS": {
+        "FIRST_NAME": "Meno",
+        "ASSIGNED": "Pridelené",
+        "SYNC_WITH_AD": "Synchronizované s  Active Directory",
+        "SYNCING_WITH_AD": "Synchronizácia s  Active Directory",
+        "LAST_NAME": "Priezvisko",
+        "EMAIL": "E-mail",
+        "ID": "Id",
+        "PHONE": "Mobilný telefón"
+      },
+      "BUTTONS": {
+        "INVITE": "Pozvať užívateľov",
+        "EDIT": "Upraviť"
+      }
+    },
+    "SHARED": {
+      "CLIENTUSERS": "užívatelia Client ",
+      "CLIENTUSER": "užívateľ Client",
+      "EPSUSERS": "EPS UŽÍVATELIA",
+      "EPSUSER": "EPS UŽÍVATEĽ",
+      "INVITE": "Pozvať  ",
+      "UPDATE": "Aktualizovať",
+      "EDIT": "Upraviť",
+      "COUNT": "{{count}} užívatelia",
+      "COUNT-POSTSCRIPT": "hodí sa k Vašim kritériam",
+      "COUNT_1": "1 užívateľ",
+      "ADD": "Pridať  ",
+      "USER_UPDATE_SUCCESS": "Užívateľ bol úspešne pridaný.",
+      "USER_UPDATE_FAIL": "Užívateľ nemôže byť aktualizovaný.",
+      "USER_INVITE_SUCCESS": "Užívateľ bol úspešne pozvaný.",
+      "USER_INVITE_FAIL": "Užívateľ nemôže byť pozvaný. ",
+      "NAME": "Meno",
+      "ID": "ID"
+    },
+    "EPS_USERS": {
+      "NAME": "Meno",
+      "EMAIL": "E-mail",
+      "LAST_NAME": "Priezvisko",
+      "SALES_ORG": "Obchodné spoločnosti",
+      "NO_SALES_ORG": "Neobchodné spoločnosti",
+      "SEARCH_SALES_ORG": "Vyhľadať obchodnú spoločnosť",
+      "ADMIN": "Administrátor",
+      "CUSTOMER_ROLE_LIST": "Mapovanie zákazníkov",
+      "ADD_SALES_ORGANISATION": "Pridať obchodnú spoločnosť",
+      "LANGUAGE": "Jazyk",
+      "LIST": {
+        "TITLE": "VÝSLEDKY",
+        "SUBTITLE": "EPS UŽÍVATELIA"
+      }
+    },
+    "CLIENT_USERS": {
+      "LIST": {
+        "TITLE": "VÝSLEDKY",
+        "SUBTITLE": "CLIENT UŽÍVATEĽA",
+        "ASSIGNED": "Pridelený "
+      },
+      "CUSTOMER": "Zákaník",
+      "ROLE": "Rola",
+      "SEARCH_CUSTOMER": "Vyhľadať zákazníka",
+      "ADD_CUSTOMER": "Pridať nového zákazníka",
+      "ACTIVE": "Aktívný",
+      "LANGUAGE": "Jazyk"
+    }
+  },
+  "ERRORS": {
+    "AUTHORIZATION": {
+      "NO_CUSTOMERS": "Nemáte žiadných pridelených zákazníkov. Kontaktujte prosím Euro Pool Systém administrátora so žiadosťou o prístup. ",
+      "NO_CUSTOMERS_IN_SALES_ORGANIZATION": "V skupine tejto obchodnej spoločnosti nie je žiadny zákazník. Vyberte prosím inú obchodnú organizáciu. ",
+      "NO_SALES_ORGANIZATIONS": "Nemáte pridelenú žiadnu obchodnú spoločnosť. Kontaktujte prosím vašého administrátora so žiadosťou o prístup. ",
+      "CONTRACT_EMPTY": {
+        "TITLE": "Zmluva není aktívna.",
+        "MESSAGE": "Vybraný zákazník nemá žiadne aktívne zmluvy. Kontaktujte prosím Euro Pool Systém administrátora so žiadosťou o nápravu."
+      }
+    },
+    "FILTER_FAILED": {
+      "TITLE": "Spustiť filter"
+    },
+    "PDF_DOWNLOAD_FAILED": {
+      "TITLE": "Stiahnúť súbor PDF ",
+      "MESSAGE": "Sťahovanie súboru PDF sa nepodarilo"
+    },
+    "XLS_DOWNLOAD_FAILED": {
+      "TITLE": "Stiahnúť súbor EXCEL",
+      "MESSAGE": "Sťahovanie súboru EXCEL sa nepodarilo"
+    },
+    "COPY_ORDER": {
+      "NO_VALID_CONTRACT": "Vaša zmluva bola zmenená. Už nejde vytvoriť rovnaku objednávku. "
+    },
+    "COPY_FLOW": {
+      "NO_VALID_CONTRACT": "Vaša zmluva bola zmenená. Už nejde vytvoriť rovnaký tok. ALEBO: TYP TOKU JE STÁLE NULOVÝ PRI NAKLADANÍ"
+    },
+    "TEMPLATE": {
+      "CREATE": "ERROR šablóna",
+      "COPY_FROM_ORDER": "Nejde kopírovať z objednávky"
+    },
+    "ORDER": {
+      "CREATE": {
+        "TRUCK_LOAD": "Skontrolovať naloženie vozidla"
+      }
+    },
+    "CUSTOMER-SUMMARY": {
+      "LOAD": "Načítanie prehľadu zákazníka "
+    }
+  },
+  "validation-error": {
+    "numberOfExchangePallets": {
+      "text": {
+        "max": "Výmena viac paliet ako bolo objednané není povolená. ",
+        "min": "Množstvo paliet musí byť väčšie ako nula. "
+      }
+    },
+    "customerReferenceNumber": {
+      "text": {
+        "required": "Referenčné číslo nesmie byť prázdne. "
+      }
+    },
+    "flowDate": {
+      "date": {
+        "invalid": "Deň toku je neplatný"
+      }
+    },
+    "text": {
+      "required": "Toto pole nesmie byť prázdne. "
+    },
+    "date": {
+      "required": "Požadovaný dátum",
+      "datePatternValidator": "Dátum není v správnom formáte ",
+      "dateRangeValidator": "Dátum je mimo rozsah ",
+      "dateSameOrAfter": "Dátum musí byť po {{otherDate}}",
+      "dateNotAvailable": "Dátum není dostupný. Vyberte prosím iný. "
+    },
+    "custom": {
+      "recurrence": {
+        "atLeastOneDay": "Zaškrtnite prosím aspoň jeden dátum. "
+      }
+    }
+  },
+  "CALENDAR": {
+    "TITLE": "VÁŠ",
+    "SUBTITLE": "KALENDÁR",
+    "SHOW_TODAY": "Zobraziť dnešný deň",
+    "CREATE_TEMPLATE": "Vytvoriť šablónu   ",
+    "TEMPLATES": "Šablóny",
+    "FILTER": {
+      "DEPOT": "Depo ",
+      "DELIVERY": "Dodanie",
+      "RETURN": "Návrat ",
+      "OWN": "Vlastné ",
+      "BY_EPS": "EPS"
+    },
+    "ADD_ORDER_MODAL": {
+      "TITLE": "Pridať",
+      "START_FROM_A": "Začať od ",
+      "TEMPLATE": "šablóna",
+      "NEW_ORDER": "nová objednávka"
+    },
+    "TEMPLATE": {
+      "DRAG_TEMPLATE": "Začať <span class='bold'>preťahovať</span> šablónu",
+      "SUBTEXT": "Prosím vložte šablónu pretiahnutím do kalendára. Alebo pridajte objednávku kliknutím na určitý dátum. "
+    }
+  },
+  "STOCK": {
+    "TITLE": "<span class='bold'>ZÁSOBA</span> PREHĽAD",
+    "FILTER_TITLE": "<span class='bold'>Vyberte lokalitu</span> pre vyzdvihnutie zásob",
+    "LOCATION": "Poloha",
+    "CHECK_STOCK": "Kontrola zásob",
+    "THIS_WEEK": "Tento týždeň",
+    "TRAYS": "Prepravky"
+  },
+  "BLANK_RECEIPT": {
+    "TITLE": "<span class='bold'>VYTVORIŤ A</span> PRÁZDNU POTVRDENKU",
+    "RECEIPT_TYPE": "Typ potvrdenky",
+    "QUANTITY": "Množstvo",
+    "CREATE_RECEIPT": "Vytvoriť potvrdenku "
+  }
+}

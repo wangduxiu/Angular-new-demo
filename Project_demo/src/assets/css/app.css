@@ -1,0 +1,67 @@
+body {
+}
+
+.header {
+  background-color: #015B81;
+}
+
+.header-user {
+  background-color: #00435D;
+}
+
+a.primary {
+  background-color: #00435D;
+  color: white;
+  border-radius: 50px;
+}
+
+a.default {
+  border-radius: 50px;
+  border-width: 2px;
+  border-color: #02A1DB;
+  border-style: solid;
+  color: #02A1DB;
+}
+
+a.default div.mat-ripple:focus { // TODO fix this
+  border-radius: 50px;
+}
+
+.app-pagination .ngx-pagination li {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #E6EEF3;
+  margin-right: 0;
+  border-left-style: none;
+}
+
+.app-pagination .ngx-pagination .pagination-previous {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  margin-right: -5px;
+  border-left-style: solid;
+}
+
+.app-pagination .ngx-pagination .pagination-next {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-left: -5px;
+}
+
+.app-pagination .ngx-pagination .pagination-next a:hover{
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.app-pagination .ngx-pagination li a:hover {
+  background-color: #D0E3F1;
+}
+
+.app-pagination .ngx-pagination li.current {
+  background-color: #E6EEF3;
+  color: black;
+}
+
+.jaspero__dialog-actions button.primary {
+  color: black !important;
+}

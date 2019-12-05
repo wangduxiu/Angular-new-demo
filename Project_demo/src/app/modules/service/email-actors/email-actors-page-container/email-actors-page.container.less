@@ -1,0 +1,34 @@
+@import '../../../../shared/styles/globalVars.less';
+
+.email-actors-page {
+  background-color: @background-form;
+
+  .email-actors-page-title {
+    font-weight: 300;
+    height: 100px;
+    padding: 0 @page-horizontal-padding;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .title {
+      font-size: @title-font;
+      color: @blue-underline;
+      text-transform: uppercase;
+    }
+  }
+
+  .email-actors-page-content {
+    padding: 0 @page-horizontal-padding;
+
+    .service-boxes {
+      @media only screen and (min-width: @medium-screen-width) {
+        padding-left: 20px;
+      }
+
+      @media only screen and (max-width: @medium-screen-width) {
+        padding-top: 20px;
+      }
+    }
+  }
+}

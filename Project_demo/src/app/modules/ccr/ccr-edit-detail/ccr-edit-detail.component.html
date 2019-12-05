@@ -1,0 +1,27 @@
+<div class="order-edit-detail-container" id="materials">
+
+  <app-ccr-material-lines
+    [materials]="florderDetail.ccr.ccrLineItems"
+    [definitions]="definitions"
+    [panelStatus]="panelStatusMaterial"
+    [readonly]="!panelStatus.isNew"
+    [materialTypes]="materialTypes"
+    [title]="'CCR_LINES'"
+    [palletQuantity]="florderDetail.palletQuantity"
+    (editMaterialClicked)="startEditMaterialClicked.emit($event)"
+    (removeMaterialClicked)="removeMaterialClicked.emit($event)"
+  >
+  </app-ccr-material-lines>
+
+  <app-ccr-edit-material
+    *ngIf="editMaterial"
+    [saving]="panelStatus.busy"
+    [definitions]="definitions"
+    [material]="editMaterial"
+    [materialTypes]="materialTypes"
+    [panelStatus]="panelStatusMaterial"
+    (nextClicked)="nextClickedFn()"
+    (saveMaterialClicked)="saveMaterialClicked.emit($event)"
+  >
+  </app-ccr-edit-material>
+</div>

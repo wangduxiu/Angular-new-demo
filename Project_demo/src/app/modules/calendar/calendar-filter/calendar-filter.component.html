@@ -1,0 +1,26 @@
+<div class="filter-container">
+  <div class="filter-inner">
+    <div class="title-header" [innerHTML]="'CALENDAR.FILTER.TITLE' | translate"></div>
+    <div class="filter-form-container">
+      <form [formGroup]="filterForm">
+        <div class="row filter-form-container-inner">
+          <div class="filter col-12 col-md-4 row">
+            <app-label class="col-12 col-md-4" translationCode="CALENDAR.FILTER.DEPOT"></app-label>
+            <app-select class="col-12 col-md-8" [elements]="depots" formControlName="depot" [includeAll]="true"></app-select>
+          </div>
+          <div class="filter col-12 col-md-4 row">
+            <app-label class="col-12 col-md-3" translationCode="ORDERS.FILTER.LABELS.ORDER_TYPE"></app-label>
+            <app-checkbox class="col-3 col-md-3" translationCode="CALENDAR.FILTER.DELIVERY" formControlName="orderTypeDelivery"></app-checkbox>
+            <app-checkbox class="col-3 col-md-3" translationCode="CALENDAR.FILTER.RETURN" formControlName="orderTypeReturn"></app-checkbox>
+            <app-checkbox class="col-3 col-md-3" translationCode="CALENDAR.FILTER.DIRECT" formControlName="orderTypeDirect"></app-checkbox>
+          </div>
+          <div class="filter col-12 col-md-4 row">
+            <app-label class="col-12 col-md-4" translationCode="ORDERS.FILTER.LABELS.TRANSPORT"></app-label>
+            <app-checkbox class="col-3 col-md-4" translationCode="CALENDAR.FILTER.OWN" formControlName="transportPickup"></app-checkbox>
+            <app-checkbox class="col-3 col-md-4" translationCode="CALENDAR.FILTER.BY_EPS" formControlName="transportEps"></app-checkbox>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

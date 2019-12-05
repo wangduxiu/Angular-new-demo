@@ -1,0 +1,41 @@
+<div @fadeInAnimation>
+<!-- EPS USER -->
+<md-tab-group
+  *ngIf="isEpsUser"
+  [selectedIndex]="selectedTab"
+  (selectChange)="tabChanged($event)"
+>
+    <md-tab label='{{"SELECT_CUSTOMER.SALES_ORG" | translate}}'>
+        <tile-page
+          [tilesGroupedByLetter]="salesOrganisationsGroupedByLetter"
+          noTilesFoundTranslationCode="ERRORS.AUTHORIZATION.NO_SALES_ORGANIZATIONS"
+          filterToNarrowTranslationCode="SELECT_CUSTOMER.FILTER.NO_SALES_ORGANISATION"
+          [tileIdLoading]="customersLoading && selectedSalesOrganisation && selectedSalesOrganisation.id"
+          [clearFilter]="clearFilter"
+          (tileClicked)="handleSalesOrganisationClicked($event)"
+        ></tile-page>
+    </md-tab>
+
+    <md-tab label='{{"SELECT_CUSTOMER.CUSTOMERS" | translate}}' [disabled]="customersTabDisabled">
+        <tile-page
+          [tilesGroupedByLetter]="customersGroupedByLetter"
+          noTilesFoundTranslationCode="ERRORS.AUTHORIZATION.NO_CUSTOMERS_IN_SALES_ORGANIZATION"
+          filterToNarrowTranslationCode="SELECT_CUSTOMER.FILTER.NO_CUSTOMER"
+          [tileIdLoading]="customerInfoLoading && selectedCustomerId"
+          [parentTile]="selectedSalesOrganisation"
+          [clearFilter]="clearFilter"
+          (tileClicked)="handleCustomerClicked($event)"
+        ></tile-page>
+    </md-tab>
+</md-tab-group>
+
+<!-- CLIENT USER -->
+<tile-page
+  *ngIf="!isEpsUser"
+  [tilesGroupedByLetter]="customersGroupedByLetter"
+  noTilesFoundTranslationCode="ERRORS.AUTHORIZATION.NO_CUSTOMERS"
+  filterToNarrowTranslationCode="SELECT_CUSTOMER.FILTER.NO_CUSTOMER"
+  [tileIdLoading]="customerInfoLoading && selectedCustomerId"
+  (tileClicked)="handleCustomerClicked($event)"
+></tile-page>
+</div>

@@ -1,0 +1,203 @@
+<div class="admin-page-title">
+  <div class="edit-button" (click)="cancelClicked.emit()">
+    <a md-raised-button class="default">{{ 'SHARED.BUTTONS.BACK' | translate }}</a>
+  </div>
+  <div class="content">
+    <app-title *ngIf="isEdit" title="ADMIN.SHARED.EDIT" subtitle="ADMIN.SHARED.EPSUSER"></app-title>
+    <app-title *ngIf="isInvitation" title="ADMIN.SHARED.INVITE" subtitle="ADMIN.SHARED.EPSUSER"></app-title>
+    <app-title *ngIf="isCreate" title="ADMIN.SHARED.CREATE" subtitle="ADMIN.SHARED.EPSUSER"></app-title>
+  </div>
+</div>
+
+<div class="button-container row" *ngIf="isEdit">
+  <div class="col-12 col-md-12 col-lg-9">
+    <div class="buttons" @easeInOut *ngIf="authorization.adminRoles.reInvite && !user.invitationAccepted">
+      <a md-button class="default" *ngIf="authorization.adminRoles.reInvite" [disabled]="buttonIsDisabled()" (click)="!buttonIsDisabled() && reInvite.emit(user.id)">
+        <i class="fa fa-envelope-o" aria-hidden="true" *ngIf="!reInviting"></i>
+        <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="reInviting"></i>
+        &nbsp;{{ "ADMIN.SHARED.RE_INVITE" | translate }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="filter-container row">
+  <div class="filter-container-inner col-12 col-md-12 col-lg-9">
+    <form class="userForm" [formGroup]="userForm">
+      <div class="row align_top">
+        <div class="col-lg-3 col-md-2 col-sm-12 form-label">
+          <app-label translationCode="ADMIN.EPS_USERS.NAME"></app-label>
+        </div>
+        <div class="col-lg-9 col-md-6 col-sm-12">
+          <app-text-input [readonly]="isView" formControlName="firstName"></app-text-input>
+        </div>
+      </div>
+
+      <div class="row align_top">
+        <div class="col-lg-3 col-md-2 col-sm-12 form-label">
+          <app-label translationCode="ADMIN.EPS_USERS.LAST_NAME"></app-label>
+        </div>
+        <div class="col-lg-9 col-md-6 col-sm-12">
+          <app-text-input [readonly]="isView" formControlName="lastName"></app-text-input>
+        </div>
+      </div>
+
+      <div class="row align_top">
+        <div class="col-lg-3 col-md-2 col-sm-12 form-label">
+          <app-label translationCode="ADMIN.EPS_USERS.EMAIL"></app-label>
+        </div>
+        <div class="col-lg-9 col-md-6 col-sm-12">
+          <span *ngIf="isEdit">{{user.email}}</span>
+          <app-text-input *ngIf="!isEdit" [readonly]="isView" formControlName="email"></app-text-input>
+          <i
+            class="fa fa-clipboard"
+            (click)="copyToClipboard()"
+            ngxClipboard [cbContent]="user.email"
+            *ngIf="isEdit || isView"></i>
+          <div class="mat-tooltip" *ngIf="cbFeedback">{{ "ADMIN.SHARED.COPIED" | translate }}</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-md-2 col-sm-12 form-label">
+          <app-label translationCode="ADMIN.EPS_USERS.LANGUAGE"></app-label>
+        </div>
+        <div class="col-lg-9 col-md-6 col-sm-12">
+          <app-select [readonly]="isView" [elements]="adminDefinitions.language" formControlName="language" [allowBlank]="false"></app-select>
+        </div>
+      </div>
+
+      <div class="row align_top">
+        <div class="col-lg-3 col-md-2 col-sm-12 form-label">
+          <app-label translationCode="ADMIN.EPS_USERS.ADMIN"></app-label>
+        </div>
+        <div class="col-lg-9 col-md-6 col-sm-12">
+          <app-checkbox formControlName="isAdmin" [readonly]="isView || user.isAgent"></app-checkbox>
+        </div>
+      </div>
+
+      <div class="row admin-options" *ngIf="userForm.value.isAdmin" @easeInOut>
+        <div class="col-3">
+          <div class="row align_top">
+            <div class="col-1">
+              <app-checkbox [readonly]="isView || user.isAgent" formControlName="updateClientUser"></app-checkbox>
+            </div>
+            <div class="col-11 form-label">
+              <app-label translationCode="ADMIN.EPS_USERS.UPDATE_CLIENT_USER"></app-label>
+            </div>
+          </div>
+
+          <div class="row align_top">
+            <div class="col-1">
+              <app-checkbox [readonly]="isView || user.isAgent" formControlName="updateEpsUser"></app-checkbox>
+            </div>
+            <div class="col-11 form-label">
+              <app-label translationCode="ADMIN.EPS_USERS.UPDATE_EPS_USER"></app-label>
+            </div>
+          </div>
+
+          <div class="row align_top">
+            <div class="col-1">
+              <app-checkbox [readonly]="isView || user.isAgent" formControlName="reInvite"></app-checkbox>
+            </div>
+            <div class="col-11 form-label">
+              <app-label translationCode="ADMIN.EPS_USERS.RE_INVITE"></app-label>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-3">
+          <div class="row align_top">
+            <div class="col-1">
+              <app-checkbox [readonly]="isView || user.isAgent" formControlName="createClientUser"></app-checkbox>
+            </div>
+            <div class="col-11 form-label">
+              <app-label translationCode="ADMIN.EPS_USERS.CREATE_CLIENT_USER"></app-label>
+            </div>
+          </div>
+
+          <div class="row align_top">
+            <div class="col-1">
+              <app-checkbox [readonly]="isView || user.isAgent" formControlName="inviteEpsUser"></app-checkbox>
+            </div>
+            <div class="col-11 form-label">
+              <app-label translationCode="ADMIN.EPS_USERS.INVITE_EPS_USER"></app-label>
+            </div>
+          </div>
+
+          <div class="row align_top">
+            <div class="col-1">
+              <app-checkbox [readonly]="isView || user.isAgent" formControlName="resetPassword"></app-checkbox>
+            </div>
+            <div class="col-11 form-label">
+              <app-label translationCode="ADMIN.EPS_USERS.RESET_PASSWORD"></app-label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row align_top">
+        <div class="col-lg-3 col-md-2 col-sm-12 form-label">
+          <app-label translationCode="ADMIN.CLIENT_USERS.IS_DELAYED"></app-label>
+        </div>
+        <div class="col-lg-9 col-md-6 col-sm-12">
+          <app-checkbox formControlName="isDelayed" [readonly]="isView || (isEdit && !user.isDelayed)"></app-checkbox>
+        </div>
+      </div>
+
+      <div class="row align_top">
+        <div class="col-lg-3 col-md-2 col-sm-12 form-label">
+          <app-label translationCode="ADMIN.CLIENT_USERS.ACTIVE"></app-label>
+        </div>
+        <div class="col-lg-9 col-md-6 col-sm-12">
+          <app-checkbox formControlName="isActive" [readonly]="isView || user.isAgent"></app-checkbox>
+        </div>
+      </div>
+
+      <div class="row align_top">
+        <div class="col-lg-3 col-md-2 col-sm-12 form-label">
+          <app-label translationCode="ADMIN.EPS_USERS.RELOCATION"></app-label>
+        </div>
+        <div class="col-lg-9 col-md-6 col-sm-12">
+          <app-checkbox [readonly]="isView" formControlName="canRelocate"></app-checkbox>
+        </div>
+      </div>
+
+
+      <div class="hr-accent"></div>
+
+      <div class="row">
+        <div class="col-12">
+          <app-label translationCode="ADMIN.EPS_USERS.SALES_ORG"></app-label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <app-salesorganisation-list [salesOrganisations]="salesOrganisations" [readonly]="isView" formControlName="salesOrganisations"></app-salesorganisation-list>
+        </div>
+      </div>
+
+      <div class="hr-thick"></div>
+
+      <div class="buttons" *ngIf="!isView">
+        <a class="btn-cancel hand" (click)="cancelClicked.emit()">{{ 'SHARED.BUTTONS.CANCEL' | translate }}</a>
+        <a md-raised-button class="primary btn-next" [disabled]="!userForm.valid || buttonIsDisabled()" (click)="_updateUser(userForm.valid)" *ngIf="isEdit">
+          <i class="fa fa-check" aria-hidden="true" *ngIf="!saving"></i>
+          <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="saving"></i>
+          <span>{{ 'ADMIN.SHARED.UPDATE' | translate }}</span>
+        </a>
+        <a md-raised-button class="primary btn-next" [disabled]="!userForm.valid || buttonIsDisabled()" (click)="_createUser(userForm.valid)" *ngIf="isCreate">
+          <i class="fa fa-check" aria-hidden="true" *ngIf="!saving"></i>
+          <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="saving"></i>
+          <span>{{ 'ADMIN.SHARED.CREATE' | translate }}</span>
+        </a>
+        <a md-raised-button class="primary btn-next" [disabled]="!userForm.valid || buttonIsDisabled()" (click)="_inviteUser(userForm.valid)" *ngIf="isInvitation">
+          <i class="fa fa-check" aria-hidden="true" *ngIf="!saving"></i>
+          <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="saving"></i>
+          <span>{{ 'ADMIN.SHARED.INVITE' | translate }}</span>
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

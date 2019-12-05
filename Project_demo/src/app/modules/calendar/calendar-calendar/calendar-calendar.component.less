@@ -1,0 +1,82 @@
+@import '../../../shared/styles/globalVars.less';
+
+.calendar-container {
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: @big-font;
+    color: @blue-underline;
+    margin-bottom: 40px;
+
+    .arrow {
+      cursor: pointer;
+    }
+
+    .current_month {
+      margin: 0 10px;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    .show_today {
+      margin-left: 20px;
+    }
+
+    .date {
+      width: 200px;
+      height: 40px;
+    }
+  }
+
+  .calendar {
+    .day_names, .week {
+      display: flex;
+
+      .day_name, .day {
+        flex: 1;
+        color: @underLine;
+      }
+    }
+
+    .day_names {
+      .day_name {
+        font-weight: bold;
+        padding-left: 5px;
+
+        &.weekend {
+          color: @lightText !important;
+        }
+      }
+    }
+
+    .week {
+      flex-wrap: wrap;
+
+      .day {
+        // flex: 0 1 calc(100% / 7);
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        box-sizing: border-box;
+
+        &:before {
+          content: '';
+          display: table;
+          padding-top: 100%;
+        }
+
+        .day_inner {
+          display: flex;
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+
+.loading_spinner {
+  text-align: center;
+  font-size: @title-font;
+  padding: 50px 10px;
+}

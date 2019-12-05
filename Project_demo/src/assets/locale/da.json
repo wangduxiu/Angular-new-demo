@@ -1,0 +1,612 @@
+{
+  "SHARED": {
+    "DATE_FORMATS": {
+      "WEEK": "week ww, yyyy",
+      "DAY": "dd/mm/yyyy"
+    },
+    "PAGING": {
+      "PREVIOUS": "",
+      "NEXT": ""
+    },
+    "BUTTONS": {
+      "YES": "Yes",
+      "NO": "No",
+      "CANCEL": "Cancel",
+      "EDIT": "Edit",
+      "SUBMIT": "Submit",
+      "SAVE": "Save",
+      "CREATE": "Create",
+      "GO_TO_DASHBOARD": "Go to dashboard",
+      "GO_TO_DETAIL": "Go to detail",
+      "GO_TO_OVERVIEW": "Go to overview",
+      "BACK": "Back",
+      "CLOSE": "Close"
+    },
+    "DAYS": {
+      "MONDAY": "Monday",
+      "TUESDAY": "Tuesday",
+      "WEDNESDAY": "Wednesday",
+      "THURSDAY": "Thursday",
+      "FRIDAY": "Friday",
+      "SATURDAY": "Saturday",
+      "SUNDAY": "Sunday",
+      "UNTIL": "until"
+    },
+    "ORDINAL": {
+      "FIRST": "First",
+      "SECOND": "Second",
+      "THIRD": "Third",
+      "FOURTH": "Fourth",
+      "LAST": "Last"
+    },
+    "HEADER": {
+      "ORDERS": "ORDERS",
+      "FLOWS": "FLOWS",
+      "CALENDAR": "CALENDAR",
+      "INVOICES": "INVOICES",
+      "STOCK": "STOCK",
+      "BLANK": "BLANK RECEIPT",
+      "LOGGED_AS": "LOGGED IN AS",
+      "LOGIN": "Log in",
+      "LOGOUT": "Log out",
+      "SWITCH_CUSTOMER": "Switch customer",
+      "LOADING_CONTRACT": "Loading contract",
+      "LOADING_CONTEXT": "Loading context",
+      "FAQ": "FAQ",
+      "CONTACT_US": "CONTACT US",
+      "EMAIL_ACTORS": "EMAIL ACTORS",
+      "WELCOME": "Welcome"
+    },
+    "LABELS": {
+      "OPTIONAL": "Optional",
+      "COLLAPSE_ALL": "Collapse all",
+      "SHOW_ALL": "Show all",
+      "SEARCH": "Search: ",
+      "NO_ADDRESS": "No address"
+    },
+    "MODAL": {
+      "HEADER_SUCCESS": "<p class='col-12'><span class='spanStyle'>Kære {{name}},</span></p><br><p class='col-12'> Din registering er korrekt <span class='spanStyle'>succesfuld</span>gemt i vores system!</p>",
+      "HEADER_ERROR": "<p class='col-12'><span class='spanStyle'>Kære {{name}},</span></p><br><p class='col-12'> Der er sket en <span class='spanStyle'>fejl</span> gemt i vores system!</p>",
+      "HEADER_WARNING": "<p class='col-12'><span class='spanStyle'>ADVARSEL</span> MESSAGE</p>",
+      "HEADER_EMAIL": "<p class='col-12'><span class='spanStyle'>VÆLG EMAIL</span> </p>",
+      "MSG_SUCCESS": "<p class='col-12'>I forbindelse med fejl eller bemærkning venligst henvis til transaktions nummer <span class='spanStyle'>#{{number}}</span> Når</p> <p class='col-12'>Kontakt dit lokale kontor</p> <p class='col-12'>Mange tak og du ønskes en forsat god dag!</p>",
+      "MSG_ERROR": "<p class='col-12'> Ved spørgsmål - kontakt dit lokale kontor</p> <p class='col-12'>Mange tak og du ønskes en forsat god dag!</p>",
+      "MSG_WARNING": "<p class='col-12'><span class='spanStyle'>ADVARSEL</span> I forbindelse med fejl eller bemærkning venligst henvis til transaktions nummer<span class='spanStyle'>#{{number}}</span> når</p> <p class='col-12'>contacting your Local Office</p> <p class='col-12'>Mange tak og du ønskes en forsat god dag!</p>",
+      "SUCCESS": "Success",
+      "ERROR": "Error",
+      "WARNING": "Warning"
+    }
+  },
+  "DASHBOARD": {
+    "TITLE": {
+      "YOUR": "YOUR",
+      "DASHBOARD": "DASHBOARD"
+    },
+    "GENERAL": {
+      "VIEW_ALL": "View all",
+      "NEW_FEATURE": {
+        "NEW": "New",
+        "FEATURE": "feature"
+      }
+    },
+    "TEMPLATE": {
+      "TITLE": {
+        "LINE1": "Create",
+        "LINE2": "template"
+      },
+      "DESCRIPTION": "<p>Er dine høst spredt i løbet af sæsonen?</p><p>Og som en konsekvens deraf nødvendigt at ændre de samme mængde hver gang?</p>",
+      "BUTTON": "Use our templates"
+    },
+    "CALENDAR": {
+      "TITLE": {
+        "LINE1": "Check the",
+        "LINE2": "Calendar"
+      },
+      "DESCRIPTION": "Create orders directly in the calendar view or easily create orders by dragging templates to the calendar",
+      "BUTTON": "Go to calendar"
+    },
+    "OPEN_HANDSHAKES": {
+      "TITLE": {
+        "LINE1": "Confirm open",
+        "LINE2": "handshakes"
+      },
+      "ELEMENT_PREFIX": "Handshake"
+    },
+    "OPEN_HANDSHAKES_SUMMARY": {
+      "TITLE": {
+        "LINE1": "Open",
+        "LINE2": "handshakes"
+      },
+      "BUTTON": "Confirm open handshakes"
+    },
+    "LATEST_ORDERS": {
+      "TITLE": {
+        "LINE1": "Your latest",
+        "LINE2": "orders"
+      },
+      "ELEMENT_PREFIX": "Order"
+    },
+    "DEPOT": {
+      "TITLE": {
+        "LINE1": "Your",
+        "LINE2": "depot"
+      },
+      "ELEMENT_PREFIX": "Order"
+    },
+    "LATEST_FLOWS": {
+      "TITLE": {
+        "LINE1": "Your latest",
+        "LINE2": "flows"
+      },
+      "ELEMENT_PREFIX": "Flow"
+    }
+  },
+  "SELECT_CUSTOMER": {
+    "SALES_ORG": "Sales organisation",
+    "CUSTOMERS": "Customers",
+    "FILTER": {
+      "NO_CUSTOMER": "No customers match your filter",
+      "NO_SALES_ORGANISATION": "No sales organisations match your filter"
+    }
+  },
+  "ORDERS": {
+    "FILTER": {
+      "TITLE": "Filter",
+      "SUBTITLE": "orders",
+      "LABELS": {
+        "ORDER_DATE": "Order date",
+        "UNLOADING_DATE": "(Un)loading date",
+        "ORDER_TYPE": "Order type",
+        "TRANSPORT": "Transport",
+        "TRANSPORT_PICKUP": "Pickup",
+        "TRANSPORT_EPS": "By EPS",
+        "ORDER_STATUS": "Order status",
+        "CUSTOMER_REFERENCE_NUMBER": "Customer reference number",
+        "PALLET_ID": "Pallet ID",
+        "TRANSPORTER": "Transporter",
+        "ETM_SHIPPING_NUMBER": "ETM shipping number",
+        "CCR-CHECK": "CCR-check",
+        "FROM": "From",
+        "TO": "To",
+        "SEAL_NUMBER": "Seal number",
+        "CCR": "CCR",
+        "CREATE_CCR": "Create CCR"
+      },
+      "BUTTONS": {
+        "MORE_SEARCH_OPTIONS": "More search options",
+        "LESS_SEARCH_OPTIONS": "Less search options",
+        "FILTER_TEXT": "Filter orders",
+        "ADD_TEMPLATE": "Template",
+        "ADD_ORDER": "Order"
+      }
+    },
+    "LIST": {
+      "TITLE": "RESULTS",
+      "SUBTITLE": "ORDERS",
+      "COUNT": "{{count}} ordre",
+      "COUNT_1": "1 order",
+      "COUNT-POSTSCRIPT": "match your criteria",
+      "DOWNLOAD_AS": "Download the results in",
+      "DOWNLOADING": "Downloading...",
+      "PDF": "pdf",
+      "EXCEL": "excel",
+      "OR": "or",
+      "LABELS": {
+        "ORDER_DATE": "Order date",
+        "NUMBER": "Number",
+        "FROM": "From",
+        "TO": "To",
+        "REQUESTED_DATE": "Requested date",
+        "CONFIRMED_DATE": "Confirmed date",
+        "TRANSPORT": "Transport",
+        "GLOBAL_TYPE": "Global type"
+      },
+      "BUTTONS": {
+        "COPY": "Copy",
+        "AS_TEMPLATE": "Create template from order"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "ORDER",
+      "SUBTITLE": "LINES",
+      "REGISTERED_BY": "Registered by"
+    },
+    "PLANNING": {
+      "TITLE": "ORDER",
+      "SUBTITLE": "PLANNING",
+      "BUTTONS": {
+        "NEXT": "Next",
+        "SAVE": "Save"
+      }
+    },
+    "NO_PLANNING": {
+      "TITLE": "TEMPLATE",
+      "SUBTITLE": "DETAILS"
+    },
+    "DELIVERY": {
+      "TITLE": "GENERAL",
+      "SUBTITLE": "",
+      "VALUES": {
+        "RECURRENCY": {
+          "WEEKLY": "Ugentlig, hver {{days}}",
+          "MONTHLY-NROFDAY": "Måned, dag {{day}} af hver {{monthPeriodicy1}} måneder(s)",
+          "MONTHLY-DAYOFMONTH": "Månedlig, den {{which}} {{weekday}} af hver {{monthPeriodicy2}} måneder"
+        }
+      },
+      "LABELS": {
+        "CHOOSE_TYPE": "Order type",
+        "TYPE_DELIVERY": "Delivery",
+        "TYPE_RETURN": "Return",
+        "TYPE_DIRECT_SERVICES": "Direct services",
+        "TYPE_MOVEMENT": "Movement",
+        "SOLD_TO": "Sold to",
+        "TO": "To",
+        "TRANSPORT": "Transport",
+        "TRANSPORT_PICKUP": "Pickup",
+        "TRANSPORT_EPS": "By EPS",
+        "PICKUP_POINT": "Pickup point",
+        "RECURRENCE": "Recurrence",
+        "CUSTOMER_REFERENCE_NUMBER": "Reference",
+        "CLEARING": "Clearing",
+        "LICENCE_PLATE": "Licence plate",
+        "REMARKS": "Remarks",
+        "RECURRENCY_PATTERN": "Recurrency pattern",
+        "PATTERN_WEEKLY": "Weekly",
+        "PATTERN_MONTHLY": "Monthly",
+        "END_DATE_RECURRENCE": "End date recurrence",
+        "FROM": "From",
+        "RECURRENCY_TIME": "Recurrency time",
+        "MONTHLY": {
+          "DAY": "Day",
+          "OF_EVERY": "of every",
+          "MONTHS": "month(s)",
+          "THE": "The"
+        },
+        "REQUESTED_DATE": "REQUESTED UNLOADING DATE",
+        "CONFIRMED_DATE": "CONFIRMED UNLOADING DATE",
+        "EXCHANGE_PALLET": "EXCHANGE PALLETS",
+        "NUMBER_OF_EXCHANGE_PALLETS": "NUMBER OF EXCHANGE PALLETS",
+        "COMMENTS": "REMARKS",
+        "TRANSPORTER": "TRANSPORTER",
+        "PLATE": "LICENCE PLATE",
+        "REF": "REFERENCE NUMBER",
+        "NO_REMARKS": "No remarks",
+        "NO_TRANSPORTER": "No transporter",
+        "NO_LICENCE_PLATE": "No licence plate"
+      },
+      "BUTTONS": {
+        "NEXT": "Go to order lines",
+        "SAVE": "Save"
+      }
+    },
+    "DETAIL": {
+      "LABELS": {
+        "LOADING_DATE": "Loading date",
+        "EXCHANGE_PALLETS": "Exchange pallets",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Amount of pallets",
+        "CREATE_TEMPLATE": "Save as template",
+        "TEMPLATE_NAME": "Name template"
+      },
+      "BUTTONS": {
+        "NEXT": "Go to order planning",
+        "SAVE": "Save"
+      }
+    },
+    "MATERIAL": {
+      "TITLE": "Add Material",
+      "TYPE": "Choose type",
+      "LABELS": {
+        "TYPES": {
+          "PACKING": "Packing",
+          "PALLET": "Pallet",
+          "COMBO": "Combination"
+        },
+        "TYPE_PACKING": "Type packing",
+        "TYPE_PALLET": "Type pallet",
+        "STATUS_PALLET": "Status pallet",
+        "STATUS_PACKING": "Status packing",
+        "LOGISTIC_VARIETY": "Logistic variety p.",
+        "PACKING_PER_PALLET": "Packings per pallet",
+        "NUMBER_OF_PALLETS": "Number of pallets",
+        "QUANTITY": "Quantity",
+        "PO_NUMBER": "Po number",
+        "PO_NUMBER_ITEM": "Po item number",
+        "MESSAGE": "Message",
+        "PFQ_EUR": "Number of EPP (Euro size)",
+        "PFQ_POOL": "Number of EPP (Pool size)",
+        "EXCHANGE_PALLETS": "Exchange pallets",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Number of europallets to exchange",
+        "CREATE_TEMPLATE": "Save as template",
+        "TEMPLATE_NAME": "Name template",
+        "NR_OF_PFQS": "Number of PFQs",
+        "PACKING": "Packing",
+        "STATUS": "Status",
+        "LOGISTIC_VAR": "Logistic var.",
+        "QTY": "Quantity",
+        "EXCHANGE": "Exchange",
+        "BALANCED": "Requested balance",
+        "REFERENCE": "Reference",
+        "CONTENT": "Content",
+        "LINE_REFERENCE": "Line reference"
+      },
+      "NOTIFICATIONS": {
+        "MATERIAL_ADDED": "Material added succesfully",
+        "MATERIAL_REMOVED": "Material removed succesfully",
+        "MATERIAL_ALREADY_EXISTS": "Material already added.  Please add something else or edit existing line."
+      },
+      "BUTTONS": {
+        "ADD_MATERIAL": "Add material",
+        "SAVING": "Saving"
+      }
+    }
+  },
+  "TEMPLATES": {
+    "DETAILS": {
+      "TITLE": "TEMPLATE",
+      "CREATE_SUCCESS": "Template has been created successfully"
+    }
+  },
+  "FLOWS": {
+    "FILTER": {
+      "TITLE": "Filter",
+      "SUBTITLE": "flows",
+      "LABELS": {
+        "FLOW_DATE": "Flow date",
+        "STATUS": "Status",
+        "STATUS_HANDSHAKE": "Waiting for handshake",
+        "STATUS_DEFINITIVE": "Definitive",
+        "STATUS_CANCEL": "Cancel",
+        "DIFFERENCE": "Difference",
+        "CLEARING": "Clearing",
+        "HANDSHAKE_DATE": "Handshake date",
+        "PACKING_ID": "Packing ID",
+        "CHECKED": "Checked"
+      },
+      "BUTTONS": {
+        "FILTER_TEXT": "Filter flows",
+        "ADD_FLOW": "Flow"
+      }
+    },
+    "LIST": {
+      "TITLE": "RESULTS",
+      "SUBTITLE": "FLOWS",
+      "SELECTED": "{{selected}} valgt",
+      "COUNT": "{{count}} flow",
+      "COUNT_1": "1 flow",
+      "COUNT-POSTSCRIPT": "match your criteria",
+      "LABELS": {
+        "FLOW_DATE": "Flow date",
+        "NUMBER": "Document number",
+        "STATUS_HANDSHAKE": "Status handshake",
+        "TYPE": "Type",
+        "ORIGINAL": "Sender",
+        "DEFINITIVE": "Receiver",
+        "DIFFERENCE": "Difference",
+        "CONTENT": "Content",
+        "REFERENCE": "Reference",
+        "COLLAPSE_COUNT": "Kolaps ({{count}})",
+        "SHOW_COUNT": "Vis alt ({{count}})"
+      },
+      "BUTTONS": {
+        "CANCEL": "Cancel",
+        "ACCEPT": "Accept",
+        "REJECT": "Reject"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "FLOW",
+      "SUBTITLE": "LINES",
+      "BUTTONS": {
+        "NEXT": "Go to transaction date"
+      }
+    },
+    "PLANNING": {
+      "TITLE": "TRANSACTION",
+      "SUBTITLE": "DATE"
+    },
+    "DELIVERY": {
+      "TITLE": "GENERAL",
+      "SUBTITLE": "",
+      "LABELS": {
+        "FLOW_DIRECTION": "Flow direction",
+        "WHOLESALER": "Wholesaler"
+      },
+      "BUTTONS": {
+        "NEXT": "Go to flow lines"
+      }
+    },
+    "NOTIFICATIONS": {
+      "ACCEPT_INVALID": "The following flows with document number contain invalid input: {{invalids}}"
+    }
+  },
+  "CCR": {
+    "DETAILS": {
+      "TITLE": "CCR",
+      "MATERIAL_LINES": "Material lines",
+      "CCR_LINES": "CCR lines",
+      "CREATE_SUCCESS": "CCR was successfully created"
+    }
+  },
+  "ADMIN": {
+    "GENERAL": {
+      "EPS_USERS": "EPS users",
+      "CLIENT_USERS": "Client users"
+    },
+    "FILTER": {
+      "TITLE": "Filter",
+      "LABELS": {
+        "FIRST_NAME": "First Name",
+        "ASSIGNED": "Assigned",
+        "SYNC_WITH_AD": "Synchronize with Active Directory",
+        "SYNCING_WITH_AD": "Synchronizing with Active Directory",
+        "LAST_NAME": "Last name",
+        "EMAIL": "E-mail",
+        "ID": "Id",
+        "PHONE": "Mobile phone"
+      },
+      "BUTTONS": {
+        "INVITE": "Invite user",
+        "EDIT": "Edit"
+      }
+    },
+    "SHARED": {
+      "CLIENTUSERS": "CLIENT USERS",
+      "CLIENTUSER": "Client user",
+      "EPSUSERS": "EPS USERS",
+      "EPSUSER": "EPS user",
+      "INVITE": "Invite",
+      "UPDATE": "Update",
+      "EDIT": "Edit",
+      "COUNT": "{{count}} Bruger",
+      "COUNT-POSTSCRIPT": "match your criteria",
+      "COUNT_1": "1 user",
+      "ADD": "Add",
+      "USER_UPDATE_SUCCESS": "User was successfully updated.",
+      "USER_UPDATE_FAIL": "User could not be updated.",
+      "USER_INVITE_SUCCESS": "User was successfully invited.",
+      "USER_INVITE_FAIL": "User could not be invited.",
+      "NAME": "Name",
+      "ID": "ID"
+    },
+    "EPS_USERS": {
+      "NAME": "First name",
+      "EMAIL": "E-mail",
+      "LAST_NAME": "Last name",
+      "SALES_ORG": "Sales organisations",
+      "NO_SALES_ORG": "No sales organisations",
+      "SEARCH_SALES_ORG": "Search sales organisation",
+      "ADMIN": "Admin",
+      "CUSTOMER_ROLE_LIST": "Customer mapping",
+      "ADD_SALES_ORGANISATION": "Add sales organisation",
+      "LANGUAGE": "Language",
+      "LIST": {
+        "TITLE": "RESULTS",
+        "SUBTITLE": "EPS USERS"
+      }
+    },
+    "CLIENT_USERS": {
+      "LIST": {
+        "TITLE": "RESULTS",
+        "SUBTITLE": "CLIENT USERS",
+        "ASSIGNED": "Assigned"
+      },
+      "CUSTOMER": "Customer",
+      "ROLE": "Role",
+      "SEARCH_CUSTOMER": "Search customer",
+      "ADD_CUSTOMER": "Add new customer",
+      "ACTIVE": "Active",
+      "LANGUAGE": "Language"
+    }
+  },
+  "ERRORS": {
+    "AUTHORIZATION": {
+      "NO_CUSTOMERS": "You don't have any customers assigned to you.  Please contact your Euro Pool System administrator to give you access",
+      "NO_CUSTOMERS_IN_SALES_ORGANIZATION": "There are no customers in this sales organization group.  Please select another sales organization",
+      "NO_SALES_ORGANIZATIONS": "You don't have any sales organizations assigned to you.  Please contact your administrator to give you access",
+      "CONTRACT_EMPTY": {
+        "TITLE": "Contract not active",
+        "MESSAGE": "The selected customer has no active contract.  Please contact your Euro Pool System administrator to fix this"
+      }
+    },
+    "FILTER_FAILED": {
+      "TITLE": "Execute filter"
+    },
+    "PDF_DOWNLOAD_FAILED": {
+      "TITLE": "Download PDF file",
+      "MESSAGE": "Downloading the PDF failed"
+    },
+    "XLS_DOWNLOAD_FAILED": {
+      "TITLE": "Download excel file",
+      "MESSAGE": "Downloading the excel failed"
+    },
+    "COPY_ORDER": {
+      "NO_VALID_CONTRACT": "Your contract has changed.  You cannot create a similar order anymore."
+    },
+    "COPY_FLOW": {
+      "NO_VALID_CONTRACT": "Your contract has changed.  You cannot create a similar flow anymore. OR: FLOWTYPE STILL NULL WHEN LOADING TODO"
+    },
+    "TEMPLATE": {
+      "CREATE": "ERROR template",
+      "COPY_FROM_ORDER": "Unable to copy from order"
+    },
+    "ORDER": {
+      "CREATE": {
+        "TRUCK_LOAD": "Check truck load"
+      }
+    },
+    "CUSTOMER-SUMMARY": {
+      "LOAD": "Loading customer summary"
+    }
+  },
+  "validation-error": {
+    "numberOfExchangePallets": {
+      "text": {
+        "max": "It's not allowed to exchange more pallets that ordered",
+        "min": "Amount of pallets must be greater than zero"
+      }
+    },
+    "customerReferenceNumber": {
+      "text": {
+        "required": "Customer reference number can't be blank"
+      }
+    },
+    "flowDate": {
+      "date": {
+        "invalid": "Flow date is invalid"
+      }
+    },
+    "text": {
+      "required": "This field can't be blank"
+    },
+    "date": {
+      "required": "This date is required",
+      "datePatternValidator": "This date is not properly formatted",
+      "dateRangeValidator": "Date out of range",
+      "dateSameOrAfter": "Dato må være efter {{otherDate}}",
+      "dateNotAvailable": "Date is not an available date. Please select another one"
+    },
+    "custom": {
+      "recurrence": {
+        "atLeastOneDay": "Please check at least 1 day"
+      }
+    }
+  },
+  "CALENDAR": {
+    "TITLE": "YOUR",
+    "SUBTITLE": "CALENDAR",
+    "SHOW_TODAY": "Show today",
+    "CREATE_TEMPLATE": "Create template",
+    "TEMPLATES": "Templates",
+    "FILTER": {
+      "DEPOT": "Depot",
+      "DELIVERY": "Delivery",
+      "RETURN": "Return",
+      "OWN": "Own",
+      "BY_EPS": "By EPS"
+    },
+    "ADD_ORDER_MODAL": {
+      "TITLE": "ADD",
+      "START_FROM_A": "Start from a",
+      "TEMPLATE": "template",
+      "NEW_ORDER": "new order"
+    },
+    "TEMPLATE": {
+      "DRAG_TEMPLATE": "Start <span class='bold'>trække</span> Skabelon",
+      "SUBTEXT": "Please drag & drop the templates to the calendar. Or add an order by clicking on a specific date."
+    }
+  },
+  "STOCK": {
+    "TITLE": "<span class='bold'>LAGER</span> OVERBLIK",
+    "FILTER_TITLE": "<span class='bold'>Vælg location</span> Gå til lager",
+    "LOCATION": "Location",
+    "CHECK_STOCK": "Check stock",
+    "THIS_WEEK": "This week",
+    "TRAYS": "Trays"
+  },
+  "BLANK_RECEIPT": {
+    "TITLE": "<span class='bold'>Dan en</span> BLANK ORDER",
+    "RECEIPT_TYPE": "Receipt type",
+    "QUANTITY": "Quantity",
+    "CREATE_RECEIPT": "Create receipt"
+  }
+}

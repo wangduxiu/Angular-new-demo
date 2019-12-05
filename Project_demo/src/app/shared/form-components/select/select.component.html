@@ -1,0 +1,24 @@
+<div class="select" #selectDiv
+     [ngClass]="{'focused': focused, 'readonly': readonly || view, 'autoHeight': autoHeight, 'hideReadonlyPadding': hideReadonlyPadding}">
+  <md-select #select
+             *ngIf="!readonly && !view && elements.length >= 1"
+             [ngModel]="getValueId()"
+             [disabled]="disabled"
+             [multiple]="multiple"
+             (onClose)="onClose()"
+             (focus)="focused=true"
+             (blur)="focused=false"
+             (change)="valueIdChanged($event)"
+  >
+    <md-option #allOption (click)="doSelectAll($event)" *ngIf="multiple && includeAll && elements.length > 1">Select all</md-option>
+      <md-option *ngFor="let element of elements" [value]="element.id">
+        <span [innerHTML]="element.valueAndTitle"></span>
+      </md-option>
+  </md-select>
+  <!--<div style="position: fixed;display: block; right: 5px; opacity: 0.3">readonly: {{!!readonly}} disabled:{{disabled}} focus:{{!!focused}} length:{{elements.length}} value:'{{value && value.name || value}}'</div>-->
+
+  <div *ngIf="readonly || view" class="read-only">
+    <span class="value">{{selectedObject && selectedObject.name}}</span>
+    <span class="title">{{selectedObject && selectedObject.title}}</span>
+  </div>
+</div>

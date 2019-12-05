@@ -1,0 +1,50 @@
+<div class="florder-page" @fadeInAnimation>
+  <div class="florder-page-title">
+    <span class="title">
+      {{ "ORDERS.LIST.SUBTITLE" | translate }}
+    </span>
+    <div class="buttons">
+      <a md-button class="default" (click)="createFlorder()" *ngIf="authorization.ORDER.CREATE"><i class="fa fa-plus-square-o" aria-hidden="true"></i> {{ "ORDERS.FILTER.BUTTONS.ADD_ORDER" | translate }}</a>
+      <a md-raised-button class="primary" (click)="createTemplate()" *ngIf="authorization.ORDER.CREATE_TEMPLATE"><i class="fa fa-plus-square-o" aria-hidden="true"></i> {{ "ORDERS.FILTER.BUTTONS.ADD_TEMPLATE" | translate }}</a>
+    </div>
+  </div>
+  <div *ngIf="authorization.ORDER.QUERY">
+    <div class="florder-page-search">
+      <app-order-filter
+        [definitions]="definitions"
+        [filter]="filter"
+        [filterValues]="filterValues"
+        [shipTos]="shipTos"
+        [isLoading]="flordersAreLoading"
+        [customers]="customers"
+        (filterOrders)="filterFlorders($event)"
+      ></app-order-filter>
+    </div>
+    <div class="florder-page-list">
+      <app-order-list
+        [definitions]="definitions"
+        [filter]="filter"
+        [isLoading]="flordersAreLoading"
+        [isDownloading]="isDownloading"
+        [orders]="orders.items"
+        [totalItems]="orders.totalItems"
+        [authorization]="authorization"
+        [restrictions]="restrictions"
+
+        (downloadFile)="downloadFile($event)"
+        (openOrder)="openOrder($event)"
+        (createCCR)="createCCR($event)"
+        (copyOrder)="copyOrder($event)"
+        (asTemplate)="asTemplate($event)"
+        (acceptDeviation)="acceptDeviation($event)"
+        (rejectDeviation)="rejectDeviation($event)"
+        (downloadDocument)="downloadDocument($event)"
+        (downloadCCRDocument)="downloadCCRDocument($event)"
+
+        (pageChange)="onPageChange($event)"
+        (sortChange)="sortChange($event)"
+        (itemsPerPageChange)="onItemsPerPageChange($event)"
+      ></app-order-list>
+    </div>
+  </div>
+</div>

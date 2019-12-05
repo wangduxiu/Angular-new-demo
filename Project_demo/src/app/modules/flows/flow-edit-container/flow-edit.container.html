@@ -1,0 +1,139 @@
+<div @fadeInAnimation>
+<div class="order-page-title" id="top">
+  <div class="edit-button" *ngIf="panelStatus.backButton.isVisible" (click)="cancelClicked()">
+    <a md-raised-button class="default">{{ 'SHARED.BUTTONS.BACK' | translate }}</a>
+  </div>
+  <div *ngIf="mode.state === 'view'" class="content">
+    <div class="title">
+      <app-status *ngIf="mode.state === 'view'" layout="BULLET" key="{{'FLOW_' + flowDetail.status}}" height="40" [size]="1"></app-status>
+      <div class="multi-line">
+        <div>
+          <app-title title="FLOWS.DETAILS.TITLE"></app-title>
+          <span class="subtitle">{{flowDetail.etmOrderNumber}}</span>
+        </div>
+        <div *ngIf="flowDetail.registeredBy">
+          <span class="bold">{{ 'ORDERS.DETAILS.REGISTERED_BY' | translate }}</span> {{flowDetail.registeredBy}}
+        </div>
+      </div>
+    </div>
+    <div class="action_buttons">
+      <div class="show-from-md">
+        <a md-raised-button class="default" (click)="editFlow()" *ngIf="canEdit()">
+          &nbsp;{{ 'FLOWS.LIST.BUTTONS.EDIT_FLOW_REGISTRAR' | translate }}&nbsp;
+        </a>
+        <a md-raised-button class="default" (click)="handshakeFlow()" *ngIf="canHandshake()">
+          &nbsp;{{ 'FLOWS.LIST.BUTTONS.EDIT_FLOW_HANDSHAKER' | translate }}&nbsp;
+        </a>
+      </div>
+      <!-- START Mobile version -->
+      <div class="more_ellipsis hide-from-sm" [mdMenuTriggerFor]="menuOrderLine" *ngIf="canEdit()">
+        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+      </div>
+      <md-menu #menuOrderLine="mdMenu" [overlapTrigger]="false">
+        <button md-menu-item (click)="editFlow()" *ngIf="canEdit()">
+          <span>&nbsp;{{'FLOWS.LIST.BUTTONS.EDIT_FLOW_REGISTRAR' | translate}}&nbsp;</span>
+        </button>
+        <button md-menu-item (click)="handshakeFlow()" *ngIf="canHandshake()">
+          <span>&nbsp;{{'FLOWS.LIST.BUTTONS.EDIT_FLOW_HANDSHAKER' | translate}}&nbsp;</span>
+        </button>
+      </md-menu>
+      <!-- END Mobile version -->
+    </div>
+  </div>
+  <app-title *ngIf="mode.state === 'create' || mode.state === 'create-confirm'" title="SHARED.BUTTONS.CREATE" subtitle="FLOWS.DETAILS.TITLE"></app-title>
+  <app-title *ngIf="(mode.state === 'edit' || mode.state === 'edit-confirm') && flowDetail.registrar && !flowDetail.lateHandshake" title="SHARED.BUTTONS.EDIT" subtitle="FLOWS.DETAILS.TITLE"></app-title>
+  <app-title *ngIf="(mode.state === 'edit' || mode.state === 'edit-confirm') && (flowDetail.handshaker || flowDetail.lateHandshake)" title="FLOWS.LIST.BUTTONS.ACCEPT" subtitle="FLOWS.DETAILS.TITLE"></app-title>
+</div>
+
+<div class="row filter-container">
+  <div class="col-12 col-md-12 col-lg-9 filter-container-inner">
+    <div class="order-create-title-bar">
+      <div class="row order-create-title-bar-header" [ngClass]="{activated: panelStatus.delivery.isEdit}">
+        <div class="order-create-title">
+          <i class='fa fa-truck' aria-hidden='true'></i>
+          <b>1&nbsp;&nbsp;{{'FLOWS.DELIVERY.TITLE' | translate}}</b> {{'FLOWS.DELIVERY.SUBTITLE' | translate}}
+        </div>
+        <div class="edit-button" *ngIf="panelStatus.delivery.isEditable || (mode.editWindow === 'detail' || mode.editWindow === 'planning')" (click)="editDeliveryMethodClicked()">
+          <a md-raised-button class="default">{{ 'SHARED.BUTTONS.EDIT' | translate }}</a>
+        </div>
+      </div>
+      <app-flow-edit-delivery
+        [definitions]="definitions"
+        [deliveryMethod]="flowDetail.deliveryMethod"
+        [panelStatus]="panelStatus.delivery"
+        [flowDetail]="flowDetail"
+        [contractInfo]="contractInfo"
+        [filterValues]="filterValues"
+        (cancelClicked)="cancelClicked()"
+        (nextClicked)="setDeliveryMethod($event)"
+        (formValidChanged)="formValidChanged('delivery', $event)"
+        (resetMaterialsAndPlanning)="resetMaterialsAndPlanning()"
+        (flowTypeSelected)="loadContractInfoFromFlowTypeToIncoterm($event)"
+      ></app-flow-edit-delivery>
+    </div>
+
+    <div class="order-create-title-bar">
+      <div class="row order-create-title-bar-header" [ngClass]="{activated: panelStatus.detail.isEdit}">
+        <div class="order-create-title">
+          <i class='fa fa-file-o' aria-hidden='true'></i>
+          <b>2&nbsp;&nbsp;{{'FLOWS.DETAILS.TITLE' | translate}}</b> {{'ORDERS.DETAILS.SUBTITLE' | translate}}
+        </div>
+        <div class="edit-button" *ngIf="panelStatus.detail.isEditable || mode.editWindow === 'planning' || (panelStatus.detail.isFlowEdit && mode.editWindow === 'delivery')" (click)="editDetailClicked()">
+          <a md-raised-button class="default"> {{ 'SHARED.BUTTONS.EDIT' | translate }} </a>
+        </div>
+      </div>
+    </div>
+    <app-flow-edit-detail
+      *ngIf="panelStatus.detail.isVisible"
+      [definitions]="definitions"
+      [editMaterial]="mode.material"
+      [flowDetail]="flowDetail"
+      [panelStatusMaterial]="panelStatus.material"
+      [panelStatus]="panelStatus.detail"
+      [materialTypes]="incoterm"
+      (cancelClicked)="cancelClicked()"
+      (backClicked)="backToDeliveryClicked()"
+      (nextClicked)="saveDetails()"
+      (saveMaterialClicked)="saveMaterial($event)"
+      (removeMaterialClicked)="removeMaterial($event)"
+      (startEditMaterialClicked)="editMaterial($event)"
+      (formValidChanged)="formValidChanged('detail', $event)"
+    ></app-flow-edit-detail>
+
+    <!-- PLANNING -->
+    <div class="order-create-title-bar">
+      <div class="row order-create-title-bar-header" [ngClass]="{activated: panelStatus.planning.isEdit}">
+        <div class="order-create-title">
+          <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+          <b>3&nbsp;&nbsp;{{'FLOWS.PLANNING.TITLE' | translate}}</b> {{'FLOWS.PLANNING.SUBTITLE' | translate}}
+        </div>
+        <div class="edit-button" *ngIf="panelStatus.planning.isEditable" (click)="editPlanningClicked()">
+          <a md-raised-button class="default">
+            {{ 'SHARED.BUTTONS.EDIT' | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+    <app-flow-edit-planning
+      *ngIf="panelStatus.planning.isVisible"
+      [flowDetail]="flowDetail"
+      [flowDate]="flowDate"
+      [panelStatus]="panelStatus.planning"
+      [datesRange]="datesRange"
+      [frequency]="to?.frequency"
+      [triggerValidation]="triggerPlanningValidation"
+      (cancelClicked)="cancelClicked()"
+      (backClicked)="backToDetailClicked()"
+      (nextClicked)="savePlanning($event)"
+      (formValidChanged)="formValidChanged('planning', $event)"
+    ></app-flow-edit-planning>
+  </div>
+</div>
+
+<div class="col-12 col-md-12 col-lg-9 buttons" *ngIf="panelStatus.submitButton.isVisible  && !mode.saved" button-click-on-enter (click)="panelStatus.submitButton.isEnabled && formsAreValid.all && submitClicked()">
+  <a md-raised-button class="default" [ngClass]="{disabled: !panelStatus.submitButton.isEnabled || !formsAreValid.all}" [disabled]="mode.saving || !formsAreValid.all">
+    <i class="fa fa-spinner fa-pulse fa-fw" *ngIf="mode.saving"></i>
+    {{ 'SHARED.BUTTONS.SUBMIT' | translate }}
+  </a>
+</div><!-- </div> -->
+</div>

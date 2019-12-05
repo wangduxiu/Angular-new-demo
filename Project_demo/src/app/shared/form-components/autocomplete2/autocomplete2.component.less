@@ -1,0 +1,134 @@
+@import '../../styles/globalVars.less';
+
+div.select {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid rgba(77, 77, 77, 0.40);
+  min-height: 40px;
+
+  &.readonly {
+    border: none;
+    padding: 0 10px;
+
+    .title {
+      color: gray;
+      font-family: "Open Sans", open-sans, sans-serif;
+      font-style: italic;
+      font-weight: normal;
+      color: #B4B3B3;
+      padding-right: 10px;
+      display: block;
+    }
+
+    .value {
+      display: block;
+    }
+  }
+
+  .read-only {
+    overflow: hidden;
+  }
+
+  &.focused   {
+    transition: 1s;
+    border: 1px solid @underLine;
+  }
+
+  md-select {
+    width: 100%;
+  }
+}
+
+:host ::ng-deep .mat-select-underline {
+  display: none;
+}
+
+:host ::ng-deep .mat-select-trigger {
+  flex-direction: row;
+}
+
+:host ::ng-deep .mat-select-placeholder {
+  display: none;
+}
+
+:host ::ng-deep .mat-select-value {
+  flex: 1;
+  position: inherit;
+}
+
+:host ::ng-deep .mat-select-value-text {
+  width: 100%;
+  padding-left: 10px;
+  font-family: "Open Sans", open-sans, sans-serif;
+  color: @underLine;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  font-size: @middle-font;
+}
+
+:host ::ng-deep .mat-select-value-text::after, :host ::ng-deep .mat-input-wrapper::after {
+  float: right;
+  content: attr(accesskey);
+  font-family: "Open Sans", open-sans, sans-serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 10px;
+  color: @lightText;
+  padding-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50%;
+}
+
+:host ::ng-deep .mat-select-value-text::after {
+  display: inline-block;
+}
+
+:host ::ng-deep .mat-input-wrapper::after {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+
+:host ::ng-deep .mat-select-arrow {
+  color: @accent-blue !important;
+  margin-right: 10px;
+  position: absolute;
+  right: 0;
+}
+
+:host ::ng-deep .mat-input-wrapper {
+  padding: 0 10px
+}
+
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+:host ::ng-deep .mat-input-underline {
+  display: none;
+}
+
+:host ::ng-deep .mat-input-subscript-wrapper {
+  display: none;
+}
+
+:host ::ng-deep .ngx-dropdown-button {
+  border: none !important;
+}

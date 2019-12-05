@@ -1,0 +1,17 @@
+<div class="text-input" [ngClass]="{'error': errorMessage || (view && readOnlyErrorMessage)}">
+  <div [hidden]="readonly || view" [style.width]="width">
+    <md-input-container>
+      <input #inputField mdInput [(ngModel)]="value" (blur)="onBlur()" [placeholder]="placeholder" [disabled]="disabled" autocomplete="off">
+      <div class="placeholder" *ngIf="stickyPlaceholder">{{stickyPlaceholder}}</div>
+    </md-input-container>
+    <div class="error-container" *ngIf="!stickyPlaceholder">
+      <div [ngClass]="{'error-message-active': errorMessage}" class="error-message">{{errorMessage}}</div>
+    </div>
+  </div>
+  <div *ngIf="readonly || view">
+    {{_value}}
+    <div class="error-container" *ngIf="view">
+      <div [ngClass]="{'error-message-active': readOnlyErrorMessage}" class="error-message">{{readOnlyErrorMessage}}</div>
+    </div>
+  </div>
+</div>

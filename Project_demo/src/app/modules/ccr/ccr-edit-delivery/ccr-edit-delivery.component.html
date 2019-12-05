@@ -1,0 +1,96 @@
+<div class="order-edit-delivery">
+  <form class="deliveryForm" [formGroup]="ccrForm">
+    <div class="deliveryForm">
+      <div class="row one-line align_top">
+        <div class="col-4 col-md-2">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.CHOOSE_TYPE"></app-label>
+        </div>
+        <div class="col-8 col-md-10">
+          <app-radio-group formControlName="type">
+            <app-radio *ngFor="let type of orderTypes" value="{{type.id}}" label="{{type.name}}" [readonly]="true"></app-radio>
+          </app-radio-group>
+        </div>
+      </div>
+
+      <div class="row one-line align_top">
+        <div class="col-4 col-md-2">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.SHIPPING_CONDITION"></app-label>
+        </div>
+        <div class="col-8 col-md-10">
+          {{ccrForm.value.shippingCondition.name}}
+        </div>
+      </div>
+
+      <!-- arrow header -->
+      <div class="row three-lines align_top">
+        <div class="col-4 col-md-2" *ngIf="ccrForm.value.type != 'EPS-CUS' || ccrForm.value.shippingCondition?.id != 'Z1'">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.FROM"></app-label>
+        </div>
+        <div class="col-8 col-md-3" *ngIf="ccrForm.value.type != 'EPS-CUS' || ccrForm.value.shippingCondition?.id != 'Z1'">
+          {{ ccrForm.value.from?.name }}
+        </div>
+        <div class="col-md-1 show-from-md" *ngIf="ccrForm.value.type != 'EPS-CUS' || ccrForm.value.shippingCondition?.id != 'Z1'">
+          <app-arrow class="myarrow" [width]="60"></app-arrow>
+        </div>
+        <div class="col-4 col-md-2">
+          <app-label translationCode="ORDERS.DELIVERY.LABELS.TO"></app-label>
+        </div>
+        <div class="col-8 col-md-3">
+          {{ ccrForm.value.to?.name }}
+        </div>
+      </div>
+      <!--end of arrow header  -->
+
+      <div class="hr"></div>
+
+      <div class="row three-lines align_top">
+        <div class="row col-12 col-sm-6 col-xs-wrapper">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.REMARKS"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{deliveryMethod?.remarks ? deliveryMethod?.remarks : ('ORDERS.DELIVERY.LABELS.NO_REMARKS' | translate)}}
+          </div>
+        </div>
+      </div>
+
+      <div class="row align_top">
+        <div class="row col-12 col-sm-6 col-xs-wrapper">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.CUSTOMER_REF"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{deliveryMethod?.customerReferenceNumber || ''}}
+          </div>
+        </div>
+        <div class="row col-12 col-sm-6 col-xs-wrapper" *ngIf="ccrForm.value.shippingCondition?.id != 'Z1'">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.TRANSPORTER"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{deliveryMethod?.transporter ? deliveryMethod?.transporter : ('ORDERS.DELIVERY.LABELS.NO_TRANSPORTER' | translate)}}
+          </div>
+        </div>
+      </div>
+
+      <div class="row align_top">
+        <div class="row col-12 col-sm-6 col-xs-wrapper">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.RECEIVER_REF"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{deliveryMethod?.senderReferenceNumber || ''}}
+          </div>
+        </div>
+        <div class="row col-12 col-sm-6 col-xs-wrapper" *ngIf="ccrForm.value.shippingCondition?.id != 'Z1'">
+          <div class="col-12 col-md-4">
+            <app-label translationCode="ORDERS.DELIVERY.LABELS.PLATE"></app-label>
+          </div>
+          <div class="col-12 col-md-8">
+            {{deliveryMethod?.licensePlate ? deliveryMethod?.licensePlate : ('ORDERS.DELIVERY.LABELS.NO_LICENCE_PLATE' | translate)}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

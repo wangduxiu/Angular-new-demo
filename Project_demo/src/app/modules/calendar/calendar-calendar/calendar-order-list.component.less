@@ -1,0 +1,72 @@
+@import '../../../shared/styles/globalVars.less';
+
+.orderList {
+  height: 100%;
+
+  .order {
+    background-color: @accent-blue;
+    color: white;
+    font-size: @small-font;
+    border-radius: 20px;
+    line-height: 12px;
+    padding: 0 5px;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    & + .order {
+      margin-top: 3px;
+    }
+  }
+
+  .more {
+    color: @underLine;
+    font-size: @small-font;
+    margin-left: 5px;
+  }
+}
+
+::ng-deep .arrow {
+  border-top-color: @underLine !important;
+}
+
+::ng-deep .tooltip_wrapper {
+  padding: 5px;
+}
+
+::ng-deep .tooltip-inner {
+  background-color: white;
+  opacity: 1;
+  border: 1px solid @underLine;
+  color: @underLine;
+  width: 400px !important;
+  max-width: 400px !important;
+  font-size: @base-font;
+  text-align: left !important;
+}
+
+::ng-deep .line {
+  margin-bottom: 10px;
+
+  &.status {
+    display: flex;
+    align-items: center;
+  }
+
+  .property {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+.florder-tooltip {
+  width: 1200px;
+  z-index: 1000;
+  opacity: 1;
+  background-color: white;
+  color: black;
+  position: fixed;
+  transform-origin: top left;
+  border: black 1px solid;
+}

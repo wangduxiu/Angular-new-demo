@@ -1,0 +1,46 @@
+@import '../../../shared/styles/globalVars.less';
+
+.loading-container {
+  transform: scale(2, 2);
+  transform-origin: top left;
+}
+.loading {
+  margin: 50px 250px;
+
+  display:block;
+}
+
+.order-page-title .content {
+  .title {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .multi-line {
+    padding-top: 10px;
+    margin-left: 20px;
+
+    .subtitle {
+      font-size: @big-font;
+      font-weight: 300;
+    }
+  }
+}
+
+.order-create-title-bar {
+  .order-create-title-bar-header {
+    background-color: @disabled;
+    display: flex;
+
+    .order-create-title {
+      color: @font-color;
+      font-size: @big-font;
+      letter-spacing: 1px;
+      line-height: 22px;
+      padding: 12px;
+      flex: 1;
+      text-transform: uppercase;
+    }
+  }
+}

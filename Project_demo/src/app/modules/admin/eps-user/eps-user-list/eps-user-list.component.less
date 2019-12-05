@@ -1,0 +1,173 @@
+@import '../../../../shared/styles/globalVars.less';
+
+.bottom-line {
+  border-bottom: 1px solid @accent-blue;
+}
+
+.cell {
+  margin-bottom: 0;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+
+  .title {
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .subtitle {
+    font-weight: 300;
+  }
+
+  .title,
+  .subtitle {
+    font-size: @title-font;
+    color: @blue-underline;
+  }
+
+  .count-block {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .count {
+    font-weight: 700;
+    margin-left: 20px;
+  }
+
+  .count-postscript {
+    font-weight: 300;
+  }
+
+  .count,
+  .count-postscript {
+    color: @underLine;
+  }
+}
+
+.count {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.cell {
+  padding: 15px 2px;
+}
+@media only screen and (max-width: 62em) {
+  .sales-number {
+    font-size: 15px;
+    line-height: 19px;
+    color: @accent-blue;
+    font-weight: bold;
+  }
+  .value {
+    color: @underLine;
+  }
+  .cell {
+    padding: 10px 5px;
+  }
+  .cell-row {
+    padding: 2px 0;
+  }
+  .soft-line {
+    border-bottom: 1px solid @soft-underline;
+  }
+  .striped:nth-child(even) {
+    background-color: transparent;
+  }
+  .striped:hover {
+    background-color: transparent;
+  }
+  .arrow {
+    color: @accent-blue;
+  }
+}
+.admin-pagination {
+  display: flex;
+  justify-content: center;
+}
+.sorters {
+  display: flex;
+
+  .sorter {
+    font-size: @middle-font;
+    padding-left: 10px;
+    cursor: pointer;
+  }
+}
+
+.heading {
+  margin-bottom: 20px;
+  padding: 5px;
+
+  .title {
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .subtitle {
+    font-weight: 300;
+  }
+
+  .title,
+  .subtitle {
+    font-size: @title-font;
+    color: @blue-underline;
+  }
+
+  .count {
+    font-weight: 700;
+    margin-left: 20px;
+  }
+
+  .count-postscript {
+    font-weight: 300;
+  }
+
+  .count,
+  .count-postscript {
+    color: @underLine;
+  }
+}
+
+.cell-row {
+  padding: 0 0 0 15px;
+}
+
+.loading_spinner {
+  text-align: center;
+  font-size: @title-font;
+  padding: 50px 10px;
+}
+
+.user_line {
+  cursor: pointer;
+}
+@media only screen and (max-width: 767px) {
+  .sorters {
+    display: none;
+  }
+}
+@media only screen and (min-width: @medium-screen-width) {
+  .show-sm {
+    display: none;
+  }
+  .sorters {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: @medium-screen-width) {
+  .sorter.show-sm {
+    padding-left: 15px;
+    font-size: 12px !important;
+    font-weight: bold;
+  }
+  .sorter.show-sm:not(:first-of-type) {
+    margin-top: 0.5em;
+  }
+}

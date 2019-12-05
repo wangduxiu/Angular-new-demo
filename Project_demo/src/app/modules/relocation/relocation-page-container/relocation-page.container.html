@@ -1,0 +1,46 @@
+<div class="florder-page" @fadeInAnimation>
+  <div class="florder-page-title">
+    <span class="title">
+      {{ "RELOCATIONS.LIST.SUBTITLE" | translate }}
+    </span>
+    <div class="buttons">
+      <a md-button class="default" (click)="createFlorder()" *ngIf="userContext.isEpsUser && authorization.canRelocate">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i> {{ "ORDERS.FILTER.BUTTONS.ADD_RELOCATION" | translate }}
+      </a>
+      <a md-raised-button class="primary" (click)="createTemplate()" *ngIf="userContext.isEpsUser && authorization.canRelocate">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i> {{ "ORDERS.FILTER.BUTTONS.ADD_TEMPLATE" | translate }}
+      </a>
+      <a md-raised-button class="primary" (click)="gotoCalendar()" *ngIf="userContext.isEpsUser && authorization.canRelocate">
+        <i class="fa fa-calendar" aria-hidden="true"></i> {{ "SHARED.HEADER.CALENDAR" | translate }}
+      </a>
+    </div>
+  </div>
+  <div>
+    <div class="florder-page-search">
+      <app-relocation-filter
+        [definitions]="definitions"
+        [filter]="filter"
+        [isLoading]="flordersAreLoading"
+        (filterRelocations)="filterFlorders($event)"
+      ></app-relocation-filter>
+    </div>
+    <div class="florder-page-list">
+      <app-relocation-list
+        [definitions]="definitions"
+        [filter]="filter"
+        [isLoading]="flordersAreLoading"
+        [relocations]="relocations.items"
+        [totalItems]="relocations.totalItems"
+        [authorization]="authorization"
+
+        (openRelocation)="openRelocation($event)"
+        (copyRelocation)="copyRelocation($event)"
+        (asTemplate)="asTemplate($event)"
+
+        (sortChange)="sortChange($event)"
+        (pageChange)="onPageChange($event)"
+        (itemsPerPageChange)="onItemsPerPageChange($event)"
+      ></app-relocation-list>
+    </div>
+  </div>
+</div>

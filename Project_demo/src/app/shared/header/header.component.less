@@ -1,0 +1,316 @@
+@import '../styles/globalVars.less';
+
+@padding-top: 12px;
+@background-color: #004c66;
+
+.header-background-color {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#004c66+0,006b95+77,005776+100 */
+  background: @background-color;
+  /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    @background-color 0%,
+    #006b95 77%,
+    #005776 100%
+  );
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    @background-color 0%,
+    #006b95 77%,
+    #005776 100%
+  );
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    @background-color 0%,
+    #006b95 77%,
+    #005776 100%
+  );
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#004c66', endColorstr='#005776', GradientType=1);
+  /* IE6-9 */
+}
+
+.dev-background-color {
+  background: #349b42;
+}
+
+.qas-background-color {
+  background: #961e1e;
+}
+
+.localhost-undefined-background-color {
+  background: #544e35;
+}
+
+.localhost-dev-background-color {
+  background: linear-gradient(
+    to right,
+    #544e35 0%,
+    #544e35 70%,
+    #349b42 100%
+  );
+}
+
+.localhost-qas-background-color {
+  background: linear-gradient(
+    to right,
+    #544e35 0%,
+    #544e35 70%,
+    #961e1e 100%
+  );
+}
+
+.localhost-prod-background-color {
+  background: linear-gradient(
+    to right,
+    #544e35 0%,
+    #544e35 70%,
+    #005776 100%
+  );
+}
+
+.logo {
+  height: 100%;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    width: 100px;
+    /* ie8 */
+    float: left;
+    cursor: pointer;
+  }
+
+  span {
+    margin-left: 10px;
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+nav.header {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: @header-height;
+  color: @white-font;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+
+  .modules {
+    height: @header-height;
+    display: flex;
+    align-items: center;
+
+    > a {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-size: @middle-font;
+    }
+  }
+
+  .login {
+    line-height: @header-height;
+  }
+
+  .usermenu-container {
+    background-color: @background-color;
+    width: 300px;
+
+    .usermenu {
+      position: fixed;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  a {
+    @padding: 15px;
+    padding-left: @padding;
+    padding-right: @padding;
+    color: @disabled-font;
+    font-size: @medium-font;
+    font-weight: 300;
+
+    &.enabled {
+      color: @white-font;
+
+      &:hover {
+        color: yellow;
+        cursor: pointer;
+      }
+    }
+
+    &.disabled {
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+
+    &.active {
+      position: relative;
+    }
+
+    &.usermenu {
+      cursor: pointer;
+      height: @header-height;
+      display: flex;
+      width: 300px;
+
+      .user-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        align-items: center;
+        height: @header-height;
+        width: 100%;
+
+        span.initials {
+          @initials-size: 35px;
+          border-radius: @initials-size;
+          height: @initials-size;
+          min-width: @initials-size;
+          width: @initials-size;
+          line-height: @initials-size;
+          background-color: white;
+          display: inline-block;
+          font-size: @middle-font;
+          color: black;
+          text-align: center;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+
+        .userInfo {
+          flex: 1;
+          padding-left: 10px;
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+
+          span.loggedAs {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: @middle-font;
+            font-weight: @bold;
+          }
+
+          span.customer {
+            font-size: @base-font;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            display: inline-block;
+          }
+
+          span.loggedAs {
+            display: inline-flex;
+          }
+        }
+      }
+    }
+  }
+
+  .mobile_menu_bars,
+  .mobile_menu {
+    display: none;
+  }
+
+  @media only screen and (max-width: @large-screen-width) {
+    .modules,
+    .more_ellipsis {
+      display: none;
+    }
+
+    .usermenu-container {
+      width: 200px;
+    }
+
+    a.usermenu {
+      width: 200px;
+    }
+
+    .mobile_menu_bars {
+      display: inline-block;
+      padding: 0 20px;
+      font-size: 24px;
+      cursor: pointer;
+      top: 25px;
+      right: 0;
+      position: fixed;
+    }
+
+    .mobile_menu {
+      display: block;
+      position: absolute;
+      top: calc(@header-height);
+      right: -60px;
+      background-color: white;
+      min-width: 260px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border: 3px solid @blue-underline;
+      border-radius: 4px;
+      overflow: auto;
+      max-height: ~"calc(100vh - @{header-height})";
+
+      .mobile_menu_item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        font-size: @medium-font;
+        font-weight: 300;
+        background-color: white;
+
+        &:not(:last-child) {
+          border-bottom: 2px solid @light-blue;
+        }
+
+        &.enabled {
+          color: @blue-underline;
+          cursor: pointer;
+        }
+
+        &.disabled {
+          color: @disabled-font;
+          cursor: not-allowed;
+        }
+
+        &.active_mobile {
+          font-weight: 400;
+        }
+      }
+    }
+
+    .usermenu-container {
+      background-color: @background-color;
+      width: 200px;
+      height: @header-height;
+      right: 60px;
+      position: fixed;
+
+      .usermenu {
+        position: fixed;
+        right: 60px;
+        top: 0;
+      }
+    }
+  }
+}

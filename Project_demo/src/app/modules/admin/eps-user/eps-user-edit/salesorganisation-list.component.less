@@ -1,0 +1,128 @@
+@import '../../../../shared/styles/globalVars.less';
+
+@action_buttons-width: 40px;
+
+.list_wrapper {
+  border: 1px solid rgba(77, 77, 77, 0.40);
+  border-radius: 2px;
+
+  .list-heading {
+    margin: 0;
+    background-color: @accent-blue;
+    color: white;
+    display: flex;
+
+    .list-heading-data {
+      flex: 1;
+    }
+
+    .action_buttons {
+      width: @action_buttons-width;
+    }
+  }
+
+  .list-body {
+    .list-item {
+      margin: 0;
+      display: block;
+      width: 100%;
+      align-items: center;
+
+      &:nth-child(even):not(.newSalesOrgForm) {
+        background-color: @light-blue-grey;
+      }
+
+      .list-item-data {
+        flex: 1;
+      }
+
+      .list-item-action_buttons {
+        width: @action_buttons-width;
+        display: flex;
+        justify-content: flex-end;
+
+        .action_button {
+          cursor: pointer;
+          font-size: @medium-font;
+
+          & + .action_button {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
+    .list-add_item {
+      cursor: pointer;
+      background-color: @light-blue;
+      padding: 5px;
+      border-radius: 2px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .list-heading, .list-body .list-item, .list-add_item_wrapper {
+    padding: 10px;
+  }
+
+  .list {
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: default;
+
+      .content {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+
+        .subtext {
+          color: @lightText;
+          font-style: italic;
+        }
+      }
+
+      .action_buttons {
+        margin-left: 10px;
+        font-size: @medium-font;
+
+        span {
+          cursor: pointer;
+
+          & + span {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.add_sales_org {
+  display: flex;
+  justify-content: space-between;
+
+  .dropdown {
+    flex: 1;
+
+    .mat-select {
+      width: 100%;
+    }
+  }
+
+  .buttons {
+    margin-left: 10px;
+  }
+}
+
+:host ::ng-deep .mat-select-trigger {
+  height: 100% !important;
+}
+
+:host ::ng-deep .mat-select-value-text {
+  white-space: initial;
+}

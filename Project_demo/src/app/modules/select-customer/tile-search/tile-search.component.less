@@ -1,0 +1,91 @@
+@import '../../../shared/styles/globalVars.less';
+
+div.text-input>div {
+    position: relative;
+    height: 40px;
+  }
+
+  div.text-input md-input-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  :host ::ng-deep div.text-input md-input-container .mat-input-infix {
+    vertical-align: middle;
+    padding: 0 10px;
+    flex-basis: 20%;
+  }
+
+  .text-input .error-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 20px;
+    display: flex;
+    z-index: 0;
+  }
+
+  .text-input.error .error-message {
+    transition: 1s;
+    opacity: 1;
+    top: 0;
+  }
+
+  .text-input .error-message {
+    width: 100%;
+    color: @error;
+    opacity: 0;
+    font-size: @base-font;
+    font-family: "Open Sans", open-sans, sans-serif;
+    align-self: center;
+    text-align: right;
+  }
+
+  :host ::ng-deep .mat-input-underline {
+    display: none;
+  }
+
+  :host ::ng-deep .text-input.error .mat-input-table {
+    border: 1px solid @error;
+    transition-duration: 1s;
+  }
+
+  :host ::ng-deep .text-input .mat-focused .mat-input-table {
+    border: 1px solid @underLine !important;
+    transition-duration: 1s;
+  }
+
+  :host ::ng-deep .mat-input-table {
+    border-radius: 5px;
+    border: 1px solid rgba(77, 77, 77, 0.40);
+    height: 40px;
+  }
+
+  :host ::ng-deep .text-input .mat-input-wrapper {
+    margin-top: 0;
+  }
+
+//
+
+.search-container{
+    padding: 20px;
+    display: flex;
+}
+.search-label {
+    flex-basis: auto;
+    margin-right: 15px;
+}
+.search-input {
+  width: 100%;
+  @media only screen and (min-width: @large-screen-width) {
+      width: 50%;
+  }
+  @media only screen and (min-width: @extralarge-screen-width) {
+      width: 25%;
+  }
+}

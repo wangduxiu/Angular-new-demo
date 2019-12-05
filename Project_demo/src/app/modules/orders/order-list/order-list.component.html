@@ -1,0 +1,247 @@
+<div class="form-container" *ngIf="totalItems === 0 || totalItems > 0" id="top">
+
+  <div *ngIf="!isLoading">
+    <div class="col-12 row heading">
+      <!-- <div class="col-lg-6 results-heading"> -->
+      <div class="results-heading-title">
+        <div class="title">{{ 'ORDERS.LIST.TITLE' | translate }}</div>
+        <div class="subtitle">{{ 'ORDERS.LIST.SUBTITLE' | translate }}</div>
+      </div>
+      <div class="results-actions-block">
+
+
+        <div class="results-heading-text">
+          <div class="count">
+            <span *ngIf="totalItems > 1 || totalItems === 0">{{ 'ORDERS.LIST.COUNT' | translate:{count:totalItems} }}</span>
+            <span *ngIf="totalItems == 1">{{ 'ORDERS.LIST.COUNT_1' | translate }}</span>
+          </div>
+          <div class="count-postscript">{{ 'ORDERS.LIST.COUNT-POSTSCRIPT' | translate }}</div>
+        </div>
+        <!-- </div> -->
+        <div class="results-actions" *ngIf="totalItems > 0">
+          <div class="download_file" *ngIf="!isDownloading && authorization.ORDER.LIST_ORDERS_AS_DOCUMENT">
+            {{ 'ORDERS.LIST.DOWNLOAD_AS' | translate }}
+            <!--
+          <span class="link" (click)="downloadFile.emit('PDF')">{{ 'ORDERS.LIST.PDF' | translate }}</span>
+          {{ 'ORDERS.LIST.OR' | translate }}
+-->
+            <span class="link" (click)="downloadFile.emit('XLS')">{{ 'ORDERS.LIST.EXCEL' | translate }}</span>
+          </div>
+          <div class="download_file" *ngIf="isDownloading && authorization.ORDER.LIST_ORDERS_AS_DOCUMENT">
+            {{ 'ORDERS.LIST.DOWNLOADING' | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row col-12 pagination" *ngIf="!isLoading && totalItems > 0">
+      <app-pager
+        [itemsPerPage]="filter.pageSize"
+        (pageChange)="onPageChange($event)"
+        (itemsPerPageChange)="itemsPerPageChange.emit($event)"
+      ></app-pager>
+    </div>
+
+    <div class="col-12 row bottom-line bold show-from-sm sorters" *ngIf="totalItems > 0">
+      <span class="status"></span>
+      <span class="sorter col-md" sortable-header='orderDate' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.ORDER_DATE' | translate }}</span>
+      <span class="sorter col-md" sortable-header='etmOrderNumber' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.NUMBER' | translate }}</span>
+      <span class="sorter col-md" sortable-header='salesOrderNumber' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.FILTER.LABELS.SALES_ORDER_NUMBER' | translate }}</span>
+      <span class="sorter col-md" sortable-header='fromId' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.FROM' | translate }}</span>
+      <span class="sorter col-md" sortable-header='toId' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.TO' | translate }}</span>
+      <span class="sorter col-md" sortable-header='requestedUnloadingDate' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.REQUESTED_DATE' | translate }}</span>
+      <span class="sorter col-md" sortable-header='confirmedUnloadingDate' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.CONFIRMED_DATE' | translate }}</span>
+      <span class="sorter col-md" sortable-header='shippingCondition' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.TRANSPORT' | translate }}</span>
+      <span class="sorter col-md" sortable-header='globalType' [sortField]="filter.sortField" [sortAscending]="filter.sortAscending"
+        [sortFn]="sortBnd">{{ 'ORDERS.LIST.LABELS.GLOBAL_TYPE' | translate }}</span>
+      <span class="menu_col"></span>
+    </div>
+
+    <div *ngFor="let order of orders | paginate: {itemsPerPage: filter.pageSize, currentPage: filter.pageNr, totalItems:totalItems}"
+      class="row col-12 striped cell soft-line order" [ngClass]="{'cancelled': order.orderStatus === '03'}" [class.canOpen]="authorization.ORDER.GET" (click)="authorization.ORDER.GET && openOrder.emit(order)">
+      <div class="col-11 col-md-12 order_line">
+        <div class="desktop-only app_status">
+          <app-status layout="BULLET" mode="order" [type]="order.status" [size]="1" [height]="40" position="right"></app-status>
+        </div>
+        <div class="content">
+          <div class="row order_data">
+            <div class="order_data-data">
+              <div class="col-md col-12 desktop-only">{{ order.orderDate | date:dateFormat }}</div>
+              <div class="col-md col-12 sales-number cell-row">{{ order.etmOrderNumber }}</div>
+              <div class="col-md col-12 sales-number cell-row">{{ order.salesOrderNumber }}</div>
+              <div class="col-md col-12 row cell-row">
+                <div class="row col-xs start-xs">
+                  <div class="col-xs mobile-only">
+                    <span class="bold">{{ 'ORDERS.LIST.LABELS.FROM' | translate }}:</span>
+                    {{order.from.name}}
+                  </div>
+                  <div class="col-xs desktop-only">
+                    {{order.from.name}}
+                  </div>
+                </div>
+              </div>
+
+              <!-- copy -->
+              <div class="col-md col-12 row cell-row">
+                <div class="row col-xs start-xs">
+                  <div class="col-xs mobile-only">
+                    <span class="bold">{{ 'ORDERS.LIST.LABELS.TO' | translate }}: </span>
+                    {{order.to.name}}
+                  </div>
+                  <div class="col-xs desktop-only">
+                    {{order.to.name}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md col-12 desktop-only">
+                {{ order.requestedUnloadingDate | date:dateFormat }}
+              </div>
+
+              <div class="col-md col-12 row cell-row">
+                <div class="row col-xs start-xs">
+                  <div class="col-xs mobile-only">
+                    <span class="bold">{{ 'ORDERS.LIST.LABELS.CONFIRMED_DATE' | translate }}:</span>
+                    {{ order.confirmedUnloadingDate | date:dateFormat }}
+                  </div>
+                  <div class="col-xs desktop-only">
+                    {{ order.confirmedUnloadingDate | date:dateFormat }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md col-12 row cell-row">
+                <div class="row col-xs start-xs">
+                  <div class="col-xs mobile-only">
+                    <span class="bold">{{ 'ORDERS.LIST.LABELS.TRANSPORT' | translate }}: </span>
+                    {{ order.shippingCondition?.name }}
+                  </div>
+                  <div class="col-xs desktop-only">
+                    {{ order.shippingCondition?.name }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md col-12 row cell-row">
+                <div class="row col-xs start-xs">
+                  <div class="col-xs mobile-only">
+                    <span class="bold">{{ 'ORDERS.LIST.LABELS.GLOBAL_TYPE' | translate }}: </span>
+                    {{ order.globalType && order.globalType.name }}
+                  </div>
+                  <div class="col-xs desktop-only">
+                    {{ order.globalType && order.globalType.name }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="order_data-menu">
+              <div class="more_ellipsis" [mdMenuTriggerFor]="menuOrderLine" (click)="openMenu($event)">
+                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+              </div>
+              <md-menu #menuOrderLine="mdMenu" [overlapTrigger]="false">
+                <button md-menu-item (click)="createCCR.emit(order)" *ngIf="canCreateCcr(order)">
+                  <span>{{'ORDERS.FILTER.LABELS.CREATE_CCR' | translate}}</span>
+                </button>
+                <button md-menu-item (click)="copyOrder.emit(order)" *ngIf="authorization.ORDER.CREATE">
+                  <span>{{'ORDERS.LIST.BUTTONS.COPY' | translate}}</span>
+                </button>
+                <button md-menu-item (click)="asTemplate.emit(order)" *ngIf="authorization.ORDER.CREATE_TEMPLATE">
+                  <span>{{'ORDERS.LIST.BUTTONS.AS_TEMPLATE' | translate}}</span>
+                </button>
+                <button md-menu-item (click)="downloadCCRDocument.emit(order.ccr.ccrNumber)" *ngIf="order.ccr.ccrNumber">
+                  <span>{{'ORDERS.LIST.BUTTONS.DOWNLOAD_DOCUMENT' | translate}}</span>
+                </button>
+              </md-menu>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="order.ccr.ccrLineItems.length > 0">
+            <div class="col-md-8 items">
+              <div class="row heading">
+                <div class="col-md col-12"> {{ 'FLOWS.LIST.LABELS.TYPE' | translate }}</div>
+                <div class="col-md col-12"> {{ 'FLOWS.LIST.LABELS.ORIGINAL' | translate }}</div>
+                <div class="col-md col-12"> {{ 'FLOWS.LIST.LABELS.DEFINITIVE' | translate }}</div>
+                <div class="col-md col-12"> {{ 'FLOWS.LIST.LABELS.DIFFERENCE' | translate }}</div>
+                <div class="col-md col-12 link" *ngIf="order.ccr.ccrLineItems.length > 1" (click)="preventRouting($event); toggleCollapsed(order.etmOrderNumber, order.salesOrderNumber)">
+                  <span *ngIf="!isCollapsed(order.etmOrderNumber, order.salesOrderNumber)">{{ 'FLOWS.LIST.LABELS.COLLAPSE_COUNT' | translate: {count: order.ccr.ccrLineItems.length} }}</span>
+                  <span *ngIf="isCollapsed(order.etmOrderNumber, order.salesOrderNumber)">{{ 'FLOWS.LIST.LABELS.SHOW_COUNT' | translate: {count: order.ccr.ccrLineItems.length} }}</span>
+                </div>
+              </div>
+              <div>
+                <div class="row item" *ngFor="let ccrLine of order.ccr.ccrLineItems | oneOrAllFilter:isCollapsed(order.etmOrderNumber, order.salesOrderNumber)">
+                  <div class="col-md col-12">
+                    <app-select [elements]="definitions.packing.type" value="{{ccrLine.packingId}}" [readonly]="true" [hideReadonlyPadding]="true"
+                      *ngIf="ccrLine.packingId"></app-select>
+                    <app-select [elements]="definitions.pallet.type" value="{{ccrLine.palletId}}" [readonly]="true" [hideReadonlyPadding]="true"
+                      *ngIf="!ccrLine.packingId && ccrLine.palletId"></app-select>
+                  </div>
+                  <div class="col-md col-12">
+                    {{getLoadedQuantity(ccrLine)}}
+                  </div>
+                  <div class="col-md col-12">
+                    {{getUnloadedQuantity(ccrLine)}}
+                  </div>
+                  <div class="col-md col-12">
+                    {{getDifference(ccrLine)}}
+                  </div>
+                  <div class="col-md col-12" *ngIf="order.ccr.ccrLineItems.length > 1">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 deviation_buttons" *ngIf="showCcrButtons(order)">
+              <a md-raised-button class="default accept" (click)="acceptDeviationClicked($event, order)" *ngIf="restrictions.useCcrValidation && authorization.ORDER.ACCEPT"
+                [disabled]="order.ccr.UI.submittingAccept || order.ccr.UI.submittingReject">
+                <i class="fa fa-check" aria-hidden="true" *ngIf="!order.ccr.UI.submittingAccept"></i>
+                <i class="fa fa-spinner fa-pulse fa-fw" *ngIf=" order.ccr.UI.submittingAccept"></i>
+                {{ 'ORDERS.LIST.BUTTONS.ACCEPT' | translate }}
+              </a>
+
+              <a md-raised-button class="default reject" (click)="rejectDeviationClicked($event, order)" *ngIf="restrictions.useCcrValidation && authorization.ORDER.CANCEL"
+                [disabled]="order.ccr.UI.submittingAccept || order.ccr.UI.submittingReject">
+                <i class="fa fa-times" aria-hidden="true" *ngIf="!order.ccr.UI.submittingReject"></i>
+                <i class="fa fa-spinner fa-pulse fa-fw" *ngIf=" order.ccr.UI.submittingReject"></i>
+                {{ 'ORDERS.LIST.BUTTONS.REJECT' | translate }}
+              </a>
+            </div>
+            <div class="col-md-4 deviation_buttons" *ngIf="order.ccr.accepted">
+              <div class="accept bold">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                {{ 'ORDERS.LIST.LABELS.ACCEPTED' | translate }}
+              </div>
+            </div>
+            <div class="col-md-4 deviation_buttons" *ngIf="order.ccr.declined">
+              <div class="reject bold">
+                <i class="fa fa-times" aria-hidden="true"></i>
+                {{ 'ORDERS.LIST.LABELS.REJECTED' | translate }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1 col-md-1 mobile-only arrow">
+        <i class="fa fa-angle-right"></i>
+      </div>
+    </div>
+  </div>
+  <div class="loading_spinner" *ngIf="isLoading">
+    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+  </div>
+
+  <div class="row col-12 pagination" *ngIf="!isLoading && totalItems > 0">
+    <app-pager
+      [itemsPerPage]="filter.pageSize"
+      (pageChange)="onPageChange($event)"
+      (itemsPerPageChange)="itemsPerPageChange.emit($event)"
+    ></app-pager>
+  </div>
+</div>

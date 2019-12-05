@@ -1,0 +1,93 @@
+<div class="florder-tooltip">
+  <div class="loading-container">
+    <div *ngIf="!orderDetail" class="loading">
+      <i class="fa fa-spinner fa-pulse fa-fw"></i>
+      {{ 'ADMIN.I18N.BUTTONS.LOADING' | translate }}
+    </div>
+  </div>
+  <div class="tooltip_wrapper" *ngIf="orderDetail">
+
+    <div class="order-page-title" id="top">
+      <div class="content">
+        <div class="title">
+          <app-status layout="BULLET" key="{{'ORDER_' + orderDetail.status}}" height="40" [size]="1"></app-status>
+          <div class="multi-line">
+            <div>
+              <app-title title="ORDERS.DETAILS.TITLE"></app-title>
+              <span class="subtitle">{{orderDetail.etmOrderNumber}}</span>
+            </div>
+            <div *ngIf="orderDetail.registeredBy">
+              <span class="bold">{{ 'ORDERS.DETAILS.REGISTERED_BY' | translate }}</span> {{orderDetail.registeredBy}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row filter-container">
+      <div class="col-12 col-md-12 col-lg-12 filter-container-inner">
+        <div class="order-create-title-bar">
+          <div class="order-create-title-bar">
+            <div class="row order-create-title-bar-header">
+              <div class="order-create-title">
+                <i class='fa fa-truck' aria-hidden='true'></i>
+                <b>1&nbsp;&nbsp;{{'ORDERS.DELIVERY.TITLE' | translate}}</b> {{'ORDERS.DELIVERY.SUBTITLE' | translate}}
+              </div>
+            </div>
+          </div>
+          <app-order-edit-delivery
+            [definitions]="definitions"
+            [deliveryMethod]="orderDetail.deliveryMethod"
+            [contractInfo]="contractInfo"
+            [panelStatus]="panelStatus"
+            [orderDetail]="orderDetail"
+            [filterValues]="null"
+          ></app-order-edit-delivery>
+        </div>
+
+        <div class="order-create-title-bar">
+          <div class="row order-create-title-bar-header">
+            <div class="order-create-title">
+              <i class='fa fa-file-o' aria-hidden='true'></i>
+              <b>2&nbsp;&nbsp;{{'ORDERS.DETAILS.TITLE' | translate}}</b> {{'ORDERS.DETAILS.SUBTITLE' | translate}}
+            </div>
+          </div>
+        </div>
+        <app-order-edit-detail
+          [definitions]="definitions"
+          [orderDetail]="orderDetail"
+          [panelStatusMaterial]="null"
+          [panelStatus]="panelStatus"
+          [materialTypes]="null"
+        ></app-order-edit-detail>
+
+        <div class="order-create-title-bar">
+          <div class="row order-create-title-bar-header">
+            <div class="order-create-title">
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+              <b>3&nbsp;&nbsp;{{'ORDERS.PLANNING.TITLE' | translate}}</b> {{'ORDERS.PLANNING.SUBTITLE' | translate}}
+            </div>
+          </div>
+        </div>
+        <app-order-edit-planning
+          [authorization]="authorization"
+          [orderDetail]="orderDetail"
+          [panelStatus]="panelStatus"
+          [availablePickingDates]="[]"
+          [openingHours]="[]"
+        ></app-order-edit-planning>
+
+        <!-- DOCUMENTS -->
+        <div class="order-create-title-bar">
+          <div class="row order-create-title-bar-header">
+            <div class="order-create-title">
+              <i class='fa fa-file-text-o' aria-hidden='true'></i>
+              <b>4&nbsp;&nbsp;{{'ORDERS.DOCUMENTS.TITLE' | translate}}</b>
+            </div>
+          </div>
+          <app-order-documents [documents]="orderDetail.documents"></app-order-documents>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<europool-header
+                [activeCustomer]="activeCustomer"
+                [path]="path"
+                [firstName]="firstName"
+                [initials]="initials"
+                [authorized]="authorized"
+                [contextLoading]="contextLoading"
+                [customerInfoLoaded]="customerInfoLoaded"
+                [authorization]="authorization"
+                [contractRestrictions]="contractRestrictions"
+                [canSwitchCustomer]="canSwitchCustomer"
+                (login)="login()"
+                (selectCustomer)="selectCustomer()"
+                (logout)="logout()"
+                (openModule)="openModule($event)"
+                (gotoDashboard)="gotoDashboard()"
+></europool-header>
+
+<div class="page-wrap">
+  <router-outlet></router-outlet>
+</div>
+
+<europool-footer
+  [isEpsUser]="isEpsUser"
+  [autologoutDisabled]="autologoutDisabled"
+  (toggleAutologout)="toggleAutologout()"
+></europool-footer>
+
+<europool-loadingbar [loading]="loading"></europool-loadingbar>
+
+<jaspero-confirmations></jaspero-confirmations>

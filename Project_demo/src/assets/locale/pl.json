@@ -1,0 +1,612 @@
+{
+  "SHARED": {
+    "DATE_FORMATS": {
+      "WEEK": "tydzień tt, rrrr",
+      "DAY": "dd/mm/rrrr"
+    },
+    "PAGING": {
+      "PREVIOUS": "",
+      "NEXT": ""
+    },
+    "BUTTONS": {
+      "YES": "Tak",
+      "NO": "Nie",
+      "CANCEL": "Anuluj",
+      "EDIT": "Edytuj",
+      "SUBMIT": "Zatwierdź",
+      "SAVE": "Zapisz",
+      "CREATE": "Utwórz",
+      "GO_TO_DASHBOARD": "Przejdź do panelu",
+      "GO_TO_DETAIL": "Przejdź do szczegółów",
+      "GO_TO_OVERVIEW": "Przeglądaj",
+      "BACK": "Cofnij",
+      "CLOSE": "Zamknij"
+    },
+    "DAYS": {
+      "MONDAY": "Poniedziałek",
+      "TUESDAY": "Wtorek",
+      "WEDNESDAY": "Środa",
+      "THURSDAY": "Czwartek",
+      "FRIDAY": "Piątek",
+      "SATURDAY": "Sobota",
+      "SUNDAY": "Niedziela",
+      "UNTIL": "do"
+    },
+    "ORDINAL": {
+      "FIRST": "Pierwszy",
+      "SECOND": "Drugi",
+      "THIRD": "Trzeci",
+      "FOURTH": "Czwarty",
+      "LAST": "Ostatni"
+    },
+    "HEADER": {
+      "ORDERS": "ZAMÓWIENIA",
+      "FLOWS": "OBIEGI",
+      "CALENDAR": "KALENDARZ",
+      "INVOICES": "FAKTURY",
+      "STOCK": "STOCK",
+      "BLANK": "PUSTE POTWIERDZENIE",
+      "LOGGED_AS": "ZALOGOWANY JAKO",
+      "LOGIN": "Zaloguj",
+      "LOGOUT": "Wyloguj",
+      "SWITCH_CUSTOMER": "Przełącz użytkownika",
+      "LOADING_CONTRACT": "Ładowanie kontraktu",
+      "LOADING_CONTEXT": "Ładowanie kontekstu",
+      "FAQ": "FAQ",
+      "CONTACT_US": "KONTAKT",
+      "EMAIL_ACTORS": "EMAIL UŻYTKOWNIKÓW",
+      "WELCOME": "Witamy"
+    },
+    "LABELS": {
+      "OPTIONAL": "Opcjonalne",
+      "COLLAPSE_ALL": "Ukryj wszystko",
+      "SHOW_ALL": "Pokaż wszystko",
+      "SEARCH": "Szukaj:",
+      "NO_ADDRESS": "Brak adresu"
+    },
+    "MODAL": {
+      "HEADER_SUCCESS": "<p class='col-12'><span class='spanStyle'>Drogi/a {{name}},</span></p><br><p class='col-12'> twoja rejestracja została <span class='spanStyle'>poprawnie</span> zapisana w naszym systemie!</p>",
+      "HEADER_ERROR": "<p class='col-12'><span class='spanStyle'>Drogi/a {{name}},</span></p><br><p class='col-12'> wystąpił <span class='spanStyle'>błąd</span> podczas zapisywania w naszym systemie!</p>",
+      "HEADER_WARNING": "<p class='col-12'><span class='spanStyle'>UWAGA</span> MESSAGE</p>",
+      "HEADER_EMAIL": "<p class='col-12'><span class='spanStyle'>WYBIERZ E-MAIL</span> </p>",
+      "MSG_SUCCESS": "<p class='col-12'>W przypadku pytań lub sugestii dotyczących obiegu numer <span class='spanStyle'>#{{number}}</span> kiedy</p> <p class='col-12'>skontaktuj się z Lokalnym Biurem</p> <p class='col-12'>Dziękujemy i życzymy miłego dnia!</p>",
+      "MSG_ERROR": "<p class='col-12'>W przypadku pytań lub sugestii skontaktuj się z Lokalnym Biurem</p> <p class='col-12'>Dziękujemy i życzymy miłego dnia!</p>",
+      "MSG_WARNING": "<p class='col-12'><span class='spanStyle'>UWAGA</span> W przypadku pytań lub sugestii dotyczących transakcji numer <span class='spanStyle'>#{{number}}</span> kiedy</p> <p class='col-12'>skontaktuj się z lokalnym biurem</p> <p class='col-12'>Dziękujemy i życzymy miłego dnia!</p>",
+      "SUCCESS": "Powodzenie",
+      "ERROR": "Błąd",
+      "WARNING": "Uwaga"
+    }
+  },
+  "DASHBOARD": {
+    "TITLE": {
+      "YOUR": "TWOJE",
+      "DASHBOARD": "PANEL"
+    },
+    "GENERAL": {
+      "VIEW_ALL": "Zobacz wszytsko",
+      "NEW_FEATURE": {
+        "NEW": "Nowy",
+        "FEATURE": "właściwości"
+      }
+    },
+    "TEMPLATE": {
+      "TITLE": {
+        "LINE1": "Stwórz",
+        "LINE2": "szablon"
+      },
+      "DESCRIPTION": "<p>Czy odbiór odbywa się sezonowo?</p><p>I w związku z tym zamawiasz te same ilości za każdym razem?</p>",
+      "BUTTON": "Użyj naszego szablonu"
+    },
+    "CALENDAR": {
+      "TITLE": {
+        "LINE1": "Sprawdź",
+        "LINE2": "Kalendarz"
+      },
+      "DESCRIPTION": "Twórz zamówienia bezpośrenio w widoku kalendarza lub utwórz zamównienie poprzez przeciągnięcie szablonu do kalendarza",
+      "BUTTON": "Idź do kalendarza"
+    },
+    "OPEN_HANDSHAKES": {
+      "TITLE": {
+        "LINE1": "Potwierdź otworzenie",
+        "LINE2": "zatwierdzone"
+      },
+      "ELEMENT_PREFIX": "Zatwierdź"
+    },
+    "OPEN_HANDSHAKES_SUMMARY": {
+      "TITLE": {
+        "LINE1": "Otwórz",
+        "LINE2": "zatwierdzone"
+      },
+      "BUTTON": "Potwierdź otwarte dostawy"
+    },
+    "LATEST_ORDERS": {
+      "TITLE": {
+        "LINE1": "Twoje najnowsze",
+        "LINE2": "zamówienia"
+      },
+      "ELEMENT_PREFIX": "Zamówienie"
+    },
+    "DEPOT": {
+      "TITLE": {
+        "LINE1": "Twoje",
+        "LINE2": "magazyn"
+      },
+      "ELEMENT_PREFIX": "Zamówienie"
+    },
+    "LATEST_FLOWS": {
+      "TITLE": {
+        "LINE1": "Twoje najnowsze",
+        "LINE2": "obiegi"
+      },
+      "ELEMENT_PREFIX": "Obieg"
+    }
+  },
+  "SELECT_CUSTOMER": {
+    "SALES_ORG": "Firma handlowa",
+    "CUSTOMERS": "Klienci",
+    "FILTER": {
+      "NO_CUSTOMER": "Żaden klient nie odpowiada twojemu filtrowi",
+      "NO_SALES_ORGANISATION": "Żadna firma handlowa nie odpowiada twojemu filtrowi"
+    }
+  },
+  "ORDERS": {
+    "FILTER": {
+      "TITLE": "Filtr",
+      "SUBTITLE": "zamówienia",
+      "LABELS": {
+        "ORDER_DATE": "Data zamówienia",
+        "UNLOADING_DATE": "Data załadunku/rozładunku",
+        "ORDER_TYPE": "Typ zamówienia",
+        "TRANSPORT": "Transport",
+        "TRANSPORT_PICKUP": "Odbiór",
+        "TRANSPORT_EPS": "Przez EPS",
+        "ORDER_STATUS": "Status zamówienia",
+        "CUSTOMER_REFERENCE_NUMBER": "Numer referencyjny",
+        "PALLET_ID": "Rodzaj palety",
+        "TRANSPORTER": "Przewoźnik",
+        "ETM_SHIPPING_NUMBER": "ETM numer wysyłki",
+        "CCR-CHECK": "CCR-kontrola",
+        "FROM": "Od ",
+        "TO": "Do",
+        "SEAL_NUMBER": "Numer plomby",
+        "CCR": "CCR",
+        "CREATE_CCR": "Stwórz CCR"
+      },
+      "BUTTONS": {
+        "MORE_SEARCH_OPTIONS": "Więcej opcji wyszukiwania",
+        "LESS_SEARCH_OPTIONS": "Mniej opcji wyszukiwania",
+        "FILTER_TEXT": "Filtruj zamówienia",
+        "ADD_TEMPLATE": "Szablon",
+        "ADD_ORDER": "Zamówienie"
+      }
+    },
+    "LIST": {
+      "TITLE": "WYNIKI",
+      "SUBTITLE": "ZAMÓWIENIA",
+      "COUNT": "{{count}} zamówienia",
+      "COUNT_1": "1 zamówienie",
+      "COUNT-POSTSCRIPT": "pasuje do twoich kryteriów",
+      "DOWNLOAD_AS": "Pobierz wyniki w",
+      "DOWNLOADING": "Pobieranie…",
+      "PDF": "pdf",
+      "EXCEL": "excel",
+      "OR": "lub",
+      "LABELS": {
+        "ORDER_DATE": "Data zamówienia",
+        "NUMBER": "Numer",
+        "FROM": "Od",
+        "TO": "Do",
+        "REQUESTED_DATE": "Wyznaczona data   ",
+        "CONFIRMED_DATE": "Zatwierdzona data",
+        "TRANSPORT": "Transport",
+        "GLOBAL_TYPE": "Typ globalny"
+      },
+      "BUTTONS": {
+        "COPY": "Kopiuj",
+        "AS_TEMPLATE": "Stwórz szablon z zamówienia"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "ZAMÓWIENIE",
+      "SUBTITLE": "LINIE",
+      "REGISTERED_BY": "Zarejestrowano przez"
+    },
+    "PLANNING": {
+      "TITLE": "ZAMÓWIENIE",
+      "SUBTITLE": "PLANOWANIE",
+      "BUTTONS": {
+        "NEXT": "Dalej",
+        "SAVE": "Zapisz"
+      }
+    },
+    "NO_PLANNING": {
+      "TITLE": "SZABLON",
+      "SUBTITLE": "SZCZEGÓŁY"
+    },
+    "DELIVERY": {
+      "TITLE": "OGÓLNE",
+      "SUBTITLE": "",
+      "VALUES": {
+        "RECURRENCY": {
+          "WEEKLY": "Tygodniowo, każdego {{days}}",
+          "MONTHLY-NROFDAY": "Miesięcznie, dnia {{day}} każdego {{monthPeriodicy1}} miesiąca",
+          "MONTHLY-DAYOFMONTH": "Miesięcznie,  {{which}} {{weekday}} każdego {{monthPeriodicy2}} miesiąca"
+        }
+      },
+      "LABELS": {
+        "CHOOSE_TYPE": "Typ zamówienia",
+        "TYPE_DELIVERY": "Dostawa",
+        "TYPE_RETURN": "Zwrot",
+        "TYPE_DIRECT_SERVICES": "Wymiana",
+        "TYPE_MOVEMENT": "Ruch",
+        "SOLD_TO": "Sprzedany do",
+        "TO": "Do",
+        "TRANSPORT": "Transport",
+        "TRANSPORT_PICKUP": "Odbiór",
+        "TRANSPORT_EPS": "Przez EPS",
+        "PICKUP_POINT": "Miejsce odbioru",
+        "RECURRENCE": "Ponów",
+        "CUSTOMER_REFERENCE_NUMBER": "Referencje",
+        "CLEARING": "Clearing",
+        "LICENCE_PLATE": "Numer rejestracyjny",
+        "REMARKS": "Uwagi",
+        "RECURRENCY_PATTERN": "Powtórz szablon",
+        "PATTERN_WEEKLY": "Tygodniowo, każdego {{days}}",
+        "PATTERN_MONTHLY": "Miesięcznie",
+        "END_DATE_RECURRENCE": "Data końca ponawiania",
+        "FROM": "Od",
+        "RECURRENCY_TIME": "Czas ponowienia",
+        "MONTHLY": {
+          "DAY": "Dzień",
+          "OF_EVERY": "każdgo",
+          "MONTHS": "miesiąca /(y)",
+          "THE": "The"
+        },
+        "REQUESTED_DATE": "WYZNACZONA DATA ROZŁADUNKU",
+        "CONFIRMED_DATE": "ZATWIERDZONA DATA ROZŁADUNKU",
+        "EXCHANGE_PALLET": "WYMIANA PALET",
+        "NUMBER_OF_EXCHANGE_PALLETS": "LICZBA WYMIENIONYCH PALET",
+        "COMMENTS": "UWAGI",
+        "TRANSPORTER": "PRZEWOŹNIK",
+        "PLATE": "NUMER REJESTRACYJNY",
+        "REF": "NUMER REFERENCYJNY",
+        "NO_REMARKS": "Brak uwag",
+        "NO_TRANSPORTER": "Brak przewoźnika",
+        "NO_LICENCE_PLATE": "Brak nr rejestracyjnego"
+      },
+      "BUTTONS": {
+        "NEXT": "Idź do linii zamówienia",
+        "SAVE": "Zapisz"
+      }
+    },
+    "DETAIL": {
+      "LABELS": {
+        "LOADING_DATE": "Data załadunku",
+        "EXCHANGE_PALLETS": "Wymiana palet",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Liczba palet  ",
+        "CREATE_TEMPLATE": "Zapisz jako szablon",
+        "TEMPLATE_NAME": "Nazwa szablonu"
+      },
+      "BUTTONS": {
+        "NEXT": "Idź do planowania zamówień",
+        "SAVE": "Zapisz"
+      }
+    },
+    "MATERIAL": {
+      "TITLE": "Dodaj Materiały",
+      "TYPE": "Wybierz typ",
+      "LABELS": {
+        "TYPES": {
+          "PACKING": "Opakowanie",
+          "PALLET": "Paleta",
+          "COMBO": "Kombinacja"
+        },
+        "TYPE_PACKING": "Rodzaj opakowania",
+        "TYPE_PALLET": "Rodzaj palety",
+        "STATUS_PALLET": "Staus palety",
+        "STATUS_PACKING": "Status opakowania",
+        "LOGISTIC_VARIETY": "Ułożenie logistyczne",
+        "PACKING_PER_PALLET": "Ilość opakowań na palecie",
+        "NUMBER_OF_PALLETS": "Liczba palet",
+        "QUANTITY": "Ilość",
+        "PO_NUMBER": "Numer zamówienia",
+        "PO_NUMBER_ITEM": "Nr pozycji",
+        "MESSAGE": "Wiadomość",
+        "PFQ_EUR": "Liczba EPP (rozmiar palety Euro)",
+        "PFQ_POOL": "Liczba EPP (rozmiar palety Pool)",
+        "EXCHANGE_PALLETS": "Wymiana palet",
+        "NUMBER_OF_EXCHANGE_PALLETS": "Liczba europalet na wymianę",
+        "CREATE_TEMPLATE": "Zapisz jako szablon",
+        "TEMPLATE_NAME": "Nazwa szablonu",
+        "NR_OF_PFQS": "Liczba PFQs",
+        "PACKING": "Opakowanie",
+        "STATUS": "Status",
+        "LOGISTIC_VAR": "Ułożenie logistyczne",
+        "QTY": "Ilość",
+        "EXCHANGE": "Wymiana",
+        "BALANCED": "Żądane saldo",
+        "REFERENCE": "Referencje",
+        "CONTENT": "Zawartość",
+        "LINE_REFERENCE": "Linia referencji"
+      },
+      "NOTIFICATIONS": {
+        "MATERIAL_ADDED": "Materiały dodane poprawnie",
+        "MATERIAL_REMOVED": "Meteriały usunięte poprawnie",
+        "MATERIAL_ALREADY_EXISTS": "Materiały zostały dodane. Dodaj inne lub edytuj istniejące."
+      },
+      "BUTTONS": {
+        "ADD_MATERIAL": "Dodaj Materiały",
+        "SAVING": "Zapisywanie"
+      }
+    }
+  },
+  "TEMPLATES": {
+    "DETAILS": {
+      "TITLE": "SZABLON",
+      "CREATE_SUCCESS": "Szablon został stworzony poprawnie"
+    }
+  },
+  "FLOWS": {
+    "FILTER": {
+      "TITLE": "Filtr",
+      "SUBTITLE": "obiegi",
+      "LABELS": {
+        "FLOW_DATE": "Data obiegu",
+        "STATUS": "Status",
+        "STATUS_HANDSHAKE": "Oczekuje na zatwierdzenie",
+        "STATUS_DEFINITIVE": "Ostateczny",
+        "STATUS_CANCEL": "Anulowany",
+        "DIFFERENCE": "Różnice",
+        "CLEARING": "Clearing",
+        "HANDSHAKE_DATE": "Data zatwierdzenia",
+        "PACKING_ID": "Kod opakowania",
+        "CHECKED": "Sprawdzono"
+      },
+      "BUTTONS": {
+        "FILTER_TEXT": "Filtruj obiegi",
+        "ADD_FLOW": "Obieg "
+      }
+    },
+    "LIST": {
+      "TITLE": "WYNIKI",
+      "SUBTITLE": "OBIEGI",
+      "SELECTED": "{{selected}} wybrany",
+      "COUNT": "{{count}} obiegi",
+      "COUNT_1": "1 obieg",
+      "COUNT-POSTSCRIPT": "odpowiada twoim kryteriom",
+      "LABELS": {
+        "FLOW_DATE": "Data obiegu",
+        "NUMBER": "Numer dokumentu",
+        "STATUS_HANDSHAKE": "Status zatwierdzenia",
+        "TYPE": "Typ",
+        "ORIGINAL": "Wysyłający",
+        "DEFINITIVE": "Odbierający",
+        "DIFFERENCE": "Różnice",
+        "CONTENT": "Zawartość",
+        "REFERENCE": "Referencje",
+        "COLLAPSE_COUNT": "Ukryj wszystkie ({{count}})",
+        "SHOW_COUNT": "Pokaż wszytskie({{count}})"
+      },
+      "BUTTONS": {
+        "CANCEL": "Anuluj",
+        "ACCEPT": "Akceptuj",
+        "REJECT": "Odrzuć"
+      }
+    },
+    "DETAILS": {
+      "TITLE": "OBIEG",
+      "SUBTITLE": "LINIE",
+      "BUTTONS": {
+        "NEXT": "Idź do daty transakcji"
+      }
+    },
+    "PLANNING": {
+      "TITLE": "TRANSAKCJA",
+      "SUBTITLE": "DATA"
+    },
+    "DELIVERY": {
+      "TITLE": "OGÓLNE",
+      "SUBTITLE": "",
+      "LABELS": {
+        "FLOW_DIRECTION": "Kierunek obiegu",
+        "WHOLESALER": "Hurtownik"
+      },
+      "BUTTONS": {
+        "NEXT": "Przejdź do linii obiegu"
+      }
+    },
+    "NOTIFICATIONS": {
+      "ACCEPT_INVALID": "Następujące obiegi z numerem dokumentu zawierają nieprawidłowe dane: {{invalids}}"
+    }
+  },
+  "CCR": {
+    "DETAILS": {
+      "TITLE": "CCR",
+      "MATERIAL_LINES": "Material lines",
+      "CCR_LINES": "linie CCR ",
+      "CREATE_SUCCESS": "CCR został poprawnie utworzony"
+    }
+  },
+  "ADMIN": {
+    "GENERAL": {
+      "EPS_USERS": "Użytkownicy EPS ",
+      "CLIENT_USERS": "Użytkownicy klienta"
+    },
+    "FILTER": {
+      "TITLE": "Filtr",
+      "LABELS": {
+        "FIRST_NAME": "Imię",
+        "ASSIGNED": "Przydzielony",
+        "SYNC_WITH_AD": "Synchronizuj z Active Directory",
+        "SYNCING_WITH_AD": "Synchronizacja z Active Directory",
+        "LAST_NAME": "Nazwisko",
+        "EMAIL": "E-mail",
+        "ID": "Id",
+        "PHONE": "Telefon komórkowy"
+      },
+      "BUTTONS": {
+        "INVITE": "Zaproś użytkownika",
+        "EDIT": "Edytuj"
+      }
+    },
+    "SHARED": {
+      "CLIENTUSERS": "UŻYTKOWNICY KLIENTA",
+      "CLIENTUSER": "Użytkownik klienta",
+      "EPSUSERS": "Użytkownicy EPS ",
+      "EPSUSER": "Użytkownik EPS",
+      "INVITE": "Zaproś  ",
+      "UPDATE": "Aktualizuj",
+      "EDIT": "Edytuj",
+      "COUNT": "{{count}} użytkownicy",
+      "COUNT-POSTSCRIPT": "odpowiada twoim kryteriom",
+      "COUNT_1": "1 użytkownik",
+      "ADD": "Dodaj",
+      "USER_UPDATE_SUCCESS": "Użytkownik został pomyślnie zaktualizowany.",
+      "USER_UPDATE_FAIL": "Użytkownik nie został zaktualizowany.",
+      "USER_INVITE_SUCCESS": "Użytkownik został pomyślnie zaproszony.",
+      "USER_INVITE_FAIL": "Użytkownik nie został zaproszony.",
+      "NAME": "Nazwa",
+      "ID": "ID"
+    },
+    "EPS_USERS": {
+      "NAME": "Imię",
+      "EMAIL": "E-mail",
+      "LAST_NAME": "Nazwisko",
+      "SALES_ORG": "Firmy handlowe",
+      "NO_SALES_ORG": "Brak firmy handlowej",
+      "SEARCH_SALES_ORG": "Szukaj firmy handlowej",
+      "ADMIN": "Admin",
+      "CUSTOMER_ROLE_LIST": "Mapowanie klienta",
+      "ADD_SALES_ORGANISATION": "Dodaj firmę handlową",
+      "LANGUAGE": "Język",
+      "LIST": {
+        "TITLE": "WYNIKI",
+        "SUBTITLE": "UŻYTKOWNICY EPS "
+      }
+    },
+    "CLIENT_USERS": {
+      "LIST": {
+        "TITLE": "WYNIKI",
+        "SUBTITLE": "UŻYTKOWNICY KLIENTA",
+        "ASSIGNED": "Przydzielony"
+      },
+      "CUSTOMER": "Klient",
+      "ROLE": "Rola",
+      "SEARCH_CUSTOMER": "Szukaj klienta",
+      "ADD_CUSTOMER": "Dodaj nowego klienta",
+      "ACTIVE": "Aktywny",
+      "LANGUAGE": "Język"
+    }
+  },
+  "ERRORS": {
+    "AUTHORIZATION": {
+      "NO_CUSTOMERS": "Nie masz przypisanego żadnego klienta.  Skontaktuj się z administratorem w celu uzyskania dostępu.",
+      "NO_CUSTOMERS_IN_SALES_ORGANIZATION": "W tej grupie firm handlowych nie ma żadnych klientów. Wybierz inną firmę handlową.  ",
+      "NO_SALES_ORGANIZATIONS": "Nie masz przypisanej żadnej firmy handlowej.  Skontaktuj się z administratorem w celu uzyskania dostępu.",
+      "CONTRACT_EMPTY": {
+        "TITLE": "Kontrakt nieaktywny",
+        "MESSAGE": "Wybrany klient nie ma aktywnego kontraktu.  Skontaktuj się z administratorem Euro Pool System w celu rozwiązania problemu."
+      }
+    },
+    "FILTER_FAILED": {
+      "TITLE": "Uruchom filtr"
+    },
+    "PDF_DOWNLOAD_FAILED": {
+      "TITLE": "Pobierz plik PDF ",
+      "MESSAGE": "Pobieranie pliku PDF nieudane"
+    },
+    "XLS_DOWNLOAD_FAILED": {
+      "TITLE": "Pobierz plik excel",
+      "MESSAGE": "Pobieranie pliku excel nieudane"
+    },
+    "COPY_ORDER": {
+      "NO_VALID_CONTRACT": "Twój kontrakt został zmieniony.  Nie możesz już utworzyć podobnego zamówienia."
+    },
+    "COPY_FLOW": {
+      "NO_VALID_CONTRACT": "Twój kontrakt został zmieniony.  Nie możesz już utworzyć podobnego obiegu. LUB: TYP OBIEGU ZOSTAŁ UNIEWAŻNIONY W TRAKCIE ŁADOWANIA"
+    },
+    "TEMPLATE": {
+      "CREATE": "BŁĄD szablonu",
+      "COPY_FROM_ORDER": "Nie można skopiować z zamówienia"
+    },
+    "ORDER": {
+      "CREATE": {
+        "TRUCK_LOAD": "Sprawdź załadunek"
+      }
+    },
+    "CUSTOMER-SUMMARY": {
+      "LOAD": "Podsumowanie załadunku klienta"
+    }
+  },
+  "validation-error": {
+    "numberOfExchangePallets": {
+      "text": {
+        "max": "Wymiana większej ilości palet niż w zamówieniu nie jest możliwa.",
+        "min": "Liczba palet musi być większa niż zero."
+      }
+    },
+    "customerReferenceNumber": {
+      "text": {
+        "required": "Pole numeru referencyjnego nie może być puste"
+      }
+    },
+    "flowDate": {
+      "date": {
+        "invalid": "Data obiegu jest nieprawidłowa"
+      }
+    },
+    "text": {
+      "required": "To pole nie może być puste"
+    },
+    "date": {
+      "required": "Ta data jest wymagana",
+      "datePatternValidator": "Data w niepoprawnym formacie",
+      "dateRangeValidator": "Data poza zakresem",
+      "dateSameOrAfter": "Data musi być po {{otherDate}}",
+      "dateNotAvailable": "Data nie jest dostępna. Prosimy wybrać inną."
+    },
+    "custom": {
+      "recurrence": {
+        "atLeastOneDay": "Sprawdź co najmniej 1 dzień"
+      }
+    }
+  },
+  "CALENDAR": {
+    "TITLE": "TWOJE",
+    "SUBTITLE": "KALENDARZ",
+    "SHOW_TODAY": "Pokaż dziś",
+    "CREATE_TEMPLATE": "Stwórz szablon  ",
+    "TEMPLATES": "Szablony",
+    "FILTER": {
+      "DEPOT": "Magazyn",
+      "DELIVERY": "Dostawa",
+      "RETURN": "Zwrot",
+      "OWN": "Własny",
+      "BY_EPS": "Przez EPS"
+    },
+    "ADD_ORDER_MODAL": {
+      "TITLE": "DODAJ",
+      "START_FROM_A": "Zacznij od",
+      "TEMPLATE": "szablon",
+      "NEW_ORDER": "nowe zamówienie"
+    },
+    "TEMPLATE": {
+      "DRAG_TEMPLATE": "Rozpocznij <span class='bold'>przeciąganie</span> szablonu",
+      "SUBTEXT": "Przeciągnij i upuść szablony do kalendarza. Lub dodaj zamówienie, klikając na konkretną datę"
+    }
+  },
+  "STOCK": {
+    "TITLE": "<span class='bold'>STAN</span> PRZEGLĄD",
+    "FILTER_TITLE": "<span class='bold'>Wybierz lokalizację </span> aby pobrać stan",
+    "LOCATION": "Lokalizacja",
+    "CHECK_STOCK": "Sprawdź stan",
+    "THIS_WEEK": "Ten tydzień",
+    "TRAYS": "Skrzynki"
+  },
+  "BLANK_RECEIPT": {
+    "TITLE": "<span class='bold'>UTWÓRZ</span> PUSTE POTWIERDZENIE",
+    "RECEIPT_TYPE": "Rodzaj potwierdzenia",
+    "QUANTITY": "Ilość",
+    "CREATE_RECEIPT": "Stwórz potwierdzenia"
+  }
+}

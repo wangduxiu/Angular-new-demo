@@ -1,0 +1,27 @@
+<div class="orderList">
+  <div
+    class="order"
+    placement="top-left"
+    *ngFor="let florderInfo of day.florderInfos | slice:0:SLICE_NUMBER"
+    (mouseenter)="mouseenter(florderInfo, $event)"
+    (mouseleave)="mouseleave(florderInfo)"
+  >
+    <div *ngIf="showTooltip === florderInfo" class="florder-tooltip" [ngStyle]="tooltipStyle">
+      <app-calendar-order-tooltip
+        [florderInfo]="florderInfo"
+        (boundingBoxChange)="tooltipBoundingBoxChange($event)"
+        *ngIf="florderInfo.isOrder"
+      ></app-calendar-order-tooltip>
+      <app-calendar-relocation-tooltip
+        [florderInfo]="florderInfo"
+        (boundingBoxChange)="tooltipBoundingBoxChange($event)"
+        *ngIf="florderInfo.isRelocation"
+      ></app-calendar-relocation-tooltip>
+    </div>
+    <div>
+      {{florderInfo.etmOrderNumber}}
+    </div>
+    <!-- <div placement="top-left">{{order.etmOrderNumber}}</div> -->
+  </div>
+  <span class="more" *ngIf="day.totalNumberOfOrders > SLICE_NUMBER">{{day.totalNumberOfOrders - SLICE_NUMBER}} {{ 'CALENDAR.MORE_ORDERS' | translate }}</span>
+</div>

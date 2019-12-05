@@ -1,0 +1,31 @@
+<div class="tile">
+  <div class="left-panel" (click)="nextDepot()">
+    <div><i class="fa fa-angle-left" *ngIf="depots.length > 1"></i></div>
+  </div>
+  <div class="center-panel">
+    <div class="header">
+      <div class="title">
+        <div class="line1">{{'DASHBOARD.DEPOT.TITLE.LINE1' | translate}}</div>
+        <div class="line2">{{'DASHBOARD.DEPOT.TITLE.LINE2' | translate}}</div>
+      </div>
+      <div class="name">{{currentDepot.name}}</div>
+    </div>
+    <div class="main">
+      <div class="address">
+        <div class="street">{{currentDepot.address.street}} {{currentDepot.address.houseNumber}}</div>
+        <div class="city">{{currentDepot.address.postcode}} {{currentDepot.address.city}}</div>
+      </div>
+      <div class="openingHours">
+        <div class="innerContainer">
+          <div *ngFor="let oh of openingHoursWeek">
+            <div class="days">{{oh.daysDescription}}</div>
+            <div class="hours">{{oh.openingHours}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right-panel" (click)="previousDepot()">
+    <div><i class="fa fa-angle-right" *ngIf="depots.length > 1"></i></div>
+  </div>
+</div>

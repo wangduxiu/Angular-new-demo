@@ -1,0 +1,36 @@
+@import '../styles/globalVars.less';
+
+.custom_modal {
+  font-weight: 300;
+  text-align: center;
+
+  .modal-body {
+    font-size: @medium-font;
+
+    .modal-status {
+      font-size: 32px;
+
+      &.success {
+        color: @success;
+      }
+      &.error {
+        color: @error-modal;
+      }
+      &.warning {
+        color: @warning;
+      }
+      &.info {
+        color: @info;
+      }
+    }
+
+    .time-to-do-action {
+      display: block;
+      font-size: @title-font;
+    }
+
+    .subMessages {
+      margin-top: 20px;
+    }
+  }
+}

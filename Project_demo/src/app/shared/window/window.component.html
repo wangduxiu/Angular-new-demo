@@ -1,0 +1,13 @@
+<div class="app-window">
+  <div class="app-window-header">
+  <div *ngIf="headerHtml"[outerHTML]="headerHtml"></div>
+  <ng-content select=".window-header"></ng-content>
+</div>
+<div class="app-window-body">
+  <ng-content select=".window-body"></ng-content>
+</div>
+<div class="app-window-footer">
+  <div *ngIf="footerHtml"[outerHTML]="footerHtml"></div>
+  <ng-content select=".window-footer"></ng-content>
+</div>
+</div>

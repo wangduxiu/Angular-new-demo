@@ -1,0 +1,53 @@
+<div class="material-panel">
+  <div class="title">
+    <h3>{{"ORDERS.MATERIAL.TITLE" | translate}}</h3>
+  </div>
+
+  <form [formGroup]="editMaterialForm" class="row">
+    <div class="row col-12 cell align_center-md">
+      <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.TYPE_PACKING"> {{editPackingType}}</app-label>
+      <app-select [elements]="packingIds" formControlName="packingId" class="col-12 col-md-10" (change)="packingIdChanged()" *ngIf="editPackingType"></app-select>
+      <app-select [elements]="definitions.packing.type" value="{{material.packingId}}" [readonly]="true" [hideReadonlyPadding]="true" *ngIf="!editPackingType"></app-select>
+    </div>
+
+    <div class="row col-12 cell align_center-md">
+      <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.QUANTITY"></app-label>
+      <app-text-input class="col-12 col-md-10" formControlName="packingQuantity" pattern="^-?\d{0,6}$"></app-text-input>
+    </div>
+
+    <div class="row col-12 cell align_center-md">
+      <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.REFERENCE" [optional]="true"></app-label>
+      <app-text-input class="col-12 col-md-10" formControlName="lineReferenceId" *ngIf="!editOnlyQuantity"></app-text-input>
+      <span *ngIf="editOnlyQuantity">{{material.lineReferenceId}}</span>
+    </div>
+
+    <div class="row col-12 cell align_center-md">
+      <app-label class="col-12 col-md-2" translationCode="ORDERS.MATERIAL.LABELS.CONTENT" [optional]="true"></app-label>
+      <app-autocomplete class="col-12 col-md-10" [elements]="definitions.global.brick" formControlName="contentId" [allowBlank]="true" *ngIf="!editOnlyQuantity"></app-autocomplete>
+      <span *ngIf="editOnlyQuantity">{{getContent(material.contentId)}}</span>
+    </div>
+
+    <div class="col-12 hr no_margin_bottom"></div>
+
+    <div class="col-12 hr"></div>
+
+    <div class="col-12 buttons" *ngIf="panelStatus.isNew">
+      <a md-raised-button class="default end-xs" [disabled]="true" *ngIf="saving">
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>{{ 'ORDERS.MATERIAL.BUTTONS.SAVING' | translate }}
+      </a>
+      <a md-raised-button class="default end-xs" button-click-on-enter (click)="nextClickedFn()" [disabled]="editMaterialForm.invalid" *ngIf="!saving">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        {{ 'ORDERS.MATERIAL.BUTTONS.ADD_MATERIAL' | translate }}
+      </a>
+    </div>
+    <div class="col-12 buttons" *ngIf="panelStatus.isUpdate">
+      <a md-raised-button class="default end-xs" [disabled]="true" *ngIf="saving">
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>{{ 'ORDERS.MATERIAL.BUTTONS.SAVING' | translate }}
+      </a>
+      <a md-raised-button class="default end-xs" button-click-on-enter (click)="nextClickedFn()" [disabled]="editMaterialForm.invalid" *ngIf="!saving">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        {{ 'SHARED.BUTTONS.SAVE' | translate }}
+      </a>
+    </div>
+  </form>
+</div>

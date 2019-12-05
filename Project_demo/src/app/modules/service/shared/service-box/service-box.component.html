@@ -1,0 +1,13 @@
+<div class="box" (click)="redirectTo && openModule.emit(redirectTo)" [ngClass]="{'hoverable': redirectTo}">
+  <div>
+    <div class="icon">
+      <i class="fa {{icon}}"></i>
+    </div>
+  </div>
+  <div class="content">
+    <span class="title">{{title}}</span>
+    <a *ngIf="showMailto" class="subtitle" href="{{'mailto:'+(subtitle | lowercase)}}">{{subtitle}}</a>
+    <span *ngIf="!showMailto" class="subtitle">{{subtitle}}</span>
+    <span>{{description}}</span>
+  </div>
+</div>
