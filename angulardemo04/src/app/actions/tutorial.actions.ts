@@ -1,8 +1,9 @@
 import { Action } from '@ngrx/store' 
-import { Tutorial } from '../models/tutorial.model'
+import { Tutorial, TutorialInfo } from '../models/tutorial.model'
 
 export const ADD_TUTORIAL = '[TUTORIAL] Add'
 export const REMOVE_TUTORIAL = '[TUTORIAL] Remove'
+export const MODIFY_TUTORIAL = '[TUTORIAL] Modify'
 
 export class AddTutorial implements Action {
     readonly type = ADD_TUTORIAL
@@ -16,4 +17,9 @@ export class RemoveTutorial implements Action {
     constructor(public payload: number) { }
 }
 
-export type Actions = AddTutorial | RemoveTutorial
+export class ModifyTutorial implements Action {
+    readonly type = MODIFY_TUTORIAL
+    constructor(public payload: TutorialInfo){ }
+}
+
+export type Actions = AddTutorial | RemoveTutorial | ModifyTutorial

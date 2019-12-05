@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from './../app.state';
 import * as TutorialActions from './../actions/tutorial.actions';
+import { RequestService } from '../services/request.service';
 
 @Component({
   selector: 'app-create',
@@ -11,14 +12,13 @@ import * as TutorialActions from './../actions/tutorial.actions';
 })
 export class CreateComponent implements OnInit {
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>,
+    public req: RequestService) { }
 
   addTutorial(name, url) {
-    console.log('点击执行addTutorial方法');
-    this.store.dispatch(new TutorialActions.AddTutorial({name: name, url: url}))
+    this.store.dispatch(new TutorialActions.AddTutorial({ name: name, url: url }))
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { Tutorial } from './../models/tutorial.model';
+import { Tutorial, TutorialInfo } from './../models/tutorial.model';
 import { AppState } from './../app.state';
 import * as TutorialActions from './../actions/tutorial.actions';
 
@@ -12,10 +12,14 @@ import * as TutorialActions from './../actions/tutorial.actions';
 })
 export class ReadComponent implements OnInit {
 
-  tutorials: Observable<Tutorial[]>;
+  public info: string;
 
-  constructor(private store: Store<AppState>) { 
+  tutorials: Observable<Tutorial[]>;
+  tutorialInfo: Observable<TutorialInfo[]>;
+
+  constructor(private store: Store<AppState>) {
     this.tutorials = store.select('tutorial')
+    this.tutorialInfo = store.select('tutorialInfo')
   }
 
   delTutorial(index) {
@@ -23,11 +27,11 @@ export class ReadComponent implements OnInit {
   }
 
   //点击按钮修改值
-  modifyTutorial(tutorial,i){
-    console.log(tutorial,i);
+  modifyTutorial(tutorial: any, i: any) {
+    console.log(tutorial, i);
+    this.store.dispatch(new TutorialActions.ModifyTutorial({ tutorial: tutorial, i: i }))
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

@@ -1,4 +1,9 @@
 export interface Tutorial {
     name: string;
-    url: string; 
+    url: string;
+}
+
+export interface TutorialInfo {
+    tutorial: any;
+    i: any;
 }
