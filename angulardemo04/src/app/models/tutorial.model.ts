@@ -6,4 +6,6 @@ export interface Tutorial {
 export interface TutorialInfo {
     tutorial: any;
     i: any;
+    name: any;
+    url: any;
 }

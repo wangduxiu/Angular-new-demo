@@ -12,8 +12,6 @@ import * as TutorialActions from './../actions/tutorial.actions';
 })
 export class ReadComponent implements OnInit {
 
-  public info: string;
-
   tutorials: Observable<Tutorial[]>;
   tutorialInfo: Observable<TutorialInfo[]>;
 
@@ -27,9 +25,10 @@ export class ReadComponent implements OnInit {
   }
 
   //点击按钮修改值
-  modifyTutorial(tutorial: any, i: any) {
-    console.log(tutorial, i);
-    this.store.dispatch(new TutorialActions.ModifyTutorial({ tutorial: tutorial, i: i }))
+  modifyTutorial(tutorial: any, i: any, name: any, url: any) {
+    name = prompt("name", '');
+    url = prompt("url", '');
+    this.store.dispatch(new TutorialActions.ModifyTutorial({ tutorial: tutorial, i: i, name: name, url: url }))
   }
 
   ngOnInit() { }
