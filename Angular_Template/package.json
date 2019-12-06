@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@angular-builders/jest": "^7.3.1",
+    "@angular/cli": "7.3.3",
     "@angular/compiler-cli": "7.2.7",
     "@angular/language-service": "7.2.7",
     "@angular/service-worker": "7.2.7",

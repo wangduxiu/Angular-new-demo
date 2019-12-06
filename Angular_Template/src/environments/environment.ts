@@ -9,6 +9,6 @@ export const environment = {
     defaultLanguage: "default"
   },
   version: "2.0.0",
-  buildDate: "2019-12-5 17:40:15",
+  buildDate: "12/5/2019, 4:45:41 PM",
   environmentName: "test"
 };

@@ -59,7 +59,7 @@ export const reducers: ActionReducerMap<State> = environment.production
 export const getSettingsState = (state: State) => state.settings;
 export const getSelectedLanguage = compose(
   fromSettings.getSelectedLanguage,
-  getSettingsState 
+  getSettingsState
 );
 export const getSelectedCulture = compose(
   fromSettings.getSelectedCulture,
